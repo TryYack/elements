@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/getweekday/elements.svg?branch=master)](https://travis-ci.org/getweekday/elements)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/6d8f92d2-41a4-4e14-9a5e-22e9a1230853/deploy-status)](https://app.netlify.com/sites/festive-varahamihira-e088e3/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/6d8f92d2-41a4-4e14-9a5e-22e9a1230853/deploy-status)](https://app.netlify.com/sites/weekday-elements/deploys)
 
 # Elements
 
