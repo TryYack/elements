@@ -2,7 +2,6 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/6d8f92d2-41a4-4e14-9a5e-22e9a1230853/deploy-status)](https://app.netlify.com/sites/weekday-elements/deploys)
 
 # Elements
-
 > Elements is the React based UI library for the Weekday platform. This is library should be considered as pre alpha right now - active development is continuing. See below roadmap for progress.
 
 ## Installation
