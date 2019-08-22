@@ -35,7 +35,7 @@
     }
   ],
   "deprecated": false,
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "UI toolkit for Weekday",
   "scripts": {
     "storybook": "start-storybook -p 6006",
@@ -45,7 +45,7 @@
     "watch": "webpack -w --config webpack.config.js",
     "serve": "webpack-dev-server --config webpack.config.js --hot --inline",
     "dev": "npm run watch | npm run serve",
-    "test": "jest",    
+    "test": "jest",
     "tsc": "tsc -p tsconfig.json",
     "lint": "tslint --project ./"
   },
