@@ -14,7 +14,7 @@ yarn add getweekday/elements#master
 ## Global packages
 - Node v9.x
 - Webpack 4.x
-- Npm v4.2.0 
+- Npm v4.2.0
 
 ## Building & installation
 All of the building happens with npm
@@ -49,6 +49,7 @@ npm run build:storybook
 - [ ] Tabbed (hor/ver) component
 - [ ] Spinner component
 - [ ] Modal component
+- [ ] Input component
 - [ ] Menu component
 - [ ] Text component
 - [ ] Media component
