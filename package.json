@@ -42,7 +42,7 @@
     "build:storybook": "build-storybook -c .storybook -o docs",
     "build": "webpack --config webpack.config.js",
     "build:prod": "npm run tsc | npm run build",
-    "watch": "npm run tsc-watch | webpack -w --config webpack.config.js",
+    "dev:build": "npm run tsc-watch | webpack -w --config webpack.config.js",
     "serve": "webpack-dev-server --config webpack.config.js --hot --inline",
     "dev": "npm run watch | npm run serve",
     "test": "jest",
