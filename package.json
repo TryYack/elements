@@ -51,22 +51,19 @@
   },
   "author": "Jo du Plessis",
   "license": "ISC",
-  "peerDependencies": {
-  },
+  "peerDependencies": {},
   "dependencies": {
     "@types/storybook__react": "^4.0.2",
     "chroma-js": "^2.0.4",
     "moment": "^2.22.2",
     "moment-range": "^4.0.1",
     "moment-timezone": "^0.5.21",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "react": ">=16.0.0",
+    "react-dom": ">=16.0.0",
     "react-hot-loader": "^4.3.6",
     "react-loaders": "^3.0.1",
     "react-markdown": "^4.0.6",
-    "rxjs": "^6.5.2",
-    "react": ">=16.0.0",
-    "react-dom": ">=16.0.0"
+    "rxjs": "^6.5.2"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
