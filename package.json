@@ -52,8 +52,6 @@
   "author": "Jo du Plessis",
   "license": "ISC",
   "peerDependencies": {
-    "react": ">=16.0.0",
-    "react-dom": ">=16.0.0"
   },
   "dependencies": {
     "@types/storybook__react": "^4.0.2",
@@ -66,7 +64,9 @@
     "react-hot-loader": "^4.3.6",
     "react-loaders": "^3.0.1",
     "react-markdown": "^4.0.6",
-    "rxjs": "^6.5.2"
+    "rxjs": "^6.5.2",
+    "react": ">=16.0.0",
+    "react-dom": ">=16.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
