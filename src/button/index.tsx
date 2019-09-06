@@ -43,10 +43,10 @@ const Inner = styled.div<{
     return "white";
   }};
   border: ${props => {
-    if (props.outline && !props.theme) return "1.5px solid #007af5";
-    if (props.outline && props.theme == "muted") return "1.5px solid #ADB5BD";
-    if (props.outline && props.theme == "danger") return "1.5px solid #8E2F29";
-    if (props.outline && props.theme == "blue") return "1.5px solid #286BA4";
+    if (props.outline && !props.theme) return "2px solid #007af5";
+    if (props.outline && props.theme == "muted") return "2px solid #E1E7EC";
+    if (props.outline && props.theme == "danger") return "2px solid #8E2F29";
+    if (props.outline && props.theme == "blue") return "2px solid #286BA4";
     return "none";
   }};
   box-sizing: border-box;
@@ -74,7 +74,6 @@ const Inner = styled.div<{
       if (props.theme == "blue") return "#007af5";
       return "#0f081f";
     }};
-
     border: ${props => {
       if (props.outline && !props.theme) return "2px solid #0f081f";
       if (props.outline && props.theme == "muted") return "2px solid #F1F3F5";
