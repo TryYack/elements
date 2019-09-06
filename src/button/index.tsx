@@ -1,5 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
+import { PALETTE } from "../palette";
 
 const Icon = styled.div<{ jumbo?: boolean }>`
   margin: ${props => {
@@ -19,7 +20,7 @@ const Container = styled.div<{ jumbo?: boolean }>`
 
 const Inner = styled.div<{
   jumbo?: boolean,
-  theme?: string,
+  theme: string,
   outline?: boolean,
 }>`
   box-sizing: border-box;
@@ -31,9 +32,9 @@ const Inner = styled.div<{
   justify-content: center;
   background-size: cover;
   position: relative;
-  transition: background-color 0.25s, color 0.25s, border 0.25s;
+  transition: background-color 0.15s, color 0.15s, border 0.15s;
   cursor: pointer;
-  height: ${props => {
+  height: ${props  => {
     if (props.jumbo) return "80px";
     return "40px";
   }};
@@ -41,52 +42,28 @@ const Inner = styled.div<{
     if (props.jumbo) return "10px";
     return "6px";
   }};
-  background-color: ${props => {
-    if (props.theme == "muted") return "#F8F9FA";
-    if (props.theme == "danger") return "#F8B6B7";
-    if (props.theme == "blue") return "#EFF8FF";
-    return "#007af5";
-  }};
-  color: ${props => {
-    if (props.theme == "muted") return "#ADB5BD";
-    if (props.theme == "danger") return "#8E2F29";
-    if (props.theme == "blue") return "#007af5";
-    return "white";
-  }};
-  border: ${props => {
-    if (props.outline && !props.theme) return "2px solid #007af5";
-    if (props.outline && props.theme == "muted") return "2px solid #E1E7EC";
-    if (props.outline && props.theme == "danger") return "2px solid #8E2F29";
-    if (props.outline && props.theme == "blue") return "2px solid #286BA4";
-    return "none";
-  }};
+  border-width: 2px;
+  border-style: solid;
+  background-color: ${props => PALETTE[props.theme].BASE.BACKGROUND_COLOR};
+  color: ${props => PALETTE[props.theme].BASE.COLOR};
+  border-color: ${props => PALETTE[props.theme].BASE.BORDER_COLOR};
 
   &:hover {
-    color: ${props => {
-      if (props.theme == "muted") return "#0f081f";
-      if (props.theme == "danger") return "white";
-      if (props.theme == "blue") return "white";
-      return "white";
-    }};
-    background-color: ${props => {
-      if (props.theme == "muted") return "#F1F3F5";
-      if (props.theme == "danger") return "#ED553B";
-      if (props.theme == "blue") return "#007af5";
-      return "#0f081f";
-    }};
-    border: ${props => {
-      if (props.outline && !props.theme) return "2px solid #0f081f";
-      if (props.outline && props.theme == "muted") return "2px solid #F1F3F5";
-      if (props.outline && props.theme == "danger") return "2px solid #ED553B";
-      if (props.outline && props.theme == "blue") return "2px solid #007af5";
-      return "none";
-    }};
+    background-color: ${props => PALETTE[props.theme].HOVER.BACKGROUND_COLOR};
+    color: ${props => PALETTE[props.theme].HOVER.COLOR};
+    border-color: ${props => PALETTE[props.theme].HOVER.BORDER_COLOR};
+  }
+
+  &.active {
+    background-color: ${props => PALETTE[props.theme].ACTIVE.BACKGROUND_COLOR} !important;
+    color: ${props => PALETTE[props.theme].ACTIVE.COLOR} !important;
+    border-color: ${props => PALETTE[props.theme].ACTIVE.BORDER_COLOR} !important;
   }
 `;
 
 const Text = styled.span<{
   jumbo?: boolean,
-  theme?: string,
+  theme: string,
   icon?: any,
 }>`
   margin: 0px;
@@ -157,12 +134,20 @@ interface IButtonProps {
  * Button component.
  */
 export const Button: React.FunctionComponent<IButtonProps> = (props: IButtonProps) => {
+  const [down, setDown] = React.useState(false)
+  const buttonTheme = props.theme ? props.theme : "default";
+  
   return (
-    <Container jumbo={props.jumbo}>
+    <Container
+      jumbo={props.jumbo}
+      onMouseDown={() => setDown(true)}
+      onMouseUp={() => setDown(false)}
+      >
       <Inner
         outline={props.outline}
         jumbo={props.jumbo}
-        theme={props.theme}>
+        theme={buttonTheme}
+        className={down ? "active" : ""}>
         {props.icon && (
           <Icon jumbo={props.jumbo}>
             {props.icon}
@@ -170,7 +155,7 @@ export const Button: React.FunctionComponent<IButtonProps> = (props: IButtonProp
         )}
         <Text
           icon={props.icon}
-          theme={props.theme}
+          theme={buttonTheme}
           jumbo={props.jumbo}
           onClick={props.onClick}>
           {props.text}

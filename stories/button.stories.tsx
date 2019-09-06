@@ -5,17 +5,31 @@ import { Button } from "../src/button";
 import { withInfo } from "@storybook/addon-info";
 
 storiesOf('Button', module)
-.add(
+  .add(
   'Normal text',
   withInfo({ inline: true })(() => (
     <Button
-      text="Click Here"
+      text="Toggle"
       onClick={action('clicked')}
     />
   )));
 
 storiesOf('Button', module)
-.add(
+  .add(
+  'Jumbo with icon',
+  withInfo({ inline: true })(() => (
+    <Button
+      icon={<div>✓</div>}
+      jumbo={true}
+      theme="blue"
+      text="Click Here"
+      onClick={action('clicked')}
+    />
+  )));
+
+/*
+storiesOf('Button', module)
+  .add(
   'With icon',
   withInfo({ inline: true })(() => (
     <Button
@@ -37,10 +51,10 @@ storiesOf('Button', module)
 
 storiesOf('Button', module)
   .add(
-    'Muted coloring',
+    'Themed',
     withInfo({ inline: true })(() => (
       <Button
-        theme="muted"
+        theme="neon-pink"
         text="Click Here"
         onClick={action('clicked')}
       />
@@ -55,20 +69,7 @@ storiesOf('Button', module)
         text="Click Here"
         onClick={action('clicked')}
       />
-    )));
-
-storiesOf('Button', module)
-  .add(
-    'Danger coloring',
-    withInfo({ inline: true })(() => (
-      <Button
-        theme="danger"
-        text="Click Here"
-        onClick={action('clicked')}
-      />
-    )));
-
-storiesOf('Button', module)
+    )))
   .add(
     'Bordered',
     withInfo({ inline: true })(() => (
@@ -78,9 +79,7 @@ storiesOf('Button', module)
         text="Click Here"
         onClick={action('clicked')}
       />
-    )));
-
-storiesOf('Button', module)
+    )))
   .add(
     'Jumbo',
     withInfo({ inline: true })(() => (
@@ -89,9 +88,7 @@ storiesOf('Button', module)
         text="Click Here"
         onClick={action('clicked')}
       />
-    )));
-
-storiesOf('Button', module)
+    )))
   .add(
     'Jumbo with icon',
     withInfo({ inline: true })(() => (
@@ -102,19 +99,7 @@ storiesOf('Button', module)
         onClick={action('clicked')}
       />
     )));
-
-storiesOf('Button', module)
-  .add(
-    'Jumbo muted bordered',
-    withInfo({ inline: true })(() => (
-      <Button
-        jumbo={true}
-        outline ={true}
-        theme="muted"
-        text="Click Here"
-        onClick={action('clicked')}
-      />
-    )));
+    */
 
     /*
 
