@@ -5,6 +5,27 @@ import { Button } from "../src/button";
 import { withInfo } from "@storybook/addon-info";
 
 storiesOf('Button', module)
+.add(
+  'Normal text',
+  withInfo({ inline: true })(() => (
+    <Button
+      text="Click Here"
+      onClick={action('clicked')}
+    />
+  )));
+
+storiesOf('Button', module)
+.add(
+  'With icon',
+  withInfo({ inline: true })(() => (
+    <Button
+      icon={<div>✓</div>}
+      text="Click Here"
+      onClick={action('clicked')}
+    />
+  )));
+
+storiesOf('Button', module)
   .add(
     'Long text',
     withInfo({ inline: true })(() => (
@@ -14,84 +35,86 @@ storiesOf('Button', module)
       />
     )));
 
-  storiesOf('Button', module)
-    .add(
-      'Normal text',
-      withInfo({ inline: true })(() => (
-        <Button
-          text="Click Here"
-          onClick={action('clicked')}
-        />
-      )));
+storiesOf('Button', module)
+  .add(
+    'Muted coloring',
+    withInfo({ inline: true })(() => (
+      <Button
+        theme="muted"
+        text="Click Here"
+        onClick={action('clicked')}
+      />
+    )));
 
-  storiesOf('Button', module)
-    .add(
-      'Muted coloring',
-      withInfo({ inline: true })(() => (
-        <Button
-          theme="muted"
-          text="Click Here"
-          onClick={action('clicked')}
-        />
-      )));
+storiesOf('Button', module)
+  .add(
+    'Blue coloring',
+    withInfo({ inline: true })(() => (
+      <Button
+        theme="blue"
+        text="Click Here"
+        onClick={action('clicked')}
+      />
+    )));
 
-  storiesOf('Button', module)
-    .add(
-      'Blue coloring',
-      withInfo({ inline: true })(() => (
-        <Button
-          theme="blue"
-          text="Click Here"
-          onClick={action('clicked')}
-        />
-      )));
+storiesOf('Button', module)
+  .add(
+    'Danger coloring',
+    withInfo({ inline: true })(() => (
+      <Button
+        theme="danger"
+        text="Click Here"
+        onClick={action('clicked')}
+      />
+    )));
 
-  storiesOf('Button', module)
-    .add(
-      'Danger coloring',
-      withInfo({ inline: true })(() => (
-        <Button
-          theme="danger"
-          text="Click Here"
-          onClick={action('clicked')}
-        />
-      )));
+storiesOf('Button', module)
+  .add(
+    'Bordered',
+    withInfo({ inline: true })(() => (
+      <Button
+        outline={true}
+        theme="danger"
+        text="Click Here"
+        onClick={action('clicked')}
+      />
+    )));
 
-  storiesOf('Button', module)
-    .add(
-      'Bordered',
-      withInfo({ inline: true })(() => (
-        <Button
-          outline={true}
-          theme="danger"
-          text="Click Here"
-          onClick={action('clicked')}
-        />
-      )));
+storiesOf('Button', module)
+  .add(
+    'Jumbo',
+    withInfo({ inline: true })(() => (
+      <Button
+        jumbo={true}
+        text="Click Here"
+        onClick={action('clicked')}
+      />
+    )));
 
-  storiesOf('Button', module)
-    .add(
-      'Jumbo',
-      withInfo({ inline: true })(() => (
-        <Button
-          jumbo={true}
-          text="Click Here"
-          onClick={action('clicked')}
-        />
-      )));
+storiesOf('Button', module)
+  .add(
+    'Jumbo with icon',
+    withInfo({ inline: true })(() => (
+      <Button
+        icon={<div>→</div>}
+        jumbo={true}
+        text="Click Here"
+        onClick={action('clicked')}
+      />
+    )));
 
-  storiesOf('Button', module)
-    .add(
-      'Jumbo muted bordered',
-      withInfo({ inline: true })(() => (
-        <Button
-          jumbo={true}
-          outline ={true}
-          theme="muted"
-          text="Click Here"
-          onClick={action('clicked')}
-        />
-      )));
+storiesOf('Button', module)
+  .add(
+    'Jumbo muted bordered',
+    withInfo({ inline: true })(() => (
+      <Button
+        jumbo={true}
+        outline ={true}
+        theme="muted"
+        text="Click Here"
+        onClick={action('clicked')}
+      />
+    )));
 
     /*
 

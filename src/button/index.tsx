@@ -1,6 +1,13 @@
 import * as React from "react";
 import styled from "styled-components";
 
+const Icon = styled.div<{ jumbo?: boolean }>`
+  margin: ${props => {
+    if (props.jumbo) return "0px 0px 0px 30px";
+    return "0px 0px 0px 15px";
+  }};
+`;
+
 const Container = styled.div<{ jumbo?: boolean }>`
   width: max-content;
   position: relative;
@@ -81,9 +88,12 @@ const Inner = styled.div<{
 const Text = styled.span<{
   jumbo?: boolean,
   theme?: string,
+  icon?: any,
 }>`
   padding: ${props => {
-    if (props.jumbo) return "0px 30px 0px 30px";
+    if (!props.jumbo && props.icon) return "0px 15px 0px 7px";
+    if (props.jumbo && props.icon) return "0px 30px 0px 15px";
+    if (props.jumbo && !props.icon) return "0px 30px 0px 30px";
     return "0px 15px 0px 15px";
   }};
   font-weight: ${props => {
@@ -105,6 +115,13 @@ const Text = styled.span<{
 `;
 
 interface IButtonProps {
+  /**
+   * Icon to display next to text,
+   *
+   * @default null
+   */
+  icon?: any;
+
   /**
    * Value to display, either empty (" ") or string value
    *
@@ -147,7 +164,13 @@ export const Button: React.FunctionComponent<IButtonProps> = (props: IButtonProp
         outline={props.outline}
         jumbo={props.jumbo}
         theme={props.theme}>
+        {props.icon && (
+          <Icon jumbo={props.jumbo}>
+            {props.icon}
+          </Icon>
+        )}
         <Text
+          icon={props.icon}
           theme={props.theme}
           jumbo={props.jumbo}
           onClick={props.onClick}>
