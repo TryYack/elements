@@ -22,6 +22,17 @@ const Inner = styled.div<{
   theme?: string,
   outline?: boolean,
 }>`
+  box-sizing: border-box;
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  background-size: cover;
+  position: relative;
+  transition: background-color 0.25s, color 0.25s, border 0.25s;
+  cursor: pointer;
   height: ${props => {
     if (props.jumbo) return "80px";
     return "40px";
@@ -49,17 +60,6 @@ const Inner = styled.div<{
     if (props.outline && props.theme == "blue") return "2px solid #286BA4";
     return "none";
   }};
-  box-sizing: border-box;
-  width: auto;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-  background-size: cover;
-  position: relative;
-  transition: background-color 0.25s, color 0.25s, border 0.25s;
-  cursor: pointer;
 
   &:hover {
     color: ${props => {
@@ -89,6 +89,14 @@ const Text = styled.span<{
   theme?: string,
   icon?: any,
 }>`
+  margin: 0px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
   padding: ${props => {
     if (!props.jumbo && props.icon) return "0px 15px 0px 7px";
     if (props.jumbo && props.icon) return "0px 30px 0px 15px";
@@ -103,14 +111,6 @@ const Text = styled.span<{
     if (props.jumbo) return "24px";
     return "12px";
   }};
-  margin: 0px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
 `;
 
 interface IButtonProps {
