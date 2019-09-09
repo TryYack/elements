@@ -18,7 +18,7 @@ const Container = styled.div<{ jumbo?: boolean }>`
   }};
 `;
 
-const Inner = styled.div<{
+const Inner = styled.button<{
   jumbo?: boolean,
   theme: string,
   outline?: boolean,
@@ -92,6 +92,13 @@ const Text = styled.span<{
 
 interface IButtonProps {
   /**
+   * Type of button for form
+   *
+   * @default null
+   */
+  type?: any;
+
+  /**
    * Icon to display next to text,
    *
    * @default null
@@ -136,7 +143,7 @@ interface IButtonProps {
 export const Button: React.FunctionComponent<IButtonProps> = (props: IButtonProps) => {
   const [down, setDown] = React.useState(false)
   const buttonTheme = props.theme ? props.theme : "default";
-  
+
   return (
     <Container
       jumbo={props.jumbo}
@@ -144,6 +151,7 @@ export const Button: React.FunctionComponent<IButtonProps> = (props: IButtonProp
       onMouseUp={() => setDown(false)}
       >
       <Inner
+        type={props.type || null}
         outline={props.outline}
         jumbo={props.jumbo}
         theme={buttonTheme}
