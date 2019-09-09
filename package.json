@@ -1,5 +1,5 @@
 {
-  "name": "elements",
+  "name": "@weekday/elements",
   "title": "Elements",
   "keywords": [
     "Weekday"
@@ -14,6 +14,9 @@
   "pre-commit": [],
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "files": [
     "dist",
