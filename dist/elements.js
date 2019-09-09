@@ -3447,43 +3447,191 @@ var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cook
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(/*! react */ "react");
 var styled_components_1 = __webpack_require__(/*! styled-components */ "styled-components");
-var Container = styled_components_1.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  width: ", "px;\n  position: relative;\n  display: inline-block;\n"], ["\n  width: ",
-    "px;\n  position: relative;\n  display: inline-block;\n"])), function (props) {
-    if (props.size === "small")
-        return "150";
-    if (props.size === "medium")
-        return "200";
-    if (props.size === "large")
-        return "250";
-    return "200";
+var colors_1 = __webpack_require__(/*! ../colors */ "./src/colors.ts");
+var Icon = styled_components_1.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  margin: ", ";\n"], ["\n  margin: ",
+    ";\n"])), function (props) {
+    if (props.jumbo)
+        return "0px 0px 0px 30px";
+    return "0px 0px 0px 15px";
 });
-var Inner = styled_components_1.default.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  background-color: #007af5;\n  color: white;\n  font-size: 25px;\n  font-weight: 600;\n  padding: ", ";\n  border-radius: 5px;\n  transition: background-color 0.25s, color 0.25s;\n  cursor: pointer;\n  text-align: center;\n  font-family: -apple-system, BlinkMacSystemFont,\n  \"Segoe UI\", \"Roboto\", \"Oxygen\",\n  \"Ubuntu\", \"Cantarell\", \"Fira Sans\",\n  \"Droid Sans\", \"Helvetica Neue\", sans-serif;\n  font-size: ", "px;\n\n  &:hover {\n    background-color: #0f081f;\n    color: #007af5;\n  }\n\n  &:first-child {\n    margin-right: 5px;\n  }\n"], ["\n  background-color: #007af5;\n  color: white;\n  font-size: 25px;\n  font-weight: 600;\n  padding: ",
-    ";\n  border-radius: 5px;\n  transition: background-color 0.25s, color 0.25s;\n  cursor: pointer;\n  text-align: center;\n  font-family: -apple-system, BlinkMacSystemFont,\n  \"Segoe UI\", \"Roboto\", \"Oxygen\",\n  \"Ubuntu\", \"Cantarell\", \"Fira Sans\",\n  \"Droid Sans\", \"Helvetica Neue\", sans-serif;\n  font-size: ",
-    "px;\n\n  &:hover {\n    background-color: #0f081f;\n    color: #007af5;\n  }\n\n  &:first-child {\n    margin-right: 5px;\n  }\n"])), function (props) {
-    if (props.size === "small")
-        return "10px 20px 10px 20px";
-    if (props.size === "medium")
-        return "15px 25px 15px 25px";
-    if (props.size === "large")
-        return "20px 30px 20px 30px";
-    return "15px 25px 15px 25px";
+var Container = styled_components_1.default.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  width: max-content;\n  position: relative;\n  max-width: ", ";\n"], ["\n  width: max-content;\n  position: relative;\n  max-width: ",
+    ";\n"])), function (props) {
+    if (props.jumbo)
+        return "300px";
+    return "150px";
+});
+var Inner = styled_components_1.default.button(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  box-sizing: border-box;\n  width: auto;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  align-content: center;\n  justify-content: center;\n  background-size: cover;\n  position: relative;\n  transition: background-color 0.15s, color 0.15s, border 0.15s;\n  cursor: pointer;\n  height: ", ";\n  border-radius: ", ";\n  border-width: 2px;\n  border-style: solid;\n  background-color: ", ";\n  color: ", ";\n  border-color: ", ";\n\n  &:hover {\n    background-color: ", ";\n    color: ", ";\n    border-color: ", ";\n  }\n\n  &.active {\n    background-color: ", " !important;\n    color: ", " !important;\n    border-color: ", " !important;\n  }\n"], ["\n  box-sizing: border-box;\n  width: auto;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  align-content: center;\n  justify-content: center;\n  background-size: cover;\n  position: relative;\n  transition: background-color 0.15s, color 0.15s, border 0.15s;\n  cursor: pointer;\n  height: ",
+    ";\n  border-radius: ",
+    ";\n  border-width: 2px;\n  border-style: solid;\n  background-color: ", ";\n  color: ", ";\n  border-color: ", ";\n\n  &:hover {\n    background-color: ", ";\n    color: ", ";\n    border-color: ", ";\n  }\n\n  &.active {\n    background-color: ", " !important;\n    color: ", " !important;\n    border-color: ", " !important;\n  }\n"])), function (props) {
+    if (props.jumbo)
+        return "80px";
+    return "40px";
 }, function (props) {
-    if (props.size === "small")
-        return "8";
-    if (props.size === "medium")
-        return "12";
-    if (props.size === "large")
-        return "16";
-    return "12";
+    if (props.jumbo)
+        return "10px";
+    return "6px";
+}, function (props) { return colors_1.COLORS[props.theme].BASE.BACKGROUND_COLOR; }, function (props) { return colors_1.COLORS[props.theme].BASE.COLOR; }, function (props) { return colors_1.COLORS[props.theme].BASE.BORDER_COLOR; }, function (props) { return colors_1.COLORS[props.theme].HOVER.BACKGROUND_COLOR; }, function (props) { return colors_1.COLORS[props.theme].HOVER.COLOR; }, function (props) { return colors_1.COLORS[props.theme].HOVER.BORDER_COLOR; }, function (props) { return colors_1.COLORS[props.theme].ACTIVE.BACKGROUND_COLOR; }, function (props) { return colors_1.COLORS[props.theme].ACTIVE.COLOR; }, function (props) { return colors_1.COLORS[props.theme].ACTIVE.BORDER_COLOR; });
+var Text = styled_components_1.default.span(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  margin: 0px;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  font-family: -apple-system, BlinkMacSystemFont,\n  \"Segoe UI\", \"Roboto\", \"Oxygen\",\n  \"Ubuntu\", \"Cantarell\", \"Fira Sans\",\n  \"Droid Sans\", \"Helvetica Neue\", sans-serif;\n  padding: ", ";\n  font-weight: ", ";\n  font-size: ", ";\n"], ["\n  margin: 0px;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  font-family: -apple-system, BlinkMacSystemFont,\n  \"Segoe UI\", \"Roboto\", \"Oxygen\",\n  \"Ubuntu\", \"Cantarell\", \"Fira Sans\",\n  \"Droid Sans\", \"Helvetica Neue\", sans-serif;\n  padding: ",
+    ";\n  font-weight: ",
+    ";\n  font-size: ",
+    ";\n"])), function (props) {
+    if (!props.jumbo && props.icon)
+        return "0px 15px 0px 7px";
+    if (props.jumbo && props.icon)
+        return "0px 30px 0px 15px";
+    if (props.jumbo && !props.icon)
+        return "0px 30px 0px 30px";
+    return "0px 15px 0px 15px";
+}, function (props) {
+    if (props.jumbo)
+        return "500";
+    return "500";
+}, function (props) {
+    if (props.jumbo)
+        return "24px";
+    return "12px";
 });
 /**
  * Button component.
  */
 exports.Button = function (props) {
-    return (React.createElement(Container, { size: props.size },
-        React.createElement(Inner, { className: "inner", size: props.size, onClick: props.onClick }, props.text)));
+    var _a = React.useState(false), down = _a[0], setDown = _a[1];
+    var theme = props.theme ? props.theme : "default";
+    var disabled = props.disabled || false;
+    return (React.createElement(Container, { jumbo: props.jumbo, onMouseDown: function () { return setDown(true); }, onMouseUp: function () { return setDown(false); } },
+        React.createElement(Inner, { disabled: disabled, outline: props.outline, jumbo: props.jumbo, theme: theme, className: down ? "active" : "" },
+            props.icon && (React.createElement(Icon, { jumbo: props.jumbo }, props.icon)),
+            React.createElement(Text, { icon: props.icon, theme: theme, jumbo: props.jumbo, onClick: props.onClick }, props.text))));
 };
-var templateObject_1, templateObject_2;
+var templateObject_1, templateObject_2, templateObject_3, templateObject_4;
+
+
+/***/ }),
+
+/***/ "./src/colors.ts":
+/*!***********************!*\
+  !*** ./src/colors.ts ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.COLORS = {
+    "default": {
+        BASE: {
+            BACKGROUND_COLOR: "#007af5",
+            COLOR: "white",
+            BORDER_COLOR: "transparent",
+        },
+        ACTIVE: {
+            BACKGROUND_COLOR: "#00ABF0",
+            COLOR: "white",
+            BORDER_COLOR: "transparent",
+        },
+        HOVER: {
+            BACKGROUND_COLOR: "#045fba",
+            COLOR: "white",
+            BORDER_COLOR: "transparent",
+        },
+    },
+    "blue": {
+        BASE: {
+            BACKGROUND_COLOR: "#00ABF0",
+            COLOR: "white",
+            BORDER_COLOR: "transparent",
+        },
+        ACTIVE: {
+            BACKGROUND_COLOR: "#00ABF0",
+            COLOR: "white",
+            BORDER_COLOR: "transparent",
+        },
+        HOVER: {
+            BACKGROUND_COLOR: "#007af5",
+            COLOR: "white",
+            BORDER_COLOR: "transparent",
+        },
+    },
+};
+/*
+  BACKGROUND: {
+    "default": "#007af5",
+    "light": "#F6F8F9",
+    "red": "#FC1449",
+    "rust": "#FF5300",
+    "orange": "#FF9500",
+    "yellow": "#F5C300",
+    "lime": "#97D200",
+    "green": "#0AD661",
+    "teal": "#00C9AA",
+    "blue": "#00ABF0",
+    "royal": "#2685E7",
+    "lavender": "#7F6AF8",
+    "purple": "#B758EA",
+    "pink": "#F551EA",
+    "neon-pink": "#FE389F",
+    "light-pink": "#FF89AD",
+    "dark": "#88A4A7",
+  },
+  FOREGROUND: {
+    "default": "#007af5",
+    "light": "#F6F8F9",
+    "red": "#FC1449",
+    "rust": "#FF5300",
+    "orange": "#FF9500",
+    "yellow": "#F5C300",
+    "lime": "#97D200",
+    "green": "#0AD661",
+    "teal": "#00C9AA",
+    "blue": "#00ABF0",
+    "royal": "#2685E7",
+    "lavender": "#7F6AF8",
+    "purple": "#B758EA",
+    "pink": "#F551EA",
+    "neon-pink": "#FE389F",
+    "light-pink": "#FF89AD",
+    "dark": "#88A4A7",
+  },
+  FOREGROUND: {
+    "default": "#007af5",
+    "light": "#F6F8F9",
+    "red": "#FC1449",
+    "rust": "#FF5300",
+    "orange": "#FF9500",
+    "yellow": "#F5C300",
+    "lime": "#97D200",
+    "green": "#0AD661",
+    "teal": "#00C9AA",
+    "blue": "#00ABF0",
+    "royal": "#2685E7",
+    "lavender": "#7F6AF8",
+    "purple": "#B758EA",
+    "pink": "#F551EA",
+    "neon-pink": "#FE389F",
+    "light-pink": "#FF89AD",
+    "dark": "#88A4A7",
+  },
+  BORDER: {
+    "default": "#007af5",
+    "light": "#F6F8F9",
+    "red": "#FC1449",
+    "rust": "#FF5300",
+    "orange": "#FF9500",
+    "yellow": "#F5C300",
+    "lime": "#97D200",
+    "green": "#0AD661",
+    "teal": "#00C9AA",
+    "blue": "#00ABF0",
+    "royal": "#2685E7",
+    "lavender": "#7F6AF8",
+    "purple": "#B758EA",
+    "pink": "#F551EA",
+    "neon-pink": "#FE389F",
+    "light-pink": "#FF89AD",
+    "dark": "#88A4A7",
+  },
+*/
 
 
 /***/ }),

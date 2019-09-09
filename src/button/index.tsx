@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import { PALETTE } from "../palette";
+import { COLORS } from "../colors";
 
 const Icon = styled.div<{ jumbo?: boolean }>`
   margin: ${props => {
@@ -14,14 +14,15 @@ const Container = styled.div<{ jumbo?: boolean }>`
   position: relative;
   max-width: ${props => {
     if (props.jumbo) return "300px";
-    return "200px";
+    return "150px";
   }};
 `;
 
 const Inner = styled.button<{
+  outline?: boolean,
   jumbo?: boolean,
   theme: string,
-  outline?: boolean,
+  disabled?: boolean,
 }>`
   box-sizing: border-box;
   width: auto;
@@ -44,27 +45,27 @@ const Inner = styled.button<{
   }};
   border-width: 2px;
   border-style: solid;
-  background-color: ${props => PALETTE[props.theme].BASE.BACKGROUND_COLOR};
-  color: ${props => PALETTE[props.theme].BASE.COLOR};
-  border-color: ${props => PALETTE[props.theme].BASE.BORDER_COLOR};
+  background-color: ${props => COLORS[props.theme].BASE.BACKGROUND_COLOR};
+  color: ${props => COLORS[props.theme].BASE.COLOR};
+  border-color: ${props => COLORS[props.theme].BASE.BORDER_COLOR};
 
   &:hover {
-    background-color: ${props => PALETTE[props.theme].HOVER.BACKGROUND_COLOR};
-    color: ${props => PALETTE[props.theme].HOVER.COLOR};
-    border-color: ${props => PALETTE[props.theme].HOVER.BORDER_COLOR};
+    background-color: ${props => COLORS[props.theme].HOVER.BACKGROUND_COLOR};
+    color: ${props => COLORS[props.theme].HOVER.COLOR};
+    border-color: ${props => COLORS[props.theme].HOVER.BORDER_COLOR};
   }
 
   &.active {
-    background-color: ${props => PALETTE[props.theme].ACTIVE.BACKGROUND_COLOR} !important;
-    color: ${props => PALETTE[props.theme].ACTIVE.COLOR} !important;
-    border-color: ${props => PALETTE[props.theme].ACTIVE.BORDER_COLOR} !important;
+    background-color: ${props => COLORS[props.theme].ACTIVE.BACKGROUND_COLOR} !important;
+    color: ${props => COLORS[props.theme].ACTIVE.COLOR} !important;
+    border-color: ${props => COLORS[props.theme].ACTIVE.BORDER_COLOR} !important;
   }
 `;
 
 const Text = styled.span<{
-  jumbo?: boolean,
-  theme: string,
   icon?: any,
+  theme: string,
+  jumbo?: boolean,
 }>`
   margin: 0px;
   white-space: nowrap;
@@ -97,13 +98,6 @@ interface IButtonProps {
    * @default null
    */
   disabled?: boolean;
-
-  /**
-   * Type of button for form
-   *
-   * @default null
-   */
-  type?: string;
 
   /**
    * Icon to display next to text,
@@ -148,21 +142,20 @@ interface IButtonProps {
  * Button component.
  */
 export const Button: React.FunctionComponent<IButtonProps> = (props: IButtonProps) => {
-  const [down, setDown] = React.useState(false)
-  const buttonTheme = props.theme ? props.theme : "default";
+  const [down, setDown] = React.useState(false);
+  const theme: string = props.theme ? props.theme : "default";
+  const disabled: boolean = props.disabled || false;
 
   return (
     <Container
       jumbo={props.jumbo}
       onMouseDown={() => setDown(true)}
-      onMouseUp={() => setDown(false)}
-      >
+      onMouseUp={() => setDown(false)}>
       <Inner
-        type={props.type || null}
-        disabled={props.disabled || null}
+        disabled={disabled}
         outline={props.outline}
         jumbo={props.jumbo}
-        theme={buttonTheme}
+        theme={theme}
         className={down ? "active" : ""}>
         {props.icon && (
           <Icon jumbo={props.jumbo}>
@@ -171,7 +164,7 @@ export const Button: React.FunctionComponent<IButtonProps> = (props: IButtonProp
         )}
         <Text
           icon={props.icon}
-          theme={buttonTheme}
+          theme={theme}
           jumbo={props.jumbo}
           onClick={props.onClick}>
           {props.text}
