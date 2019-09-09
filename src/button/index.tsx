@@ -96,7 +96,14 @@ interface IButtonProps {
    *
    * @default null
    */
-  type?: any;
+  disabled?: boolean;
+
+  /**
+   * Type of button for form
+   *
+   * @default null
+   */
+  type?: string;
 
   /**
    * Icon to display next to text,
@@ -152,6 +159,7 @@ export const Button: React.FunctionComponent<IButtonProps> = (props: IButtonProp
       >
       <Inner
         type={props.type || null}
+        disabled={props.disabled || null}
         outline={props.outline}
         jumbo={props.jumbo}
         theme={buttonTheme}
