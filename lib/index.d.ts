@@ -1,3 +1,4 @@
 import { Avatar } from "./avatar";
 import { Button } from "./button";
-export { Avatar, Button, };
+import { MessageMedia } from "./message-media";
+export { MessageMedia, Avatar, Button, };

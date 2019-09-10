@@ -1,5 +1,5 @@
 {
-  "name": "elements",
+  "name": "@weekday/elements",
   "title": "Elements",
   "keywords": [
     "Weekday"
@@ -13,7 +13,7 @@
   ],
   "pre-commit": [],
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+    "access": "public"
   },
   "files": [
     "dist",
@@ -35,26 +35,24 @@
     }
   ],
   "deprecated": false,
-  "version": "1.0.0",
+  "version": "0.3.0",
   "description": "UI toolkit for Weekday",
   "scripts": {
     "storybook": "start-storybook -p 6006",
     "build:storybook": "build-storybook -c .storybook -o docs",
     "build": "webpack --config webpack.config.js",
     "build:prod": "npm run tsc | npm run build",
-    "watch": "webpack -w --config webpack.config.js",
+    "dev": "npm run tsc-watch | webpack -w --config webpack.config.js",
     "serve": "webpack-dev-server --config webpack.config.js --hot --inline",
     "dev": "npm run watch | npm run serve",
-    "test": "jest",    
+    "test": "jest",
     "tsc": "tsc -p tsconfig.json",
+    "tsc-watch": "tsc -p tsconfig.json -w",
     "lint": "tslint --project ./"
   },
   "author": "Jo du Plessis",
   "license": "ISC",
-  "peerDependencies": {
-    "react": ">=16.0.0",
-    "react-dom": ">=16.0.0"
-  },
+  "peerDependencies": {},
   "dependencies": {
     "@types/storybook__react": "^4.0.2",
     "chroma-js": "^2.0.4",
