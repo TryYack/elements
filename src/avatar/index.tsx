@@ -9,14 +9,16 @@ const Container = styled.div`
   display: inline-block;
 `;
 
-const Inner = styled.div<{ 
-  width: number, 
-  height: number, 
-  borderRadius: number, 
-  image: string, 
-  background: string, 
-  outlineInnerColor: string, 
+const Inner = styled.div<{
+  width: number,
+  height: number,
+  borderRadius: number,
+  image: string,
+  background: string,
+  outlineInnerColor: string,
   outlineOuterColor: string,
+  over: boolean,
+  onClick: any,
 }>`
   width: ${props => props.width}px;
   height: ${props => props.height}px;
@@ -31,6 +33,9 @@ const Inner = styled.div<{
   background-position: center center;
   background-image: ${props => props.image};
   background-color: ${props => props.background};
+  overflow: hidden;
+  transition: opacity 0.25s;
+  opacity: ${props => props.over && props.onClick ? 0.75 : 1};
 
   &.overlap-right {
     margin-right: -7px;
@@ -42,8 +47,8 @@ const Inner = styled.div<{
   }
 `;
 
-const Text = styled.div<{ 
-  color: string, 
+const Text = styled.div<{
+  color: string,
   size?: string,
 }>`
   font-weight: 500;
@@ -80,6 +85,7 @@ const Delete = styled.div`
   height: 20px;
   border-radius: 10px;
   position: absolute;
+  overflow: hidden;
   background-color: #e23f62;
   cursor: pointer;
   display: flex;
@@ -90,6 +96,10 @@ const Delete = styled.div`
   border: 1px solid white;
   z-index: 1;
   transition: background-color 0.25s;
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
 
   &:hover {
     background-color: #ce3354;
@@ -104,12 +114,17 @@ const Edit = styled.div`
   width: 100%;
   height: 100%;
   z-index: 1000;
+  overflow: hidden;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   align-content: center;
   cursor: pointer;
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
 `;
 
 const Badge = styled.span<{ dark: boolean }>`
@@ -122,6 +137,10 @@ const Badge = styled.span<{ dark: boolean }>`
   background-color: #007af5;
   box-sizing: border-box;
   border: 2px solid ${props => (props.dark ? "#08111d" : "#ffffff")};
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
 `;
 
 interface IAvatarProps {
@@ -137,7 +156,7 @@ interface IAvatarProps {
   /** Hex color value for the background & text */
   color?: string;
 
-  /** 
+  /**
    * Possible values:
    * - "very-small"
    * - "small"
@@ -210,7 +229,8 @@ export const Avatar: React.FunctionComponent<IAvatarProps> = (props: IAvatarProp
         .brighten(2.25)
         .toString()
     : "#f1f3f5";
-  const color = props.color || "#007af5";
+  const color = props.color ? props.color : props.textColor ? props.textColor : "#007af5";
+  const className = props.outlineInnerColor || props.outlineOuterColor ? props.className + " outline" : props.className;
   let width = 35;
   let height = 35;
   let borderRadius = 35;
@@ -272,11 +292,15 @@ export const Avatar: React.FunctionComponent<IAvatarProps> = (props: IAvatarProp
       height = 180;
       borderRadius = props.circle ? 100 : 16;
       break;
+    default:
+      width = 30;
+      height = 30;
+      borderRadius = props.circle ? 100 : 5;
   }
 
   return (
-    <Container 
-      onMouseEnter={() => setOver(true)} 
+    <Container
+      onMouseEnter={() => setOver(true)}
       onMouseLeave={() => setOver(false)}>
       {over && props.onEditClick && props.editIcon &&
         <Edit onClick={props.onEditClick}>
@@ -290,12 +314,15 @@ export const Avatar: React.FunctionComponent<IAvatarProps> = (props: IAvatarProp
         </Delete>
       }
 
+      {props.badge && <Badge dark={props.dark || false}/>}
+
       <Inner
+        over={over}
         onClick={props.onClick}
         width={width}
         height={height}
         borderRadius={borderRadius}
-        className={props.className}
+        className={className}
         image={image}
         background={background}
         outlineInnerColor={props.outlineInnerColor ? props.outlineInnerColor : "transparent"}
@@ -303,14 +330,13 @@ export const Avatar: React.FunctionComponent<IAvatarProps> = (props: IAvatarProp
         style={props.style}>
 
         {props.children}
-        {props.badge && <Badge dark={props.dark || false}/>}
 
         {(
           (!props.children && !props.image && props.title && !props.onEditClick) ||
           (!props.children && !props.image && props.title && props.onEditClick && !over) ) &&
-          <Text 
-            color={color} 
-            size={props.size} 
+          <Text
+            color={color}
+            size={props.size}
             className="text">
             {generateInitials(props.title)}
           </Text>
