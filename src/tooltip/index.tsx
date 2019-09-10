@@ -10,7 +10,7 @@ const Container = styled.div`
   align-content: center;
   justify-content: center;
   width: max-content;
-`
+`;
 
 const Children = styled.div`
   position: relative;
@@ -19,7 +19,7 @@ const Children = styled.div`
   align-items: center;
   align-content: center;
   justify-content: center;
-`
+`;
 
 const Content = styled.div`
   position: absolute;
@@ -115,7 +115,7 @@ const Content = styled.div`
   	margin-left: -10px;
     transform: translateY(-50%) rotate(90deg);
   }
-`
+`;
 
 const Text = styled.div`
   color: white;
@@ -131,7 +131,7 @@ const Text = styled.div`
   "Segoe UI", "Roboto", "Oxygen",
   "Ubuntu", "Cantarell", "Fira Sans",
   "Droid Sans", "Helvetica Neue", sans-serif;
-`
+`;
 
 /*
 const Icon = styled.div<{ jumbo?: boolean }>`
@@ -182,7 +182,7 @@ export const Tooltip: React.FunctionComponent<ITooltipProps> = (props: ITooltipP
         {children}
       </Children>
 
-      <Content className={over ? "over "+ direction : direction}>
+      <Content className={over ? "over " + direction : direction}>
         <Text>{text}</Text>
       </Content>
     </Container>
