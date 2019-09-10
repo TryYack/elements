@@ -2,7 +2,24 @@ import * as React from "react";
 import styled from "styled-components";
 import { COLORS } from "../colors";
 
-const Container = styled.button<{
+const Icon = styled.div<{ jumbo?: boolean }>`
+  margin: ${props => {
+    if (props.jumbo) return "0px 0px 0px 30px";
+    return "0px 0px 0px 15px";
+  }};
+`;
+
+const Container = styled.div<{ jumbo?: boolean }>`
+  width: max-content;
+  position: relative;
+  max-width: ${props => {
+    if (props.jumbo) return "300px";
+    return "150px";
+  }};
+`;
+
+const Inner = styled.button<{
+  outline?: boolean,
   jumbo?: boolean,
   theme: string,
   disabled?: boolean,
@@ -18,10 +35,6 @@ const Container = styled.button<{
   position: relative;
   transition: background-color 0.15s, color 0.15s, border 0.15s;
   cursor: pointer;
-  max-width: ${props => {
-    if (props.jumbo) return "300px";
-    return "150px";
-  }};
   height: ${props  => {
     if (props.jumbo) return "80px";
     return "40px";
@@ -46,10 +59,6 @@ const Container = styled.button<{
     background-color: ${props => COLORS[props.theme].ACTIVE.BACKGROUND_COLOR} !important;
     color: ${props => COLORS[props.theme].ACTIVE.COLOR} !important;
     border-color: ${props => COLORS[props.theme].ACTIVE.BORDER_COLOR} !important;
-  }
-
-  &:disabled {
-    opacity: 0.5 !important;
   }
 `;
 
@@ -82,20 +91,14 @@ const Text = styled.span<{
   }};
 `;
 
-const Icon = styled.div<{
-  jumbo?: boolean,
-  text?: string,
-}>`
-  margin: ${props => {
-    if (!props.text) return "0px 10px 0px 10px";
-    if (!props.text && props.jumbo) return "0px 20px 0px 20px";
-    if (props.jumbo) return "0px 0px 0px 30px";
+interface ITooltipProps {
+  /**
+   * Type of button for form
+   *
+   * @default null
+   */
+  disabled?: boolean;
 
-    return "0px 0px 0px 15px";
-  }};
-`;
-
-interface IButtonProps {
   /**
    * Icon to display next to text,
    *
@@ -108,7 +111,7 @@ interface IButtonProps {
    *
    * @default " "
    */
-  text?: string;
+  text: string;
 
   /**
    * Colour theme for button
@@ -118,11 +121,11 @@ interface IButtonProps {
   theme?: string;
 
   /**
-   * Button disabled value
+   * Possible values are true/false
    *
-   * @default null
+   * @default false
    */
-  disabled?: boolean;
+  outline?: boolean;
 
   /**
    * Possible values are true/false
@@ -131,13 +134,6 @@ interface IButtonProps {
    */
   jumbo?: boolean;
 
-  /**
-   * React classname property
-   *
-   * @default null
-   */
-  className?: string;
-
   /** Called when an empty cell is clicked. */
   onClick?: any;
 }
@@ -145,28 +141,27 @@ interface IButtonProps {
 /**
  * Button component.
  */
-export const Button: React.FunctionComponent<IButtonProps> = (props: IButtonProps) => {
+export const Tooltip: React.FunctionComponent<ITooltipProps> = (props: ITooltipProps) => {
   const [down, setDown] = React.useState(false);
   const theme: string = props.theme ? props.theme : "default";
-  const className = down ? "active " + props.className : props.className;
-  const { jumbo } = props;
+  const disabled: boolean = props.disabled || false;
 
   return (
     <Container
-      jumbo={jumbo}
-      theme={theme}
-      className={className}
+      jumbo={props.jumbo}
       onMouseDown={() => setDown(true)}
-      onMouseUp={() => setDown(false)}
-      {...props}>
-      {props.icon && (
-        <Icon
-          text={props.text}
-          jumbo={props.jumbo}>
-          {props.icon}
-        </Icon>
-      )}
-      {props.text && (
+      onMouseUp={() => setDown(false)}>
+      <Inner
+        disabled={disabled}
+        outline={props.outline}
+        jumbo={props.jumbo}
+        theme={theme}
+        className={down ? "active" : ""}>
+        {props.icon && (
+          <Icon jumbo={props.jumbo}>
+            {props.icon}
+          </Icon>
+        )}
         <Text
           icon={props.icon}
           theme={theme}
@@ -174,7 +169,7 @@ export const Button: React.FunctionComponent<IButtonProps> = (props: IButtonProp
           onClick={props.onClick}>
           {props.text}
         </Text>
-      )}
+      </Inner>
     </Container>
   );
 };
