@@ -1,73 +1,129 @@
 import * as React from "react";
+import { useState } from "react";
 import styled from "styled-components";
-import { COLORS } from "../colors";
 
-const Icon = styled.div<{ jumbo?: boolean }>`
-  margin: ${props => {
-    if (props.jumbo) return "0px 0px 0px 30px";
-    return "0px 0px 0px 15px";
-  }};
-`;
-
-const Container = styled.div<{ jumbo?: boolean }>`
-  width: max-content;
+const Container = styled.div`
   position: relative;
-  max-width: ${props => {
-    if (props.jumbo) return "300px";
-    return "150px";
-  }};
-`;
-
-const Inner = styled.button<{
-  outline?: boolean,
-  jumbo?: boolean,
-  theme: string,
-  disabled?: boolean,
-}>`
-  box-sizing: border-box;
-  width: auto;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   align-content: center;
   justify-content: center;
-  background-size: cover;
+  width: max-content;
+`
+
+const Children = styled.div`
   position: relative;
-  transition: background-color 0.15s, color 0.15s, border 0.15s;
-  cursor: pointer;
-  height: ${props  => {
-    if (props.jumbo) return "80px";
-    return "40px";
-  }};
-  border-radius: ${props => {
-    if (props.jumbo) return "10px";
-    return "6px";
-  }};
-  border-width: 2px;
-  border-style: solid;
-  background-color: ${props => COLORS[props.theme].BASE.BACKGROUND_COLOR};
-  color: ${props => COLORS[props.theme].BASE.COLOR};
-  border-color: ${props => COLORS[props.theme].BASE.BORDER_COLOR};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+`
 
-  &:hover {
-    background-color: ${props => COLORS[props.theme].HOVER.BACKGROUND_COLOR};
-    color: ${props => COLORS[props.theme].HOVER.COLOR};
-    border-color: ${props => COLORS[props.theme].HOVER.BORDER_COLOR};
+const Content = styled.div`
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.25s linear;
+  z-index: 1000;
+  padding: 10px;
+  background: white;
+  border-radius: 5px;
+  width: max-content;
+  max-width: 200px;
+  background: #212832;
+  padding: 10px 0px 10px 0px;
+  box-shadow: 0px 0px 50px -25px rgba(0,0,0,1);
+  display: none;
+  visibility: visible;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.1s linear;
+
+  &.over {
+    display: flex;
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s, opacity 0.1s linear;
   }
 
-  &.active {
-    background-color: ${props => COLORS[props.theme].ACTIVE.BACKGROUND_COLOR} !important;
-    color: ${props => COLORS[props.theme].ACTIVE.COLOR} !important;
-    border-color: ${props => COLORS[props.theme].ACTIVE.BORDER_COLOR} !important;
-  }
-`;
+  &.top { bottom: 10px; right: 50%; transform: translate(50%, -100%); }
+  &.right { top: 50%; right: -10px; transform: translate(100%, -50%); }
+  &.left { top: 50%; left: -10px; transform: translate(-100%, -50%); }
+  &.bottom { bottom: -10px; right: 50%; transform: translate(50%, 100%); }
 
-const Text = styled.span<{
-  icon?: any,
-  theme: string,
-  jumbo?: boolean,
-}>`
-  margin: 0px;
+  &.bottom:after {
+  	top: 0%;
+  	right: 50%;
+  	border: solid transparent;
+  	content: ' ';
+  	height: 0;
+  	width: 0;
+  	position: absolute;
+  	pointer-events: none;
+  	border-color: transparent;
+  	border-top-color: #212832;
+  	border-width: 5px;
+  	margin-top: -10px;
+    transform: translateX(50%) rotate(180deg);
+  }
+
+  &.top:after {
+  	top: 100%;
+  	right: 50%;
+  	border: solid transparent;
+  	content: ' ';
+  	height: 0;
+  	width: 0;
+  	position: absolute;
+  	pointer-events: none;
+  	border-color: transparent;
+  	border-top-color: #212832;
+  	border-width: 5px;
+  	margin-top: 0px;
+    transform: translateX(50%) rotate(0deg);
+  }
+
+  &.left:after {
+  	top: 50%;
+  	right: 0%;
+  	border: solid transparent;
+  	content: ' ';
+  	height: 0;
+  	width: 0;
+  	position: absolute;
+  	pointer-events: none;
+  	border-color: transparent;
+  	border-top-color: #212832;
+  	border-width: 5px;
+  	margin-right: -10px;
+    transform: translateY(-50%) rotate(-90deg);
+  }
+
+  &.right:after {
+  	top: 50%;
+  	left: 0%;
+  	border: solid transparent;
+  	content: ' ';
+  	height: 0;
+  	width: 0;
+  	position: absolute;
+  	pointer-events: none;
+  	border-color: transparent;
+  	border-top-color: #212832;
+  	border-width: 5px;
+  	margin-left: -10px;
+    transform: translateY(-50%) rotate(90deg);
+  }
+`
+
+const Text = styled.div`
+  color: white;
+  font-size: 14px;
+  text-align: center;
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -75,101 +131,60 @@ const Text = styled.span<{
   "Segoe UI", "Roboto", "Oxygen",
   "Ubuntu", "Cantarell", "Fira Sans",
   "Droid Sans", "Helvetica Neue", sans-serif;
-  padding: ${props => {
-    if (!props.jumbo && props.icon) return "0px 15px 0px 7px";
-    if (props.jumbo && props.icon) return "0px 30px 0px 15px";
-    if (props.jumbo && !props.icon) return "0px 30px 0px 30px";
-    return "0px 15px 0px 15px";
-  }};
-  font-weight: ${props => {
-    if (props.jumbo) return "500";
-    return "500";
-  }};
-  font-size: ${props => {
-    if (props.jumbo) return "24px";
-    return "12px";
+`
+
+/*
+const Icon = styled.div<{ jumbo?: boolean }>`
+  margin: ${props => {
+    if (props.jumbo) return "0px 0px 0px 30px";
+    return "0px 0px 0px 15px";
   }};
 `;
+*/
 
 interface ITooltipProps {
   /**
-   * Type of button for form
+   * Possible values:
+   * - "left"
+   * - "right"
+   * - "top"
+   * - "bottom"
+   */
+  direction: string;
+
+  /**
+   * Styles to apply to the container elements
    *
    * @default null
    */
-  disabled?: boolean;
+  containerClassName?: string;
 
-  /**
-   * Icon to display next to text,
-   *
-   * @default null
-   */
-  icon?: any;
-
-  /**
-   * Value to display, either empty (" ") or string value
-   *
-   * @default " "
-   */
+  /** Delay in milliseconds */
   text: string;
 
-  /**
-   * Colour theme for button
-   *
-   * @default " " (blue)
-   */
-  theme?: string;
-
-  /**
-   * Possible values are true/false
-   *
-   * @default false
-   */
-  outline?: boolean;
-
-  /**
-   * Possible values are true/false
-   *
-   * @default false
-   */
-  jumbo?: boolean;
-
-  /** Called when an empty cell is clicked. */
-  onClick?: any;
+  /** React children */
+  children?: any;
 }
 
 /**
  * Button component.
  */
 export const Tooltip: React.FunctionComponent<ITooltipProps> = (props: ITooltipProps) => {
-  const [down, setDown] = React.useState(false);
-  const theme: string = props.theme ? props.theme : "default";
-  const disabled: boolean = props.disabled || false;
+  const [over, setOver] = useState(false);
+  const { direction, containerClassName, children, text } = props;
 
   return (
-    <Container
-      jumbo={props.jumbo}
-      onMouseDown={() => setDown(true)}
-      onMouseUp={() => setDown(false)}>
-      <Inner
-        disabled={disabled}
-        outline={props.outline}
-        jumbo={props.jumbo}
-        theme={theme}
-        className={down ? "active" : ""}>
-        {props.icon && (
-          <Icon jumbo={props.jumbo}>
-            {props.icon}
-          </Icon>
-        )}
-        <Text
-          icon={props.icon}
-          theme={theme}
-          jumbo={props.jumbo}
-          onClick={props.onClick}>
-          {props.text}
-        </Text>
-      </Inner>
+    <Container className={containerClassName}>
+      <Children
+        onClick={() => setOver(false)}
+        onMouseEnter={() => setOver(true)}
+        onMouseLeave={() => setOver(false)}>
+        {children}
+      </Children>
+
+      <Content className={over ? "over "+ direction : direction}>
+        <Text>{text}</Text>
+      </Content>
     </Container>
   );
 };
