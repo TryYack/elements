@@ -1,12 +1,6 @@
 import * as React from "react";
 interface IButtonProps {
     /**
-     * Type of button for form
-     *
-     * @default null
-     */
-    disabled?: boolean;
-    /**
      * Icon to display next to text,
      *
      * @default null
@@ -17,7 +11,7 @@ interface IButtonProps {
      *
      * @default " "
      */
-    text: string;
+    text?: string;
     /**
      * Colour theme for button
      *
@@ -25,17 +19,23 @@ interface IButtonProps {
      */
     theme?: string;
     /**
-     * Possible values are true/false
+     * Button disabled value
      *
-     * @default false
+     * @default null
      */
-    outline?: boolean;
+    disabled?: boolean;
     /**
      * Possible values are true/false
      *
      * @default false
      */
     jumbo?: boolean;
+    /**
+     * React classname property
+     *
+     * @default null
+     */
+    className?: string;
     /** Called when an empty cell is clicked. */
     onClick?: any;
 }

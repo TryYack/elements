@@ -3312,7 +3312,7 @@ var react_1 = __webpack_require__(/*! react */ "react");
 var styled_components_1 = __webpack_require__(/*! styled-components */ "styled-components");
 var chroma = __webpack_require__(/*! chroma-js */ "./node_modules/chroma-js/chroma.js");
 var Container = styled_components_1.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  position: relative;\n  cursor: pointer;\n  display: inline-block;\n"], ["\n  position: relative;\n  cursor: pointer;\n  display: inline-block;\n"])));
-var Inner = styled_components_1.default.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  width: ", "px;\n  height: ", "px;\n  border-radius: ", "px;\n  display: inline-block;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  align-content: center;\n  justify-content: center;\n  background-size: cover;\n  background-position: center center;\n  background-image: ", ";\n  background-color: ", ";\n\n  &.overlap-right {\n    margin-right: -7px;\n  }\n\n  &.outline {\n    border: 1.5px solid ", ";\n    box-shadow: 0px 0px 0px 1.5px ", ";\n  }\n"], ["\n  width: ", "px;\n  height: ", "px;\n  border-radius: ", "px;\n  display: inline-block;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  align-content: center;\n  justify-content: center;\n  background-size: cover;\n  background-position: center center;\n  background-image: ", ";\n  background-color: ", ";\n\n  &.overlap-right {\n    margin-right: -7px;\n  }\n\n  &.outline {\n    border: 1.5px solid ", ";\n    box-shadow: 0px 0px 0px 1.5px ", ";\n  }\n"])), function (props) { return props.width; }, function (props) { return props.height; }, function (props) { return props.borderRadius; }, function (props) { return props.image; }, function (props) { return props.background; }, function (props) { return props.outlineInnerColor; }, function (props) { return props.outlineOuterColor; });
+var Inner = styled_components_1.default.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  width: ", "px;\n  height: ", "px;\n  border-radius: ", "px;\n  display: inline-block;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  align-content: center;\n  justify-content: center;\n  background-size: cover;\n  background-position: center center;\n  background-image: ", ";\n  background-color: ", ";\n  overflow: hidden;\n  transition: opacity 0.25s;\n  opacity: ", ";\n\n  &.overlap-right {\n    margin-right: -7px;\n  }\n\n  &.outline {\n    border: 1.5px solid ", ";\n    box-shadow: 0px 0px 0px 1.5px ", ";\n  }\n"], ["\n  width: ", "px;\n  height: ", "px;\n  border-radius: ", "px;\n  display: inline-block;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  align-content: center;\n  justify-content: center;\n  background-size: cover;\n  background-position: center center;\n  background-image: ", ";\n  background-color: ", ";\n  overflow: hidden;\n  transition: opacity 0.25s;\n  opacity: ", ";\n\n  &.overlap-right {\n    margin-right: -7px;\n  }\n\n  &.outline {\n    border: 1.5px solid ", ";\n    box-shadow: 0px 0px 0px 1.5px ", ";\n  }\n"])), function (props) { return props.width; }, function (props) { return props.height; }, function (props) { return props.borderRadius; }, function (props) { return props.image; }, function (props) { return props.background; }, function (props) { return props.over && props.onClick ? 0.75 : 1; }, function (props) { return props.outlineInnerColor; }, function (props) { return props.outlineOuterColor; });
 var Text = styled_components_1.default.div(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  font-weight: 500;\n  color: ", ";\n  position: relative;\n  top: 0px;\n  margin: 0px;\n  padding: 0px;\n  outline: none;\n  font-family: -apple-system, BlinkMacSystemFont,\n  \"Segoe UI\", \"Roboto\", \"Oxygen\",\n  \"Ubuntu\", \"Cantarell\", \"Fira Sans\",\n  \"Droid Sans\", \"Helvetica Neue\", sans-serif;\n  text-decoration: none;\n  font-size: ", "px;\n"], ["\n  font-weight: 500;\n  color: ", ";\n  position: relative;\n  top: 0px;\n  margin: 0px;\n  padding: 0px;\n  outline: none;\n  font-family: -apple-system, BlinkMacSystemFont,\n  \"Segoe UI\", \"Roboto\", \"Oxygen\",\n  \"Ubuntu\", \"Cantarell\", \"Fira Sans\",\n  \"Droid Sans\", \"Helvetica Neue\", sans-serif;\n  text-decoration: none;\n  font-size: ",
     "px;\n"])), function (props) { return props.color || "white"; }, function (props) {
     if (props.size === "very-small")
@@ -3335,9 +3335,9 @@ var Text = styled_components_1.default.div(templateObject_3 || (templateObject_3
         return "40";
     return "12";
 });
-var Delete = styled_components_1.default.div(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  top: -2px;\n  right: -2px;\n  width: 20px;\n  height: 20px;\n  border-radius: 10px;\n  position: absolute;\n  background-color: #e23f62;\n  cursor: pointer;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  align-content: center;\n  justify-content: center;\n  border: 1px solid white;\n  z-index: 1;\n  transition: background-color 0.25s;\n\n  &:hover {\n    background-color: #ce3354;\n    transition: background-color 0.25s;\n  }\n"], ["\n  top: -2px;\n  right: -2px;\n  width: 20px;\n  height: 20px;\n  border-radius: 10px;\n  position: absolute;\n  background-color: #e23f62;\n  cursor: pointer;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  align-content: center;\n  justify-content: center;\n  border: 1px solid white;\n  z-index: 1;\n  transition: background-color 0.25s;\n\n  &:hover {\n    background-color: #ce3354;\n    transition: background-color 0.25s;\n  }\n"])));
-var Edit = styled_components_1.default.div(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n  position: absolute;\n  left: 0px;\n  top: 0px;\n  width: 100%;\n  height: 100%;\n  z-index: 1000;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  align-content: center;\n  cursor: pointer;\n"], ["\n  position: absolute;\n  left: 0px;\n  top: 0px;\n  width: 100%;\n  height: 100%;\n  z-index: 1000;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  align-content: center;\n  cursor: pointer;\n"])));
-var Badge = styled_components_1.default.span(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n  position: absolute;\n  right: -3px;\n  bottom: -3px;\n  width: 11px;\n  height: 11px;\n  border-radius: 10px;\n  background-color: #007af5;\n  box-sizing: border-box;\n  border: 2px solid ", ";\n"], ["\n  position: absolute;\n  right: -3px;\n  bottom: -3px;\n  width: 11px;\n  height: 11px;\n  border-radius: 10px;\n  background-color: #007af5;\n  box-sizing: border-box;\n  border: 2px solid ", ";\n"])), function (props) { return (props.dark ? "#08111d" : "#ffffff"); });
+var Delete = styled_components_1.default.div(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  top: -2px;\n  right: -2px;\n  width: 20px;\n  height: 20px;\n  border-radius: 10px;\n  position: absolute;\n  overflow: hidden;\n  background-color: #e23f62;\n  cursor: pointer;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  align-content: center;\n  justify-content: center;\n  border: 1px solid white;\n  z-index: 1;\n  transition: background-color 0.25s;\n  font-family: -apple-system, BlinkMacSystemFont,\n  \"Segoe UI\", \"Roboto\", \"Oxygen\",\n  \"Ubuntu\", \"Cantarell\", \"Fira Sans\",\n  \"Droid Sans\", \"Helvetica Neue\", sans-serif;\n\n  &:hover {\n    background-color: #ce3354;\n    transition: background-color 0.25s;\n  }\n"], ["\n  top: -2px;\n  right: -2px;\n  width: 20px;\n  height: 20px;\n  border-radius: 10px;\n  position: absolute;\n  overflow: hidden;\n  background-color: #e23f62;\n  cursor: pointer;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  align-content: center;\n  justify-content: center;\n  border: 1px solid white;\n  z-index: 1;\n  transition: background-color 0.25s;\n  font-family: -apple-system, BlinkMacSystemFont,\n  \"Segoe UI\", \"Roboto\", \"Oxygen\",\n  \"Ubuntu\", \"Cantarell\", \"Fira Sans\",\n  \"Droid Sans\", \"Helvetica Neue\", sans-serif;\n\n  &:hover {\n    background-color: #ce3354;\n    transition: background-color 0.25s;\n  }\n"])));
+var Edit = styled_components_1.default.div(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n  position: absolute;\n  left: 0px;\n  top: 0px;\n  width: 100%;\n  height: 100%;\n  z-index: 1000;\n  overflow: hidden;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  align-content: center;\n  cursor: pointer;\n  font-family: -apple-system, BlinkMacSystemFont,\n  \"Segoe UI\", \"Roboto\", \"Oxygen\",\n  \"Ubuntu\", \"Cantarell\", \"Fira Sans\",\n  \"Droid Sans\", \"Helvetica Neue\", sans-serif;\n"], ["\n  position: absolute;\n  left: 0px;\n  top: 0px;\n  width: 100%;\n  height: 100%;\n  z-index: 1000;\n  overflow: hidden;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  align-content: center;\n  cursor: pointer;\n  font-family: -apple-system, BlinkMacSystemFont,\n  \"Segoe UI\", \"Roboto\", \"Oxygen\",\n  \"Ubuntu\", \"Cantarell\", \"Fira Sans\",\n  \"Droid Sans\", \"Helvetica Neue\", sans-serif;\n"])));
+var Badge = styled_components_1.default.span(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n  position: absolute;\n  right: -3px;\n  bottom: -3px;\n  width: 11px;\n  height: 11px;\n  border-radius: 10px;\n  background-color: #007af5;\n  box-sizing: border-box;\n  border: 2px solid ", ";\n  font-family: -apple-system, BlinkMacSystemFont,\n  \"Segoe UI\", \"Roboto\", \"Oxygen\",\n  \"Ubuntu\", \"Cantarell\", \"Fira Sans\",\n  \"Droid Sans\", \"Helvetica Neue\", sans-serif;\n"], ["\n  position: absolute;\n  right: -3px;\n  bottom: -3px;\n  width: 11px;\n  height: 11px;\n  border-radius: 10px;\n  background-color: #007af5;\n  box-sizing: border-box;\n  border: 2px solid ", ";\n  font-family: -apple-system, BlinkMacSystemFont,\n  \"Segoe UI\", \"Roboto\", \"Oxygen\",\n  \"Ubuntu\", \"Cantarell\", \"Fira Sans\",\n  \"Droid Sans\", \"Helvetica Neue\", sans-serif;\n"])), function (props) { return (props.dark ? "#08111d" : "#ffffff"); });
 /**
  * Avatar component. Displays a circle or square container for users,
  * channels, or anything else
@@ -3353,7 +3353,8 @@ exports.Avatar = function (props) {
                 .brighten(2.25)
                 .toString()
             : "#f1f3f5";
-    var color = props.color || "#007af5";
+    var color = props.color ? props.color : props.textColor ? props.textColor : "#007af5";
+    var className = props.outlineInnerColor || props.outlineOuterColor ? props.className + " outline" : props.className;
     var width = 35;
     var height = 35;
     var borderRadius = 35;
@@ -3413,15 +3414,19 @@ exports.Avatar = function (props) {
             height = 180;
             borderRadius = props.circle ? 100 : 16;
             break;
+        default:
+            width = 30;
+            height = 30;
+            borderRadius = props.circle ? 100 : 5;
     }
     return (React.createElement(Container, { onMouseEnter: function () { return setOver(true); }, onMouseLeave: function () { return setOver(false); } },
         over && props.onEditClick && props.editIcon &&
             React.createElement(Edit, { onClick: props.onEditClick }, props.editIcon),
         over && props.onDeleteClick && props.deleteIcon &&
             React.createElement(Delete, { onClick: props.onDeleteClick }, props.deleteIcon),
-        React.createElement(Inner, { onClick: props.onClick, width: width, height: height, borderRadius: borderRadius, className: props.className, image: image, background: background, outlineInnerColor: props.outlineInnerColor ? props.outlineInnerColor : "transparent", outlineOuterColor: props.outlineOuterColor ? props.outlineOuterColor : "transparent", style: props.style },
+        props.badge && React.createElement(Badge, { dark: props.dark || false }),
+        React.createElement(Inner, { over: over, onClick: props.onClick, width: width, height: height, borderRadius: borderRadius, className: className, image: image, background: background, outlineInnerColor: props.outlineInnerColor ? props.outlineInnerColor : "transparent", outlineOuterColor: props.outlineOuterColor ? props.outlineOuterColor : "transparent", style: props.style },
             props.children,
-            props.badge && React.createElement(Badge, { dark: props.dark || false }),
             ((!props.children && !props.image && props.title && !props.onEditClick) ||
                 (!props.children && !props.image && props.title && props.onEditClick && !over)) &&
                 React.createElement(Text, { color: color, size: props.size, className: "text" }, generateInitials(props.title)))));
@@ -3444,25 +3449,29 @@ var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cook
     if (Object.defineProperty) { Object.defineProperty(cooked, "raw", { value: raw }); } else { cooked.raw = raw; }
     return cooked;
 };
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(/*! react */ "react");
 var styled_components_1 = __webpack_require__(/*! styled-components */ "styled-components");
 var colors_1 = __webpack_require__(/*! ../colors */ "./src/colors.ts");
-var Icon = styled_components_1.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  margin: ", ";\n"], ["\n  margin: ",
-    ";\n"])), function (props) {
-    if (props.jumbo)
-        return "0px 0px 0px 30px";
-    return "0px 0px 0px 15px";
-});
-var Container = styled_components_1.default.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  width: max-content;\n  position: relative;\n  max-width: ", ";\n"], ["\n  width: max-content;\n  position: relative;\n  max-width: ",
-    ";\n"])), function (props) {
+var Container = styled_components_1.default.button(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  box-sizing: border-box;\n  width: auto;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  align-content: center;\n  justify-content: center;\n  background-size: cover;\n  position: relative;\n  transition: background-color 0.15s, color 0.15s, border 0.15s;\n  cursor: pointer;\n  max-width: ", ";\n  height: ", ";\n  border-radius: ", ";\n  border-width: 2px;\n  border-style: solid;\n  background-color: ", ";\n  color: ", ";\n  border-color: ", ";\n\n  &:hover {\n    background-color: ", ";\n    color: ", ";\n    border-color: ", ";\n  }\n\n  &.active {\n    background-color: ", " !important;\n    color: ", " !important;\n    border-color: ", " !important;\n  }\n\n  &:disabled {\n    opacity: 0.5 !important;\n  }\n"], ["\n  box-sizing: border-box;\n  width: auto;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  align-content: center;\n  justify-content: center;\n  background-size: cover;\n  position: relative;\n  transition: background-color 0.15s, color 0.15s, border 0.15s;\n  cursor: pointer;\n  max-width: ",
+    ";\n  height: ",
+    ";\n  border-radius: ",
+    ";\n  border-width: 2px;\n  border-style: solid;\n  background-color: ", ";\n  color: ", ";\n  border-color: ", ";\n\n  &:hover {\n    background-color: ", ";\n    color: ", ";\n    border-color: ", ";\n  }\n\n  &.active {\n    background-color: ", " !important;\n    color: ", " !important;\n    border-color: ", " !important;\n  }\n\n  &:disabled {\n    opacity: 0.5 !important;\n  }\n"])), function (props) {
     if (props.jumbo)
         return "300px";
     return "150px";
-});
-var Inner = styled_components_1.default.button(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  box-sizing: border-box;\n  width: auto;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  align-content: center;\n  justify-content: center;\n  background-size: cover;\n  position: relative;\n  transition: background-color 0.15s, color 0.15s, border 0.15s;\n  cursor: pointer;\n  height: ", ";\n  border-radius: ", ";\n  border-width: 2px;\n  border-style: solid;\n  background-color: ", ";\n  color: ", ";\n  border-color: ", ";\n\n  &:hover {\n    background-color: ", ";\n    color: ", ";\n    border-color: ", ";\n  }\n\n  &.active {\n    background-color: ", " !important;\n    color: ", " !important;\n    border-color: ", " !important;\n  }\n"], ["\n  box-sizing: border-box;\n  width: auto;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  align-content: center;\n  justify-content: center;\n  background-size: cover;\n  position: relative;\n  transition: background-color 0.15s, color 0.15s, border 0.15s;\n  cursor: pointer;\n  height: ",
-    ";\n  border-radius: ",
-    ";\n  border-width: 2px;\n  border-style: solid;\n  background-color: ", ";\n  color: ", ";\n  border-color: ", ";\n\n  &:hover {\n    background-color: ", ";\n    color: ", ";\n    border-color: ", ";\n  }\n\n  &.active {\n    background-color: ", " !important;\n    color: ", " !important;\n    border-color: ", " !important;\n  }\n"])), function (props) {
+}, function (props) {
     if (props.jumbo)
         return "80px";
     return "40px";
@@ -3471,7 +3480,7 @@ var Inner = styled_components_1.default.button(templateObject_3 || (templateObje
         return "10px";
     return "6px";
 }, function (props) { return colors_1.COLORS[props.theme].BASE.BACKGROUND_COLOR; }, function (props) { return colors_1.COLORS[props.theme].BASE.COLOR; }, function (props) { return colors_1.COLORS[props.theme].BASE.BORDER_COLOR; }, function (props) { return colors_1.COLORS[props.theme].HOVER.BACKGROUND_COLOR; }, function (props) { return colors_1.COLORS[props.theme].HOVER.COLOR; }, function (props) { return colors_1.COLORS[props.theme].HOVER.BORDER_COLOR; }, function (props) { return colors_1.COLORS[props.theme].ACTIVE.BACKGROUND_COLOR; }, function (props) { return colors_1.COLORS[props.theme].ACTIVE.COLOR; }, function (props) { return colors_1.COLORS[props.theme].ACTIVE.BORDER_COLOR; });
-var Text = styled_components_1.default.span(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  margin: 0px;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  font-family: -apple-system, BlinkMacSystemFont,\n  \"Segoe UI\", \"Roboto\", \"Oxygen\",\n  \"Ubuntu\", \"Cantarell\", \"Fira Sans\",\n  \"Droid Sans\", \"Helvetica Neue\", sans-serif;\n  padding: ", ";\n  font-weight: ", ";\n  font-size: ", ";\n"], ["\n  margin: 0px;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  font-family: -apple-system, BlinkMacSystemFont,\n  \"Segoe UI\", \"Roboto\", \"Oxygen\",\n  \"Ubuntu\", \"Cantarell\", \"Fira Sans\",\n  \"Droid Sans\", \"Helvetica Neue\", sans-serif;\n  padding: ",
+var Text = styled_components_1.default.span(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  margin: 0px;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  font-family: -apple-system, BlinkMacSystemFont,\n  \"Segoe UI\", \"Roboto\", \"Oxygen\",\n  \"Ubuntu\", \"Cantarell\", \"Fira Sans\",\n  \"Droid Sans\", \"Helvetica Neue\", sans-serif;\n  padding: ", ";\n  font-weight: ", ";\n  font-size: ", ";\n"], ["\n  margin: 0px;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  font-family: -apple-system, BlinkMacSystemFont,\n  \"Segoe UI\", \"Roboto\", \"Oxygen\",\n  \"Ubuntu\", \"Cantarell\", \"Fira Sans\",\n  \"Droid Sans\", \"Helvetica Neue\", sans-serif;\n  padding: ",
     ";\n  font-weight: ",
     ";\n  font-size: ",
     ";\n"])), function (props) {
@@ -3491,19 +3500,29 @@ var Text = styled_components_1.default.span(templateObject_4 || (templateObject_
         return "24px";
     return "12px";
 });
+var Icon = styled_components_1.default.div(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  margin: ", ";\n"], ["\n  margin: ",
+    ";\n"])), function (props) {
+    if (!props.text)
+        return "0px 10px 0px 10px";
+    if (!props.text && props.jumbo)
+        return "0px 20px 0px 20px";
+    if (props.jumbo)
+        return "0px 0px 0px 30px";
+    return "0px 0px 0px 15px";
+});
 /**
  * Button component.
  */
 exports.Button = function (props) {
     var _a = React.useState(false), down = _a[0], setDown = _a[1];
     var theme = props.theme ? props.theme : "default";
-    var disabled = props.disabled || false;
-    return (React.createElement(Container, { jumbo: props.jumbo, onMouseDown: function () { return setDown(true); }, onMouseUp: function () { return setDown(false); } },
-        React.createElement(Inner, { disabled: disabled, outline: props.outline, jumbo: props.jumbo, theme: theme, className: down ? "active" : "" },
-            props.icon && (React.createElement(Icon, { jumbo: props.jumbo }, props.icon)),
-            React.createElement(Text, { icon: props.icon, theme: theme, jumbo: props.jumbo, onClick: props.onClick }, props.text))));
+    var className = down ? "active " + props.className : props.className;
+    var jumbo = props.jumbo;
+    return (React.createElement(Container, __assign({ jumbo: jumbo, theme: theme, className: className, onMouseDown: function () { return setDown(true); }, onMouseUp: function () { return setDown(false); } }, props),
+        props.icon && (React.createElement(Icon, { text: props.text, jumbo: props.jumbo }, props.icon)),
+        props.text && (React.createElement(Text, { icon: props.icon, theme: theme, jumbo: props.jumbo, onClick: props.onClick }, props.text))));
 };
-var templateObject_1, templateObject_2, templateObject_3, templateObject_4;
+var templateObject_1, templateObject_2, templateObject_3;
 
 
 /***/ }),
@@ -3536,6 +3555,23 @@ exports.COLORS = {
             BORDER_COLOR: "transparent",
         },
     },
+    "red": {
+        BASE: {
+            BACKGROUND_COLOR: "#FC1449",
+            COLOR: "white",
+            BORDER_COLOR: "transparent",
+        },
+        ACTIVE: {
+            BACKGROUND_COLOR: "#ad0c31",
+            COLOR: "white",
+            BORDER_COLOR: "transparent",
+        },
+        HOVER: {
+            BACKGROUND_COLOR: "#d40d3a",
+            COLOR: "white",
+            BORDER_COLOR: "transparent",
+        },
+    },
     "blue": {
         BASE: {
             BACKGROUND_COLOR: "#00ABF0",
@@ -3549,6 +3585,23 @@ exports.COLORS = {
         },
         HOVER: {
             BACKGROUND_COLOR: "#007af5",
+            COLOR: "white",
+            BORDER_COLOR: "transparent",
+        },
+    },
+    "blue-outline": {
+        BASE: {
+            BACKGROUND_COLOR: "#ebf9ff",
+            COLOR: "#00ABF0",
+            BORDER_COLOR: "#00ABF0",
+        },
+        ACTIVE: {
+            BACKGROUND_COLOR: "#007af5",
+            COLOR: "white",
+            BORDER_COLOR: "transparent",
+        },
+        HOVER: {
+            BACKGROUND_COLOR: "#00ABF0",
             COLOR: "white",
             BORDER_COLOR: "transparent",
         },
@@ -3650,16 +3703,16 @@ var avatar_1 = __webpack_require__(/*! ./avatar */ "./src/avatar/index.tsx");
 exports.Avatar = avatar_1.Avatar;
 var button_1 = __webpack_require__(/*! ./button */ "./src/button/index.tsx");
 exports.Button = button_1.Button;
-var message_media_1 = __webpack_require__(/*! ./message-media */ "./src/message-media/index.tsx");
-exports.MessageMedia = message_media_1.MessageMedia;
+var tooltip_1 = __webpack_require__(/*! ./tooltip */ "./src/tooltip/index.tsx");
+exports.Tooltip = tooltip_1.Tooltip;
 
 
 /***/ }),
 
-/***/ "./src/message-media/index.tsx":
-/*!*************************************!*\
-  !*** ./src/message-media/index.tsx ***!
-  \*************************************/
+/***/ "./src/tooltip/index.tsx":
+/*!*******************************!*\
+  !*** ./src/tooltip/index.tsx ***!
+  \*******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3673,123 +3726,22 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = __webpack_require__(/*! react */ "react");
 var react_1 = __webpack_require__(/*! react */ "react");
 var styled_components_1 = __webpack_require__(/*! styled-components */ "styled-components");
-var chroma = __webpack_require__(/*! chroma-js */ "./node_modules/chroma-js/chroma.js");
-var Container = styled_components_1.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  position: relative;\n  cursor: pointer;\n  display: inline-block;\n"], ["\n  position: relative;\n  cursor: pointer;\n  display: inline-block;\n"])));
-var Inner = styled_components_1.default.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  width: ", "px;\n  height: ", "px;\n  border-radius: ", "px;\n  display: inline-block;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  align-content: center;\n  justify-content: center;\n  background-size: cover;\n  background-position: center center;\n  background-image: ", ";\n  background-color: ", ";\n\n  &.overlap-right {\n    margin-right: -7px;\n  }\n\n  &.outline {\n    border: 1.5px solid ", ";\n    box-shadow: 0px 0px 0px 1.5px ", ";\n  }\n"], ["\n  width: ", "px;\n  height: ", "px;\n  border-radius: ", "px;\n  display: inline-block;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  align-content: center;\n  justify-content: center;\n  background-size: cover;\n  background-position: center center;\n  background-image: ", ";\n  background-color: ", ";\n\n  &.overlap-right {\n    margin-right: -7px;\n  }\n\n  &.outline {\n    border: 1.5px solid ", ";\n    box-shadow: 0px 0px 0px 1.5px ", ";\n  }\n"])), function (props) { return props.width; }, function (props) { return props.height; }, function (props) { return props.borderRadius; }, function (props) { return props.image; }, function (props) { return props.background; }, function (props) { return props.outlineInnerColor; }, function (props) { return props.outlineOuterColor; });
-var Text = styled_components_1.default.div(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  font-weight: 500;\n  color: ", ";\n  position: relative;\n  top: 0px;\n  margin: 0px;\n  padding: 0px;\n  outline: none;\n  font-family: -apple-system, BlinkMacSystemFont,\n  \"Segoe UI\", \"Roboto\", \"Oxygen\",\n  \"Ubuntu\", \"Cantarell\", \"Fira Sans\",\n  \"Droid Sans\", \"Helvetica Neue\", sans-serif;\n  text-decoration: none;\n  font-size: ", "px;\n"], ["\n  font-weight: 500;\n  color: ", ";\n  position: relative;\n  top: 0px;\n  margin: 0px;\n  padding: 0px;\n  outline: none;\n  font-family: -apple-system, BlinkMacSystemFont,\n  \"Segoe UI\", \"Roboto\", \"Oxygen\",\n  \"Ubuntu\", \"Cantarell\", \"Fira Sans\",\n  \"Droid Sans\", \"Helvetica Neue\", sans-serif;\n  text-decoration: none;\n  font-size: ",
-    "px;\n"])), function (props) { return props.color || "white"; }, function (props) {
-    if (props.size === "very-small")
-        return "6";
-    if (props.size === "small")
-        return "8";
-    if (props.size === "small-medium")
-        return "10";
-    if (props.size === "medium")
-        return "12";
-    if (props.size === "medium-large")
-        return "14";
-    if (props.size === "large")
-        return "16";
-    if (props.size === "x-large")
-        return "24";
-    if (props.size === "xx-large")
-        return "32";
-    if (props.size === "xxx-large")
-        return "40";
-    return "12";
-});
-var Delete = styled_components_1.default.div(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  top: -2px;\n  right: -2px;\n  width: 20px;\n  height: 20px;\n  border-radius: 10px;\n  position: absolute;\n  background-color: #e23f62;\n  cursor: pointer;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  align-content: center;\n  justify-content: center;\n  border: 1px solid white;\n  z-index: 1;\n  transition: background-color 0.25s;\n\n  &:hover {\n    background-color: #ce3354;\n    transition: background-color 0.25s;\n  }\n"], ["\n  top: -2px;\n  right: -2px;\n  width: 20px;\n  height: 20px;\n  border-radius: 10px;\n  position: absolute;\n  background-color: #e23f62;\n  cursor: pointer;\n  display: flex;\n  flex-direction: row;\n  align-items: center;\n  align-content: center;\n  justify-content: center;\n  border: 1px solid white;\n  z-index: 1;\n  transition: background-color 0.25s;\n\n  &:hover {\n    background-color: #ce3354;\n    transition: background-color 0.25s;\n  }\n"])));
-var Edit = styled_components_1.default.div(templateObject_5 || (templateObject_5 = __makeTemplateObject(["\n  position: absolute;\n  left: 0px;\n  top: 0px;\n  width: 100%;\n  height: 100%;\n  z-index: 1000;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  align-content: center;\n  cursor: pointer;\n"], ["\n  position: absolute;\n  left: 0px;\n  top: 0px;\n  width: 100%;\n  height: 100%;\n  z-index: 1000;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  align-content: center;\n  cursor: pointer;\n"])));
-var Badge = styled_components_1.default.span(templateObject_6 || (templateObject_6 = __makeTemplateObject(["\n  position: absolute;\n  right: -3px;\n  bottom: -3px;\n  width: 11px;\n  height: 11px;\n  border-radius: 10px;\n  background-color: #007af5;\n  box-sizing: border-box;\n  border: 2px solid ", ";\n"], ["\n  position: absolute;\n  right: -3px;\n  bottom: -3px;\n  width: 11px;\n  height: 11px;\n  border-radius: 10px;\n  background-color: #007af5;\n  box-sizing: border-box;\n  border: 2px solid ", ";\n"])), function (props) { return (props.dark ? "#08111d" : "#ffffff"); });
+var Container = styled_components_1.default.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  align-content: center;\n  justify-content: center;\n  width: max-content;\n"], ["\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  align-content: center;\n  justify-content: center;\n  width: max-content;\n"])));
+var Children = styled_components_1.default.div(templateObject_2 || (templateObject_2 = __makeTemplateObject(["\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  align-content: center;\n  justify-content: center;\n"], ["\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  align-content: center;\n  justify-content: center;\n"])));
+var Content = styled_components_1.default.div(templateObject_3 || (templateObject_3 = __makeTemplateObject(["\n  position: absolute;\n  visibility: hidden;\n  opacity: 0;\n  transition: visibility 0s, opacity 0.25s linear;\n  z-index: 1000;\n  padding: 10px;\n  background: white;\n  border-radius: 5px;\n  width: max-content;\n  max-width: 200px;\n  background: #212832;\n  padding: 10px 0px 10px 0px;\n  box-shadow: 0px 0px 50px -25px rgba(0,0,0,1);\n  display: none;\n  visibility: visible;\n  opacity: 0;\n  transition: visibility 0s, opacity 0.1s linear;\n\n  &.over {\n    display: flex;\n    visibility: visible;\n    opacity: 1;\n    transition: visibility 0s, opacity 0.1s linear;\n  }\n\n  &.top { bottom: 10px; right: 50%; transform: translate(50%, -100%); }\n  &.right { top: 50%; right: -10px; transform: translate(100%, -50%); }\n  &.left { top: 50%; left: -10px; transform: translate(-100%, -50%); }\n  &.bottom { bottom: -10px; right: 50%; transform: translate(50%, 100%); }\n\n  &.bottom:after {\n  \ttop: 0%;\n  \tright: 50%;\n  \tborder: solid transparent;\n  \tcontent: ' ';\n  \theight: 0;\n  \twidth: 0;\n  \tposition: absolute;\n  \tpointer-events: none;\n  \tborder-color: transparent;\n  \tborder-top-color: #212832;\n  \tborder-width: 5px;\n  \tmargin-top: -10px;\n    transform: translateX(50%) rotate(180deg);\n  }\n\n  &.top:after {\n  \ttop: 100%;\n  \tright: 50%;\n  \tborder: solid transparent;\n  \tcontent: ' ';\n  \theight: 0;\n  \twidth: 0;\n  \tposition: absolute;\n  \tpointer-events: none;\n  \tborder-color: transparent;\n  \tborder-top-color: #212832;\n  \tborder-width: 5px;\n  \tmargin-top: 0px;\n    transform: translateX(50%) rotate(0deg);\n  }\n\n  &.left:after {\n  \ttop: 50%;\n  \tright: 0%;\n  \tborder: solid transparent;\n  \tcontent: ' ';\n  \theight: 0;\n  \twidth: 0;\n  \tposition: absolute;\n  \tpointer-events: none;\n  \tborder-color: transparent;\n  \tborder-top-color: #212832;\n  \tborder-width: 5px;\n  \tmargin-right: -10px;\n    transform: translateY(-50%) rotate(-90deg);\n  }\n\n  &.right:after {\n  \ttop: 50%;\n  \tleft: 0%;\n  \tborder: solid transparent;\n  \tcontent: ' ';\n  \theight: 0;\n  \twidth: 0;\n  \tposition: absolute;\n  \tpointer-events: none;\n  \tborder-color: transparent;\n  \tborder-top-color: #212832;\n  \tborder-width: 5px;\n  \tmargin-left: -10px;\n    transform: translateY(-50%) rotate(90deg);\n  }\n"], ["\n  position: absolute;\n  visibility: hidden;\n  opacity: 0;\n  transition: visibility 0s, opacity 0.25s linear;\n  z-index: 1000;\n  padding: 10px;\n  background: white;\n  border-radius: 5px;\n  width: max-content;\n  max-width: 200px;\n  background: #212832;\n  padding: 10px 0px 10px 0px;\n  box-shadow: 0px 0px 50px -25px rgba(0,0,0,1);\n  display: none;\n  visibility: visible;\n  opacity: 0;\n  transition: visibility 0s, opacity 0.1s linear;\n\n  &.over {\n    display: flex;\n    visibility: visible;\n    opacity: 1;\n    transition: visibility 0s, opacity 0.1s linear;\n  }\n\n  &.top { bottom: 10px; right: 50%; transform: translate(50%, -100%); }\n  &.right { top: 50%; right: -10px; transform: translate(100%, -50%); }\n  &.left { top: 50%; left: -10px; transform: translate(-100%, -50%); }\n  &.bottom { bottom: -10px; right: 50%; transform: translate(50%, 100%); }\n\n  &.bottom:after {\n  \ttop: 0%;\n  \tright: 50%;\n  \tborder: solid transparent;\n  \tcontent: ' ';\n  \theight: 0;\n  \twidth: 0;\n  \tposition: absolute;\n  \tpointer-events: none;\n  \tborder-color: transparent;\n  \tborder-top-color: #212832;\n  \tborder-width: 5px;\n  \tmargin-top: -10px;\n    transform: translateX(50%) rotate(180deg);\n  }\n\n  &.top:after {\n  \ttop: 100%;\n  \tright: 50%;\n  \tborder: solid transparent;\n  \tcontent: ' ';\n  \theight: 0;\n  \twidth: 0;\n  \tposition: absolute;\n  \tpointer-events: none;\n  \tborder-color: transparent;\n  \tborder-top-color: #212832;\n  \tborder-width: 5px;\n  \tmargin-top: 0px;\n    transform: translateX(50%) rotate(0deg);\n  }\n\n  &.left:after {\n  \ttop: 50%;\n  \tright: 0%;\n  \tborder: solid transparent;\n  \tcontent: ' ';\n  \theight: 0;\n  \twidth: 0;\n  \tposition: absolute;\n  \tpointer-events: none;\n  \tborder-color: transparent;\n  \tborder-top-color: #212832;\n  \tborder-width: 5px;\n  \tmargin-right: -10px;\n    transform: translateY(-50%) rotate(-90deg);\n  }\n\n  &.right:after {\n  \ttop: 50%;\n  \tleft: 0%;\n  \tborder: solid transparent;\n  \tcontent: ' ';\n  \theight: 0;\n  \twidth: 0;\n  \tposition: absolute;\n  \tpointer-events: none;\n  \tborder-color: transparent;\n  \tborder-top-color: #212832;\n  \tborder-width: 5px;\n  \tmargin-left: -10px;\n    transform: translateY(-50%) rotate(90deg);\n  }\n"])));
+var Text = styled_components_1.default.div(templateObject_4 || (templateObject_4 = __makeTemplateObject(["\n  color: white;\n  font-size: 14px;\n  text-align: center;\n  width: 100%;\n  padding-left: 10px;\n  padding-right: 10px;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  font-family: -apple-system, BlinkMacSystemFont,\n  \"Segoe UI\", \"Roboto\", \"Oxygen\",\n  \"Ubuntu\", \"Cantarell\", \"Fira Sans\",\n  \"Droid Sans\", \"Helvetica Neue\", sans-serif;\n"], ["\n  color: white;\n  font-size: 14px;\n  text-align: center;\n  width: 100%;\n  padding-left: 10px;\n  padding-right: 10px;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  font-family: -apple-system, BlinkMacSystemFont,\n  \"Segoe UI\", \"Roboto\", \"Oxygen\",\n  \"Ubuntu\", \"Cantarell\", \"Fira Sans\",\n  \"Droid Sans\", \"Helvetica Neue\", sans-serif;\n"])));
 /**
- * Avatar component. Displays a circle or square container for users,
- * channels, or anything else
+ * Button component.
  */
-exports.MessageMedia = function (props) {
+exports.Tooltip = function (props) {
     var _a = react_1.useState(false), over = _a[0], setOver = _a[1];
-    var image = props.image ? "url(" + props.image + ")" : "";
-    var background = props.dark
-        ? "#0c1828"
-        : props.color
-            ? chroma(props.color)
-                .desaturate(2)
-                .brighten(2.25)
-                .toString()
-            : "#f1f3f5";
-    var color = props.color || "#007af5";
-    var width = 35;
-    var height = 35;
-    var borderRadius = 35;
-    var generateInitials = function (str) {
-        return str.split(" ")
-            .map(function (part, _) {
-            return part[0] ? part[0].toUpperCase() : "";
-        })
-            .splice(0, 2)
-            .toString()
-            .replace(",", "")
-            .trim();
-    };
-    switch (props.size) {
-        case "very-small":
-            width = 15;
-            height = 15;
-            borderRadius = props.circle ? 100 : 2;
-            break;
-        case "small":
-            width = 20;
-            height = 20;
-            borderRadius = props.circle ? 100 : 3;
-            break;
-        case "small-medium":
-            width = 25;
-            height = 25;
-            borderRadius = props.circle ? 100 : 4;
-            break;
-        case "medium":
-            width = 30;
-            height = 30;
-            borderRadius = props.circle ? 100 : 5;
-            break;
-        case "medium-large":
-            width = 35;
-            height = 35;
-            borderRadius = props.circle ? 100 : 6;
-            break;
-        case "large":
-            width = 40;
-            height = 40;
-            borderRadius = props.circle ? 100 : 7;
-            break;
-        case "x-large":
-            width = 80;
-            height = 80;
-            borderRadius = props.circle ? 100 : 10;
-            break;
-        case "xx-large":
-            width = 120;
-            height = 120;
-            borderRadius = props.circle ? 100 : 12;
-            break;
-        case "xxx-large":
-            width = 180;
-            height = 180;
-            borderRadius = props.circle ? 100 : 16;
-            break;
-    }
-    return (React.createElement(Container, { onMouseEnter: function () { return setOver(true); }, onMouseLeave: function () { return setOver(false); } },
-        over && props.onEditClick && props.editIcon &&
-            React.createElement(Edit, { onClick: props.onEditClick }, props.editIcon),
-        over && props.onDeleteClick && props.deleteIcon &&
-            React.createElement(Delete, { onClick: props.onDeleteClick }, props.deleteIcon),
-        React.createElement(Inner, { onClick: props.onClick, width: width, height: height, borderRadius: borderRadius, className: props.className, image: image, background: background, outlineInnerColor: props.outlineInnerColor ? props.outlineInnerColor : "transparent", outlineOuterColor: props.outlineOuterColor ? props.outlineOuterColor : "transparent", style: props.style },
-            props.children,
-            props.badge && React.createElement(Badge, { dark: props.dark || false }),
-            ((!props.children && !props.image && props.title && !props.onEditClick) ||
-                (!props.children && !props.image && props.title && props.onEditClick && !over)) &&
-                React.createElement(Text, { color: color, size: props.size, className: "text" }, generateInitials(props.title)))));
+    var direction = props.direction, containerClassName = props.containerClassName, children = props.children, text = props.text;
+    return (React.createElement(Container, { className: containerClassName },
+        React.createElement(Children, { onClick: function () { return setOver(false); }, onMouseEnter: function () { return setOver(true); }, onMouseLeave: function () { return setOver(false); } }, children),
+        React.createElement(Content, { className: over ? "over " + direction : direction },
+            React.createElement(Text, null, text))));
 };
-var templateObject_1, templateObject_2, templateObject_3, templateObject_4, templateObject_5, templateObject_6;
+var templateObject_1, templateObject_2, templateObject_3, templateObject_4;
 
 
 /***/ }),
