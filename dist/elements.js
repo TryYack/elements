@@ -3518,9 +3518,9 @@ exports.Button = function (props) {
     var theme = props.theme ? props.theme : "default";
     var className = down ? "active " + props.className : props.className;
     var jumbo = props.jumbo;
-    return (React.createElement(Container, __assign({ jumbo: jumbo, theme: theme, className: className, onMouseDown: function () { return setDown(true); }, onMouseUp: function () { return setDown(false); } }, props),
+    return (React.createElement(Container, __assign({ jumbo: jumbo, theme: theme, className: className, onClick: props.onClick, onMouseDown: function () { return setDown(true); }, onMouseUp: function () { return setDown(false); } }, props),
         props.icon && (React.createElement(Icon, { text: props.text, jumbo: props.jumbo }, props.icon)),
-        props.text && (React.createElement(Text, { icon: props.icon, theme: theme, jumbo: props.jumbo, onClick: props.onClick }, props.text))));
+        props.text && (React.createElement(Text, { icon: props.icon, theme: theme, jumbo: props.jumbo }, props.text))));
 };
 var templateObject_1, templateObject_2, templateObject_3;
 

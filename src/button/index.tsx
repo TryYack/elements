@@ -156,6 +156,7 @@ export const Button: React.FunctionComponent<IButtonProps> = (props: IButtonProp
       jumbo={jumbo}
       theme={theme}
       className={className}
+      onClick={props.onClick}
       onMouseDown={() => setDown(true)}
       onMouseUp={() => setDown(false)}
       {...props}>
@@ -170,8 +171,7 @@ export const Button: React.FunctionComponent<IButtonProps> = (props: IButtonProp
         <Text
           icon={props.icon}
           theme={theme}
-          jumbo={props.jumbo}
-          onClick={props.onClick}>
+          jumbo={props.jumbo}>
           {props.text}
         </Text>
       )}
