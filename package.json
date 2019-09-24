@@ -25,11 +25,11 @@
     "> 1%",
     "ie >= 9"
   ],
+  "repository": "https://github.com/getweekday/elements",
   "bugs": {
-    "url": ""
+    "url": "https://github.com/getweekday/elements"
   },
   "url": "https://github.com/getweekday/elements",
-  "bundleDependencies": false,
   "contributors": [
     {
       "name": "joduplessis"
