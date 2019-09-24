@@ -7,8 +7,8 @@
 ## Installation
 You can install the library directly from master until we get to a post v1.0.0 state.
 ```
-npm i --save getweekday/elements#master
-yarn add getweekday/elements#master
+npm i --save @weekday/elements
+yarn add @weekday/elements
 ```
 
 ## Global packages
