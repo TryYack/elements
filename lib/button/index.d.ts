@@ -25,11 +25,11 @@ interface IButtonProps {
      */
     disabled?: boolean;
     /**
-     * Possible values are true/false
+     * Possible values are "small" | "medium" | "large"
      *
      * @default false
      */
-    jumbo?: boolean;
+    size?: string;
     /**
      * React classname property
      *
