@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { COLORS } from "../colors";
 
 const Container = styled.button<{
-  jumbo?: boolean,
+  size?: string,
   theme: string,
   disabled?: boolean,
 }>`
@@ -19,16 +19,34 @@ const Container = styled.button<{
   transition: background-color 0.15s, color 0.15s, border 0.15s;
   cursor: pointer;
   max-width: ${props => {
-    if (props.jumbo) return "300px";
-    return "150px";
+    switch (props.size) {
+      case "large":
+        return "300px";
+      case "small":
+        return "100px";
+      default:
+        return "150px";
+    }
   }};
   height: ${props  => {
-    if (props.jumbo) return "80px";
-    return "40px";
+    switch (props.size) {
+      case "large":
+        return "80px";
+      case "small":
+        return "30px";
+      default:
+        return "40px";
+    }
   }};
   border-radius: ${props => {
-    if (props.jumbo) return "10px";
-    return "6px";
+    switch (props.size) {
+      case "large":
+        return "10px";
+      case "small":
+        return "6px";
+      default:
+        return "8px";
+    }
   }};
   border-width: 2px;
   border-style: solid;
@@ -56,7 +74,7 @@ const Container = styled.button<{
 const Text = styled.span<{
   icon?: any,
   theme: string,
-  jumbo?: boolean,
+  size?: string,
 }>`
   margin: 0px;
   white-space: nowrap;
@@ -67,29 +85,56 @@ const Text = styled.span<{
   "Ubuntu", "Cantarell", "Fira Sans",
   "Droid Sans", "Helvetica Neue", sans-serif;
   padding: ${props => {
-    if (!props.jumbo && props.icon) return "0px 15px 0px 7px";
-    if (props.jumbo && props.icon) return "0px 30px 0px 15px";
-    if (props.jumbo && !props.icon) return "0px 30px 0px 30px";
-    return "0px 15px 0px 15px";
+    if (props.icon) {
+      switch (props.size) {
+        case "large":
+          return "0px 30px 0px 15px";
+        case "small":
+          return "0px 10px 0px 5px";
+        default:
+          return "0px 15px 0px 8px";
+      }
+    } else {
+      switch (props.size) {
+        case "large":
+          return "0px 30px 0px 30px";
+        case "small":
+          return "0px 10px 0px 10px";
+        default:
+          return "0px 15px 0px 15px";
+      }
+    }
   }};
   font-weight: ${props => {
-    if (props.jumbo) return "500";
-    return "500";
+    switch (props.size) {
+      case "large":
+        return "500";
+      case "small":
+        return "500";
+      default:
+        return "500";
+    }
   }};
   font-size: ${props => {
-    if (props.jumbo) return "24px";
-    return "12px";
+    switch (props.size) {
+      case "large":
+        return "24px";
+      case "small":
+        return "11px";
+      default:
+        return "14px";
+    }
   }};
 `;
 
 const Icon = styled.div<{
-  jumbo?: boolean,
+  size?: string,
   text?: string,
 }>`
   margin: ${props => {
     if (!props.text) return "0px 10px 0px 10px";
-    if (!props.text && props.jumbo) return "0px 20px 0px 20px";
-    if (props.jumbo) return "0px 0px 0px 30px";
+    if (!props.text && props.size) return "0px 20px 0px 20px";
+    if (props.size) return "0px 0px 0px 30px";
 
     return "0px 0px 0px 15px";
   }};
@@ -125,11 +170,11 @@ interface IButtonProps {
   disabled?: boolean;
 
   /**
-   * Possible values are true/false
+   * Possible values are "small" | "medium" | "large"
    *
    * @default false
    */
-  jumbo?: boolean;
+  size?: string;
 
   /**
    * React classname property
@@ -149,11 +194,10 @@ export const Button: React.FunctionComponent<IButtonProps> = (props: IButtonProp
   const [down, setDown] = React.useState(false);
   const theme: string = props.theme ? props.theme : "default";
   const className = down ? "active " + props.className : props.className;
-  const { jumbo } = props;
 
   return (
     <Container
-      jumbo={jumbo}
+      size={props.size}
       theme={theme}
       className={className}
       onClick={props.onClick}
@@ -163,7 +207,7 @@ export const Button: React.FunctionComponent<IButtonProps> = (props: IButtonProp
       {props.icon && (
         <Icon
           text={props.text}
-          jumbo={props.jumbo}>
+          size={props.size}>
           {props.icon}
         </Icon>
       )}
@@ -171,7 +215,7 @@ export const Button: React.FunctionComponent<IButtonProps> = (props: IButtonProp
         <Text
           icon={props.icon}
           theme={theme}
-          jumbo={props.jumbo}>
+          size={props.size}>
           {props.text}
         </Text>
       )}

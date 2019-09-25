@@ -66,20 +66,30 @@ storiesOf('Button', module)
       />
     )))
   .add(
-    'Jumbo',
+    'Small',
     withInfo({ inline: true })(() => (
       <Button
-        jumbo={true}
+        size="small"
+        theme="blue-border"
         text="Click Here"
         onClick={action('clicked')}
       />
     )))
   .add(
-    'Jumbo with icon',
+    'Large',
+    withInfo({ inline: true })(() => (
+      <Button
+        size="large"
+        text="Click Here"
+        onClick={action('clicked')}
+      />
+    )))
+  .add(
+    'Large with icon',
     withInfo({ inline: true })(() => (
       <Button
         icon={<div style={{ fontSize: 30 }}>✓</div>}
-        jumbo={true}
+        size="large"
         text="Click Here"
         onClick={action('clicked')}
       />

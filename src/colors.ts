@@ -53,6 +53,24 @@ export const COLORS: any = {
     },
   },
 
+  "blue-border": {
+    BASE: {
+      BACKGROUND_COLOR: "white",
+      COLOR: "#007AF5",
+      BORDER_COLOR: "#007AF5",
+    },
+    ACTIVE: {
+      BACKGROUND_COLOR: "#007af5",
+      COLOR: "rgba(255,255,255,0.8)",
+      BORDER_COLOR: "#007AF5",
+    },
+    HOVER: {
+      BACKGROUND_COLOR: "#007AF5",
+      COLOR: "white",
+      BORDER_COLOR: "#007AF5",
+    },
+  },
+
   "blue-outline": {
     BASE: {
       BACKGROUND_COLOR: "#ebf9ff",
