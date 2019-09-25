@@ -250,52 +250,52 @@ export const Avatar: React.FunctionComponent<IAvatarProps> = (props: IAvatarProp
     case "very-small":
       width = 15;
       height = 15;
-      borderRadius = props.circle ? 200 : 4;
+      borderRadius = props.circle ? 200 : 5;
       break;
     case "small":
       width = 20;
       height = 20;
-      borderRadius = props.circle ? 200 : 5;
+      borderRadius = props.circle ? 200 : 6;
       break;
     case "small-medium":
       width = 25;
       height = 25;
-      borderRadius = props.circle ? 200 : 6;
+      borderRadius = props.circle ? 200 : 7;
       break;
     case "medium":
       width = 30;
       height = 30;
-      borderRadius = props.circle ? 200 : 7;
+      borderRadius = props.circle ? 200 : 8;
       break;
     case "medium-large":
       width = 35;
       height = 35;
-      borderRadius = props.circle ? 200 : 8;
+      borderRadius = props.circle ? 200 : 9;
       break;
     case "large":
       width = 40;
       height = 40;
-      borderRadius = props.circle ? 200 : 9;
+      borderRadius = props.circle ? 200 : 10;
       break;
     case "x-large":
       width = 80;
       height = 80;
-      borderRadius = props.circle ? 200 : 14;
+      borderRadius = props.circle ? 200 : 16;
       break;
     case "xx-large":
       width = 120;
       height = 120;
-      borderRadius = props.circle ? 200 : 16;
+      borderRadius = props.circle ? 200 : 18;
       break;
     case "xxx-large":
       width = 180;
       height = 180;
-      borderRadius = props.circle ? 200 : 18;
+      borderRadius = props.circle ? 200 : 20;
       break;
     default:
       width = 30;
       height = 30;
-      borderRadius = props.circle ? 200 : 7;
+      borderRadius = props.circle ? 200 : 8;
   }
 
   return (

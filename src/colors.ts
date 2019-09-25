@@ -60,8 +60,8 @@ export const COLORS: any = {
       BORDER_COLOR: "#007AF5",
     },
     ACTIVE: {
-      BACKGROUND_COLOR: "#007af5",
-      COLOR: "rgba(255,255,255,0.8)",
+      BACKGROUND_COLOR: "#007AF5",
+      COLOR: "white",
       BORDER_COLOR: "#007AF5",
     },
     HOVER: {

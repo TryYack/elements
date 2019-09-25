@@ -71,7 +71,7 @@ storiesOf('Button', module)
       <Button
         size="small"
         theme="blue-border"
-        text="Click Here"
+        text="Manage Members"
         onClick={action('clicked')}
       />
     )))

@@ -23,7 +23,7 @@ const Container = styled.button<{
       case "large":
         return "300px";
       case "small":
-        return "100px";
+        return "fit-content";
       default:
         return "150px";
     }
@@ -48,7 +48,16 @@ const Container = styled.button<{
         return "8px";
     }
   }};
-  border-width: 2px;
+  border-width: ${props => {
+    switch (props.size) {
+      case "large":
+        return "2px";
+      case "small":
+        return "1px";
+      default:
+        return "2px";
+    }
+  }};
   border-style: solid;
   background-color: ${props => COLORS[props.theme].BASE.BACKGROUND_COLOR};
   color: ${props => COLORS[props.theme].BASE.COLOR};
