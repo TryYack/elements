@@ -6,6 +6,10 @@ const Label = styled.div`
   font-size: 12px;
   font-weight: 700;
   padding-bottom: 5px;
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
 `;
 
 const InputField = styled.input<{
@@ -13,6 +17,11 @@ const InputField = styled.input<{
 }>`
   border: none;
   flex: 1;
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
+  outline: none;
   background: transparent;
   color: #495057;
   font-size: 15px;
@@ -33,6 +42,9 @@ const InputField = styled.input<{
 
 interface IInputProps {
   label: string;
+  value: string;
+  onChange: any;
+  placeholder: string;
 }
 
 export const Input: React.FunctionComponent<IInputProps> = (props: IInputProps) => {

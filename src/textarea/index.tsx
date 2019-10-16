@@ -6,6 +6,10 @@ const Label = styled.div`
   font-size: 12px;
   font-weight: 700;
   padding-bottom: 5px;
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
 `;
 
 const Field = styled.textarea<{
@@ -13,6 +17,7 @@ const Field = styled.textarea<{
 }>`
   border: none;
   flex: 1;
+  outline: none;
   background: transparent;
   color: #495057;
   font-size: 15px;
@@ -25,6 +30,10 @@ const Field = styled.textarea<{
   display: block;
   box-sizing: border-box;
   margin-bottom: 20px;
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
 
   &::placeholder {
     color: #acb5bd;
@@ -33,6 +42,10 @@ const Field = styled.textarea<{
 
 interface ITextareaProps {
   label: string;
+  value: string;
+  onChange: any;
+  placeholder: string;
+  rows: number;
 }
 
 export const Textarea: React.FunctionComponent<ITextareaProps> = (props: ITextareaProps) => {

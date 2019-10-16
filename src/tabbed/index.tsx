@@ -1,10 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 
-const PanelContainer = styled.div<{
-  current: number;
-  className: string;
-}>`
+const PanelContainer = styled.div`
   flex: 1;
   position: relative;
   width: 100%;
@@ -15,7 +12,6 @@ const PanelContainer = styled.div<{
   align-content: flex-start;
   justify-content: flex-start;
   position: relative;
-  border-top: 1px solid #eaeaea;
 `;
 
 const PanelTitles = styled.div`
@@ -29,6 +25,7 @@ const PanelTitles = styled.div`
   justify-content: flex-start;
   position: relative;
   height: 100%;
+  min-height: 200px;
 `;
 
 const Panels = styled.div<{
@@ -38,6 +35,7 @@ const Panels = styled.div<{
   position: relative;
   width: 100%;
   height: 100%;
+  min-height: 200px;
   transform: translateX(${props => props.current * -100}%);
 `;
 
@@ -46,6 +44,7 @@ const PanelsContainer = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
+  min-height: 200px;
   overflow: hidden;
 `;
 
@@ -57,6 +56,11 @@ const PanelTabButton = styled.div`
   font-size: 14px;
   font-weight: bold;
   cursor: pointer;
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
+
   &.active {
     color: #00a8ff;
   }
@@ -81,13 +85,12 @@ interface ITabbedProps {
   panels: any;
 }
 
-
 export const Tabbed: React.FunctionComponent<ITabbedProps> = (props: ITabbedProps) => {
   const [current, setCurrent] = React.useState(props.start);
 
   return (
-    <PanelContainer current={current} className="tabbed-component">
-      <PanelTitles className="tab">
+    <PanelContainer>
+      <PanelTitles>
         {props.panels.map((panel: any, index: number) => {
           if (!panel.show) return null;
 
@@ -101,10 +104,12 @@ export const Tabbed: React.FunctionComponent<ITabbedProps> = (props: ITabbedProp
           );
         })}
       </PanelTitles>
+        
       <PanelsContainer>
         <Panels current={current}>
           {props.panels.map((panel: any, index: number) => {
             if (!panel.show) return null;
+
             return (
               <Panel key={index} index={index}>
                 {panel.content}

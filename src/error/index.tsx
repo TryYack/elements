@@ -28,6 +28,10 @@ const Text = styled.div`
   color: white;
   font-size: 12px;
   font-weight: 700;
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
 `;
 
 interface IErrorProps {

@@ -24,6 +24,12 @@ const Container = styled.div`
 const Inner = styled.div`
   background: white;
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-content: flex-start;
+  justify-content: flex-start;
+  position: relative;
 `;
 
 const InnerContainer = styled.div`
@@ -33,18 +39,51 @@ const InnerContainer = styled.div`
 
 const Title = styled.div`
   width: 100%;
+  padding: 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: flex-start;
+  position: relative;
+  border-bottom: 1px solid #edf0f2;
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
+`;
+
+const Footer = styled.div`
+  width: 100%;
+  padding: 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: flex-start;
+  position: relative;
+  border-top: 1px solid #edf0f2;
+`;
+
+const FooterPadding = styled.div`
+  padding: 20px;
+`;
+
+const Button = styled.div`
+  cursor: pointer;
   padding: 20px;
 `;
 
 const TitleText = styled.div`
   flex: 1;
+  padding: 20px;
   color: #202529;
   font-size: 28px;
   font-weight: 600;
 `;
 
 interface IModalProps {
-  children: any;
+  children?: any;
   title: string;
   width: number;
   height: any;
@@ -55,20 +94,27 @@ interface IModalProps {
 export const Modal: React.FunctionComponent<IModalProps> = (props: IModalProps) => {
   return (
     <Container>
-      <Inner className="column" style={{ width: props.width, height: props.height }}>
-        <Title className="row">
+      <Inner style={{ width: props.width, height: props.height }}>
+        <Title>
           <TitleText>{props.title}</TitleText>
-          <CloseOutlined
-            htmlColor="#524150"
-            fontSize="large"
-            className="button"
-            onClick={props.onClose}
-          />
+          <Button>
+            <CloseOutlined
+              htmlColor="#524150"
+              fontSize="large"
+              onClick={props.onClose}
+            />
+          </Button>
         </Title>
         <InnerContainer>
           {props.children}
         </InnerContainer>
-        {props.footer}
+        {props.footer &&
+          <Footer>
+            <FooterPadding>
+              {props.footer}
+            </FooterPadding>
+          </Footer>
+        }
       </Inner>
     </Container>
   );

@@ -3,8 +3,23 @@ import styled from "styled-components";
 import { Avatar } from "../avatar";
 
 const Container = styled.div`
-  padding: 10px 10px 10px 10px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  align-content: flex-start;
+  justify-content: flex-start;
+  position: relative;
+`;
+
+const ContainerPadding = styled.div`
+  flex: 1;
+  padding: 10px 10px 10px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-content: flex-start;
+  justify-content: flex-start;
 `;
 
 const Divider = styled.div`
@@ -21,6 +36,12 @@ const Row = styled.div<{
   width: 100%;
   border-radius: 10px;
   cursor: ${props => (props.nohover ? null : "pointer")};
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: flex-start;
+  position: relative;
 
   &:hover {
     background: ${props => (props.nohover ? null : "#f8f9fa")};
@@ -40,15 +61,32 @@ const AvatarContainer = styled.div`
 const Text = styled.div`
   overflow: hidden;
   font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
   font-weight: 400;
   color: #868e96;
   width: 100%;
   white-space: nowrap;
 `;
 
+const TextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-content: flex-start;
+  justify-content: flex-start;
+  position: relative;
+`;
+
 const Label = styled.div`
   overflow: hidden;
   font-size: 12px;
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
   font-weight: 400;
   color: #cfd4da;
   width: 100%;
@@ -61,44 +99,45 @@ interface IMenuProps {
 
 export const Menu: React.FunctionComponent<IMenuProps> = (props: IMenuProps) => {
   return (
-    <Container className="column">
-      {props.items.map((item, index) => {
-        if (item.hide) return null;
+    <Container>
+      <ContainerPadding>
+        {props.items.map((item, index) => {
+          if (item.hide) return null;
 
-        return (
-          <Row
-            className="row"
-            key={index}
-            onClick={item.onClick}
-            nohover={item.divider}>
+          return (
+            <Row
+              key={index}
+              onClick={item.onClick}
+              nohover={item.divider}>
 
-            {item.divider && <Divider />}
+              {item.divider && <Divider />}
 
-            {!item.divider &&
-              <React.Fragment>
-                {item.image &&
-                  <AvatarContainer>
-                    <Avatar
-                      image={item.image}
-                      title={item.text}
-                      size="small-medium"
-                    />
-                  </AvatarContainer>
-                }
-                {item.icon &&
-                  <IconContainer>
-                    {item.icon}
-                  </IconContainer>
-                }
-                <div className="column">
-                  <Text>{item.text}</Text>
-                  {item.label && <Label>{item.label}</Label>}
-                </div>
-              </React.Fragment>
-            }
-          </Row>
-        );
-      })}
+              {!item.divider &&
+                <React.Fragment>
+                  {item.image &&
+                    <AvatarContainer>
+                      <Avatar
+                        image={item.image}
+                        title={item.text}
+                        size="small-medium"
+                      />
+                    </AvatarContainer>
+                  }
+                  {item.icon &&
+                    <IconContainer>
+                      {item.icon}
+                    </IconContainer>
+                  }
+                  <TextContainer>
+                    <Text>{item.text}</Text>
+                    {item.label && <Label>{item.label}</Label>}
+                  </TextContainer>
+                </React.Fragment>
+              }
+            </Row>
+          );
+        })}
+      </ContainerPadding>
     </Container>
   );
 };

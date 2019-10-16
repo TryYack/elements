@@ -24,6 +24,12 @@ const Icon = styled.div<{
   border-radius: 10px;
   width: 40px;
   height: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  position: relative;
 `;
 
 const Name = styled.div<{
@@ -33,6 +39,10 @@ const Name = styled.div<{
   font-style: normal;
   color: #151b26;
   display: inline-block;
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
   font-size: ${props => {
       switch (props.layout) {
         case "compose":
@@ -62,6 +72,10 @@ const Size = styled.div<{
 }>`
   font-weight: 400;
   color: #adb5bd;
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
   display: inline-block;
   font-size: ${props => {
       if (props.layout == "compose") return "13px";
@@ -84,6 +98,10 @@ const Extension = styled.div`
   font-size: 10px;
   color: #6f7782;
   margin-right: 10px;
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
 `;
 
 const Link = styled.div`
@@ -91,6 +109,10 @@ const Link = styled.div`
   font-size: 10px;
   color: #007af5;
   margin-right: 10px;
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
 `;
 
 const Content = styled.div`
@@ -117,8 +139,8 @@ interface IAttachmentProps {
   uri: string;
   name: string;
   mime: string;
-  onDeleteClick: any;
-  onDownloadClick: any;
+  onDeleteClick?: any;
+  onDownloadClick?: any;
 }
 
 export const Attachment: React.FunctionComponent<IAttachmentProps> = (props: IAttachmentProps) => {
@@ -227,9 +249,7 @@ export const Attachment: React.FunctionComponent<IAttachmentProps> = (props: IAt
   // prettier-ignore
   return (
     <Container>
-      <Icon
-        color={getMimeTypeColor(props.mime)}
-        className="row justify-content-center">
+      <Icon color={getMimeTypeColor(props.mime)}>
         {getMimeTypeIcon(props.mime)}
       </Icon>
 
@@ -240,13 +260,16 @@ export const Attachment: React.FunctionComponent<IAttachmentProps> = (props: IAt
           <Extension>
             {getMimeTypeDescription(props.mime)}
           </Extension>
-          <Link
-            className="button"
-            onClick={props.onDownloadClick}>
-            Download
-          </Link>
+          
+          {props.onDownloadClick &&
+            <Link
+              className="button"
+              onClick={props.onDownloadClick}>
+              Download
+            </Link>
+          }
 
-          {props.layout == "compose" &&
+          {(props.layout == "compose" && props.onDeleteClick) &&
             <Link
               className="button"
               onClick={props.onDeleteClick}>

@@ -1,6 +1,6 @@
 import * as React from "react";
 interface IModalProps {
-    children: any;
+    children?: any;
     title: string;
     width: number;
     height: any;

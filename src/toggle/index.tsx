@@ -5,7 +5,7 @@ const Container = styled.div`
   background: white;
   width: 30px;
   position: relative;
-  height: 17px;
+  height: 19px;
   border: 1px solid #F1F3F5;
   box-shadow: 0px 0px 16px -9px rgba(0,0,0,0.75);
   cursor: pointer;
@@ -17,8 +17,8 @@ const Circle = styled.div<{
   on: boolean;
 }>`
   position: absolute;
-  top: 0px;
-  left: ${props => props.on ? "13px" : "0px"};
+  top: 2px;
+  left: ${props => props.on ? "13px" : "2px"};
   background-color: ${props => props.on ? "#007af5" : "#e8ecee"};
   border-radius: 50%;
   transition: left 0.5s, background-color 0.5s;

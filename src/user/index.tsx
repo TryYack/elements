@@ -6,21 +6,26 @@ const Name = styled.div`
   color: #483545;
   font-size: 14px;
   font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
 `;
 
 const Label = styled.div`
   color: #858e96;
   font-size: 12px;
   font-weight: 500;
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
 `;
 
 const Container = styled.div<{
   active: boolean;
 }>`
   width: 100%;
-  height: 60px;
-  padding-left: 20px;
-  padding-right: 20px;
   background: ${props => (props.active ? "#f8f9fa" : "transparent")};
   display: flex;
   flex-direction: row;
@@ -30,6 +35,30 @@ const Container = styled.div<{
   position: relative;
   border-bottom: 1px solid #edf0f2;
   cursor: pointer;
+`;
+
+const Content = styled.div`
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-content: flex-start;
+  justify-content: flex-start;
+  position: relative;
+`;
+
+const Flex = styled.div`
+  flex: 1;
+`;
+
+const ContainerPadding = styled.div`
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: flex-start;
 `;
 
 interface IUserProps {
@@ -44,31 +73,32 @@ interface IUserProps {
 export const User: React.FunctionComponent<IUserProps> = (props: IUserProps) => {
   const [hover, setHover] = React.useState(false);
 
-  // prettier-ignore
   return (
     <Container
       active={props.active}
       onClick={props.onClick}
       onMouseOver={() => setHover(true)}
       onMouseLeave={() => setHover(false)}>
-      <Avatar
-        className="small"
-        image={props.image}
-        title={props.name}
-      />
+      <ContainerPadding>
+        <Avatar
+          size="medium"
+          image={props.image}
+          title={props.name}
+        />
 
-      <div className="pl-10 column">
-        <Name>{props.name}</Name>
-        <Label>{props.label}</Label>
-      </div>
+        <Content>
+          <Name>{props.name}</Name>
+          <Label>{props.label}</Label>
+        </Content>
 
-      <div className="flexer"></div>
+        <Flex />
 
-      {hover &&
-        <React.Fragment>
-          {props.children}
-        </React.Fragment>
-      }
+        {hover &&
+          <React.Fragment>
+            {props.children}
+          </React.Fragment>
+        }
+      </ContainerPadding>
     </Container>
   );
 };

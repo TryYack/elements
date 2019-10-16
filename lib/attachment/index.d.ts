@@ -5,8 +5,8 @@ interface IAttachmentProps {
     uri: string;
     name: string;
     mime: string;
-    onDeleteClick: any;
-    onDownloadClick: any;
+    onDeleteClick?: any;
+    onDownloadClick?: any;
 }
 export declare const Attachment: React.FunctionComponent<IAttachmentProps>;
 export {};

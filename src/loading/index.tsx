@@ -90,8 +90,8 @@ interface ILoadingProps {
 export const Loading: React.FunctionComponent<ILoadingProps> = (props: ILoadingProps) => {
   return (
     <React.Fragment>
-      <LoadingAnimation className={`loading ${props.show ? "show" : ""}`} />
-      <Overlay className={`loading ${props.show ? "show" : ""}`} />
+      <LoadingAnimation className={`${props.show ? "show" : ""}`} />
+      <Overlay className={`${props.show ? "show" : ""}`} />
     </React.Fragment>
   );
 };

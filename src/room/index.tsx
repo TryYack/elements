@@ -9,9 +9,23 @@ const Container = styled.div<{
   onClick: any;
 }>`
   background: ${props => props.active ? "#0c1828" : "transparent" };
-  padding-top: 4px;
-  padding-bottom: 4px;
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  position: relative;
+`;
+
+const ContainerPadding = styled.div`
+  flex: 1;
+  padding: 4px 25px 4px 25px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  position: relative;
 `;
 
 const Badge = styled.div`
@@ -31,6 +45,11 @@ const Title = styled.div<{
   color: ${props => props.active ? "white" : "#475669" };
   white-space: nowrap;
   width: max-content;
+  margin-right: 5px;
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
 `;
 
 const Excerpt = styled.div`
@@ -42,26 +61,50 @@ const Excerpt = styled.div`
   overflow: hidden;
   flex: 1;
   margin-top: 4px;
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
 `;
 
 const Contents = styled.div`
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
   align-items: stretch;
-  margin-right: 25px;
+  align-content: flex-start;
+  justify-content: flex-start;
+  position: relative;
+  flex: 1;
+  padding-left: 10px;
+`;
+
+const InnerContents = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  position: relative;
+`;
+
+const Flex = styled.div`
+  flex: 1;
 `;
 
 interface IRoomProps {
-  dark: boolean;
+  dark?: boolean;
   active: boolean;
   unread: number;
   title: string;
   image: string;
-  icon: string;
-  label: string;
+  icon?: string;
+  label?: string;
   excerpt: string;
   public: boolean;
   private: boolean;
-  onClick: any;
+  onClick?: any;
 }
 
 export const Room: React.FunctionComponent<IRoomProps> = (props: IRoomProps) => {
@@ -70,17 +113,17 @@ export const Room: React.FunctionComponent<IRoomProps> = (props: IRoomProps) => 
       onClick={props.onClick ? props.onClick : null}
       unread={props.unread}
       active={props.active}>
+      <ContainerPadding>
         <Avatar
           dark
           size="medium"
           image={props.image}
           title={props.title}
-          className="mr-10 ml-25"
           style={{ opacity: props.active || props.unread ? 1 : 0.5 }}
         />
 
-        <Contents className="column flexer">
-          <div className="row flexer">
+        <Contents>
+          <InnerContents>
             <Title active={props.active || (props.unread != 0)}>
               {props.title}
             </Title>
@@ -89,14 +132,13 @@ export const Room: React.FunctionComponent<IRoomProps> = (props: IRoomProps) => 
               <LockOutlined
                 htmlColor="#475669"
                 fontSize="small"
-                className="ml-5"
               />
             }
 
-            <div className="flexer"></div>
+            <Flex />
 
             {props.unread && <Badge />}
-          </div>
+          </InnerContents>
 
           {props.excerpt &&
             <Excerpt>
@@ -104,6 +146,7 @@ export const Room: React.FunctionComponent<IRoomProps> = (props: IRoomProps) => 
             </Excerpt>
           }
         </Contents>
-      </Container>
+      </ContainerPadding>
+    </Container>
   );
 };

@@ -6,7 +6,7 @@ import { withInfo } from "@storybook/addon-info";
 
 storiesOf('Popup', module)
   .add(
-  'With direction & text',
+  'Default',
   withInfo({ inline: true })(() => (
     <Popup
       visible={true}
