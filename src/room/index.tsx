@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
 import { Avatar } from '../avatar'
 import styled from 'styled-components'
-import '../helpers/extensions'
 import { LockOutlined } from '@material-ui/icons'
 
-const List = styled.div`
+const Container = styled.div<{ 
+  active: boolean;
+  unread: number;
+  onClick: any;
+}>`
   background: ${props => props.active ? "#0c1828" : "transparent" };
   padding-top: 4px;
   padding-bottom: 4px;
@@ -23,7 +26,9 @@ const Icon = styled.div`
   padding-right: 0px;
 `
 
-const Title = styled.div`
+const Title = styled.div<{ 
+  active: boolean 
+}>`
   overflow: hidden;
   cursor: pointer;
   font-size: 14px;
@@ -50,12 +55,26 @@ const Contents = styled.div`
   margin-right: 25px;
 `
 
-export default function RoomComponent(props) {
+interface IRoomProps {
+  dark: boolean;
+  active: boolean;
+  unread: number;
+  title: string;
+  image: string;
+  icon: string;
+  label: string;
+  excerpt: string
+  public: boolean;
+  private: boolean;
+  onClick: any;
+}
+
+export const Room: React.FunctionComponent<IRoomProps> = (props: IRoomProps) => {
   const [over, setOver] = useState(false)
 
   // prettier-ignore
   return (
-    <List
+    <Container
       onMouseEnter={() => setOver(true)}
       onMouseLeave={() => setOver(false)}
       onClick={props.onClick ? props.onClick : null}
@@ -95,19 +114,6 @@ export default function RoomComponent(props) {
             </Excerpt>
           }
         </Contents>
-    </List>
+      </Container>
   )
-}
-
-RoomComponent.propTypes = {
-  dark: PropTypes.bool,
-  active: PropTypes.bool,
-  unread: PropTypes.bool,
-  title: PropTypes.string,
-  image: PropTypes.string,
-  icon: PropTypes.string,
-  label: PropTypes.string,
-  excerpt: PropTypes.string,
-  public: PropTypes.bool,
-  private: PropTypes.bool,
 }

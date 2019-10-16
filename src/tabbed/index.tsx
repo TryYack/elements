@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { number, any } from 'prop-types'
 
-const PanelContainer = styled.div`
+const PanelContainer = styled.div<{
+  current: number;
+  className: string;
+}>`
   flex: 1;
   position: relative;
   width: 100%;
@@ -53,7 +57,9 @@ const PanelTitles = styled.div`
   height: 100%;
 `
 
-const Panels = styled.div`
+const Panels = styled.div<{
+  current: number;
+}>`
   flex: 1;
   position: relative;
   width: 100%;
@@ -82,7 +88,9 @@ const PanelTabButton = styled.div`
   }
 `
 
-const Panel = styled.div`
+const Panel = styled.div<{
+  index: number;
+}>`
   position: absolute;
   background: white;
   top: 0px;
@@ -94,14 +102,20 @@ const Panel = styled.div`
   transform: translateX(${props => props.index * 100}%);
 `
 
-export default function TabbedComponent({ panels, start }) {
-  const [current, setCurrent] = useState(start)
+interface ITabbedProps {
+  start: number;
+  panels: any;
+}
+
+
+export const Tabbed: React.FunctionComponent<ITabbedProps> = (props: ITabbedProps) => {
+  const [current, setCurrent] = useState(props.start)
 
   // prettier-ignore
   return (
     <PanelContainer current={current} className="tabbed-component">
       <PanelTitles className="tab">
-        {panels.map((panel, index) => {
+        {props.panels.map((panel, index) => {
           if (!panel.show) return null
 
           return (
@@ -116,7 +130,7 @@ export default function TabbedComponent({ panels, start }) {
       </PanelTitles>
       <PanelsContainer>
         <Panels current={current}>
-          {panels.map((panel, index) => {
+          {props.panels.map((panel, index) => {
             if (!panel.show) return null
             return (
               <Panel key={index} index={index}>
@@ -128,9 +142,4 @@ export default function TabbedComponent({ panels, start }) {
       </PanelsContainer>
     </PanelContainer>
   )
-}
-
-TabbedComponent.propTypes = {
-  start: PropTypes.number,
-  panels: PropTypes.any,
 }

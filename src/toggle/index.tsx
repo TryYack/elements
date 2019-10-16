@@ -13,7 +13,9 @@ const Container = styled.div`
   border-radius: 100px;
 `
 
-const Toggle = styled.div`
+const Circle = styled.div<{
+  on: boolean;
+}>`
   position: absolute;
   top: 0px;
   left: ${props => props.on ? "13px" : "0px"};
@@ -24,22 +26,22 @@ const Toggle = styled.div`
   height: 15px;
 `
 
-export default function ToggleComponent(props) {
+interface IToggleProps {
+  on: boolean;
+  onChange: any;
+}
+
+export const Toggle: React.FunctionComponent<IToggleProps> = (props: IToggleProps) => {
   const [on, setOn] = useState(props.on)
 
   useEffect(() => setOn(props.on), [props.on])
 
   return (
-    <Container on={on} onClick={() => {
+    <Container onClick={() => {
       props.onChange(!on)
       setOn(!on)
     }}>
-      <Toggle on={on} />
+      <Circle on={on} />
     </Container>
   )
-}
-
-ToggleComponent.propTypes = {
-  on: PropTypes.bool,
-  onChange: PropTypes.func,
 }

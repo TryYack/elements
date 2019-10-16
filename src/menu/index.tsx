@@ -13,7 +13,9 @@ const Divider = styled.div`
   height: 2px;
 `
 
-const Row = styled.div`
+const Row = styled.div<{
+  nohover: boolean;
+}>`
   background: transparent;
   padding: 7px 5px 7px 5px;
   width: 100%;
@@ -53,11 +55,15 @@ const Label = styled.div`
   white-space: nowrap;
 `
 
-export default function MenuComponent({ items }) {
-  // prettier-ignore
+
+interface IMenuProps {
+  items: any[];
+}
+
+export const Menu: React.FunctionComponent<IMenuProps> = (props: IMenuProps) => {
   return (
     <Container className="column">
-      {items.map((item, index) => {
+      {props.items.map((item, index) => {
         if (item.hide) return null
 
         return (
@@ -96,8 +102,4 @@ export default function MenuComponent({ items }) {
       })}
     </Container>
   )
-}
-
-MenuComponent.propTypes = {
-  items: PropTypes.array,
 }

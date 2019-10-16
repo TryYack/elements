@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import ContextPortal from '../portals/context.portal'
 
 const Container = styled.div`
   position: relative;
@@ -14,7 +13,7 @@ const Container = styled.div`
 `
 
 // prettier-ignore
-const Content = styled.div`
+const Content = styled.div<{ width: number }>`
   display: flex;
   position: absolute;
   z-index: 1000;
@@ -36,7 +35,25 @@ const ContentActiveArea = styled.div`
   flex: 1;
 `
 
-export default class PopupComponent extends React.Component {
+interface IPopupProps {
+  visible: boolean;
+  handleDismiss: any;
+  containerClassName: string;
+  children: any;
+  direction: string;
+  width: number;
+  hidePopup: any;
+  content: any;
+}
+
+interface IPopupState {
+  visible: boolean;
+}
+
+export class Popup extends React.Component<IPopupProps, IPopupState> {
+  wrapperRef: any;
+  rootRef: any;
+
   constructor(props) {
     super(props)
 
@@ -46,9 +63,14 @@ export default class PopupComponent extends React.Component {
 
     this.wrapperRef = React.createRef()
     this.rootRef = React.createRef()
+    
     this.handleClickOutside = this.handleClickOutside.bind(this)
     this.handleKeyPress = this.handleKeyPress.bind(this)
     this.hidePopup = this.hidePopup.bind(this)
+  }
+
+  hidePopup() {
+    this.props.handleDismiss()
   }
 
   handleClickOutside(event) {
@@ -80,10 +102,6 @@ export default class PopupComponent extends React.Component {
     return { visible: props.visible }
   }
 
-  hidePopup(e) {
-    this.props.handleDismiss()
-  }
-
   render() {
     // If both the props & state are true
     // Initially the state will be populated by the prop = true + true
@@ -103,31 +121,18 @@ export default class PopupComponent extends React.Component {
         ref={(ref) => this.rootRef = ref}>
         {this.props.children}
         {this.props.visible &&
-          <ContextPortal>
-            <div style={{ top, left, width, height, position: 'absolute' }}>
-              <Content
-                ref={(ref) => this.wrapperRef = ref}
-                width={this.props.width}
-                className={this.props.direction}>
-                <ContentActiveArea>
-                  {this.props.content}
-                </ContentActiveArea>
-              </Content>
-            </div>
-          </ContextPortal>
+          <div style={{ top, left, width, height, position: 'absolute' }}>
+            <Content
+              ref={(ref) => this.wrapperRef = ref}
+              width={this.props.width}
+              className={this.props.direction}>
+              <ContentActiveArea>
+                {this.props.content}
+              </ContentActiveArea>
+            </Content>
+          </div>
         }
       </Container>
     )
   }
-}
-
-PopupComponent.propTypes = {
-  visible: PropTypes.bool,
-  handleDismiss: PropTypes.func,
-  containerClassName: PropTypes.string,
-  children: PropTypes.any,
-  direction: PropTypes.string,
-  width: PropTypes.number,
-  hidePopup: PropTypes.func,
-  content: PropTypes.any,
 }

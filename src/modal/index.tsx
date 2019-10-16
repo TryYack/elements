@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { CloseOutlined } from '@material-ui/icons'
 
-const Modal = styled.div`
+const Container = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   z-index: 1000;
@@ -43,34 +43,33 @@ const TitleText = styled.div`
   font-weight: 600;
 `
 
-export default function ModalComponent({ children, open, title, width, height, onClose, footer }) {
-  // prettier-ignore
+interface IModalProps {
+  children: any;
+  title: string;
+  width: number;
+  height: any;
+  onClose: any;
+  footer: any;
+}
+
+export const Modal: React.FunctionComponent<IModalProps> = (props: IModalProps) => {
   return (
-    <Modal>
-      <Inner className="column" style={{ width, height }}>
+    <Container>
+      <Inner className="column" style={{ width: props.width, height: props.height }}>
         <Title className="row">
-          <TitleText>{title}</TitleText>
+          <TitleText>{props.title}</TitleText>
           <CloseOutlined
             htmlColor="#524150"
             fontSize="large"
             className="button"
-            onClick={onClose}
+            onClick={props.onClose}
           />
         </Title>
         <InnerContainer>
-          {children}
+          {props.children}
         </InnerContainer>
-        {footer}
+        {props.footer}
       </Inner>
-    </Modal>
+    </Container>
   )
-}
-
-ModalComponent.propTypes = {
-  children: PropTypes.any,
-  title: PropTypes.string,
-  width: PropTypes.number,
-  height: PropTypes.any,
-  onClose: PropTypes.func,
-  footer: PropTypes.any,
 }

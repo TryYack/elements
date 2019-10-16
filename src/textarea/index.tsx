@@ -8,7 +8,9 @@ const Label = styled.div`
   padding-bottom: 5px;
 `
 
-const Textarea = styled.textarea`
+const Field = styled.textarea<{
+  label: string;
+}>`
   border: none;
   flex: 1;
   background: transparent;
@@ -29,11 +31,15 @@ const Textarea = styled.textarea`
   }
 `
 
-export function TextareaComponent(props) {
+interface ITextareaProps {
+  label: string;
+}
+
+export const Textarea: React.FunctionComponent<ITextareaProps> = (props: ITextareaProps) => {
   return (
     <React.Fragment>
       <Label>{props.label}</Label>
-      <Textarea {...props} />
+      <Field {...props} />
     </React.Fragment>
   )
 }

@@ -16,13 +16,13 @@ const Loading = styled.div`
   justify-content: center;
 `
 
-const Spinner = styled.div`
+const Graphic = styled.div<{ className: string }>`
   display: inline-block;
   position: relative;
   width: 20px;
   height: 20px;
 
-  ${Spinner} div {
+  &.inner div {
     box-sizing: border-box;
     display: block;
     position: absolute;
@@ -35,15 +35,15 @@ const Spinner = styled.div`
     border-color: #3d9fe1 transparent transparent transparent;
   }
 
-  ${Spinner} div:nth-child(1) {
+  &.inner div:nth-child(1) {
     animation-delay: -0.45s;
   }
 
-  ${Spinner} div:nth-child(2) {
+  &.inner div:nth-child(2) {
     animation-delay: -0.3s;
   }
 
-  ${Spinner} div:nth-child(3) {
+  &.inner div:nth-child(3) {
     animation-delay: -0.15s;
   }
 
@@ -57,9 +57,6 @@ const Spinner = styled.div`
   }
 `
 
-export default function SpinnerComponent(props) {
-  // prettier-ignore
-  return <Loading><Spinner><div></div><div></div><div></div><div></div></Spinner></Loading>
+export const Spinner: React.FunctionComponent<any> = (props: any) => {
+  return <Loading><Graphic className="inner"><div></div><div></div><div></div><div></div></Graphic></Loading>
 }
-
-SpinnerComponent.propTypes = {}

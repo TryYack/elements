@@ -33,8 +33,14 @@ const Text = styled.span`
   font-weight: 500;
 `
 
-export default function NotificationComponent(props) {
-  // prettier-ignore
+interface INotificationProps {
+  text: string;
+  actionText: string;
+  onActionClick: any;
+  onDismissClick: any;
+}
+
+export const Notification: React.FunctionComponent<INotificationProps> = (props: INotificationProps) => {
   return (
     <Container className="row">
       <Padding className="row">
@@ -59,11 +65,4 @@ export default function NotificationComponent(props) {
       </Padding>
     </Container>
   )
-}
-
-NotificationComponent.propTypes = {
-  text: PropTypes.string,
-  actionText: PropTypes.string,
-  onActionClick: PropTypes.func,
-  onDismissClick: PropTypes.func,
 }
