@@ -1,16 +1,16 @@
-import React from 'react'
-import styled from 'styled-components'
-import { CloseOutlined } from '@material-ui/icons'
+import * as React from "react";
+import styled from "styled-components";
+import { CloseOutlined } from "@material-ui/icons";
 
 const Container = styled.div`
   background-color: #05A6FF;
   width: 100%;
-`
+`;
 
 const Padding = styled.div`
   flex: 1;
   padding: 5px;
-`
+`;
 
 const ActionText = styled.span`
   color: white;
@@ -19,19 +19,19 @@ const ActionText = styled.span`
   margin-left: 10px;
   cursor: pointer;
   text-decoration: underline;
-`
+`;
 
 const Icon = styled.span`
   margin-left: auto;
   height: 22px;
   width: 22px;
-`
+`;
 
 const Text = styled.span`
   color: white;
   font-size: 14px;
   font-weight: 500;
-`
+`;
 
 interface INotificationProps {
   text: string;
@@ -64,5 +64,5 @@ export const Notification: React.FunctionComponent<INotificationProps> = (props:
         }
       </Padding>
     </Container>
-  )
-}
+  );
+};

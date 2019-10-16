@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import React from 'react'
+import * as React from "react";
+import styled from "styled-components";
 
 const Overlay = styled.div<{
   className: string;
@@ -26,8 +26,8 @@ const Overlay = styled.div<{
     transition: visibility 0s, opacity 0.1s linear;
     z-index: 10000;
   }
-`
-// prettier-ignore
+`;
+
 const LoadingAnimation = styled.div<{
   className: string;
 }>`
@@ -81,7 +81,7 @@ const LoadingAnimation = styled.div<{
     transition: height 0.25s, visibility 0s, opacity 0.1s linear;
     z-index: 10000;
   }
-`
+`;
 
 interface ILoadingProps {
   show: boolean;
@@ -93,5 +93,5 @@ export const Loading: React.FunctionComponent<ILoadingProps> = (props: ILoadingP
       <LoadingAnimation className={`loading ${props.show ? "show" : ""}`} />
       <Overlay className={`loading ${props.show ? "show" : ""}`} />
     </React.Fragment>
-  )
-}
+  );
+};

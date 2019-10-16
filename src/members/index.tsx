@@ -1,53 +1,53 @@
-import React from 'react'
-import { User } from '../user'
+import * as React from "react";
+import { User } from "../user";
 
-interface IMemberProps {
+interface IMembersProps {
   handleAccept: any;
   members: any[];
 }
 
-interface IMemberState {
+interface IMembersState {
   index: number;
   members: any[];
 }
 
-export class Members extends React.Component<IMemberProps, IMemberState> {
-  constructor(props: IMemberProps) {
-    super(props)
-
-    this.state = { index: 0, members: [] }
-    this.handleKeyPress = this.handleKeyPress.bind(this)
+export class Members extends React.Component<IMembersProps, IMembersState> {
+  public static getDerivedStateFromProps(props: IMembersProps, state: IMembersState) {
+    return {
+      members: props.members.filter((member, index) => (index <= 5 ? true : false)),
+    };
   }
 
-  handleKeyPress(e: any) {
+  constructor(props: IMembersProps) {
+    super(props);
+
+    this.state = { index: 0, members: [] };
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+  }
+
+  public handleKeyPress(e: any) {
     // Move up
-    if (e.keyCode == 38) this.setState({ index: this.state.index - 1 < 0 ? this.state.members.length - 1 : this.state.index - 1 })
+    if (e.keyCode == 38) this.setState({ index: this.state.index - 1 < 0 ? this.state.members.length - 1 : this.state.index - 1 });
 
     // Move down
-    if (e.keyCode == 40) this.setState({ index: this.state.index + 1 == this.state.members.length ? 0 : this.state.index + 1 })
+    if (e.keyCode == 40) this.setState({ index: this.state.index + 1 == this.state.members.length ? 0 : this.state.index + 1 });
 
     // Press enter
     if (e.keyCode == 13) {
-      if (this.state.members.length > 0) this.props.handleAccept(this.state.members[this.state.index])
+      if (this.state.members.length > 0) this.props.handleAccept(this.state.members[this.state.index]);
     }
   }
 
-  componentDidMount() {
-    document.addEventListener('keyup', this.handleKeyPress)
+  public componentDidMount() {
+    document.addEventListener("keyup", this.handleKeyPress);
   }
 
-  componentWillUnmount() {
-    document.removeEventListener('keyup', this.handleKeyPress)
-  }
-
-  static getDerivedStateFromProps(props: IMemberProps, state: IMemberState) {
-    return {
-      members: props.members.filter((member, index) => (index <= 5 ? true : false)),
-    }
+  public componentWillUnmount() {
+    document.removeEventListener("keyup", this.handleKeyPress);
   }
 
   // prettier-ignore
-  render() {
+  public render() {
     return (
       <React.Fragment>
         {this.state.members.map((member, index) => {
@@ -56,15 +56,13 @@ export class Members extends React.Component<IMemberProps, IMemberState> {
               key={index}
               active={index == this.state.index}
               image={member.user.image}
-              color={member.user.color}
               name={member.user.name}
-              label={"@"+member.user.username}
-              className="button"
+              label={"@" + member.user.username}
               onClick={() => this.props.handleAccept(member)}
             />
-          )
+          );
         })}
       </React.Fragment>
-    )
+    );
   }
 }

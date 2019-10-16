@@ -2,7 +2,7 @@
   "extends": "tslint:recommended",
   "rules": {
     "max-line-length": {
-      "options": [120]
+      "options": [200]
     },
     "new-parens": true,
     "arrow-parens": false,
@@ -15,6 +15,7 @@
     "no-consecutive-blank-lines": false,
     "ordered-imports": [false],
     "object-literal-sort-keys": [false],
+    "triple-equals": [false],
     "no-console": {
       "severity": "warning",
       "options": ["debug", "info", "log", "time", "timeEnd", "trace"]

@@ -48,7 +48,8 @@
     "test": "jest",
     "tsc": "tsc -p tsconfig.json",
     "tsc-watch": "tsc -p tsconfig.json -w",
-    "lint": "tslint --project ./"
+    "lint": "tslint --project ./",
+    "lint:fix": "tslint --fix -c ./tslint.json 'src/**/*{.ts,.tsx}'"
   },
   "author": "Jo du Plessis",
   "license": "ISC",
@@ -69,6 +70,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
+    "@material-ui/core": "^4.5.1",
     "@storybook/addon-actions": "^5.1.9",
     "@storybook/addon-info": "^5.1.9",
     "@storybook/addon-knobs": "^5.1.9",

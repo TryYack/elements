@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import { Avatar } from '../avatar'
-import styled from 'styled-components'
-import { LockOutlined } from '@material-ui/icons'
+import * as React from "react";
+import styled from "styled-components";
+import { Avatar } from "../avatar";
+import { LockOutlined } from "@material-ui/icons";
 
 const Container = styled.div<{ 
   active: boolean;
@@ -12,22 +12,17 @@ const Container = styled.div<{
   padding-top: 4px;
   padding-bottom: 4px;
   display: flex;
-`
+`;
 
 const Badge = styled.div`
   width: 10px;
   height: 10px;
   border-radius: 50%;
   background-color: #007af5;
-`
-
-const Icon = styled.div`
-  padding-left: 0px;
-  padding-right: 0px;
-`
+`;
 
 const Title = styled.div<{ 
-  active: boolean 
+  active: boolean, 
 }>`
   overflow: hidden;
   cursor: pointer;
@@ -36,7 +31,7 @@ const Title = styled.div<{
   color: ${props => props.active ? "white" : "#475669" };
   white-space: nowrap;
   width: max-content;
-`
+`;
 
 const Excerpt = styled.div`
   font-size: 11px;
@@ -47,13 +42,13 @@ const Excerpt = styled.div`
   overflow: hidden;
   flex: 1;
   margin-top: 4px;
-`
+`;
 
 const Contents = styled.div`
   overflow: hidden;
   align-items: stretch;
   margin-right: 25px;
-`
+`;
 
 interface IRoomProps {
   dark: boolean;
@@ -63,20 +58,15 @@ interface IRoomProps {
   image: string;
   icon: string;
   label: string;
-  excerpt: string
+  excerpt: string;
   public: boolean;
   private: boolean;
   onClick: any;
 }
 
 export const Room: React.FunctionComponent<IRoomProps> = (props: IRoomProps) => {
-  const [over, setOver] = useState(false)
-
-  // prettier-ignore
   return (
     <Container
-      onMouseEnter={() => setOver(true)}
-      onMouseLeave={() => setOver(false)}
       onClick={props.onClick ? props.onClick : null}
       unread={props.unread}
       active={props.active}>
@@ -91,7 +81,7 @@ export const Room: React.FunctionComponent<IRoomProps> = (props: IRoomProps) => 
 
         <Contents className="column flexer">
           <div className="row flexer">
-            <Title active={props.active || props.unread}>
+            <Title active={props.active || (props.unread != 0)}>
               {props.title}
             </Title>
 
@@ -115,5 +105,5 @@ export const Room: React.FunctionComponent<IRoomProps> = (props: IRoomProps) => 
           }
         </Contents>
       </Container>
-  )
-}
+  );
+};

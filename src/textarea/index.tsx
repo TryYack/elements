@@ -1,12 +1,12 @@
-import React from 'react'
-import styled from 'styled-components'
+import * as React from "react";
+import styled from "styled-components";
 
 const Label = styled.div`
   color: #858e96;
   font-size: 12px;
   font-weight: 700;
   padding-bottom: 5px;
-`
+`;
 
 const Field = styled.textarea<{
   label: string;
@@ -29,7 +29,7 @@ const Field = styled.textarea<{
   &::placeholder {
     color: #acb5bd;
   }
-`
+`;
 
 interface ITextareaProps {
   label: string;
@@ -41,5 +41,5 @@ export const Textarea: React.FunctionComponent<ITextareaProps> = (props: ITextar
       <Label>{props.label}</Label>
       <Field {...props} />
     </React.Fragment>
-  )
-}
+  );
+};

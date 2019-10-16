@@ -1,5 +1,5 @@
-import React from 'react'
-import styled from 'styled-components'
+import * as React from "react";
+import styled from "styled-components";
 
 const Loading = styled.div`
   position: absolute;
@@ -14,7 +14,7 @@ const Loading = styled.div`
   align-items: center;
   align-content: center;
   justify-content: center;
-`
+`;
 
 const Graphic = styled.div<{ className: string }>`
   display: inline-block;
@@ -55,8 +55,8 @@ const Graphic = styled.div<{ className: string }>`
       transform: rotate(360deg);
     }
   }
-`
+`;
 
 export const Spinner: React.FunctionComponent<any> = (props: any) => {
-  return <Loading><Graphic className="inner"><div></div><div></div><div></div><div></div></Graphic></Loading>
-}
+  return <Loading><Graphic className="inner"><div></div><div></div><div></div><div></div></Graphic></Loading>;
+};

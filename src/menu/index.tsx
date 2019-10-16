@@ -1,17 +1,17 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Avatar } from '../avatar'
+import * as React from "react";
+import styled from "styled-components";
+import { Avatar } from "../avatar";
 
 const Container = styled.div`
   padding: 10px 10px 10px 10px;
   width: 100%;
-`
+`;
 
 const Divider = styled.div`
   background: #f1f3f5;
   width: 100%;
   height: 2px;
-`
+`;
 
 const Row = styled.div<{
   nohover: boolean;
@@ -20,22 +20,22 @@ const Row = styled.div<{
   padding: 7px 5px 7px 5px;
   width: 100%;
   border-radius: 10px;
-  cursor: ${props => (props.nohover ? null : 'pointer')};
+  cursor: ${props => (props.nohover ? null : "pointer")};
 
   &:hover {
-    background: ${props => (props.nohover ? null : '#f8f9fa')};
+    background: ${props => (props.nohover ? null : "#f8f9fa")};
   }
-`
+`;
 
 const IconContainer = styled.div`
   margin-right: 10px;
   margin-left: 5px;
-`
+`;
 
 const AvatarContainer = styled.div`
   margin-right: 7px;
   margin-left: 3px;
-`
+`;
 
 const Text = styled.div`
   overflow: hidden;
@@ -44,7 +44,7 @@ const Text = styled.div`
   color: #868e96;
   width: 100%;
   white-space: nowrap;
-`
+`;
 
 const Label = styled.div`
   overflow: hidden;
@@ -53,8 +53,7 @@ const Label = styled.div`
   color: #cfd4da;
   width: 100%;
   white-space: nowrap;
-`
-
+`;
 
 interface IMenuProps {
   items: any[];
@@ -64,7 +63,7 @@ export const Menu: React.FunctionComponent<IMenuProps> = (props: IMenuProps) => 
   return (
     <Container className="column">
       {props.items.map((item, index) => {
-        if (item.hide) return null
+        if (item.hide) return null;
 
         return (
           <Row
@@ -98,8 +97,8 @@ export const Menu: React.FunctionComponent<IMenuProps> = (props: IMenuProps) => 
               </React.Fragment>
             }
           </Row>
-        )
+        );
       })}
     </Container>
-  )
-}
+  );
+};

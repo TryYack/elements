@@ -1,6 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
-import { CloseOutlined } from '@material-ui/icons'
+import * as React from "react";
+import styled from "styled-components";
+import { CloseOutlined } from "@material-ui/icons";
 
 const Container = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
@@ -19,29 +19,29 @@ const Container = styled.div`
   opacity: 1;
   z-index: 10;
   transition: visibility 0s, opacity 0.1s linear;
-`
+`;
 
 const Inner = styled.div`
   background: white;
   border-radius: 5px;
-`
+`;
 
 const InnerContainer = styled.div`
   flex: 1;
   width: 100%;
-`
+`;
 
 const Title = styled.div`
   width: 100%;
   padding: 20px;
-`
+`;
 
 const TitleText = styled.div`
   flex: 1;
   color: #202529;
   font-size: 28px;
   font-weight: 600;
-`
+`;
 
 interface IModalProps {
   children: any;
@@ -71,5 +71,5 @@ export const Modal: React.FunctionComponent<IModalProps> = (props: IModalProps) 
         {props.footer}
       </Inner>
     </Container>
-  )
-}
+  );
+};

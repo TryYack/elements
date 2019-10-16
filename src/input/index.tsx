@@ -1,12 +1,12 @@
-import React from 'react'
-import styled from 'styled-components'
+import * as React from "react";
+import styled from "styled-components";
 
 const Label = styled.div`
   color: #858e96;
   font-size: 12px;
   font-weight: 700;
   padding-bottom: 5px;
-`
+`;
 
 const InputField = styled.input<{
   label: string;
@@ -29,7 +29,7 @@ const InputField = styled.input<{
   &::placeholder {
     color: #acb5bd;
   }
-`
+`;
 
 interface IInputProps {
   label: string;
@@ -41,5 +41,5 @@ export const Input: React.FunctionComponent<IInputProps> = (props: IInputProps) 
       <Label>{props.label}</Label>
       <InputField {...props} />
     </React.Fragment>
-  )
-}
+  );
+};

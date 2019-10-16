@@ -1,7 +1,7 @@
-import styled from 'styled-components'
-import React from 'react'
+import * as React from "react";
+import styled from "styled-components";
 
-const Error = styled.div`
+const Container = styled.div`
   position: relative;
   top: 0px;
   left: 0px;
@@ -22,24 +22,24 @@ const Error = styled.div`
   opacity: 1;
   transition: visibility 0s, opacity 0.1s linear;
   z-index: 10000;
-`
+`;
 
 const Text = styled.div`
   color: white;
   font-size: 12px;
   font-weight: 700;
-`
+`;
 
 interface IErrorProps {
   message?: string;
 }
 
-export const ErrorComponent: React.FunctionComponent<IErrorProps> = (props: IErrorProps) => {
-  if (!props.message) return null
+export const Error: React.FunctionComponent<IErrorProps> = (props: IErrorProps) => {
+  if (!props.message) return null;
 
   return (
-    <Error>
+    <Container>
       <Text>{props.message}</Text>
-    </Error>
-  )
-}
+    </Container>
+  );
+};

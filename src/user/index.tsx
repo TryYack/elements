@@ -1,18 +1,18 @@
-import { Avatar } from '../avatar'
-import React, { useState } from 'react'
-import styled from 'styled-components'
+import * as React from "react";
+import styled from "styled-components";
+import { Avatar } from "../avatar";
 
 const Name = styled.div`
   color: #483545;
   font-size: 14px;
   font-weight: 500;
-`
+`;
 
 const Label = styled.div`
   color: #858e96;
   font-size: 12px;
   font-weight: 500;
-`
+`;
 
 const Container = styled.div<{
   active: boolean;
@@ -21,7 +21,7 @@ const Container = styled.div<{
   height: 60px;
   padding-left: 20px;
   padding-right: 20px;
-  background: ${props => (props.active ? '#f8f9fa' : 'transparent')};
+  background: ${props => (props.active ? "#f8f9fa" : "transparent")};
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -29,19 +29,20 @@ const Container = styled.div<{
   justify-content: flex-start;
   position: relative;
   border-bottom: 1px solid #edf0f2;
-`
+  cursor: pointer;
+`;
 
 interface IUserProps {
   image: string;
   name: string;
   label: string;
-  children: any;
+  children?: any;
   onClick: any;
   active: boolean;
 }
 
 export const User: React.FunctionComponent<IUserProps> = (props: IUserProps) => {
-  const [hover, setHover] = useState(false)
+  const [hover, setHover] = React.useState(false);
 
   // prettier-ignore
   return (
@@ -69,5 +70,5 @@ export const User: React.FunctionComponent<IUserProps> = (props: IUserProps) => 
         </React.Fragment>
       }
     </Container>
-  )
-}
+  );
+};

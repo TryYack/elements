@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import styled from 'styled-components'
+import * as React from "react";
+import styled from "styled-components";
 
 const Container = styled.div`
   background: white;
@@ -11,7 +11,7 @@ const Container = styled.div`
   cursor: pointer;
   overflow: hidden;
   border-radius: 100px;
-`
+`;
 
 const Circle = styled.div<{
   on: boolean;
@@ -24,7 +24,7 @@ const Circle = styled.div<{
   transition: left 0.5s, background-color 0.5s;
   width: 15px;
   height: 15px;
-`
+`;
 
 interface IToggleProps {
   on: boolean;
@@ -32,16 +32,16 @@ interface IToggleProps {
 }
 
 export const Toggle: React.FunctionComponent<IToggleProps> = (props: IToggleProps) => {
-  const [on, setOn] = useState(props.on)
+  const [on, setOn] = React.useState(props.on);
 
-  useEffect(() => setOn(props.on), [props.on])
+  React.useEffect(() => setOn(props.on), [props.on]);
 
   return (
     <Container onClick={() => {
-      props.onChange(!on)
-      setOn(!on)
+      props.onChange(!on);
+      setOn(!on);
     }}>
       <Circle on={on} />
     </Container>
-  )
-}
+  );
+};
