@@ -2,11 +2,10 @@ import * as React from "react";
 interface IPopupProps {
     visible: boolean;
     handleDismiss: any;
-    containerClassName: string;
+    containerClassName?: string;
     children: any;
     direction: string;
     width: number;
-    hidePopup: any;
     content: any;
 }
 interface IPopupState {
