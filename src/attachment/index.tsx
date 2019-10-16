@@ -107,6 +107,7 @@ const Extension = styled.div`
 const Link = styled.div`
   font-weight: 500;
   font-size: 10px;
+  cursor: pointer;
   color: #007af5;
   margin-right: 10px;
   font-family: -apple-system, BlinkMacSystemFont,
@@ -153,7 +154,6 @@ interface IAttachmentProps {
   /** File mime type */
   mime: string;
   onDeleteClick?: any;
-  onDownloadClick?: any;
 }
 
 export const Attachment: React.FunctionComponent<IAttachmentProps> = (props: IAttachmentProps) => {
@@ -274,13 +274,11 @@ export const Attachment: React.FunctionComponent<IAttachmentProps> = (props: IAt
             {getMimeTypeDescription(props.mime)}
           </Extension>
           
-          {props.onDownloadClick &&
-            <Link
-              className="button"
-              onClick={props.onDownloadClick}>
-              Download
-            </Link>
-          }
+          <Link
+            className="button"
+            onClick={() => window.open(props.uri)}>
+            Download
+          </Link>
 
           {(props.layout == "compose" && props.onDeleteClick) &&
             <Link
