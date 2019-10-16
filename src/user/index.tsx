@@ -14,53 +14,60 @@ const Label = styled.div`
   font-weight: 500;
 `
 
-const User = styled.div`
+const Container = styled.div<{
+  active: boolean;
+}>`
   width: 100%;
   height: 60px;
   padding-left: 20px;
   padding-right: 20px;
   background: ${props => (props.active ? '#f8f9fa' : 'transparent')};
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: flex-start;
+  position: relative;
+  border-bottom: 1px solid #edf0f2;
 `
 
-UserComponent.propTypes = {
-  image: PropTypes.string,
-  name: PropTypes.string,
-  label: PropTypes.string,
-  className: PropTypes.string,
-  children: PropTypes.any,
-  onClick: PropTypes.func,
-  active: PropTypes.bool,
+interface IUserProps {
+  image: string;
+  name: string;
+  label: string;
+  children: any;
+  onClick: any;
+  active: boolean;
 }
 
-export default function UserComponent({ image, name, label, className, children, onClick, active }) {
+export const User: React.FunctionComponent<IUserProps> = (props: IUserProps) => {
   const [hover, setHover] = useState(false)
 
   // prettier-ignore
   return (
-    <User
-      active={active}
-      className={`row  border-bottom ${className}`}
-      onClick={onClick}
+    <Container
+      active={props.active}
+      onClick={props.onClick}
       onMouseOver={() => setHover(true)}
       onMouseLeave={() => setHover(false)}>
       <Avatar
         className="small"
-        image={image}
-        title={name}
+        image={props.image}
+        title={props.name}
       />
 
       <div className="pl-10 column">
-        <Name>{name}</Name>
-        <Label>{label}</Label>
+        <Name>{props.name}</Name>
+        <Label>{props.label}</Label>
       </div>
 
       <div className="flexer"></div>
 
       {hover &&
         <React.Fragment>
-          {children}
+          {props.children}
         </React.Fragment>
       }
-    </User>
+    </Container>
   )
 }

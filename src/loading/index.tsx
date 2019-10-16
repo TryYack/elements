@@ -1,7 +1,9 @@
 import styled from 'styled-components'
 import React from 'react'
 
-const Overlay = styled.div`
+const Overlay = styled.div<{
+  className: string;
+}>`
   position: absolute;
   width: 100%;
   height: 99.5%;
@@ -26,7 +28,9 @@ const Overlay = styled.div`
   }
 `
 // prettier-ignore
-const Loading = styled.div`
+const LoadingAnimation = styled.div<{
+  className: string;
+}>`
   position: absolute;
   top: 0px;
   left: 0px;
@@ -79,16 +83,15 @@ const Loading = styled.div`
   }
 `
 
-LoadingComponent.propTypes = {
-  show: PropTypes.bool,
+interface ILoadingProps {
+  show: boolean;
 }
 
-export default function LoadingComponent({ show }) {
-  // prettier-ignore
+export const Loading: React.FunctionComponent<ILoadingProps> = (props: ILoadingProps) => {
   return (
     <React.Fragment>
-      <Loading className={`loading ${show ? "show" : ""}`} />
-      <Overlay className={`loading ${show ? "show" : ""}`} />
+      <LoadingAnimation className={`loading ${props.show ? "show" : ""}`} />
+      <Overlay className={`loading ${props.show ? "show" : ""}`} />
     </React.Fragment>
   )
 }

@@ -8,7 +8,9 @@ const Label = styled.div`
   padding-bottom: 5px;
 `
 
-const Input = styled.input`
+const InputField = styled.input<{
+  label: string;
+}>`
   border: none;
   flex: 1;
   background: transparent;
@@ -29,11 +31,15 @@ const Input = styled.input`
   }
 `
 
-export function InputComponent(props) {
+interface IInputProps {
+  label: string;
+}
+
+export const Input: React.FunctionComponent<IInputProps> = (props: IInputProps) => {
   return (
     <React.Fragment>
       <Label>{props.label}</Label>
-      <Input {...props} />
+      <InputField {...props} />
     </React.Fragment>
   )
 }

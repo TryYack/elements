@@ -30,19 +30,16 @@ const Text = styled.div`
   font-weight: 700;
 `
 
-ErrorComponent.propTypes = {
-  message: PropTypes.any,
+interface IErrorProps {
+  message?: string;
 }
 
-export default function ErrorComponent(props) {
-  const show = !!props.message
+export const ErrorComponent: React.FunctionComponent<IErrorProps> = (props: IErrorProps) => {
+  if (!props.message) return null
 
-  if (!show) return null
-
-  // prettier-ignore
   return (
-    <Error className={`loading ${show ? "show" : ""}`}>
-      <Text>{typeof(props.message) == "string" ? props.message : "There has been an error"}</Text>
+    <Error>
+      <Text>{props.message}</Text>
     </Error>
   )
 }

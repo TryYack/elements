@@ -1,16 +1,25 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import styled from 'styled-components'
 import { User } from '../user'
 
-export default class MembersComponent extends React.Component {
-  constructor(props) {
+interface IMemberProps {
+  handleAccept: any;
+  members: any[];
+}
+
+interface IMemberState {
+  index: number;
+  members: any[];
+}
+
+export class Members extends React.Component<IMemberProps, IMemberState> {
+  constructor(props: IMemberProps) {
     super(props)
 
     this.state = { index: 0, members: [] }
     this.handleKeyPress = this.handleKeyPress.bind(this)
   }
 
-  handleKeyPress(e) {
+  handleKeyPress(e: any) {
     // Move up
     if (e.keyCode == 38) this.setState({ index: this.state.index - 1 < 0 ? this.state.members.length - 1 : this.state.index - 1 })
 
@@ -31,7 +40,7 @@ export default class MembersComponent extends React.Component {
     document.removeEventListener('keyup', this.handleKeyPress)
   }
 
-  static getDerivedStateFromProps(props, state) {
+  static getDerivedStateFromProps(props: IMemberProps, state: IMemberState) {
     return {
       members: props.members.filter((member, index) => (index <= 5 ? true : false)),
     }
@@ -58,9 +67,4 @@ export default class MembersComponent extends React.Component {
       </React.Fragment>
     )
   }
-}
-
-MembersComponent.propTypes = {
-  handleAccept: PropTypes.func,
-  members: PropTypes.array,
 }
