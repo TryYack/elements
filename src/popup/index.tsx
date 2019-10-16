@@ -28,7 +28,7 @@ const Content = styled.div<{ width: number }>`
 
   &.left-top { top: 0px; left: 0px; transform: translateY(-100%);  }
   &.right-top { top: 0px; right: 0px; transform: translateY(-100%); }
-  &.left-bottom { border: 1px solid blue; bottom: 0px; left: 0px; transform: translateY(100%); }
+  &.left-bottom { bottom: 0px; left: 0px; transform: translateY(100%); }
   &.right-bottom { bottom: 0px; right : 0px; transform: translateY(100%); }
 `;
 
