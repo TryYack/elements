@@ -41,6 +41,13 @@ interface IPopupProps {
   handleDismiss: any;
   containerClassName?: string;
   children: any;
+    /**
+   * Possible values:
+   * - "left-top"
+   * - "right-top"
+   * - "left-bottom"
+   * - "right-bottom"
+   */
   direction: string;
   width: number;
   content: any;

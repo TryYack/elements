@@ -56,7 +56,11 @@ const Text = styled.span`
 
 interface INotificationProps {
   text: string;
+
+  /** Text next to main text */
   actionText?: string;
+
+  /** When user click on text next to main text */
   onActionClick?: any;
   onDismissClick?: any;
 }

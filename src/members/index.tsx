@@ -2,7 +2,10 @@ import * as React from "react";
 import { User } from "../user";
 
 interface IMembersProps {
+  /** When a user presses enter or clicks */
   handleAccept: any;
+
+  /** { user: { id: '5', name: 'Jon Doe', username: 'jondoe', image: 'https://usepanda.com/img/source-icons/theNextWeb.png' }} */
   members: any[];
 }
 

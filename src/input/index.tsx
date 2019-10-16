@@ -41,6 +41,7 @@ const InputField = styled.input<{
 `;
 
 interface IInputProps {
+  /** Label above field */
   label: string;
   value: string;
   onChange: any;
