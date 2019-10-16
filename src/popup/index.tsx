@@ -1,7 +1,9 @@
 import * as React from "react";
 import styled from "styled-components";
 
-const Container = styled.div`
+const Container = styled.div<{
+  className: string;
+}>`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -12,7 +14,6 @@ const Container = styled.div`
   height: max-content;
 `;
 
-// prettier-ignore
 const Content = styled.div<{ width: number }>`
   display: flex;
   position: absolute;
@@ -20,14 +21,14 @@ const Content = styled.div<{ width: number }>`
   background: white;
   border-radius: 5px;
   overflow: hidden;
-  border: 1px solid #f7f7f7;
+  border: 1px solid #F1F3F5;
   box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.05);
   width: ${props => props.width}px;
   height: max-content;
 
   &.left-top { top: 0px; left: 0px; transform: translateY(-100%);  }
   &.right-top { top: 0px; right: 0px; transform: translateY(-100%); }
-  &.left-bottom { bottom: 0px; left: 0px; transform: translateY(100%); }
+  &.left-bottom { border: 1px solid blue; bottom: 0px; left: 0px; transform: translateY(100%); }
   &.right-bottom { bottom: 0px; right : 0px; transform: translateY(100%); }
 `;
 
@@ -38,11 +39,10 @@ const ContentActiveArea = styled.div`
 interface IPopupProps {
   visible: boolean;
   handleDismiss: any;
-  containerClassName: string;
+  containerClassName?: string;
   children: any;
   direction: string;
   width: number;
-  hidePopup: any;
   content: any;
 }
 
@@ -103,34 +103,20 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
   }
 
   public render() {
-    // If both the props & state are true
-    // Initially the state will be populated by the prop = true + true
-    // const show = this.state.visible != undefined ? this.props.manual : this.state.show
-    // We DUPLICATE the dimnesions of our Popup parent
-    const rectangle = this.rootRef.getBoundingClientRect ? this.rootRef.getBoundingClientRect() : null;
-    const top = rectangle ? rectangle.top : 0;
-    const left = rectangle ? rectangle.left : 0;
-    const width = rectangle ? rectangle.width : 0;
-    const height = rectangle ? rectangle.height : 0;
-    const className = this.props.containerClassName ? this.props.containerClassName : "";
-
-    // prettier-ignore
     return (
       <Container
-        className={className}
+        className={this.props.containerClassName ? this.props.containerClassName : ""}
         ref={(ref) => this.rootRef = ref}>
         {this.props.children}
         {this.props.visible &&
-          <div style={{ top, left, width, height, position: "absolute" }}>
-            <Content
-              ref={(ref) => this.wrapperRef = ref}
-              width={this.props.width}
-              className={this.props.direction}>
-              <ContentActiveArea>
-                {this.props.content}
-              </ContentActiveArea>
-            </Content>
-          </div>
+          <Content
+            ref={(ref) => this.wrapperRef = ref}
+            width={this.props.width}
+            className={this.props.direction}>
+            <ContentActiveArea>
+              {this.props.content}
+            </ContentActiveArea>
+          </Content>
         }
       </Container>
     );

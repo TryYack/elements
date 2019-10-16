@@ -47,7 +47,7 @@
     "serve": "webpack-dev-server --config webpack.config.js --hot --inline",
     "test": "jest",
     "tsc": "tsc -p tsconfig.json",
-    "tsc-watch": "tsc -p tsconfig.json -w",
+    "tsc:watch": "tsc -p tsconfig.json -w",
     "lint": "tslint --project ./",
     "lint:fix": "tslint --fix -c ./tslint.json 'src/**/*{.ts,.tsx}'"
   },
