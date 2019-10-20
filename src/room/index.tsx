@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Avatar } from "../avatar";
 import { LockOutlined } from "@material-ui/icons";
 
-const Container = styled.div<{ 
+const Container = styled.div<{
   active: boolean;
   unread: number;
   onClick: any;
@@ -29,14 +29,20 @@ const ContainerPadding = styled.div`
 `;
 
 const Badge = styled.div`
-  width: 10px;
-  height: 10px;
+  padding: 3px;
   border-radius: 50%;
   background-color: #007af5;
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 8px;
+  color: white;
+  font-weight: 700;
 `;
 
-const Title = styled.div<{ 
-  active: boolean, 
+const Title = styled.div<{
+  active: boolean,
 }>`
   overflow: hidden;
   cursor: pointer;
@@ -137,7 +143,9 @@ export const Room: React.FunctionComponent<IRoomProps> = (props: IRoomProps) => 
 
             <Flex />
 
-            {props.unread && <Badge />}
+            {props.unread &&
+              <Badge>{props.unread}</Badge>
+            }
           </InnerContents>
 
           {props.excerpt &&
