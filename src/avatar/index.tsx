@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import * as chroma from "chroma-js";
 
@@ -127,14 +127,17 @@ const Edit = styled.div`
   "Droid Sans", "Helvetica Neue", sans-serif;
 `;
 
-const Badge = styled.span<{ dark: boolean }>`
+const Badge = styled.span<{
+  dark: boolean,
+  online: boolean,
+}>`
   position: absolute;
   right: -3px;
   bottom: -3px;
   width: 11px;
   height: 11px;
   border-radius: 10px;
-  background-color: #007af5;
+  background-color: ${props => (props.online ? "#36C5AB" : "#FD9A00")};
   box-sizing: border-box;
   border: 2px solid ${props => (props.dark ? "#08111d" : "#ffffff")};
   font-family: -apple-system, BlinkMacSystemFont,
@@ -200,8 +203,8 @@ interface IAvatarProps {
   /** React children */
   children?: any;
 
-  /** True or false */
-  badge?: boolean;
+  /** Presence indicator */
+  heartbeat?: Date;
 
   /**
    * Value to display, either empty (" ") or title text
@@ -220,6 +223,8 @@ interface IAvatarProps {
  */
 export const Avatar: React.FunctionComponent<IAvatarProps> = (props: IAvatarProps) => {
   const [over, setOver] = useState(false);
+  const [online, setOnline] = useState(false);
+  const [offline, setOffline] = useState(false);
   const image = props.image ? "url(" + props.image + ")" : "";
   const background = props.dark
     ? "#0c1828"
@@ -234,6 +239,26 @@ export const Avatar: React.FunctionComponent<IAvatarProps> = (props: IAvatarProp
   let width = 35;
   let height = 35;
   let borderRadius = 35;
+
+  useEffect(() => {
+    const snapshot = new Date().getTime();
+    setInterval(() => {
+      const ticker = new Date().getTime();
+      const difference = ticker - snapshot;
+      if (difference < 30000) {
+        setOnline(true);
+        setOffline(false);
+      }
+      if (difference > 30000) {
+        setOnline(false);
+        setOffline(false);
+      }
+      if (difference > 60000) {
+        setOnline(false);
+        setOffline(true);
+      }
+    }, 1000);
+  }, [props.heartbeat]);
 
   const generateInitials = (str: string) => {
     return str.split(" ")
@@ -314,7 +339,12 @@ export const Avatar: React.FunctionComponent<IAvatarProps> = (props: IAvatarProp
         </Delete>
       }
 
-      {props.badge && <Badge dark={props.dark || false}/>}
+      {props.heartbeat && !offline &&
+        <Badge
+          online={online}
+          dark={props.dark || false}
+        />
+      }
 
       <Inner
         over={over}

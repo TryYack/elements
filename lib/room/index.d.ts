@@ -10,6 +10,7 @@ interface IRoomProps {
     excerpt: string;
     public: boolean;
     private: boolean;
+    heartbeat?: Date;
     onClick?: any;
 }
 export declare const Room: React.FunctionComponent<IRoomProps>;

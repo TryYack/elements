@@ -41,8 +41,8 @@ interface IAvatarProps {
     style?: object;
     /** React children */
     children?: any;
-    /** True or false */
-    badge?: boolean;
+    /** Presence indicator */
+    heartbeat?: Date;
     /**
      * Value to display, either empty (" ") or title text
      *

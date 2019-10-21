@@ -39,7 +39,7 @@ storiesOf('Avatar', module)
     withInfo({ inline: true })(() => (
       <Avatar
         title="Jon Doe"
-        badge={true}
+        heartbeat={new Date()}
       />
     ))
   )
