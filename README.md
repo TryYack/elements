@@ -43,17 +43,27 @@ npm run build:storybook
 - [x] Preliminary components & tests (avatar & button)
 - [x] Continuous deployment runner for tests & Storybook generating
 - [x] NPM package
-- [ ] Code coverage (add badge)
-- [ ] Card component
-- [x] Tooltip component
-- [x] Tabbed (hor/ver) component
-- [x] Spinner component
-- [x] Modal component
+- [x] Attachment component
+- [x] Avatar component
+- [x] Button component
+- [x] Error component
 - [x] Input component
+- [x] Loading component
+- [x] Members component
 - [x] Menu component
-- [x] Media component
+- [x] Modal component
+- [x] Notification component
+- [x] Popup component
+- [x] Room component
+- [x] Spinner component
+- [x] Tabbed component
+- [x] Textarea component
+- [x] Tooltip component
+- [x] Toggle component
+- [x] User component
+- [ ] Code coverage (add badge)
 - [ ] More robust component tests
 - [ ] More component stories
 - [ ] Mobile responsive styles
 - [ ] Website
-- [ ] Better docs
+- [ ] Better docs/comments
