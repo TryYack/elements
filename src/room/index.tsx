@@ -29,7 +29,7 @@ const ContainerPadding = styled.div`
 `;
 
 const Badge = styled.div`
-  padding: 3px;
+  padding: 3px 7px 3px 7px;
   border-radius: 50%;
   background-color: #007af5;
   font-family: -apple-system, BlinkMacSystemFont,
@@ -61,7 +61,7 @@ const Title = styled.div<{
 const Excerpt = styled.div`
   font-size: 11px;
   color: #475669;
-  font-weight: 500;
+  font-weight: 400;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -143,7 +143,7 @@ export const Room: React.FunctionComponent<IRoomProps> = (props: IRoomProps) => 
 
             <Flex />
 
-            {props.unread &&
+            {props.unread > 0 &&
               <Badge>{props.unread}</Badge>
             }
           </InnerContents>
