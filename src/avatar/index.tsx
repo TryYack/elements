@@ -127,7 +127,7 @@ const Edit = styled.div`
   "Droid Sans", "Helvetica Neue", sans-serif;
 `;
 
-const Badge = styled.span<{
+const Presence = styled.span<{
   dark: boolean,
   online: boolean,
 }>`
@@ -144,6 +144,19 @@ const Badge = styled.span<{
   "Segoe UI", "Roboto", "Oxygen",
   "Ubuntu", "Cantarell", "Fira Sans",
   "Droid Sans", "Helvetica Neue", sans-serif;
+`;
+
+const Badge = styled.span<{
+  dark: boolean,
+}>`
+  position: absolute;
+  right: -3px;
+  bottom: -3px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background-color: #007af5;
+  border: 2px solid ${props => (props.dark ? "#08111d" : "#ffffff")};
 `;
 
 interface IAvatarProps {
@@ -175,6 +188,9 @@ interface IAvatarProps {
 
   /** True or false */
   circle?: boolean;
+
+  /** True or false - overrides heartbeat presences */
+  badge?: boolean;
 
   /** React component */
   editIcon?: any;
@@ -339,12 +355,14 @@ export const Avatar: React.FunctionComponent<IAvatarProps> = (props: IAvatarProp
         </Delete>
       }
 
-      {props.heartbeat && !offline &&
-        <Badge
+      {props.heartbeat && !offline && !props.badge &&
+        <Presence
           online={online}
           dark={props.dark || false}
         />
       }
+
+      {props.badge && <Badge dark={props.dark || false} />}
 
       <Inner
         over={over}

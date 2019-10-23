@@ -23,6 +23,8 @@ interface IAvatarProps {
     size?: string;
     /** True or false */
     circle?: boolean;
+    /** True or false - overrides heartbeat presences */
+    badge?: boolean;
     /** React component */
     editIcon?: any;
     /** Function event callback for editing */
