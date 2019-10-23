@@ -30,7 +30,7 @@ const ContainerPadding = styled.div`
 
 const Badge = styled.div`
   padding: 3px 7px 3px 7px;
-  border-radius: 50%;
+  border-radius: 10px;
   background-color: #007af5;
   font-family: -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Roboto", "Oxygen",
