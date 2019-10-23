@@ -36,7 +36,7 @@
     }
   ],
   "deprecated": false,
-  "version": "0.5.5",
+  "version": "0.5.6",
   "description": "UI toolkit for Weekday",
   "scripts": {
     "storybook": "start-storybook -p 6006",
@@ -60,12 +60,11 @@
   "dependencies": {
     "@material-ui/icons": "^4.5.1",
     "chroma-js": "^2.0.4",
+    "marked": "^0.7.0",
     "moment": "^2.22.2",
     "moment-range": "^4.0.1",
     "moment-timezone": "^0.5.21",
     "react-markdown": "^4.0.6",
-    "react-ikonate": "^2.0.1",
-    "marked": "^0.7.0",
     "rxjs": "^6.5.3"
   },
   "devDependencies": {
