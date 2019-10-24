@@ -360,7 +360,7 @@ export const Attachment: React.FunctionComponent<IAttachmentProps> = (props: IAt
               </Link>
             }
 
-            {(props.layout == "message" && props.onPreviewClick) &&
+            {(props.layout == "message" && props.onPreviewClick && props.preview) &&
               <Link
                 className="button"
                 onClick={props.onPreviewClick}>
