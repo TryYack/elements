@@ -194,7 +194,7 @@ interface IAttachmentProps {
   onDeleteClick?: any;
 }
 
-export const Attachment: React.FunctionComponent<IAttachmentProps> = (props: IAttachmentProps) => {
+const AttachmentComponent: React.FunctionComponent<IAttachmentProps> = (props: IAttachmentProps) => {
   const bytesToSize = (bytes: number) => {
     const sizes: string[] = ["bytes", "kb", "mb", "gb", "tb"];
     if (bytes == 0) return "0 bytes";
@@ -373,3 +373,5 @@ export const Attachment: React.FunctionComponent<IAttachmentProps> = (props: IAt
     </Container>
   );
 };
+
+export const Attachment: any = React.memo((props: IAttachmentProps) => <AttachmentComponent {...props} />);
