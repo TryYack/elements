@@ -22,7 +22,7 @@ const ContainerPadding = styled.div`
   padding: 4px 25px 4px 25px;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: stretch;
   align-content: center;
   justify-content: center;
   position: relative;
@@ -59,18 +59,24 @@ const Title = styled.div<{
 `;
 
 const Excerpt = styled.div`
-  font-size: 11px;
-  color: #475669;
-  font-weight: 400;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
   flex: 1;
   margin-top: 4px;
   font-family: -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Roboto", "Oxygen",
   "Ubuntu", "Cantarell", "Fira Sans",
   "Droid Sans", "Helvetica Neue", sans-serif;
+  overflow: hidden;
+`;
+
+const ExcerptText = styled.span`
+  font-size: 11px;
+  color: #475669;
+  font-weight: 400;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: block;
+  overflow: hidden;
+  max-width: 200px;
 `;
 
 const Contents = styled.div`
@@ -152,7 +158,7 @@ export const Room: React.FunctionComponent<IRoomProps> = (props: IRoomProps) => 
 
           {props.excerpt &&
             <Excerpt>
-              {props.excerpt}
+              <ExcerptText>{props.excerpt}</ExcerptText>
             </Excerpt>
           }
         </Contents>

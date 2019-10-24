@@ -20,16 +20,16 @@ storiesOf('Room', module)
     </div>
   )))
   .add(
-  'With badge',
+  'With badge & very long excerpt',
   withInfo({ inline: true })(() => (
-    <div style={{ width: '100%', backgroundColor: '#0C1828' }}>
+    <div style={{ width: 300, backgroundColor: '#0C1828' }}>
       <Room
         heartbeat={new Date()}
         active={false}
         unread={1}
         title="Room"
         image="https://usepanda.com/img/source-icons/theNextWeb.png"
-        excerpt="Excerpt here"
+        excerpt="Excerpt here that is long is should wrap right off the screen"
         public={false}
         private={false}
       />
