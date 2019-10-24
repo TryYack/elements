@@ -157,6 +157,13 @@ interface IAttachmentProps {
 }
 
 export const Attachment: React.FunctionComponent<IAttachmentProps> = (props: IAttachmentProps) => {
+  const bytesToSize(bytes: number) {
+    const sizes: string[] = ["bytes", "kb", "mb", "gb", "tb"];
+    if (bytes == 0) return "0 bytes";
+    const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+    return Math.round(bytes / Math.pow(1024, i), 2) + " " + sizes[i];
+  }
+
   const getMimeTypeColor = (type: string) => {
     switch (type.split("/")[0]) {
       case "audio": return "#007af5";
@@ -273,7 +280,7 @@ export const Attachment: React.FunctionComponent<IAttachmentProps> = (props: IAt
           <Extension>
             {getMimeTypeDescription(props.mime)}
           </Extension>
-          
+
           <Link
             className="button"
             onClick={() => window.open(props.uri)}>
