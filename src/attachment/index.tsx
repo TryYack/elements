@@ -2,12 +2,42 @@ import * as React from "react";
 import styled from "styled-components";
 import { InsertDriveFileOutlined, AudiotrackOutlined, VideocamOutlined, SubjectOutlined, ImageOutlined, FontDownloadOutlined } from "@material-ui/icons";
 
-const Container = styled.div`
+const Container = styled.div<{
+  layout: string;
+  preview?: string;
+}>`
   border: 1px solid #cbd4db;
-  padding: 15px;
   border-radius: 10px;
   margin-bottom: 5px;
   margin-right: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  align-content: center;
+  justify-content: flex-start;
+  position: relative;
+  overflow: hidden;
+  width: ${props => props.preview ? "100%" : "300px"};
+`;
+
+const ContainerImage = styled.div<{
+  image: string;
+}>`
+  width: 100%;
+  height: 300px;
+  background-position: center center;
+  background-image: url(${props => props.image});
+  background-size: cover;
+`;
+
+const ContainerVideo = styled.div`
+  width: 100%;
+  height: 300px;
+`;
+
+const ContainerRow = styled.div`
+  flex: 1;
+  padding: 15px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -145,6 +175,9 @@ interface IAttachmentProps {
   /** Size in bytes */
   size: number;
 
+  /** Preview uri location of file */
+  preview?: string;
+
   /** Uri location of source file */
   uri: string;
 
@@ -153,16 +186,21 @@ interface IAttachmentProps {
 
   /** File mime type */
   mime: string;
+
+  /** Callback to parent component */
+  onPreviewClick?: any;
+
+  /** Callback to parent component */
   onDeleteClick?: any;
 }
 
 export const Attachment: React.FunctionComponent<IAttachmentProps> = (props: IAttachmentProps) => {
-  const bytesToSize(bytes: number) {
+  const bytesToSize = (bytes: number) => {
     const sizes: string[] = ["bytes", "kb", "mb", "gb", "tb"];
     if (bytes == 0) return "0 bytes";
-    const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
-    return Math.round(bytes / Math.pow(1024, i), 2) + " " + sizes[i];
-  }
+    const i: number = Math.floor(Math.log(bytes) / Math.log(1024));
+    return Math.round(bytes / Math.pow(1024, i)).toString() + " " + sizes[i];
+  };
 
   const getMimeTypeColor = (type: string) => {
     switch (type.split("/")[0]) {
@@ -266,36 +304,72 @@ export const Attachment: React.FunctionComponent<IAttachmentProps> = (props: IAt
     }
   };
 
+  const mimeType = (type: string) => {
+    return type.split("/")[0];
+  };
+
+  const Preview = () => {
+    if (mimeType(props.mime) == "image" && props.preview) {
+      return <ContainerImage image={props.preview} />;
+    }
+
+    if (mimeType(props.mime) == "video" && props.preview) {
+      return (
+        <ContainerVideo>
+          <video width="100%" height="100%" controls>
+            <source src={props.preview} type="video/mp4" />
+          </video>
+        </ContainerVideo>
+      );
+    }
+
+    return null;
+  };
+
   // prettier-ignore
   return (
-    <Container>
-      <Icon color={getMimeTypeColor(props.mime)}>
-        {getMimeTypeIcon(props.mime)}
-      </Icon>
+    <Container
+      layout={props.layout}
+      preview={props.preview}>
+      <Preview />
 
-      <Content>
-        <Name layout={props.layout}>{props.name}</Name>
-        {props.layout == "compose" && <Size layout={props.layout}>{props.size} bytes</Size>}
-        <Info>
-          <Extension>
-            {getMimeTypeDescription(props.mime)}
-          </Extension>
+      <ContainerRow>
+        <Icon color={getMimeTypeColor(props.mime)}>
+          {getMimeTypeIcon(props.mime)}
+        </Icon>
 
-          <Link
-            className="button"
-            onClick={() => window.open(props.uri)}>
-            Download
-          </Link>
+        <Content>
+          <Name layout={props.layout}>{props.name}</Name>
+          {props.layout == "compose" && <Size layout={props.layout}>{bytesToSize(props.size)}</Size>}
+          <Info>
+            <Extension>
+              {getMimeTypeDescription(props.mime)}
+            </Extension>
 
-          {(props.layout == "compose" && props.onDeleteClick) &&
             <Link
               className="button"
-              onClick={props.onDeleteClick}>
-              Remove
+              onClick={() => window.open(props.uri)}>
+              Download
             </Link>
-          }
-        </Info>
-      </Content>
+
+            {(props.layout == "compose" && props.onDeleteClick) &&
+              <Link
+                className="button"
+                onClick={props.onDeleteClick}>
+                Remove
+              </Link>
+            }
+
+            {(props.layout == "message" && props.onPreviewClick) &&
+              <Link
+                className="button"
+                onClick={props.onPreviewClick}>
+                Preview
+              </Link>
+            }
+          </Info>
+        </Content>
+      </ContainerRow>
     </Container>
   );
 };
