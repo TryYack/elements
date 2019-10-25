@@ -239,6 +239,7 @@ interface IAvatarProps {
  */
 export const Avatar: React.FunctionComponent<IAvatarProps> = (props: IAvatarProps) => {
   const [over, setOver] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const [online, setOnline] = useState(false);
   const [offline, setOffline] = useState(false);
   const image = props.image ? "url(" + props.image + ")" : "";
@@ -257,23 +258,35 @@ export const Avatar: React.FunctionComponent<IAvatarProps> = (props: IAvatarProp
   let borderRadius = 35;
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
     const snapshot = new Date().getTime();
-    setInterval(() => {
-      const ticker = new Date().getTime();
-      const difference = ticker - snapshot;
-      if (difference < 30000) {
-        setOnline(true);
-        setOffline(false);
-      }
-      if (difference > 30000) {
-        setOnline(false);
-        setOffline(false);
-      }
-      if (difference > 60000) {
-        setOnline(false);
-        setOffline(true);
-      }
-    }, 1000);
+
+    // Only process this if both the heart prop 
+    if (props.heartbeat) {
+      setInterval(() => {
+        const ticker = new Date().getTime();
+        const difference = ticker - snapshot;
+
+        // is present and the component is mounted
+        if (mounted) {
+          if (difference < 30000) {
+            setOnline(true);
+            setOffline(false);
+          }
+          if (difference > 30000) {
+            setOnline(false);
+            setOffline(false);
+          }
+          if (difference > 60000) {
+            setOnline(false);
+            setOffline(true);
+          }
+        }
+      }, 1000);
+    }
   }, [props.heartbeat]);
 
   const generateInitials = (str: string) => {
