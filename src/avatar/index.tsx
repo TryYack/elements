@@ -29,6 +29,7 @@ const Inner = styled.div<{
   align-items: center;
   align-content: center;
   justify-content: center;
+  z-index: 1;
   background-size: cover;
   background-position: center center;
   background-image: ${props => props.image};
@@ -137,6 +138,7 @@ const Presence = styled.span<{
   width: 11px;
   height: 11px;
   border-radius: 10px;
+  z-index: 2;
   background-color: ${props => (props.online ? "#36C5AB" : "#FD9A00")};
   box-sizing: border-box;
   border: 2px solid ${props => (props.dark ? "#08111d" : "#ffffff")};
@@ -156,6 +158,7 @@ const Badge = styled.span<{
   height: 11px;
   border-radius: 50%;
   background-color: #007af5;
+  z-index: 2;
   border: 2px solid ${props => (props.dark ? "#08111d" : "#ffffff")};
 `;
 
@@ -267,11 +270,11 @@ export const Avatar: React.FunctionComponent<IAvatarProps> = (props: IAvatarProp
     // Only process this if both the heart prop 
     if (props.heartbeat) {
       setInterval(() => {
-        const ticker = new Date().getTime();
-        const difference = ticker - snapshot;
-
         // is present and the component is mounted
         if (mounted) {
+          const ticker = new Date().getTime();
+          const difference = ticker - snapshot;
+          
           if (difference < 30000) {
             setOnline(true);
             setOffline(false);
