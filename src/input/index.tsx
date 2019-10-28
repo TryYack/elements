@@ -35,6 +35,10 @@ const InputField = styled.input<{
   box-sizing: border-box;
   margin-bottom: 20px;
 
+  &:focus {
+    outline: none;
+  }
+
   &::placeholder {
     color: #acb5bd;
   }
