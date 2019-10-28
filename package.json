@@ -36,7 +36,7 @@
     }
   ],
   "deprecated": false,
-  "version": "0.5.12",
+  "version": "0.5.15",
   "description": "UI toolkit for Weekday",
   "scripts": {
     "storybook": "start-storybook -p 6006",
@@ -49,27 +49,21 @@
     "tsc": "tsc -p tsconfig.json",
     "tsc:watch": "tsc -p tsconfig.json -w",
     "lint": "tslint --project ./",
-    "lint:fix": "tslint --fix -c ./tslint.json 'src/**/*{.ts,.tsx}'"
+    "lint:fix": "tslint --fix -c ./tslint.json 'src/**/*{.ts,.tsx}'",
+    "link:watch": "npm run tsc:watch"
   },
   "author": "Jo du Plessis",
   "license": "ISC",
-  "peerDependencies": {
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6"
-  },
+  "peerDependencies": {},
   "dependencies": {
+    "react": "^16.8.6",
+    "@material-ui/core": "^4.5.1",
     "@material-ui/icons": "^4.5.1",
     "chroma-js": "^2.0.4",
-    "marked": "^0.7.0",
-    "moment": "^2.22.2",
-    "moment-range": "^4.0.1",
-    "moment-timezone": "^0.5.21",
-    "react-markdown": "^4.0.6",
-    "rxjs": "^6.5.3"
+    "moment": "^2.22.2"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
-    "@material-ui/core": "^4.5.1",
     "@storybook/addon-actions": "^5.1.9",
     "@storybook/addon-info": "^5.1.9",
     "@storybook/addon-knobs": "^5.1.9",
