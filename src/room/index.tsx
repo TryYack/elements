@@ -152,8 +152,8 @@ export const Room: React.FunctionComponent<IRoomProps> = (props: IRoomProps) => 
       onClick={props.onClick ? props.onClick : null}
       onMouseEnter={() => setOver(true)}
       onMouseLeave={() => {
-        setOver(false)
-        setMenu(false)
+        setOver(false);
+        setMenu(false);
       }}
       unread={props.unread}
       active={props.active}>
@@ -205,8 +205,8 @@ export const Room: React.FunctionComponent<IRoomProps> = (props: IRoomProps) => 
                 }>
                 <MoreIcon
                   onClick={(e) => {
-                    e.stopPropagation()
-                    setMenu(true)
+                    e.stopPropagation();
+                    setMenu(true);
                   }}>
                   <MoreHorizOutlined
                     htmlColor="#475669"
