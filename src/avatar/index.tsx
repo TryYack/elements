@@ -3,10 +3,15 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import * as chroma from "chroma-js";
 
-const Container = styled.div`
+const Container = styled.div<{
+  width: number,
+  height: number,
+}>`
   position: relative;
   cursor: pointer;
   display: inline-block;
+  width: ${props => props.width}px;
+  height: ${props => props.height}px;
 `;
 
 const Inner = styled.div<{
@@ -36,6 +41,7 @@ const Inner = styled.div<{
   background-color: ${props => props.background};
   overflow: hidden;
   transition: opacity 0.25s;
+  position: relative;
   opacity: ${props => props.over && props.onClick ? 0.75 : 1};
 
   &.overlap-right {
@@ -137,10 +143,9 @@ const Presence = styled.span<{
   bottom: -3px;
   width: 11px;
   height: 11px;
-  border-radius: 10px;
+  border-radius: 50%;
   z-index: 2;
   background-color: ${props => (props.online ? "#36C5AB" : "#FD9A00")};
-  box-sizing: border-box;
   border: 2px solid ${props => (props.dark ? "#08111d" : "#ffffff")};
   font-family: -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Roboto", "Oxygen",
@@ -157,9 +162,13 @@ const Badge = styled.span<{
   width: 11px;
   height: 11px;
   border-radius: 50%;
-  background-color: #007af5;
   z-index: 2;
   border: 2px solid ${props => (props.dark ? "#08111d" : "#ffffff")};
+  background-color: #007af5;
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
 `;
 
 interface IAvatarProps {
@@ -267,14 +276,14 @@ export const Avatar: React.FunctionComponent<IAvatarProps> = (props: IAvatarProp
   useEffect(() => {
     const snapshot = new Date().getTime();
 
-    // Only process this if both the heart prop 
+    // Only process this if both the heart prop
     if (props.heartbeat) {
       setInterval(() => {
         // is present and the component is mounted
         if (mounted) {
           const ticker = new Date().getTime();
           const difference = ticker - snapshot;
-          
+
           if (difference < 30000) {
             setOnline(true);
             setOffline(false);
@@ -357,6 +366,8 @@ export const Avatar: React.FunctionComponent<IAvatarProps> = (props: IAvatarProp
 
   return (
     <Container
+      width={width}
+      height={height}
       onMouseEnter={() => setOver(true)}
       onMouseLeave={() => setOver(false)}>
       {over && props.onEditClick && props.editIcon &&
@@ -378,7 +389,11 @@ export const Avatar: React.FunctionComponent<IAvatarProps> = (props: IAvatarProp
         />
       }
 
-      {props.badge && <Badge dark={props.dark || false} />}
+      {props.badge &&
+        <Badge
+          dark={props.dark || false}
+          />
+      }
 
       <Inner
         over={over}

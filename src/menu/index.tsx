@@ -28,12 +28,24 @@ const Divider = styled.div`
   height: 2px;
 `;
 
+const RowContainer = styled.div`
+  background: transparent;
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  align-content: center;
+  justify-content: flex-start;
+  position: relative;
+`;
+
 const Row = styled.div<{
   nohover: boolean;
 }>`
   background: transparent;
   padding: 7px 5px 7px 5px;
-  width: 100%;
+  flex: 1;
   border-radius: 10px;
   cursor: ${props => (props.nohover ? null : "pointer")};
   display: flex;
@@ -106,36 +118,37 @@ export const Menu: React.FunctionComponent<IMenuProps> = (props: IMenuProps) => 
           if (item.hide) return null;
 
           return (
-            <Row
-              key={index}
-              onClick={item.onClick}
-              nohover={item.divider}>
+            <RowContainer key={index}>
+              <Row
+                onClick={item.onClick}
+                nohover={item.divider}>
 
-              {item.divider && <Divider />}
+                {item.divider && <Divider />}
 
-              {!item.divider &&
-                <React.Fragment>
-                  {item.image &&
-                    <AvatarContainer>
-                      <Avatar
-                        image={item.image}
-                        title={item.text}
-                        size="small-medium"
-                      />
-                    </AvatarContainer>
-                  }
-                  {item.icon &&
-                    <IconContainer>
-                      {item.icon}
-                    </IconContainer>
-                  }
-                  <TextContainer>
-                    <Text>{item.text}</Text>
-                    {item.label && <Label>{item.label}</Label>}
-                  </TextContainer>
-                </React.Fragment>
-              }
-            </Row>
+                {!item.divider &&
+                  <React.Fragment>
+                    {item.image &&
+                      <AvatarContainer>
+                        <Avatar
+                          image={item.image}
+                          title={item.text}
+                          size="small-medium"
+                        />
+                      </AvatarContainer>
+                    }
+                    {item.icon &&
+                      <IconContainer>
+                        {item.icon}
+                      </IconContainer>
+                    }
+                    <TextContainer>
+                      <Text>{item.text}</Text>
+                      {item.label && <Label>{item.label}</Label>}
+                    </TextContainer>
+                  </React.Fragment>
+                }
+              </Row>
+            </RowContainer>
           );
         })}
       </ContainerPadding>

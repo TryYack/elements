@@ -26,12 +26,15 @@ storiesOf('Room', module)
       <Room
         heartbeat={new Date()}
         active={false}
+        muted={true}
         unread={1}
         title="Room"
         image="https://usepanda.com/img/source-icons/theNextWeb.png"
         excerpt="Excerpt here that is long is should wrap right off the screen"
         public={false}
         private={false}
+        onArchivedClick={() => console.log('Archive')}
+        onMutedClick={() => console.log('Mute')}
       />
     </div>
   )));

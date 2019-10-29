@@ -24,6 +24,7 @@ const Container = styled.div`
 const Inner = styled.div`
   background: white;
   border-radius: 5px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: flex-start;

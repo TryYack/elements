@@ -1,7 +1,10 @@
 import * as React from "react";
 import styled from "styled-components";
+import { useState } from "react";
 import { Avatar } from "../avatar";
-import { LockOutlined } from "@material-ui/icons";
+import { Popup } from "../popup";
+import { Menu } from "../menu";
+import { LockOutlined, MoreHorizOutlined, NotificationsOffOutlined } from "@material-ui/icons";
 
 const Container = styled.div<{
   active: boolean;
@@ -80,7 +83,6 @@ const ExcerptText = styled.span`
 `;
 
 const Contents = styled.div`
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -101,6 +103,21 @@ const InnerContents = styled.div`
   position: relative;
 `;
 
+const MoreIcon = styled.span`
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.5s;
+  display: inline-block;
+  height: max-content;
+  width: max-content;
+  margin-right: 10px;
+  margin-bottom: -10px;
+
+  &:hover {
+    opacity: 0.75;
+  }
+`;
+
 const Flex = styled.div`
   flex: 1;
 `;
@@ -108,6 +125,7 @@ const Flex = styled.div`
 interface IRoomProps {
   dark?: boolean;
   active: boolean;
+  muted?: boolean;
   unread: number;
   title: string;
   image: string;
@@ -118,12 +136,19 @@ interface IRoomProps {
   private: boolean;
   heartbeat?: Date;
   onClick?: any;
+  onMutedClick?: any;
+  onArchivedClick?: any;
 }
 
 export const Room: React.FunctionComponent<IRoomProps> = (props: IRoomProps) => {
+  const [over, setOver] = useState(false);
+  const [menu, setMenu] = useState(false);
+
   return (
     <Container
       onClick={props.onClick ? props.onClick : null}
+      onMouseEnter={() => setOver(true)}
+      onMouseLeave={() => setOver(false)}
       unread={props.unread}
       active={props.active}>
       <ContainerPadding>
@@ -142,6 +167,13 @@ export const Room: React.FunctionComponent<IRoomProps> = (props: IRoomProps) => 
               {props.title}
             </Title>
 
+            {props.muted &&
+              <NotificationsOffOutlined
+                htmlColor="#475669"
+                fontSize="small"
+              />
+            }
+
             {!props.public && !props.private &&
               <LockOutlined
                 htmlColor="#475669"
@@ -150,6 +182,29 @@ export const Room: React.FunctionComponent<IRoomProps> = (props: IRoomProps) => 
             }
 
             <Flex />
+
+            {over && props.onMutedClick && props.onArchivedClick &&
+              <Popup
+                handleDismiss={() => setMenu(false)}
+                visible={menu}
+                width={200}
+                direction="right-bottom"
+                content={
+                  <Menu
+                    items={[
+                      { text: "Archive", onClick: props.onArchivedClick },
+                      { text: "Mute", onClick: props.onMutedClick },
+                    ]}
+                  />
+                }>
+                <MoreIcon onClick={() => setMenu(true)}>
+                  <MoreHorizOutlined
+                    htmlColor="#475669"
+                    fontSize="small"
+                  />
+                </MoreIcon>
+              </Popup>
+            }
 
             {props.unread > 0 &&
               <Badge>{props.unread}</Badge>
