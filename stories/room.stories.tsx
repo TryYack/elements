@@ -16,6 +16,9 @@ storiesOf('Room', module)
         excerpt="Excerpt here"
         public={false}
         private={false}
+        onArchivedClick={() => console.log('2')}
+        onMutedClick={() => console.log('1')}
+        onClick={() => console.log('3')}
       />
     </div>
   )))
@@ -24,17 +27,19 @@ storiesOf('Room', module)
   withInfo({ inline: true })(() => (
     <div style={{ width: 300, backgroundColor: '#0C1828' }}>
       <Room
-        heartbeat={new Date()}
         active={false}
-        muted={true}
         unread={1}
         title="Room"
         image="https://usepanda.com/img/source-icons/theNextWeb.png"
         excerpt="Excerpt here that is long is should wrap right off the screen"
         public={false}
         private={false}
-        onArchivedClick={() => console.log('Archive')}
-        onMutedClick={() => console.log('Mute')}
+        muted={true}
+        archived={false}
+        heartbeat={new Date()}
+        onArchivedClick={() => console.log('2')}
+        onMutedClick={() => console.log('1')}
+        onClick={() => console.log('3')}
       />
     </div>
   )));

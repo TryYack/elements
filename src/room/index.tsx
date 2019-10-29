@@ -18,6 +18,7 @@ const Container = styled.div<{
   align-content: center;
   justify-content: center;
   position: relative;
+  cursor: pointer;
 `;
 
 const ContainerPadding = styled.div`
@@ -112,6 +113,7 @@ const MoreIcon = styled.span`
   width: max-content;
   margin-right: 10px;
   margin-bottom: -10px;
+  z-index: 5;
 
   &:hover {
     opacity: 0.75;
@@ -149,7 +151,10 @@ export const Room: React.FunctionComponent<IRoomProps> = (props: IRoomProps) => 
     <Container
       onClick={props.onClick ? props.onClick : null}
       onMouseEnter={() => setOver(true)}
-      onMouseLeave={() => setOver(false)}
+      onMouseLeave={() => {
+        setOver(false)
+        setMenu(false)
+      }}
       unread={props.unread}
       active={props.active}>
       <ContainerPadding>
@@ -198,7 +203,11 @@ export const Room: React.FunctionComponent<IRoomProps> = (props: IRoomProps) => 
                     ]}
                   />
                 }>
-                <MoreIcon onClick={() => setMenu(true)}>
+                <MoreIcon
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    setMenu(true)
+                  }}>
                   <MoreHorizOutlined
                     htmlColor="#475669"
                     fontSize="small"
