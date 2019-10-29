@@ -126,6 +126,7 @@ interface IRoomProps {
   dark?: boolean;
   active: boolean;
   muted?: boolean;
+  archived?: boolean;
   unread: number;
   title: string;
   image: string;
@@ -192,8 +193,8 @@ export const Room: React.FunctionComponent<IRoomProps> = (props: IRoomProps) => 
                 content={
                   <Menu
                     items={[
-                      { text: "Archive", onClick: props.onArchivedClick },
-                      { text: "Mute", onClick: props.onMutedClick },
+                      { text: props.archived ? "Unarchive" : "Archive", onClick: props.onArchivedClick },
+                      { text: props.muted ? "Unmute" : "Mute", onClick: props.onMutedClick },
                     ]}
                   />
                 }>
