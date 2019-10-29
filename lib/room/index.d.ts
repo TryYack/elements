@@ -3,6 +3,7 @@ interface IRoomProps {
     dark?: boolean;
     active: boolean;
     muted?: boolean;
+    archived?: boolean;
     unread: number;
     title: string;
     image: string;
