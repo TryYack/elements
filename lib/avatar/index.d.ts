@@ -58,5 +58,6 @@ interface IAvatarProps {
  * Avatar component. Displays a circle or square container for users,
  * channels, or anything else
  */
-export declare const Avatar: React.FunctionComponent<IAvatarProps>;
+export declare const AvatarComponent: React.FunctionComponent<IAvatarProps>;
+export declare const Avatar: any;
 export {};

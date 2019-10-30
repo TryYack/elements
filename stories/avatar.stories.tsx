@@ -46,13 +46,16 @@ storiesOf('Avatar', module)
     ))
   )
   .add(
-    'With a badge',
-    withInfo({ inline: true })(() => (
-      <Avatar
-        title="Jon Doe"
-        heartbeat={new Date()}
-      />
-    ))
+    'With a heartbeat',
+    withInfo({ inline: true })(() => {
+      return (
+        <Avatar
+          title="Jon Doe"
+          heartbeat={new Date()}
+        />
+      )
+
+    })
   )
   .add(
     'Large sizing',

@@ -249,7 +249,7 @@ interface IAvatarProps {
  * Avatar component. Displays a circle or square container for users,
  * channels, or anything else
  */
-export const Avatar: React.FunctionComponent<IAvatarProps> = (props: IAvatarProps) => {
+export const AvatarComponent: React.FunctionComponent<IAvatarProps> = (props: IAvatarProps) => {
   const [over, setOver] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [online, setOnline] = useState(false);
@@ -424,3 +424,5 @@ export const Avatar: React.FunctionComponent<IAvatarProps> = (props: IAvatarProp
     </Container>
   );
 };
+
+export const Avatar: any = React.memo((props: IAvatarProps) => <AvatarComponent {...props} />);
