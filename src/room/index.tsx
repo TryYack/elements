@@ -198,13 +198,19 @@ export const Room: React.FunctionComponent<IRoomProps> = (props: IRoomProps) => 
                 content={
                   <Menu
                     items={[
-                      { text: props.archived ? "Unarchive" : "Archive", onClick: props.onArchivedClick },
-                      { text: props.muted ? "Unmute" : "Mute", onClick: props.onMutedClick },
+                      { text: props.archived ? "Unarchive" : "Archive", onClick: (e: any) => {
+                        e.stopPropagation();
+                        return props.onArchivedClick;
+                      } },
+                      { text: props.muted ? "Unmute" : "Mute", onClick: (e: any) => {
+                        e.stopPropagation();
+                        return props.onMutedClick;
+                      } },
                     ]}
                   />
                 }>
                 <MoreIcon
-                  onClick={(e) => {
+                  onClick={(e: any) => {
                     e.stopPropagation();
                     setMenu(true);
                   }}>

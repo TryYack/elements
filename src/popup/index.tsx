@@ -19,7 +19,7 @@ const ContentActiveAreaInner = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   align-content: center;
   justify-content: center;
 `;
@@ -44,6 +44,11 @@ const Content = styled.div<{ width: number }>`
 
 const ContentActiveArea = styled.div`
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  align-content: center;
+  justify-content: center;
 `;
 
 interface IPopupProps {
