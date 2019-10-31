@@ -3,13 +3,16 @@ import * as React from "react";
 import "../../../enzyme.setup";
 import { Avatar } from "../index";
 
-describe("Displays titles", () => {
+describe("Renders correctly", () => {
   it("renders", () => {
-    const wrapper = shallow(
-      <Avatar 
-        title="Jon Doe"
-      />,
-    );
-    expect(wrapper.find(".text").html()).toMatch(/JD/);
+    const el = <Avatar title="Jon Doe" />;
+    const wrapper = shallow(el);
+
+    expect(wrapper.contains(el));
+  });
+  it("displays shorter titles", () => {
+    const wrapper = shallow(<Avatar title="Jon Doe" />);
+
+    expect(wrapper.find({ className: '.text' }));
   });
 });
