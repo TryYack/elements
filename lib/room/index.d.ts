@@ -12,7 +12,7 @@ interface IRoomProps {
     excerpt: string;
     public: boolean;
     private: boolean;
-    heartbeat?: Date;
+    presence?: string;
     onClick?: any;
     onMutedClick?: any;
     onArchivedClick?: any;

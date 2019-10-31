@@ -137,7 +137,7 @@ interface IRoomProps {
   excerpt: string;
   public: boolean;
   private: boolean;
-  heartbeat?: Date;
+  presence?: string;
   onClick?: any;
   onMutedClick?: any;
   onArchivedClick?: any;
@@ -160,7 +160,7 @@ export const Room: React.FunctionComponent<IRoomProps> = (props: IRoomProps) => 
       <ContainerPadding>
         <Avatar
           dark
-          heartbeat={props.heartbeat}
+          presence={props.presence}
           size="medium"
           image={props.image}
           title={props.title}

@@ -36,7 +36,7 @@ storiesOf('Room', module)
         private={false}
         muted={true}
         archived={false}
-        heartbeat={new Date()}
+        presence="away"
         onArchivedClick={() => console.log('2')}
         onMutedClick={() => console.log('1')}
         onClick={() => console.log('3')}
