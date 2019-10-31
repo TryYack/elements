@@ -26,6 +26,17 @@ storiesOf('Avatar', module)
     ))
   )
   .add(
+    'With badge',
+    withInfo({ inline: true })(() => (
+      <Avatar
+        title="Jon Doe"
+        textColor="red"
+        badge={true}
+        size="large"
+      />
+    ))
+  )
+  .add(
     'Coloring (auto)',
     withInfo({ inline: true })(() => (
       <Avatar
@@ -35,13 +46,37 @@ storiesOf('Avatar', module)
     ))
   )
   .add(
-    'With a badge',
-    withInfo({ inline: true })(() => (
-      <Avatar
-        title="Jon Doe"
-        badge={true}
-      />
-    ))
+    'With a presence - online',
+    withInfo({ inline: true })(() => {
+      return (
+        <Avatar
+          title="Jon Doe"
+          presence="online"
+        />
+      )
+    })
+  )
+  .add(
+    'With a presence - away',
+    withInfo({ inline: true })(() => {
+      return (
+        <Avatar
+          title="Jon Doe"
+          presence="away"
+        />
+      )
+    })
+  )
+  .add(
+    'With a presence - offline',
+    withInfo({ inline: true })(() => {
+      return (
+        <Avatar
+          title="Jon Doe"
+          presence="offline"
+        />
+      )
+    })
   )
   .add(
     'Large sizing',

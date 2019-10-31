@@ -3,10 +3,15 @@ import { useState } from "react";
 import styled from "styled-components";
 import * as chroma from "chroma-js";
 
-const Container = styled.div`
+const Container = styled.div<{
+  width: number,
+  height: number,
+}>`
   position: relative;
   cursor: pointer;
   display: inline-block;
+  width: ${props => props.width}px;
+  height: ${props => props.height}px;
 `;
 
 const Inner = styled.div<{
@@ -29,12 +34,14 @@ const Inner = styled.div<{
   align-items: center;
   align-content: center;
   justify-content: center;
+  z-index: 1;
   background-size: cover;
   background-position: center center;
   background-image: ${props => props.image};
   background-color: ${props => props.background};
   overflow: hidden;
   transition: opacity 0.25s;
+  position: relative;
   opacity: ${props => props.over && props.onClick ? 0.75 : 1};
 
   &.overlap-right {
@@ -127,16 +134,37 @@ const Edit = styled.div`
   "Droid Sans", "Helvetica Neue", sans-serif;
 `;
 
-const Badge = styled.span<{ dark: boolean }>`
+const Presence = styled.span<{
+  dark: boolean,
+  presence: string,
+}>`
   position: absolute;
   right: -3px;
   bottom: -3px;
   width: 11px;
   height: 11px;
-  border-radius: 10px;
-  background-color: #007af5;
-  box-sizing: border-box;
+  border-radius: 50%;
+  z-index: 2;
+  background-color: ${props => (props.presence == "online" ? "#36C5AB" : "#FD9A00")};
   border: 2px solid ${props => (props.dark ? "#08111d" : "#ffffff")};
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
+`;
+
+const Badge = styled.span<{
+  dark: boolean,
+}>`
+  position: absolute;
+  right: -3px;
+  bottom: -3px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  z-index: 2;
+  border: 2px solid ${props => (props.dark ? "#08111d" : "#ffffff")};
+  background-color: #007af5;
   font-family: -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Roboto", "Oxygen",
   "Ubuntu", "Cantarell", "Fira Sans",
@@ -173,6 +201,9 @@ interface IAvatarProps {
   /** True or false */
   circle?: boolean;
 
+  /** True or false - overrides heartbeat presences */
+  badge?: boolean;
+
   /** React component */
   editIcon?: any;
 
@@ -200,8 +231,8 @@ interface IAvatarProps {
   /** React children */
   children?: any;
 
-  /** True or false */
-  badge?: boolean;
+  /** Presence indicator */
+  presence?: string;
 
   /**
    * Value to display, either empty (" ") or title text
@@ -218,7 +249,7 @@ interface IAvatarProps {
  * Avatar component. Displays a circle or square container for users,
  * channels, or anything else
  */
-export const Avatar: React.FunctionComponent<IAvatarProps> = (props: IAvatarProps) => {
+export const AvatarComponent: React.FunctionComponent<IAvatarProps> = (props: IAvatarProps) => {
   const [over, setOver] = useState(false);
   const image = props.image ? "url(" + props.image + ")" : "";
   const background = props.dark
@@ -300,6 +331,8 @@ export const Avatar: React.FunctionComponent<IAvatarProps> = (props: IAvatarProp
 
   return (
     <Container
+      width={width}
+      height={height}
       onMouseEnter={() => setOver(true)}
       onMouseLeave={() => setOver(false)}>
       {over && props.onEditClick && props.editIcon &&
@@ -314,7 +347,22 @@ export const Avatar: React.FunctionComponent<IAvatarProps> = (props: IAvatarProp
         </Delete>
       }
 
-      {props.badge && <Badge dark={props.dark || false}/>}
+      {props.presence && !props.badge &&
+        <React.Fragment>
+          {props.presence != "offline" &&
+            <Presence
+              presence={props.presence}
+              dark={props.dark || false}
+            />
+          }
+        </React.Fragment>
+      }
+
+      {props.badge &&
+        <Badge
+          dark={props.dark || false}
+        />
+      }
 
       <Inner
         over={over}
@@ -345,3 +393,5 @@ export const Avatar: React.FunctionComponent<IAvatarProps> = (props: IAvatarProp
     </Container>
   );
 };
+
+export const Avatar: any = React.memo((props: IAvatarProps) => <AvatarComponent {...props} />);

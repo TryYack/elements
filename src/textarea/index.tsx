@@ -35,6 +35,10 @@ const Field = styled.textarea<{
   "Ubuntu", "Cantarell", "Fira Sans",
   "Droid Sans", "Helvetica Neue", sans-serif;
 
+  &:focus {
+    outline: none;
+  }
+
   &::placeholder {
     color: #acb5bd;
   }

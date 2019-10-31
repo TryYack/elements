@@ -23,6 +23,8 @@ interface IAvatarProps {
     size?: string;
     /** True or false */
     circle?: boolean;
+    /** True or false - overrides heartbeat presences */
+    badge?: boolean;
     /** React component */
     editIcon?: any;
     /** Function event callback for editing */
@@ -41,8 +43,8 @@ interface IAvatarProps {
     style?: object;
     /** React children */
     children?: any;
-    /** True or false */
-    badge?: boolean;
+    /** Presence indicator */
+    presence?: string;
     /**
      * Value to display, either empty (" ") or title text
      *
@@ -56,5 +58,6 @@ interface IAvatarProps {
  * Avatar component. Displays a circle or square container for users,
  * channels, or anything else
  */
-export declare const Avatar: React.FunctionComponent<IAvatarProps>;
+export declare const AvatarComponent: React.FunctionComponent<IAvatarProps>;
+export declare const Avatar: any;
 export {};

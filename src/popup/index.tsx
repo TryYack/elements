@@ -14,6 +14,16 @@ const Container = styled.div<{
   height: max-content;
 `;
 
+const ContentActiveAreaInner = styled.div`
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  align-content: center;
+  justify-content: center;
+`;
+
 const Content = styled.div<{ width: number }>`
   display: flex;
   position: absolute;
@@ -34,6 +44,11 @@ const Content = styled.div<{ width: number }>`
 
 const ContentActiveArea = styled.div`
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  align-content: center;
+  justify-content: center;
 `;
 
 interface IPopupProps {
@@ -74,7 +89,7 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
 
     this.wrapperRef = React.createRef();
     this.rootRef = React.createRef();
-    
+
     this.handleClickOutside = this.handleClickOutside.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.hidePopup = this.hidePopup.bind(this);
@@ -121,7 +136,9 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
             width={this.props.width}
             className={this.props.direction}>
             <ContentActiveArea>
-              {this.props.content}
+              <ContentActiveAreaInner>
+                {this.props.content}
+              </ContentActiveAreaInner>
             </ContentActiveArea>
           </Content>
         }
