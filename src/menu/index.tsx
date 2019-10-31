@@ -120,8 +120,11 @@ export const Menu: React.FunctionComponent<IMenuProps> = (props: IMenuProps) => 
           return (
             <RowContainer key={index}>
               <Row
-                onClick={item.onClick}
-                nohover={item.divider}>
+                nohover={item.divider}
+                onClick={(e: any) => {
+                  e.stopPropagation();
+                  item.onClick();
+                }}>
 
                 {item.divider && <Divider />}
 

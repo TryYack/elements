@@ -199,12 +199,10 @@ export const Room: React.FunctionComponent<IRoomProps> = (props: IRoomProps) => 
                   <Menu
                     items={[
                       { text: props.archived ? "Unarchive" : "Archive", onClick: (e: any) => {
-                        e.stopPropagation();
-                        return props.onArchivedClick;
+                        props.onArchivedClick();
                       } },
                       { text: props.muted ? "Unmute" : "Mute", onClick: (e: any) => {
-                        e.stopPropagation();
-                        return props.onMutedClick;
+                        props.onMutedClick();
                       } },
                     ]}
                   />
