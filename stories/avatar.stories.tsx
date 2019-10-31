@@ -46,15 +46,36 @@ storiesOf('Avatar', module)
     ))
   )
   .add(
-    'With a heartbeat',
+    'With a presence - online',
     withInfo({ inline: true })(() => {
       return (
         <Avatar
           title="Jon Doe"
-          heartbeat={new Date()}
+          presence="online"
         />
       )
-
+    })
+  )
+  .add(
+    'With a presence - away',
+    withInfo({ inline: true })(() => {
+      return (
+        <Avatar
+          title="Jon Doe"
+          presence="away"
+        />
+      )
+    })
+  )
+  .add(
+    'With a presence - offline',
+    withInfo({ inline: true })(() => {
+      return (
+        <Avatar
+          title="Jon Doe"
+          presence="offline"
+        />
+      )
     })
   )
   .add(

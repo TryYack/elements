@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import * as chroma from "chroma-js";
 
@@ -136,7 +136,7 @@ const Edit = styled.div`
 
 const Presence = styled.span<{
   dark: boolean,
-  online: boolean,
+  presence: string,
 }>`
   position: absolute;
   right: -3px;
@@ -145,7 +145,7 @@ const Presence = styled.span<{
   height: 11px;
   border-radius: 50%;
   z-index: 2;
-  background-color: ${props => (props.online ? "#36C5AB" : "#FD9A00")};
+  background-color: ${props => (props.presence == "online" ? "#36C5AB" : "#FD9A00")};
   border: 2px solid ${props => (props.dark ? "#08111d" : "#ffffff")};
   font-family: -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Roboto", "Oxygen",
@@ -232,7 +232,7 @@ interface IAvatarProps {
   children?: any;
 
   /** Presence indicator */
-  heartbeat?: Date;
+  presence?: string;
 
   /**
    * Value to display, either empty (" ") or title text
@@ -251,9 +251,6 @@ interface IAvatarProps {
  */
 export const AvatarComponent: React.FunctionComponent<IAvatarProps> = (props: IAvatarProps) => {
   const [over, setOver] = useState(false);
-  const [mounted, setMounted] = useState(false);
-  const [online, setOnline] = useState(false);
-  const [offline, setOffline] = useState(false);
   const image = props.image ? "url(" + props.image + ")" : "";
   const background = props.dark
     ? "#0c1828"
@@ -268,38 +265,6 @@ export const AvatarComponent: React.FunctionComponent<IAvatarProps> = (props: IA
   let width = 35;
   let height = 35;
   let borderRadius = 35;
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    const snapshot = new Date().getTime();
-
-    // Only process this if both the heart prop
-    if (props.heartbeat) {
-      setInterval(() => {
-        // is present and the component is mounted
-        if (mounted) {
-          const ticker = new Date().getTime();
-          const difference = ticker - snapshot;
-
-          if (difference < 30000) {
-            setOnline(true);
-            setOffline(false);
-          }
-          if (difference > 30000) {
-            setOnline(false);
-            setOffline(false);
-          }
-          if (difference > 60000) {
-            setOnline(false);
-            setOffline(true);
-          }
-        }
-      }, 1000);
-    }
-  }, [props.heartbeat]);
 
   const generateInitials = (str: string) => {
     return str.split(" ")
@@ -382,17 +347,21 @@ export const AvatarComponent: React.FunctionComponent<IAvatarProps> = (props: IA
         </Delete>
       }
 
-      {props.heartbeat && !offline && !props.badge &&
-        <Presence
-          online={online}
-          dark={props.dark || false}
-        />
+      {props.presence && !props.badge &&
+        <React.Fragment>
+          {props.presence != "offline" &&
+            <Presence
+              presence={props.presence}
+              dark={props.dark || false}
+            />
+          }
+        </React.Fragment>
       }
 
       {props.badge &&
         <Badge
           dark={props.dark || false}
-          />
+        />
       }
 
       <Inner
