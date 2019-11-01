@@ -1,6 +1,11 @@
 import * as React from "react";
 import styled from "styled-components";
-import { InsertDriveFileOutlined, AudiotrackOutlined, VideocamOutlined, SubjectOutlined, ImageOutlined, FontDownloadOutlined } from "@material-ui/icons";
+import InsertDriveFileOutlined from "@material-ui/icons/InsertDriveFileOutlined";
+import AudiotrackOutlined from "@material-ui/icons/AudiotrackOutlined";
+import VideocamOutlined from "@material-ui/icons/VideocamOutlined";
+import SubjectOutlined from "@material-ui/icons/SubjectOutlined";
+import ImageOutlined from "@material-ui/icons/ImageOutlined";
+import FontDownloadOutlined from "@material-ui/icons/FontDownloadOutlined";
 
 const Container = styled.div<{
   layout: string;

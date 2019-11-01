@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import { CloseOutlined } from "@material-ui/icons";
+import CloseOutlined from "@material-ui/icons/CloseOutlined";
 
 const Container = styled.div`
   background-color: #05A6FF;

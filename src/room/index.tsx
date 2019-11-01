@@ -4,7 +4,9 @@ import { useState } from "react";
 import { Avatar } from "../avatar";
 import { Popup } from "../popup";
 import { Menu } from "../menu";
-import { LockOutlined, MoreHorizOutlined, NotificationsOffOutlined } from "@material-ui/icons";
+import LockOutlined from "@material-ui/icons/LockOutlined";
+import MoreHorizOutlined from "@material-ui/icons/MoreHorizOutlined";
+import NotificationsOffOutlined from "@material-ui/icons/NotificationsOffOutlined";
 
 const Container = styled.div<{
   active: boolean;
