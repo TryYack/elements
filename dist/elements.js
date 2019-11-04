@@ -14100,7 +14100,7 @@ const Row = styled_components_1.default.div `
 const IconContainer = styled_components_1.default.div `
   margin-right: 10px;
   margin-left: 5px;
-  width: 40px;
+  width: 20px;
 `;
 const AvatarContainer = styled_components_1.default.div `
   margin-right: 7px;
