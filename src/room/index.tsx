@@ -53,7 +53,8 @@ const Title = styled.div<{
   font-weight: 500;
   color: ${props => props.active ? "white" : "#475669" };
   white-space: wrap;
-  max-width: 150px;
+  max-width: 140px;
+  letter-spacing: -0.5px;
   margin-right: 5px;
   font-family: -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Roboto", "Oxygen",
@@ -103,21 +104,6 @@ const InnerContents = styled.div`
   position: relative;
 `;
 
-const MoreMenu = styled.span`
-  position: absolute;
-  right: 0px;
-  top: 0px;
-  z-index: 4;
-  height: 100%;
-  width: 50px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  align-content: center;
-  justify-content: flex-end;
-  background: linear-gradient(90deg, rgba(2,0,36,0) 0%, rgba(12,24,40,1) 100%);
-`;
-
 const MoreIcon = styled.span`
   cursor: pointer;
   opacity: 1;
@@ -126,9 +112,9 @@ const MoreIcon = styled.span`
   z-index: 5;
   right: 0px;
   top: 0px;
-  height: 100%;
-  width: 30px;
   display: flex;
+  margin-left: 5px;
+  margin-right: 4px;
   flex-direction: row;
   align-items: center;
   align-content: center;
@@ -229,50 +215,48 @@ export const Room: React.FunctionComponent<IRoomProps> = (props: IRoomProps) => 
             <Flex />
 
             {over && props.onMutedClick && props.onArchivedClick &&
-              <MoreMenu>
-                <Popup
-                  handleDismiss={() => setMenu(false)}
-                  visible={menu}
-                  width={200}
-                  direction="right-bottom"
-                  content={
-                    <Menu
-                      items={[
-                        { text: props.archived ? "Unarchive" : "Archive", onClick: (e: any) => {
-                          props.onArchivedClick();
-                        } },
-                        { text: props.muted ? "Unmute" : "Mute", onClick: (e: any) => {
-                          props.onMutedClick();
-                        } },
-                      ]}
-                    />
-                  }>
-                  <MoreIcon
-                    onClick={(e: any) => {
-                      e.stopPropagation();
-                      setMenu(true);
-                    }}>
-                    <svg
-                      width="15"
-                      height="15"
-                      aria-hidden="true"
-                      focusable="false"
-                      data-prefix="fal"
-                      data-icon="lock"
-                      role="img"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 512 512">
-                      <path
-                        fill="white"
-                        d="M304 256c0 26.5-21.5 48-48 48s-48-21.5-48-48 21.5-48 48-48 48 21.5 48 48zm120-48c-26.5 0-48 21.5-48 48s21.5 48 48 48 48-21.5 48-48-21.5-48-48-48zm-336 0c-26.5 0-48 21.5-48 48s21.5 48 48 48 48-21.5 48-48-21.5-48-48-48z">
-                      </path>
-                    </svg>
-                  </MoreIcon>
-                </Popup>
-              </MoreMenu>
+              <Popup
+                handleDismiss={() => setMenu(false)}
+                visible={menu}
+                width={200}
+                direction="right-bottom"
+                content={
+                  <Menu
+                    items={[
+                      { text: props.archived ? "Unarchive" : "Archive", onClick: (e: any) => {
+                        props.onArchivedClick();
+                      } },
+                      { text: props.muted ? "Unmute" : "Mute", onClick: (e: any) => {
+                        props.onMutedClick();
+                      } },
+                    ]}
+                  />
+                }>
+                <MoreIcon
+                  onClick={(e: any) => {
+                    e.stopPropagation();
+                    setMenu(true);
+                  }}>
+                  <svg
+                    width="15"
+                    height="15"
+                    aria-hidden="true"
+                    focusable="false"
+                    data-prefix="fal"
+                    data-icon="lock"
+                    role="img"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 512 512">
+                    <path
+                      fill="#475669"
+                      d="M304 256c0 26.5-21.5 48-48 48s-48-21.5-48-48 21.5-48 48-48 48 21.5 48 48zm120-48c-26.5 0-48 21.5-48 48s21.5 48 48 48 48-21.5 48-48-21.5-48-48-48zm-336 0c-26.5 0-48 21.5-48 48s21.5 48 48 48 48-21.5 48-48-21.5-48-48-48z">
+                    </path>
+                  </svg>
+                </MoreIcon>
+              </Popup>
             }
 
-            {props.unread > 0 &&
+            {!over && props.unread > 0 &&
               <Badge>{props.unread}</Badge>
             }
           </InnerContents>

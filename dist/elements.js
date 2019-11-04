@@ -14510,7 +14510,8 @@ const Title = styled_components_1.default.div `
   font-weight: 500;
   color: ${props => props.active ? "white" : "#475669"};
   white-space: wrap;
-  max-width: 150px;
+  max-width: 140px;
+  letter-spacing: -0.5px;
   margin-right: 5px;
   font-family: -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Roboto", "Oxygen",
@@ -14555,20 +14556,6 @@ const InnerContents = styled_components_1.default.div `
   justify-content: center;
   position: relative;
 `;
-const MoreMenu = styled_components_1.default.span `
-  position: absolute;
-  right: 0px;
-  top: 0px;
-  z-index: 4;
-  height: 100%;
-  width: 50px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  align-content: center;
-  justify-content: flex-end;
-  background: linear-gradient(90deg, rgba(2,0,36,0) 0%, rgba(12,24,40,1) 100%);
-`;
 const MoreIcon = styled_components_1.default.span `
   cursor: pointer;
   opacity: 1;
@@ -14577,9 +14564,9 @@ const MoreIcon = styled_components_1.default.span `
   z-index: 5;
   right: 0px;
   top: 0px;
-  height: 100%;
-  width: 30px;
   display: flex;
+  margin-left: 5px;
+  margin-right: 4px;
   flex-direction: row;
   align-items: center;
   align-content: center;
@@ -14612,22 +14599,21 @@ exports.Room = (props) => {
                             React.createElement("path", { fill: "#475669", d: "M400 224h-16v-62.5C384 73.1 312.9.3 224.5 0 136-.3 64 71.6 64 160v64H48c-26.5 0-48 21.5-48 48v192c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V272c0-26.5-21.5-48-48-48zM96 160c0-70.6 57.4-128 128-128s128 57.4 128 128v64H96v-64zm304 320H48c-8.8 0-16-7.2-16-16V272c0-8.8 7.2-16 16-16h352c8.8 0 16 7.2 16 16v192c0 8.8-7.2 16-16 16z" })),
                     React.createElement(Flex, null),
                     over && props.onMutedClick && props.onArchivedClick &&
-                        React.createElement(MoreMenu, null,
-                            React.createElement(popup_1.Popup, { handleDismiss: () => setMenu(false), visible: menu, width: 200, direction: "right-bottom", content: React.createElement(menu_1.Menu, { items: [
-                                        { text: props.archived ? "Unarchive" : "Archive", onClick: (e) => {
-                                                props.onArchivedClick();
-                                            } },
-                                        { text: props.muted ? "Unmute" : "Mute", onClick: (e) => {
-                                                props.onMutedClick();
-                                            } },
-                                    ] }) },
-                                React.createElement(MoreIcon, { onClick: (e) => {
-                                        e.stopPropagation();
-                                        setMenu(true);
-                                    } },
-                                    React.createElement("svg", { width: "15", height: "15", "aria-hidden": "true", focusable: "false", "data-prefix": "fal", "data-icon": "lock", role: "img", xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 512 512" },
-                                        React.createElement("path", { fill: "white", d: "M304 256c0 26.5-21.5 48-48 48s-48-21.5-48-48 21.5-48 48-48 48 21.5 48 48zm120-48c-26.5 0-48 21.5-48 48s21.5 48 48 48 48-21.5 48-48-21.5-48-48-48zm-336 0c-26.5 0-48 21.5-48 48s21.5 48 48 48 48-21.5 48-48-21.5-48-48-48z" }))))),
-                    props.unread > 0 &&
+                        React.createElement(popup_1.Popup, { handleDismiss: () => setMenu(false), visible: menu, width: 200, direction: "right-bottom", content: React.createElement(menu_1.Menu, { items: [
+                                    { text: props.archived ? "Unarchive" : "Archive", onClick: (e) => {
+                                            props.onArchivedClick();
+                                        } },
+                                    { text: props.muted ? "Unmute" : "Mute", onClick: (e) => {
+                                            props.onMutedClick();
+                                        } },
+                                ] }) },
+                            React.createElement(MoreIcon, { onClick: (e) => {
+                                    e.stopPropagation();
+                                    setMenu(true);
+                                } },
+                                React.createElement("svg", { width: "15", height: "15", "aria-hidden": "true", focusable: "false", "data-prefix": "fal", "data-icon": "lock", role: "img", xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 512 512" },
+                                    React.createElement("path", { fill: "#475669", d: "M304 256c0 26.5-21.5 48-48 48s-48-21.5-48-48 21.5-48 48-48 48 21.5 48 48zm120-48c-26.5 0-48 21.5-48 48s21.5 48 48 48 48-21.5 48-48-21.5-48-48-48zm-336 0c-26.5 0-48 21.5-48 48s21.5 48 48 48 48-21.5 48-48-21.5-48-48-48z" })))),
+                    !over && props.unread > 0 &&
                         React.createElement(Badge, null, props.unread)),
                 props.excerpt &&
                     React.createElement(Excerpt, null,

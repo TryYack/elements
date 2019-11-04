@@ -36,7 +36,7 @@
     }
   ],
   "deprecated": false,
-  "version": "0.6.4",
+  "version": "0.6.5",
   "description": "UI toolkit for Weekday",
   "scripts": {
     "storybook": "start-storybook -p 6006",
@@ -50,7 +50,8 @@
     "tsc:watch": "tsc -p tsconfig.json -w",
     "lint": "tslint --project ./",
     "lint:fix": "tslint --fix -c ./tslint.json 'src/**/*{.ts,.tsx}'",
-    "link:watch": "npm run tsc:watch"
+    "link:watch": "npm run tsc:watch",
+    "deploy": "npm run lint && npm run build:prod && npm publish"
   },
   "author": "Jo du Plessis",
   "license": "ISC",
