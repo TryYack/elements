@@ -63,6 +63,7 @@ const Row = styled.div<{
 const IconContainer = styled.div`
   margin-right: 10px;
   margin-left: 5px;
+  width: 40px;
 `;
 
 const AvatarContainer = styled.div`

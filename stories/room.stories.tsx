@@ -7,7 +7,7 @@ storiesOf('Room', module)
   .add(
   'Default',
   withInfo({ inline: true })(() => (
-    <div style={{ width: '100%', backgroundColor: '#0C1828' }}>
+    <div style={{ width: 300, backgroundColor: '#0C1828' }}>
       <Room
         active={false}
         unread={1}
@@ -16,6 +16,26 @@ storiesOf('Room', module)
         excerpt="Excerpt here"
         public={false}
         private={false}
+        muted={true}
+        onArchivedClick={() => console.log('2')}
+        onMutedClick={() => console.log('1')}
+        onClick={() => console.log('3')}
+      />
+    </div>
+  )))
+  .add(
+  'With a very long title',
+  withInfo({ inline: true })(() => (
+    <div style={{ width: 300, backgroundColor: '#0C1828' }}>
+      <Room
+        active={false}
+        unread={1}
+        title="This is a very long title that a user won't be able to see"
+        image="https://usepanda.com/img/source-icons/theNextWeb.png"
+        excerpt="Excerpt here"
+        public={false}
+        private={false}
+        muted={true}
         onArchivedClick={() => console.log('2')}
         onMutedClick={() => console.log('1')}
         onClick={() => console.log('3')}
@@ -29,7 +49,7 @@ storiesOf('Room', module)
       <Room
         active={false}
         unread={1}
-        title="Room"
+        title="Marketing Department"
         image="https://usepanda.com/img/source-icons/theNextWeb.png"
         excerpt="Excerpt here that is long is should wrap right off the screen"
         public={false}
