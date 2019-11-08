@@ -36,7 +36,7 @@
     }
   ],
   "deprecated": false,
-  "version": "0.6.5",
+  "version": "0.6.6",
   "description": "UI toolkit for Weekday",
   "scripts": {
     "storybook": "start-storybook -p 6006",
@@ -57,11 +57,10 @@
   "license": "ISC",
   "peerDependencies": {},
   "dependencies": {
-    "react": "^16.8.6",
-    "@material-ui/core": "^4.5.1",
-    "@material-ui/icons": "^4.5.1",
     "chroma-js": "^2.0.4",
-    "moment": "^2.22.2"
+    "moment": "^2.22.2",
+    "react": "^16.8.6",
+    "react-feather": "git+https://github.com/joduplessis/react-feather.git"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",

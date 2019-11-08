@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import CloseOutlined from "@material-ui/icons/CloseOutlined";
+import { X } from "react-feather";
 
 const Container = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
@@ -73,6 +73,12 @@ const FooterPadding = styled.div`
 const Button = styled.div`
   cursor: pointer;
   padding: 20px;
+  opacity: 1;
+  transition: opacity 0.25s;
+
+  &:hover {
+    opacity: 0.5;
+  }
 `;
 
 const TitleText = styled.div`
@@ -99,9 +105,10 @@ export const Modal: React.FunctionComponent<IModalProps> = (props: IModalProps) 
         <Title>
           <TitleText>{props.title}</TitleText>
           <Button>
-            <CloseOutlined
-              htmlColor="#524150"
-              fontSize="large"
+            <X
+              color="#524150"
+              size="30"
+              thickness="1.5"
               onClick={props.onClose}
             />
           </Button>

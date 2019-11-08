@@ -1,11 +1,11 @@
 import * as React from "react";
 import styled from "styled-components";
-import InsertDriveFileOutlined from "@material-ui/icons/InsertDriveFileOutlined";
-import AudiotrackOutlined from "@material-ui/icons/AudiotrackOutlined";
-import VideocamOutlined from "@material-ui/icons/VideocamOutlined";
-import SubjectOutlined from "@material-ui/icons/SubjectOutlined";
-import ImageOutlined from "@material-ui/icons/ImageOutlined";
-import FontDownloadOutlined from "@material-ui/icons/FontDownloadOutlined";
+import { Image } from "react-feather";
+import { Video } from "react-feather";
+import { Download } from "react-feather";
+import { AlignLeft } from "react-feather";
+import { File } from "react-feather";
+import { Activity } from "react-feather";
 
 const Container = styled.div<{
   layout: string;
@@ -221,13 +221,13 @@ const AttachmentComponent: React.FunctionComponent<IAttachmentProps> = (props: I
 
   const getMimeTypeIcon = (type: string) => {
     switch (type.split("/")[0]) {
-      case "audio": return <AudiotrackOutlined htmlColor="white" fontSize={props.layout == "compose" ? "large" : "default"} />;
-      case "application": return <InsertDriveFileOutlined htmlColor="white" fontSize={props.layout == "compose" ? "large" : "default"} />;
-      case "video": return <VideocamOutlined htmlColor="white" fontSize={props.layout == "compose" ? "large" : "default"} />;
-      case "text": return <SubjectOutlined htmlColor="white" fontSize={props.layout == "compose" ? "large" : "default"} />;
-      case "image": return <ImageOutlined htmlColor="white" fontSize={props.layout == "compose" ? "large" : "default"} />;
-      case "font": return <FontDownloadOutlined htmlColor="white" fontSize={props.layout == "compose" ? "large" : "default"} />;
-      default: return <InsertDriveFileOutlined htmlColor="white" fontSize={props.layout == "compose" ? "large" : "default"} />;
+      case "audio": return <Activity color="white" size={props.layout == "compose" ? "25" : "20"} thickness="1" />;
+      case "application": return <File color="white" size={props.layout == "compose" ? "25" : "20"} thickness="1" />;
+      case "video": return <Video color="white" size={props.layout == "compose" ? "30" : "25"} thickness="1" />;
+      case "text": return <AlignLeft color="white" size={props.layout == "compose" ? "25" : "20"} thickness="1" />;
+      case "image": return <Image color="white" size={props.layout == "compose" ? "25" : "20"} thickness="1" />;
+      case "font": return <Download color="white" size={props.layout == "compose" ? "25" : "20"} thickness="1" />;
+      default: return <File color="white" size={props.layout == "compose" ? "25" : "20"} thickness="1" />;
     }
   };
 

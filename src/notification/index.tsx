@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import CloseOutlined from "@material-ui/icons/CloseOutlined";
+import { X } from "react-feather";
 
 const Container = styled.div`
   background-color: #05A6FF;
@@ -42,6 +42,12 @@ const Icon = styled.span`
   height: 22px;
   width: 22px;
   cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.25s;
+
+  &:hover {
+    opacity: 0.5;
+  }
 `;
 
 const Text = styled.span`
@@ -78,11 +84,11 @@ export const Notification: React.FunctionComponent<INotificationProps> = (props:
           </ActionText>
         }
         {props.onDismissClick &&
-          <Icon>
-            <CloseOutlined
-              htmlColor="white"
-              fontSize="default"
-              onClick={props.onDismissClick}
+          <Icon onClick={props.onDismissClick}>
+            <X
+              color="white"
+              size="20"
+              thickness="1.5"
             />
           </Icon>
         }
