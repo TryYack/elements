@@ -12,7 +12,7 @@ interface IPopupProps {
      * - "right-bottom"
      */
     direction: string;
-    width: number;
+    width: number | string;
     content: any;
 }
 interface IPopupState {

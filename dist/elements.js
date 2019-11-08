@@ -24817,7 +24817,7 @@ const InputField = styled_components_1.default.input `
   font-weight: 500;
   padding: 10px;
   width: 100%;
-  border: 1px solid #ebedef;
+  bordet: 1px solid #edf0f2;
   border-radius: 5px;
   resize: none;
   display: block;
@@ -25331,7 +25331,7 @@ const Container = styled_components_1.default.div `
   align-items: center;
   align-content: center;
   justify-content: center;
-  width: max-content;
+  width: ${props => typeof props.width == "number" ? "max-content" : props.width};
   height: max-content;
 `;
 const ContentActiveAreaInner = styled_components_1.default.div `
@@ -25342,6 +25342,7 @@ const ContentActiveAreaInner = styled_components_1.default.div `
   align-items: stretch;
   align-content: center;
   justify-content: center;
+  width: ${props => typeof props.width == "number" ? props.width + "px" : props.width};
 `;
 const Content = styled_components_1.default.div `
   display: flex;
@@ -25352,7 +25353,7 @@ const Content = styled_components_1.default.div `
   overflow: hidden;
   border: 1px solid #F1F3F5;
   box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.05);
-  width: ${props => props.width}px;
+  width: ${props => typeof props.width == "number" ? props.width + "px" : props.width};
   height: max-content;
 
   &.left-top { top: 0px; left: 0px; transform: translateY(-100%);  }
@@ -25367,6 +25368,7 @@ const ContentActiveArea = styled_components_1.default.div `
   align-items: stretch;
   align-content: center;
   justify-content: center;
+  width: ${props => typeof props.width == "number" ? props.width + "px" : props.width};
 `;
 class Popup extends React.Component {
     constructor(props) {
@@ -25413,12 +25415,12 @@ class Popup extends React.Component {
         document.removeEventListener("keyup", this.handleKeyPress);
     }
     render() {
-        return (React.createElement(Container, { className: this.props.containerClassName ? this.props.containerClassName : "", ref: (ref) => this.rootRef = ref },
+        return (React.createElement(Container, { width: this.props.width, className: this.props.containerClassName ? this.props.containerClassName : "", ref: (ref) => this.rootRef = ref },
             this.props.children,
             this.props.visible &&
                 React.createElement(Content, { ref: (ref) => this.wrapperRef = ref, width: this.props.width, className: this.props.direction },
-                    React.createElement(ContentActiveArea, null,
-                        React.createElement(ContentActiveAreaInner, null, this.props.content)))));
+                    React.createElement(ContentActiveArea, { width: this.props.width },
+                        React.createElement(ContentActiveAreaInner, { width: this.props.width }, this.props.content)))));
     }
 }
 exports.Popup = Popup;

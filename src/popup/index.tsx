@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const Container = styled.div<{
   className: string;
+  width: number | string;
 }>`
   position: relative;
   display: flex;
@@ -10,11 +11,11 @@ const Container = styled.div<{
   align-items: center;
   align-content: center;
   justify-content: center;
-  width: max-content;
+  width: ${props => typeof props.width == "number" ? "max-content" : props.width};
   height: max-content;
 `;
 
-const ContentActiveAreaInner = styled.div`
+const ContentActiveAreaInner = styled.div<{ width: number | string }>`
   flex: 1;
   position: relative;
   display: flex;
@@ -22,9 +23,10 @@ const ContentActiveAreaInner = styled.div`
   align-items: stretch;
   align-content: center;
   justify-content: center;
+  width: ${props => typeof props.width == "number" ? props.width + "px" : props.width};
 `;
 
-const Content = styled.div<{ width: number }>`
+const Content = styled.div<{ width: number | string }>`
   display: flex;
   position: absolute;
   z-index: 1000;
@@ -33,7 +35,7 @@ const Content = styled.div<{ width: number }>`
   overflow: hidden;
   border: 1px solid #F1F3F5;
   box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.05);
-  width: ${props => props.width}px;
+  width: ${props => typeof props.width == "number" ? props.width + "px" : props.width};
   height: max-content;
 
   &.left-top { top: 0px; left: 0px; transform: translateY(-100%);  }
@@ -42,13 +44,14 @@ const Content = styled.div<{ width: number }>`
   &.right-bottom { bottom: 0px; right : 0px; transform: translateY(100%); }
 `;
 
-const ContentActiveArea = styled.div`
+const ContentActiveArea = styled.div<{ width: number | string }>`
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   align-content: center;
   justify-content: center;
+  width: ${props => typeof props.width == "number" ? props.width + "px" : props.width};
 `;
 
 interface IPopupProps {
@@ -64,7 +67,7 @@ interface IPopupProps {
    * - "right-bottom"
    */
   direction: string;
-  width: number;
+  width: number | string;
   content: any;
 }
 
@@ -127,16 +130,18 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
   public render() {
     return (
       <Container
+        width={this.props.width}
         className={this.props.containerClassName ? this.props.containerClassName : ""}
         ref={(ref) => this.rootRef = ref}>
         {this.props.children}
+
         {this.props.visible &&
           <Content
             ref={(ref) => this.wrapperRef = ref}
             width={this.props.width}
             className={this.props.direction}>
-            <ContentActiveArea>
-              <ContentActiveAreaInner>
+            <ContentActiveArea width={this.props.width}>
+              <ContentActiveAreaInner width={this.props.width}>
                 {this.props.content}
               </ContentActiveAreaInner>
             </ContentActiveArea>
