@@ -16,6 +16,8 @@ import { Tabbed } from "./tabbed";
 import { Textarea } from "./textarea";
 import { Toggle } from "./toggle";
 import { User } from "./user";
+import { Text } from "./Text";
+import { Select } from "./Select";
 
 export {
   Tooltip,
@@ -36,4 +38,6 @@ export {
   Toggle,
   User,
   Textarea,
+  Text,
+  Select,
 };

@@ -23773,6 +23773,252 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./src/Select/index.tsx":
+/*!******************************!*\
+  !*** ./src/Select/index.tsx ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const React = __webpack_require__(/*! react */ "react");
+const styled_components_1 = __webpack_require__(/*! styled-components */ "styled-components");
+const popup_1 = __webpack_require__(/*! ../popup */ "./src/popup/index.tsx");
+const react_feather_1 = __webpack_require__(/*! react-feather */ "./node_modules/react-feather/dist/index.js");
+const ListContainer = styled_components_1.default.div `
+  width: 100%;
+  background: white;
+  position: relative;
+  height: ${props => props.size * 31}px;
+  max-height: ${5 * 31}px;
+  overflow: scroll;
+`;
+const Item = styled_components_1.default.div `
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: flex-start;
+  border-top: 1px solid #edf0f2;
+  opacity: 1;
+  transition: background 0.25s;
+  background: ${props => (props.active ? "#f8f9fa" : "transparent")};
+
+  &:hover {
+    background: #f8f9fa;
+  }
+`;
+const ItemText = styled_components_1.default.div `
+  color: #858e96;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
+`;
+const InnerContainer = styled_components_1.default.div `
+  width: 100%;
+  background: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  position: relative;
+  border-radius: 5px;
+`;
+const Button = styled_components_1.default.div `
+  cursor: pointer;
+  padding: 3px;
+  opacity: 1;
+  transition: opacity 0.25s;
+
+  &:hover {
+    opacity: 0.5;
+  }
+`;
+const Container = styled_components_1.default.div `
+  width: 100%;
+  background: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  position: relative;
+  border: 1px solid #edf0f2;
+  border-radius: 5px;
+  position: relative;
+`;
+const Text = styled_components_1.default.div `
+  color: #495057;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
+  padding: 10px;
+  flex: 1;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.25s;
+
+  &:hover {
+    opacity: 0.75;
+  }
+`;
+class Select extends React.Component {
+    static getDerivedStateFromProps(props, state) {
+        return {
+            list: props.list.filter((item, index) => (index <= 5 ? true : false)),
+        };
+    }
+    constructor(props) {
+        super(props);
+        this.state = { index: 0, list: [], visible: false };
+        this.handleKeyPress = this.handleKeyPress.bind(this);
+    }
+    handleKeyPress(e) {
+        // Move up
+        if (e.keyCode == 38)
+            this.setState({ index: this.state.index - 1 < 0 ? this.state.list.length - 1 : this.state.index - 1 });
+        // Move down
+        if (e.keyCode == 40)
+            this.setState({ index: this.state.index + 1 == this.state.list.length ? 0 : this.state.index + 1 });
+        // Press enter
+        if (e.keyCode == 13) {
+            if (this.state.list.length > 0)
+                this.props.onSelect(this.state.list[this.state.index]);
+        }
+    }
+    componentDidMount() {
+        document.addEventListener("keyup", this.handleKeyPress);
+    }
+    componentWillUnmount() {
+        document.removeEventListener("keyup", this.handleKeyPress);
+    }
+    // prettier-ignore
+    render() {
+        return (React.createElement(Container, null,
+            React.createElement(popup_1.Popup, { visible: this.state.visible, handleDismiss: () => this.setState({ visible: false }), direction: "left-bottom", width: "100%", content: React.createElement(ListContainer, { size: this.state.list.length }, this.state.list.map((item, index) => {
+                    return (React.createElement(Item, { active: index == this.state.index, key: index, onClick: () => {
+                            this.setState({ visible: false });
+                            this.props.onSelect(item);
+                        } },
+                        React.createElement(ItemText, null, item.text)));
+                })) },
+                React.createElement(InnerContainer, null,
+                    React.createElement(Text, { onClick: () => this.setState({ visible: true }) }, this.props.list[this.props.selected].text),
+                    React.createElement(Button, { onClick: () => this.setState({ visible: true }) },
+                        React.createElement(react_feather_1.ChevronDown, { color: "#495057", size: "20", thickness: "1.5" }))))));
+    }
+}
+exports.Select = Select;
+
+
+/***/ }),
+
+/***/ "./src/Text/index.tsx":
+/*!****************************!*\
+  !*** ./src/Text/index.tsx ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const React = __webpack_require__(/*! react */ "react");
+const styled_components_1 = __webpack_require__(/*! styled-components */ "styled-components");
+const Container = styled_components_1.default.span `
+  color: ${props => {
+    switch (props.color) {
+        case "xxd":
+            return "#202934";
+        case "xd":
+            return "#5F6B7A";
+        case "d":
+            return "#8895A7";
+        case "m":
+            return "#B8C4CE";
+        case "l":
+            return "#CFD6DE";
+        case "xl":
+            return "#E1E7EB";
+        case "xxl":
+            return "#F8F9FA";
+        case "highlight":
+            return "#00a8ff";
+        case "danger":
+            return "#DC2F30";
+        default:
+            return "#483545";
+    }
+}};
+  font-size: ${props => {
+    switch (props.display) {
+        case "h1":
+            return "22px";
+        case "h2":
+            return "20px";
+        case "h3":
+            return "18px";
+        case "h4":
+            return "16px";
+        case "h5":
+            return "14px";
+        case "p":
+            return "14px";
+        case "a":
+            return "14px";
+        case "small":
+            return "10px";
+        default:
+            return "12px";
+    }
+}};
+  font-weight: ${props => {
+    switch (props.display) {
+        case "h1":
+            return "800";
+        case "h2":
+            return "700";
+        case "h3":
+            return "600";
+        case "h4":
+            return "500";
+        case "h5":
+            return "400";
+        case "p":
+            return "500";
+        case "a":
+            return "700";
+        case "small":
+            return "500";
+        default:
+            return "500";
+    }
+}};
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
+`;
+exports.Text = (props) => {
+    return (React.createElement(Container, Object.assign({ color: props.color, display: props.display }, props), props.children));
+};
+
+
+/***/ }),
+
 /***/ "./src/attachment/index.tsx":
 /*!**********************************!*\
   !*** ./src/attachment/index.tsx ***!
@@ -24777,6 +25023,10 @@ const toggle_1 = __webpack_require__(/*! ./toggle */ "./src/toggle/index.tsx");
 exports.Toggle = toggle_1.Toggle;
 const user_1 = __webpack_require__(/*! ./user */ "./src/user/index.tsx");
 exports.User = user_1.User;
+const Text_1 = __webpack_require__(/*! ./Text */ "./src/Text/index.tsx");
+exports.Text = Text_1.Text;
+const Select_1 = __webpack_require__(/*! ./Select */ "./src/Select/index.tsx");
+exports.Select = Select_1.Select;
 
 
 /***/ }),

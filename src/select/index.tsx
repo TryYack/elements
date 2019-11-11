@@ -168,8 +168,8 @@ export class Select extends React.Component<ISelectProps, ISelectState> {
                     active={index == this.state.index}
                     key={index}
                     onClick={() => {
-                      this.setState({ visible: false })
-                      this.props.onSelect(item)
+                      this.setState({ visible: false });
+                      this.props.onSelect(item);
                     }}>
                     <ItemText>
                       {item.text}
