@@ -35,7 +35,7 @@ const Flex = styled.div`
 
 const ContainerPadding = styled.div`
   flex: 1;
-  padding: 20px;
+  padding: 10px 20px 10px 20px;
   display: flex;
   flex-direction: row;
   align-items: center;
