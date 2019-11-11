@@ -69,6 +69,95 @@ const Icon = styled.div<{
   position: relative;
 `;
 
+const Name = styled.div<{
+  layout: string,
+}>`
+  font-weight: 500;
+  font-style: normal;
+  color: #151b26;
+  display: inline-block;
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: ${props => {
+      switch (props.layout) {
+        case "compose":
+          return "14px";
+        case "message":
+          return "14px";
+        default:
+          return "16px";
+      }
+    }
+  };
+  margin-bottom: ${props => {
+      switch (props.layout) {
+        case "compose":
+          return "5px";
+        case "message":
+          return "5px";
+        default:
+          return "5px";
+      }
+    }
+  };
+`;
+
+const Size = styled.div<{
+  layout: string,
+}>`
+  font-weight: 400;
+  color: #adb5bd;
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
+  display: inline-block;
+  font-size: ${props => {
+      if (props.layout == "compose") return "13px";
+      if (props.layout == "message") return "12px";
+      return "12px";
+    }
+  };
+  margin-bottom: ${props => {
+      if (props.layout == "compose") return "3px";
+      if (props.layout == "message") return "1px";
+      return "3px";
+    }
+  };
+`;
+
+const Extension = styled.div`
+  font-weight: 500;
+  font-size: 10px;
+  color: #6f7782;
+  margin-right: 10px;
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
+`;
+
+const Link = styled.div`
+  font-weight: 500;
+  font-size: 10px;
+  cursor: pointer;
+  color: #007af5;
+  margin-right: 10px;
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.25s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+`;
+
 const Content = styled.div`
   display: flex;
   flex-direction: column;
@@ -262,34 +351,27 @@ const AttachmentComponent: React.FunctionComponent<IAttachmentProps> = (props: I
         </Icon>
 
         <Content>
-          <Text className="color-d5 mb-5">{props.name}</Text>
-          {props.size && <Text className="color-d0 mb-5">{bytesToSize(props.size)}</Text>}
+          <Name layout={props.layout}>{props.name}</Name>
+          {props.layout == "compose" && <Size layout={props.layout}>{bytesToSize(props.size)}</Size>}
           <Info>
-            <Text
-              className="color-d0 button small bold">
+            <Extension>
               {getMimeTypeDescription(props.mime)}
-            </Text>
+            </Extension>
 
-            <Text
-              className="ml-5 color-blue button small bold"
-              onClick={() => window.open(props.uri)}>
+            <Link onClick={() => window.open(props.uri)}>
               Download
-            </Text>
+            </Link>
 
             {(props.layout == "compose" && props.onDeleteClick) &&
-              <Text
-                className="ml-5 color-blue button small bold"
-                onClick={props.onDeleteClick}>
+              <Link onClick={props.onDeleteClick}>
                 Remove
-              </Text>
+              </Link>
             }
 
             {(props.layout == "message" && props.onPreviewClick && props.preview) &&
-              <Text
-                className="ml-5 color-blue button small bold"
-                onClick={props.onPreviewClick}>
+              <Link onClick={props.onPreviewClick}>
                 Preview
-              </Text>
+              </Link>
             }
           </Info>
         </Content>

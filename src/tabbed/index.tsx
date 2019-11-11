@@ -71,6 +71,25 @@ const Panel = styled.div<{
   transform: translateX(${props => props.index * 100}%);
 `;
 
+const Text = styled.div<{
+  active: boolean;
+}>`
+  font-size: 12px;
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
+  font-weight: 400;
+  color: ${props => props.active ? "#007af5" : "#11161c"};
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.25s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+`;
+
 interface ITabbedProps {
   start: number;
   panels: any;
@@ -90,7 +109,7 @@ export const Tabbed: React.FunctionComponent<ITabbedProps> = (props: ITabbedProp
               key={index}
               className={current == index ? "active" : ""}
               onClick={() => setCurrent(index)}>
-              <Text className={`button ${current == index ? "color-blue" : "color-d5"}`}>
+              <Text active={current == index}>
                 {panel.title}
               </Text>
             </PanelTabButton>
