@@ -14,4 +14,16 @@ storiesOf('Textarea', module)
       placeholder="Add a description"
       rows={8}
     />
+  )))
+  .add(
+  'Large',
+  withInfo({ inline: true })(() => (
+    <Textarea
+      label="Description"
+      textareaSize="large"
+      value="Some text value"
+      onChange={(e: any) => console.log(e.target.value)}
+      placeholder="Add a description"
+      rows={8}
+    />
   )));

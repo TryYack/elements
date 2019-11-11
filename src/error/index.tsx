@@ -27,7 +27,7 @@ const Container = styled.div`
 const Text = styled.div`
   color: white;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 400;
   font-family: -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Roboto", "Oxygen",
   "Ubuntu", "Cantarell", "Fira Sans",

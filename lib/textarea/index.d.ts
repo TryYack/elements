@@ -5,6 +5,8 @@ interface ITextareaProps {
     onChange: any;
     placeholder: string;
     rows: number;
+    textareaSize?: string;
+    className?: string;
 }
 export declare const Textarea: React.FunctionComponent<ITextareaProps>;
 export {};

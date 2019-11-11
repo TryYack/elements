@@ -24427,7 +24427,7 @@ exports.Avatar = React.memo((props) => React.createElement(exports.AvatarCompone
 Object.defineProperty(exports, "__esModule", { value: true });
 const React = __webpack_require__(/*! react */ "react");
 const styled_components_1 = __webpack_require__(/*! styled-components */ "styled-components");
-const colors_1 = __webpack_require__(/*! ../colors */ "./src/colors.ts");
+const themes_1 = __webpack_require__(/*! ./themes */ "./src/button/themes.ts");
 const Container = styled_components_1.default.button `
   box-sizing: border-box;
   width: auto;
@@ -24481,20 +24481,20 @@ const Container = styled_components_1.default.button `
     }
 }};
   border-style: solid;
-  background-color: ${props => colors_1.COLORS[props.theme].BASE.BACKGROUND_COLOR};
-  color: ${props => colors_1.COLORS[props.theme].BASE.COLOR};
-  border-color: ${props => colors_1.COLORS[props.theme].BASE.BORDER_COLOR};
+  background-color: ${props => themes_1.THEMES[props.theme].BASE.BACKGROUND_COLOR};
+  color: ${props => themes_1.THEMES[props.theme].BASE.COLOR};
+  border-color: ${props => themes_1.THEMES[props.theme].BASE.BORDER_COLOR};
 
   &:hover {
-    background-color: ${props => colors_1.COLORS[props.theme].HOVER.BACKGROUND_COLOR};
-    color: ${props => colors_1.COLORS[props.theme].HOVER.COLOR};
-    border-color: ${props => colors_1.COLORS[props.theme].HOVER.BORDER_COLOR};
+    background-color: ${props => themes_1.THEMES[props.theme].HOVER.BACKGROUND_COLOR};
+    color: ${props => themes_1.THEMES[props.theme].HOVER.COLOR};
+    border-color: ${props => themes_1.THEMES[props.theme].HOVER.BORDER_COLOR};
   }
 
   &.active {
-    background-color: ${props => colors_1.COLORS[props.theme].ACTIVE.BACKGROUND_COLOR} !important;
-    color: ${props => colors_1.COLORS[props.theme].ACTIVE.COLOR} !important;
-    border-color: ${props => colors_1.COLORS[props.theme].ACTIVE.BORDER_COLOR} !important;
+    background-color: ${props => themes_1.THEMES[props.theme].ACTIVE.BACKGROUND_COLOR} !important;
+    color: ${props => themes_1.THEMES[props.theme].ACTIVE.COLOR} !important;
+    border-color: ${props => themes_1.THEMES[props.theme].ACTIVE.BORDER_COLOR} !important;
   }
 
   &:disabled {
@@ -24535,11 +24535,11 @@ const Text = styled_components_1.default.span `
   font-weight: ${props => {
     switch (props.size) {
         case "large":
-            return "500";
+            return "400";
         case "small":
-            return "500";
+            return "400";
         default:
-            return "500";
+            return "400";
     }
 }};
   font-size: ${props => {
@@ -24579,17 +24579,17 @@ exports.Button = (props) => {
 
 /***/ }),
 
-/***/ "./src/colors.ts":
-/*!***********************!*\
-  !*** ./src/colors.ts ***!
-  \***********************/
+/***/ "./src/button/themes.ts":
+/*!******************************!*\
+  !*** ./src/button/themes.ts ***!
+  \******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.COLORS = {
+exports.THEMES = {
     "default": {
         BASE: {
             BACKGROUND_COLOR: "#007af5",
@@ -24795,7 +24795,7 @@ const Container = styled_components_1.default.div `
 const Text = styled_components_1.default.div `
   color: white;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 400;
   font-family: -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Roboto", "Oxygen",
   "Ubuntu", "Cantarell", "Fira Sans",
@@ -24877,8 +24877,8 @@ const React = __webpack_require__(/*! react */ "react");
 const styled_components_1 = __webpack_require__(/*! styled-components */ "styled-components");
 const Label = styled_components_1.default.div `
   color: #858e96;
-  font-size: 10px;
-  font-weight: 600;
+  font-size: 11px;
+  font-weight: 500;
   padding-bottom: 5px;
   font-family: -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Roboto", "Oxygen",
@@ -25307,7 +25307,7 @@ const TitleText = styled_components_1.default.div `
   padding: 20px;
   color: #202529;
   font-size: 28px;
-  font-weight: 600;
+  font-weight: 300;
 `;
 exports.Modal = (props) => {
     return (React.createElement(Container, null,
@@ -25385,7 +25385,7 @@ const Icon = styled_components_1.default.span `
 const Text = styled_components_1.default.span `
   color: white;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 400;
   font-family: -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Roboto", "Oxygen",
   "Ubuntu", "Cantarell", "Fira Sans",
@@ -25872,8 +25872,8 @@ const React = __webpack_require__(/*! react */ "react");
 const styled_components_1 = __webpack_require__(/*! styled-components */ "styled-components");
 const Label = styled_components_1.default.div `
   color: #858e96;
-  font-size: 12px;
-  font-weight: 700;
+  font-size: 11px;
+  font-weight: 500;
   padding-bottom: 5px;
   font-family: -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Roboto", "Oxygen",
@@ -25886,8 +25886,15 @@ const Field = styled_components_1.default.textarea `
   outline: none;
   background: transparent;
   color: #495057;
-  font-size: 15px;
-  font-weight: 500;
+  font-size: ${props => {
+    switch (props.textareaSize) {
+        case "large":
+            return "24px";
+        default:
+            return "14px";
+    }
+}};
+  font-weight: 400;
   padding: 10px;
   width: 100%;
   border: 1px solid #ebedef;
@@ -25913,6 +25920,10 @@ exports.Textarea = (props) => {
     return (React.createElement(React.Fragment, null,
         React.createElement(Label, null, props.label),
         React.createElement(Field, Object.assign({}, props))));
+};
+exports.Textarea.defaultProps = {
+    textareaSize: "default",
+    className: "",
 };
 
 

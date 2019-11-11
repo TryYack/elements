@@ -86,7 +86,7 @@ const TitleText = styled.div`
   padding: 20px;
   color: #202529;
   font-size: 28px;
-  font-weight: 600;
+  font-weight: 300;
 `;
 
 interface IModalProps {

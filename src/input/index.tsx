@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 const Label = styled.div`
   color: #858e96;
-  font-size: 10px;
-  font-weight: 600;
+  font-size: 11px;
+  font-weight: 500;
   padding-bottom: 5px;
   font-family: -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Roboto", "Oxygen",

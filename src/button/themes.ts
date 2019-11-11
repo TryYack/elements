@@ -1,4 +1,4 @@
-export const COLORS: any = {
+export const THEMES: any = {
   "default": {
     BASE: {
       BACKGROUND_COLOR: "#007af5",

@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import { COLORS } from "../colors";
+import { THEMES } from "./themes";
 
 const Container = styled.button<{
   size?: string,
@@ -59,20 +59,20 @@ const Container = styled.button<{
     }
   }};
   border-style: solid;
-  background-color: ${props => COLORS[props.theme].BASE.BACKGROUND_COLOR};
-  color: ${props => COLORS[props.theme].BASE.COLOR};
-  border-color: ${props => COLORS[props.theme].BASE.BORDER_COLOR};
+  background-color: ${props => THEMES[props.theme].BASE.BACKGROUND_COLOR};
+  color: ${props => THEMES[props.theme].BASE.COLOR};
+  border-color: ${props => THEMES[props.theme].BASE.BORDER_COLOR};
 
   &:hover {
-    background-color: ${props => COLORS[props.theme].HOVER.BACKGROUND_COLOR};
-    color: ${props => COLORS[props.theme].HOVER.COLOR};
-    border-color: ${props => COLORS[props.theme].HOVER.BORDER_COLOR};
+    background-color: ${props => THEMES[props.theme].HOVER.BACKGROUND_COLOR};
+    color: ${props => THEMES[props.theme].HOVER.COLOR};
+    border-color: ${props => THEMES[props.theme].HOVER.BORDER_COLOR};
   }
 
   &.active {
-    background-color: ${props => COLORS[props.theme].ACTIVE.BACKGROUND_COLOR} !important;
-    color: ${props => COLORS[props.theme].ACTIVE.COLOR} !important;
-    border-color: ${props => COLORS[props.theme].ACTIVE.BORDER_COLOR} !important;
+    background-color: ${props => THEMES[props.theme].ACTIVE.BACKGROUND_COLOR} !important;
+    color: ${props => THEMES[props.theme].ACTIVE.COLOR} !important;
+    border-color: ${props => THEMES[props.theme].ACTIVE.BORDER_COLOR} !important;
   }
 
   &:disabled {
@@ -117,11 +117,11 @@ const Text = styled.span<{
   font-weight: ${props => {
     switch (props.size) {
       case "large":
-        return "500";
+        return "400";
       case "small":
-        return "500";
+        return "400";
       default:
-        return "500";
+        return "400";
     }
   }};
   font-size: ${props => {

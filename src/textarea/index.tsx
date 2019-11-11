@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 const Label = styled.div`
   color: #858e96;
-  font-size: 12px;
-  font-weight: 700;
+  font-size: 11px;
+  font-weight: 500;
   padding-bottom: 5px;
   font-family: -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Roboto", "Oxygen",
@@ -14,14 +14,22 @@ const Label = styled.div`
 
 const Field = styled.textarea<{
   label: string;
+  textareaSize?: string;
 }>`
   border: none;
   flex: 1;
   outline: none;
   background: transparent;
   color: #495057;
-  font-size: 15px;
-  font-weight: 500;
+  font-size: ${props => {
+    switch (props.textareaSize) {
+      case "large":
+        return "24px";
+      default:
+        return "14px";
+    }
+  }};
+  font-weight: 400;
   padding: 10px;
   width: 100%;
   border: 1px solid #ebedef;
@@ -50,6 +58,8 @@ interface ITextareaProps {
   onChange: any;
   placeholder: string;
   rows: number;
+  textareaSize?: string;
+  className?: string;
 }
 
 export const Textarea: React.FunctionComponent<ITextareaProps> = (props: ITextareaProps) => {
@@ -59,4 +69,9 @@ export const Textarea: React.FunctionComponent<ITextareaProps> = (props: ITextar
       <Field {...props} />
     </React.Fragment>
   );
+};
+
+Textarea.defaultProps = {
+  textareaSize: "default",
+  className: "",
 };
