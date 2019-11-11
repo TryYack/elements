@@ -1,5 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
+import { Text } from "../text";
 
 const PanelContainer = styled.div`
   flex: 1;
@@ -50,20 +51,9 @@ const PanelsContainer = styled.div`
 
 const PanelTabButton = styled.div`
   padding: 10px 20px 10px 20px;
-  color: #dcd8db;
   border-bottom: 1px solid #eaeaea;
   width: 100%;
-  font-size: 14px;
-  font-weight: bold;
   cursor: pointer;
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
-
-  &.active {
-    color: #00a8ff;
-  }
 `;
 
 const Panel = styled.div<{
@@ -99,7 +89,9 @@ export const Tabbed: React.FunctionComponent<ITabbedProps> = (props: ITabbedProp
               key={index}
               className={current == index ? "active" : ""}
               onClick={() => setCurrent(index)}>
-              {panel.title}
+              <Text weight="500" color={current == index ? "highlight" : "xxd"}>
+                {panel.title}
+              </Text>
             </PanelTabButton>
           );
         })}

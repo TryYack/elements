@@ -20,7 +20,6 @@ storiesOf('Attachment', module)
   withInfo({ inline: true })(() => (
     <Attachment
       layout="message"
-      size={1024}
       mime="image/png"
       uri="https://usepanda.com/img/source-icons/theNextWeb.png"
       name="Uploaded image.png"

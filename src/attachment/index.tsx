@@ -6,6 +6,7 @@ import { Download } from "react-feather";
 import { AlignLeft } from "react-feather";
 import { File } from "react-feather";
 import { Activity } from "react-feather";
+import { Text } from "../text";
 
 const Container = styled.div<{
   layout: string;
@@ -67,90 +68,6 @@ const Icon = styled.div<{
   position: relative;
 `;
 
-const Name = styled.div<{
-  layout: string,
-}>`
-  font-weight: 500;
-  font-style: normal;
-  color: #151b26;
-  display: inline-block;
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
-  font-size: ${props => {
-      switch (props.layout) {
-        case "compose":
-          return "14px";
-        case "message":
-          return "14px";
-        default:
-          return "16px";
-      }
-    }
-  };
-  margin-bottom: ${props => {
-      switch (props.layout) {
-        case "compose":
-          return "5px";
-        case "message":
-          return "5px";
-        default:
-          return "5px";
-      }
-    }
-  };
-`;
-
-const Size = styled.div<{
-  layout: string,
-}>`
-  font-weight: 400;
-  color: #adb5bd;
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
-  display: inline-block;
-  font-size: ${props => {
-      if (props.layout == "compose") return "13px";
-      if (props.layout == "message") return "12px";
-
-      return "12px";
-    }
-  };
-  margin-bottom: ${props => {
-      if (props.layout == "compose") return "3px";
-      if (props.layout == "message") return "1px";
-
-      return "3px";
-    }
-  };
-`;
-
-const Extension = styled.div`
-  font-weight: 500;
-  font-size: 10px;
-  color: #6f7782;
-  margin-right: 10px;
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
-`;
-
-const Link = styled.div`
-  font-weight: 500;
-  font-size: 10px;
-  cursor: pointer;
-  color: #007af5;
-  margin-right: 10px;
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
-`;
-
 const Content = styled.div`
   display: flex;
   flex-direction: column;
@@ -178,7 +95,7 @@ interface IAttachmentProps {
   layout: string;
 
   /** Size in bytes */
-  size: number;
+  size?: number;
 
   /** Preview uri location of file */
   preview?: string;
@@ -344,33 +261,45 @@ const AttachmentComponent: React.FunctionComponent<IAttachmentProps> = (props: I
         </Icon>
 
         <Content>
-          <Name layout={props.layout}>{props.name}</Name>
-          {props.layout == "compose" && <Size layout={props.layout}>{bytesToSize(props.size)}</Size>}
+          <Text color="xxd" style={{ marginBottom: 2 }}>{props.name}</Text>
+          {props.size && <Text color="m" style={{ marginBottom: 2 }}>{bytesToSize(props.size)}</Text>}
           <Info>
-            <Extension>
+            <Text
+              style={{ marginRight: 5 }}
+              color="d"
+              display="small">
               {getMimeTypeDescription(props.mime)}
-            </Extension>
+            </Text>
 
-            <Link
-              className="button"
+            <Text
+              style={{ marginRight: 5 }}
+              color="highlight"
+              weight="600"
+              display="small"
               onClick={() => window.open(props.uri)}>
               Download
-            </Link>
+            </Text>
 
             {(props.layout == "compose" && props.onDeleteClick) &&
-              <Link
-                className="button"
+              <Text
+                style={{ marginRight: 5 }}
+                color="highlight"
+                weight="600"
+                display="small"
                 onClick={props.onDeleteClick}>
                 Remove
-              </Link>
+              </Text>
             }
 
             {(props.layout == "message" && props.onPreviewClick && props.preview) &&
-              <Link
-                className="button"
+              <Text
+                style={{ marginRight: 5 }}
+                color="highlight"
+                weight="600"
+                display="small"
                 onClick={props.onPreviewClick}>
                 Preview
-              </Link>
+              </Text>
             }
           </Info>
         </Content>

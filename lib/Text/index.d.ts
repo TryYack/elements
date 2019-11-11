@@ -1,6 +1,10 @@
 import * as React from "react";
 interface ITextProps {
     /**
+     * The usual font weights 100 - 900
+     */
+    weight?: string | undefined;
+    /**
      * Possible values:
      * - xxd
      * - xd
@@ -24,7 +28,9 @@ interface ITextProps {
      * - a
      * - small
      */
-    display: string;
+    display?: string | undefined;
+    onClick?: any;
+    style?: any;
     children: any;
 }
 export declare const Text: React.FunctionComponent<ITextProps>;

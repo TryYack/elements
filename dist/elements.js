@@ -23926,99 +23926,6 @@ exports.Select = Select;
 
 /***/ }),
 
-/***/ "./src/Text/index.tsx":
-/*!****************************!*\
-  !*** ./src/Text/index.tsx ***!
-  \****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const React = __webpack_require__(/*! react */ "react");
-const styled_components_1 = __webpack_require__(/*! styled-components */ "styled-components");
-const Container = styled_components_1.default.span `
-  color: ${props => {
-    switch (props.color) {
-        case "xxd":
-            return "#202934";
-        case "xd":
-            return "#5F6B7A";
-        case "d":
-            return "#8895A7";
-        case "m":
-            return "#B8C4CE";
-        case "l":
-            return "#CFD6DE";
-        case "xl":
-            return "#E1E7EB";
-        case "xxl":
-            return "#F8F9FA";
-        case "highlight":
-            return "#00a8ff";
-        case "danger":
-            return "#DC2F30";
-        default:
-            return "#483545";
-    }
-}};
-  font-size: ${props => {
-    switch (props.display) {
-        case "h1":
-            return "22px";
-        case "h2":
-            return "20px";
-        case "h3":
-            return "18px";
-        case "h4":
-            return "16px";
-        case "h5":
-            return "14px";
-        case "p":
-            return "14px";
-        case "a":
-            return "14px";
-        case "small":
-            return "10px";
-        default:
-            return "12px";
-    }
-}};
-  font-weight: ${props => {
-    switch (props.display) {
-        case "h1":
-            return "800";
-        case "h2":
-            return "700";
-        case "h3":
-            return "600";
-        case "h4":
-            return "500";
-        case "h5":
-            return "400";
-        case "p":
-            return "500";
-        case "a":
-            return "700";
-        case "small":
-            return "500";
-        default:
-            return "500";
-    }
-}};
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
-`;
-exports.Text = (props) => {
-    return (React.createElement(Container, Object.assign({ color: props.color, display: props.display }, props), props.children));
-};
-
-
-/***/ }),
-
 /***/ "./src/attachment/index.tsx":
 /*!**********************************!*\
   !*** ./src/attachment/index.tsx ***!
@@ -24037,6 +23944,7 @@ const react_feather_3 = __webpack_require__(/*! react-feather */ "./node_modules
 const react_feather_4 = __webpack_require__(/*! react-feather */ "./node_modules/react-feather/dist/index.js");
 const react_feather_5 = __webpack_require__(/*! react-feather */ "./node_modules/react-feather/dist/index.js");
 const react_feather_6 = __webpack_require__(/*! react-feather */ "./node_modules/react-feather/dist/index.js");
+const text_1 = __webpack_require__(/*! ../text */ "./src/text/index.tsx");
 const Container = styled_components_1.default.div `
   border: 1px solid #cbd4db;
   border-radius: 10px;
@@ -24084,80 +23992,6 @@ const Icon = styled_components_1.default.div `
   align-content: center;
   justify-content: center;
   position: relative;
-`;
-const Name = styled_components_1.default.div `
-  font-weight: 500;
-  font-style: normal;
-  color: #151b26;
-  display: inline-block;
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
-  font-size: ${props => {
-    switch (props.layout) {
-        case "compose":
-            return "14px";
-        case "message":
-            return "14px";
-        default:
-            return "16px";
-    }
-}};
-  margin-bottom: ${props => {
-    switch (props.layout) {
-        case "compose":
-            return "5px";
-        case "message":
-            return "5px";
-        default:
-            return "5px";
-    }
-}};
-`;
-const Size = styled_components_1.default.div `
-  font-weight: 400;
-  color: #adb5bd;
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
-  display: inline-block;
-  font-size: ${props => {
-    if (props.layout == "compose")
-        return "13px";
-    if (props.layout == "message")
-        return "12px";
-    return "12px";
-}};
-  margin-bottom: ${props => {
-    if (props.layout == "compose")
-        return "3px";
-    if (props.layout == "message")
-        return "1px";
-    return "3px";
-}};
-`;
-const Extension = styled_components_1.default.div `
-  font-weight: 500;
-  font-size: 10px;
-  color: #6f7782;
-  margin-right: 10px;
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
-`;
-const Link = styled_components_1.default.div `
-  font-weight: 500;
-  font-size: 10px;
-  cursor: pointer;
-  color: #007af5;
-  margin-right: 10px;
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
 `;
 const Content = styled_components_1.default.div `
   display: flex;
@@ -24302,15 +24136,15 @@ const AttachmentComponent = (props) => {
         React.createElement(ContainerRow, null,
             React.createElement(Icon, { color: getMimeTypeColor(props.mime) }, getMimeTypeIcon(props.mime)),
             React.createElement(Content, null,
-                React.createElement(Name, { layout: props.layout }, props.name),
-                props.layout == "compose" && React.createElement(Size, { layout: props.layout }, bytesToSize(props.size)),
+                React.createElement(text_1.Text, { color: "xxd", style: { marginBottom: 2 } }, props.name),
+                props.size && React.createElement(text_1.Text, { color: "m", style: { marginBottom: 2 } }, bytesToSize(props.size)),
                 React.createElement(Info, null,
-                    React.createElement(Extension, null, getMimeTypeDescription(props.mime)),
-                    React.createElement(Link, { className: "button", onClick: () => window.open(props.uri) }, "Download"),
+                    React.createElement(text_1.Text, { style: { marginRight: 5 }, color: "d", display: "small" }, getMimeTypeDescription(props.mime)),
+                    React.createElement(text_1.Text, { style: { marginRight: 5 }, color: "highlight", weight: "600", display: "small", onClick: () => window.open(props.uri) }, "Download"),
                     (props.layout == "compose" && props.onDeleteClick) &&
-                        React.createElement(Link, { className: "button", onClick: props.onDeleteClick }, "Remove"),
+                        React.createElement(text_1.Text, { style: { marginRight: 5 }, color: "highlight", weight: "600", display: "small", onClick: props.onDeleteClick }, "Remove"),
                     (props.layout == "message" && props.onPreviewClick && props.preview) &&
-                        React.createElement(Link, { className: "button", onClick: props.onPreviewClick }, "Preview"))))));
+                        React.createElement(text_1.Text, { style: { marginRight: 5 }, color: "highlight", weight: "600", display: "small", onClick: props.onPreviewClick }, "Preview"))))));
 };
 exports.Attachment = React.memo((props) => React.createElement(AttachmentComponent, Object.assign({}, props)));
 
@@ -25023,8 +24857,8 @@ const toggle_1 = __webpack_require__(/*! ./toggle */ "./src/toggle/index.tsx");
 exports.Toggle = toggle_1.Toggle;
 const user_1 = __webpack_require__(/*! ./user */ "./src/user/index.tsx");
 exports.User = user_1.User;
-const Text_1 = __webpack_require__(/*! ./Text */ "./src/Text/index.tsx");
-exports.Text = Text_1.Text;
+const text_1 = __webpack_require__(/*! ./text */ "./src/text/index.tsx");
+exports.Text = text_1.Text;
 const Select_1 = __webpack_require__(/*! ./Select */ "./src/Select/index.tsx");
 exports.Select = Select_1.Select;
 
@@ -25936,6 +25770,7 @@ exports.Spinner = (props) => {
 Object.defineProperty(exports, "__esModule", { value: true });
 const React = __webpack_require__(/*! react */ "react");
 const styled_components_1 = __webpack_require__(/*! styled-components */ "styled-components");
+const text_1 = __webpack_require__(/*! ../text */ "./src/text/index.tsx");
 const PanelContainer = styled_components_1.default.div `
   flex: 1;
   position: relative;
@@ -25979,20 +25814,9 @@ const PanelsContainer = styled_components_1.default.div `
 `;
 const PanelTabButton = styled_components_1.default.div `
   padding: 10px 20px 10px 20px;
-  color: #dcd8db;
   border-bottom: 1px solid #eaeaea;
   width: 100%;
-  font-size: 14px;
-  font-weight: bold;
   cursor: pointer;
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
-
-  &.active {
-    color: #00a8ff;
-  }
 `;
 const Panel = styled_components_1.default.div `
   position: absolute;
@@ -26011,7 +25835,8 @@ exports.Tabbed = (props) => {
         React.createElement(PanelTitles, null, props.panels.map((panel, index) => {
             if (!panel.show)
                 return null;
-            return (React.createElement(PanelTabButton, { key: index, className: current == index ? "active" : "", onClick: () => setCurrent(index) }, panel.title));
+            return (React.createElement(PanelTabButton, { key: index, className: current == index ? "active" : "", onClick: () => setCurrent(index) },
+                React.createElement(text_1.Text, { weight: "500", color: current == index ? "highlight" : "xxd" }, panel.title)));
         })),
         React.createElement(PanelsContainer, null,
             React.createElement(Panels, { current: current }, props.panels.map((panel, index) => {
@@ -26019,6 +25844,90 @@ exports.Tabbed = (props) => {
                     return null;
                 return (React.createElement(Panel, { key: index, index: index }, panel.content));
             })))));
+};
+
+
+/***/ }),
+
+/***/ "./src/text/index.tsx":
+/*!****************************!*\
+  !*** ./src/text/index.tsx ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const React = __webpack_require__(/*! react */ "react");
+const styled_components_1 = __webpack_require__(/*! styled-components */ "styled-components");
+const Container = styled_components_1.default.div `
+  color: ${props => {
+    switch (props.color) {
+        case "xxxd":
+            return "#11161c";
+        case "xxd":
+            return "#202934";
+        case "xd":
+            return "#5F6B7A";
+        case "d":
+            return "#8895A7";
+        case "m":
+            return "#B8C4CE";
+        case "l":
+            return "#CFD6DE";
+        case "xl":
+            return "#E1E7EB";
+        case "xxl":
+            return "#F8F9FA";
+        case "highlight":
+            return "#00a8ff";
+        case "danger":
+            return "#DC2F30";
+        default:
+            return "#483545";
+    }
+}};
+  font-size: ${props => {
+    switch (props.display) {
+        case "h1":
+            return "50px";
+        case "h2":
+            return "40px";
+        case "h3":
+            return "30px";
+        case "h4":
+            return "20px";
+        case "h5":
+            return "15px";
+        case "p":
+            return "13px";
+        case "small":
+            return "10px";
+        default:
+            return "13px";
+    }
+}};
+  font-weight: ${props => props.weight};
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
+  cursor: ${props => props.onClick ? "pointer" : "default"}
+  opacity: 1;
+  transition: opacity 0.5s;
+
+  &:hover {
+    opacity: ${props => props.onClick ? 0.75 : 1}
+  }
+`;
+exports.Text = (props) => {
+    return (React.createElement(Container, Object.assign({ style: props.style, onClick: props.onClick, weight: props.weight, color: props.color, display: props.display }, props), props.children));
+};
+exports.Text.defaultProps = {
+    weight: "400",
+    color: "xxd",
+    display: "p",
 };
 
 
@@ -26298,24 +26207,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const React = __webpack_require__(/*! react */ "react");
 const styled_components_1 = __webpack_require__(/*! styled-components */ "styled-components");
 const avatar_1 = __webpack_require__(/*! ../avatar */ "./src/avatar/index.tsx");
-const Name = styled_components_1.default.div `
-  color: #483545;
-  font-size: 14px;
-  font-weight: 500;
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
-`;
-const Label = styled_components_1.default.div `
-  color: #858e96;
-  font-size: 12px;
-  font-weight: 500;
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
-`;
+const text_1 = __webpack_require__(/*! ../text */ "./src/text/index.tsx");
 const Container = styled_components_1.default.div `
   width: 100%;
   background: ${props => (props.active ? "#f8f9fa" : "transparent")};
@@ -26355,8 +26247,8 @@ exports.User = (props) => {
         React.createElement(ContainerPadding, null,
             React.createElement(avatar_1.Avatar, { size: "medium", image: props.image, title: props.name }),
             React.createElement(Content, null,
-                React.createElement(Name, null, props.name),
-                React.createElement(Label, null, props.label)),
+                React.createElement(text_1.Text, { weight: "500", color: "xxd" }, props.name),
+                React.createElement(text_1.Text, { color: "xd" }, props.label)),
             React.createElement(Flex, null),
             hover &&
                 React.createElement(React.Fragment, null, props.children))));

@@ -1,13 +1,16 @@
 import * as React from "react";
 import styled from "styled-components";
 
-
-const Container = styled.span<{
+const Container = styled.div<{
+  onClick?: string;
   color: string;
-  display: string;
+  display: string | undefined;
+  weight: string | undefined;
 }>`
   color: ${props => {
     switch (props.color) {
+      case "xxxd":
+        return "#11161c";
       case "xxd":
         return "#202934";
       case "xd":
@@ -33,54 +36,43 @@ const Container = styled.span<{
   font-size: ${props => {
     switch (props.display) {
       case "h1":
-        return "22px";
+        return "50px";
       case "h2":
-        return "20px";
+        return "40px";
       case "h3":
-        return "18px";
+        return "30px";
       case "h4":
-        return "16px";
+        return "20px";
       case "h5":
-        return "14px";
+        return "15px";
       case "p":
-        return "14px";
-      case "a":
-        return "14px";
+        return "13px";
       case "small":
         return "10px";
       default:
-        return "12px";
+        return "13px";
     }
   }};
-  font-weight: ${props => {
-    switch (props.display) {
-      case "h1":
-        return "800";
-      case "h2":
-        return "700";
-      case "h3":
-        return "600";
-      case "h4":
-        return "500";
-      case "h5":
-        return "400";
-      case "p":
-        return "500";
-      case "a":
-        return "700";
-      case "small":
-        return "500";
-      default:
-        return "500";
-    }
-  }};
+  font-weight: ${props => props.weight};
   font-family: -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Roboto", "Oxygen",
   "Ubuntu", "Cantarell", "Fira Sans",
   "Droid Sans", "Helvetica Neue", sans-serif;
+  cursor: ${props => props.onClick ? "pointer" : "default"}
+  opacity: 1;
+  transition: opacity 0.5s;
+
+  &:hover {
+    opacity: ${props => props.onClick ? 0.75 : 1}
+  }
 `;
 
 interface ITextProps {
+  /**
+   * The usual font weights 100 - 900
+   */
+  weight?: string | undefined;
+
   /**
    * Possible values:
    * - xxd
@@ -106,15 +98,28 @@ interface ITextProps {
    * - a
    * - small
    */
-  display: string;
-
+  display?: string | undefined;
+  onClick?: any;
+  style?: any;
   children: any;
 }
 
 export const Text: React.FunctionComponent<ITextProps> = (props: ITextProps) => {
   return (
-    <Container color={props.color} display={props.display} {...props}>
+    <Container
+      style={props.style}
+      onClick={props.onClick}
+      weight={props.weight}
+      color={props.color}
+      display={props.display}
+      {...props}>
       {props.children}
     </Container>
   );
+};
+
+Text.defaultProps = {
+  weight: "400",
+  color: "xxd",
+  display: "p",
 };
