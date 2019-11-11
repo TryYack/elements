@@ -23944,7 +23944,7 @@ const react_feather_3 = __webpack_require__(/*! react-feather */ "./node_modules
 const react_feather_4 = __webpack_require__(/*! react-feather */ "./node_modules/react-feather/dist/index.js");
 const react_feather_5 = __webpack_require__(/*! react-feather */ "./node_modules/react-feather/dist/index.js");
 const react_feather_6 = __webpack_require__(/*! react-feather */ "./node_modules/react-feather/dist/index.js");
-const text_1 = __webpack_require__(/*! ../text */ "./src/text/index.tsx");
+const Text = styled_components_1.default.div ``;
 const Container = styled_components_1.default.div `
   border: 1px solid #cbd4db;
   border-radius: 10px;
@@ -24136,15 +24136,15 @@ const AttachmentComponent = (props) => {
         React.createElement(ContainerRow, null,
             React.createElement(Icon, { color: getMimeTypeColor(props.mime) }, getMimeTypeIcon(props.mime)),
             React.createElement(Content, null,
-                React.createElement(text_1.Text, { color: "xxd", style: { marginBottom: 2 } }, props.name),
-                props.size && React.createElement(text_1.Text, { color: "m", style: { marginBottom: 2 } }, bytesToSize(props.size)),
+                React.createElement(Text, { className: "color-d5 mb-5" }, props.name),
+                props.size && React.createElement(Text, { className: "color-d0 mb-5" }, bytesToSize(props.size)),
                 React.createElement(Info, null,
-                    React.createElement(text_1.Text, { style: { marginRight: 5 }, color: "d", display: "small" }, getMimeTypeDescription(props.mime)),
-                    React.createElement(text_1.Text, { style: { marginRight: 5 }, color: "highlight", weight: "600", display: "small", onClick: () => window.open(props.uri) }, "Download"),
+                    React.createElement(Text, { className: "color-d0 button small bold" }, getMimeTypeDescription(props.mime)),
+                    React.createElement(Text, { className: "ml-5 color-blue button small bold", onClick: () => window.open(props.uri) }, "Download"),
                     (props.layout == "compose" && props.onDeleteClick) &&
-                        React.createElement(text_1.Text, { style: { marginRight: 5 }, color: "highlight", weight: "600", display: "small", onClick: props.onDeleteClick }, "Remove"),
+                        React.createElement(Text, { className: "ml-5 color-blue button small bold", onClick: props.onDeleteClick }, "Remove"),
                     (props.layout == "message" && props.onPreviewClick && props.preview) &&
-                        React.createElement(text_1.Text, { style: { marginRight: 5 }, color: "highlight", weight: "600", display: "small", onClick: props.onPreviewClick }, "Preview"))))));
+                        React.createElement(Text, { className: "ml-5 color-blue button small bold", onClick: props.onPreviewClick }, "Preview"))))));
 };
 exports.Attachment = React.memo((props) => React.createElement(AttachmentComponent, Object.assign({}, props)));
 
@@ -24857,8 +24857,6 @@ const toggle_1 = __webpack_require__(/*! ./toggle */ "./src/toggle/index.tsx");
 exports.Toggle = toggle_1.Toggle;
 const user_1 = __webpack_require__(/*! ./user */ "./src/user/index.tsx");
 exports.User = user_1.User;
-const text_1 = __webpack_require__(/*! ./text */ "./src/text/index.tsx");
-exports.Text = text_1.Text;
 const Select_1 = __webpack_require__(/*! ./Select */ "./src/Select/index.tsx");
 exports.Select = Select_1.Select;
 
@@ -24879,8 +24877,8 @@ const React = __webpack_require__(/*! react */ "react");
 const styled_components_1 = __webpack_require__(/*! styled-components */ "styled-components");
 const Label = styled_components_1.default.div `
   color: #858e96;
-  font-size: 12px;
-  font-weight: 700;
+  font-size: 10px;
+  font-weight: 600;
   padding-bottom: 5px;
   font-family: -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Roboto", "Oxygen",
@@ -24897,8 +24895,15 @@ const InputField = styled_components_1.default.input `
   outline: none;
   background: transparent;
   color: #495057;
-  font-size: 15px;
-  font-weight: 500;
+  font-size: ${props => {
+    switch (props.inputSize) {
+        case "large":
+            return "24px";
+        default:
+            return "14px";
+    }
+}};
+  font-weight: 400;
   padding: 10px;
   width: 100%;
   border: 1px solid #edf0f2;
@@ -24920,6 +24925,10 @@ exports.Input = (props) => {
     return (React.createElement(React.Fragment, null,
         React.createElement(Label, null, props.label),
         React.createElement(InputField, Object.assign({}, props))));
+};
+exports.Input.defaultProps = {
+    inputSize: "default",
+    className: "",
 };
 
 
@@ -25770,7 +25779,7 @@ exports.Spinner = (props) => {
 Object.defineProperty(exports, "__esModule", { value: true });
 const React = __webpack_require__(/*! react */ "react");
 const styled_components_1 = __webpack_require__(/*! styled-components */ "styled-components");
-const text_1 = __webpack_require__(/*! ../text */ "./src/text/index.tsx");
+const Text = styled_components_1.default.div ``;
 const PanelContainer = styled_components_1.default.div `
   flex: 1;
   position: relative;
@@ -25836,7 +25845,7 @@ exports.Tabbed = (props) => {
             if (!panel.show)
                 return null;
             return (React.createElement(PanelTabButton, { key: index, className: current == index ? "active" : "", onClick: () => setCurrent(index) },
-                React.createElement(text_1.Text, { weight: "500", color: current == index ? "highlight" : "xxd" }, panel.title)));
+                React.createElement(Text, { className: `button ${current == index ? "color-blue" : "color-d5"}` }, panel.title)));
         })),
         React.createElement(PanelsContainer, null,
             React.createElement(Panels, { current: current }, props.panels.map((panel, index) => {
@@ -25844,90 +25853,6 @@ exports.Tabbed = (props) => {
                     return null;
                 return (React.createElement(Panel, { key: index, index: index }, panel.content));
             })))));
-};
-
-
-/***/ }),
-
-/***/ "./src/text/index.tsx":
-/*!****************************!*\
-  !*** ./src/text/index.tsx ***!
-  \****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const React = __webpack_require__(/*! react */ "react");
-const styled_components_1 = __webpack_require__(/*! styled-components */ "styled-components");
-const Container = styled_components_1.default.div `
-  color: ${props => {
-    switch (props.color) {
-        case "xxxd":
-            return "#11161c";
-        case "xxd":
-            return "#202934";
-        case "xd":
-            return "#5F6B7A";
-        case "d":
-            return "#8895A7";
-        case "m":
-            return "#B8C4CE";
-        case "l":
-            return "#CFD6DE";
-        case "xl":
-            return "#E1E7EB";
-        case "xxl":
-            return "#F8F9FA";
-        case "highlight":
-            return "#00a8ff";
-        case "danger":
-            return "#DC2F30";
-        default:
-            return "#483545";
-    }
-}};
-  font-size: ${props => {
-    switch (props.display) {
-        case "h1":
-            return "50px";
-        case "h2":
-            return "40px";
-        case "h3":
-            return "30px";
-        case "h4":
-            return "20px";
-        case "h5":
-            return "15px";
-        case "p":
-            return "13px";
-        case "small":
-            return "10px";
-        default:
-            return "13px";
-    }
-}};
-  font-weight: ${props => props.weight};
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
-  cursor: ${props => props.onClick ? "pointer" : "default"}
-  opacity: 1;
-  transition: opacity 0.5s;
-
-  &:hover {
-    opacity: ${props => props.onClick ? 0.75 : 1}
-  }
-`;
-exports.Text = (props) => {
-    return (React.createElement(Container, Object.assign({ style: props.style, onClick: props.onClick, weight: props.weight, color: props.color, display: props.display }, props), props.children));
-};
-exports.Text.defaultProps = {
-    weight: "400",
-    color: "xxd",
-    display: "p",
 };
 
 
@@ -26207,7 +26132,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const React = __webpack_require__(/*! react */ "react");
 const styled_components_1 = __webpack_require__(/*! styled-components */ "styled-components");
 const avatar_1 = __webpack_require__(/*! ../avatar */ "./src/avatar/index.tsx");
-const text_1 = __webpack_require__(/*! ../text */ "./src/text/index.tsx");
+const Text = styled_components_1.default.div ``;
 const Container = styled_components_1.default.div `
   width: 100%;
   background: ${props => (props.active ? "#f8f9fa" : "transparent")};
@@ -26247,8 +26172,8 @@ exports.User = (props) => {
         React.createElement(ContainerPadding, null,
             React.createElement(avatar_1.Avatar, { size: "medium", image: props.image, title: props.name }),
             React.createElement(Content, null,
-                React.createElement(text_1.Text, { weight: "500", color: "xxd" }, props.name),
-                React.createElement(text_1.Text, { color: "xd" }, props.label)),
+                React.createElement(Text, { className: "color-d5" }, props.name),
+                React.createElement(Text, { className: "color-d0" }, props.label)),
             React.createElement(Flex, null),
             hover &&
                 React.createElement(React.Fragment, null, props.children))));

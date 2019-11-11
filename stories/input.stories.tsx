@@ -13,4 +13,15 @@ storiesOf('Input', module)
       onChange={(e: any) => console.log(e.target.value)}
       placeholder="Enter full name"
     />
+  )))
+  .add(
+  'Large',
+  withInfo({ inline: true })(() => (
+    <Input
+      label="Full name"
+      inputSize="large"
+      value="Type name"
+      onChange={(e: any) => console.log(e.target.value)}
+      placeholder="Enter full name"
+    />
   )));

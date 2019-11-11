@@ -1,6 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
-import { Text } from "../text";
+
+const Text = styled.div``;
 
 const PanelContainer = styled.div`
   flex: 1;
@@ -89,7 +90,7 @@ export const Tabbed: React.FunctionComponent<ITabbedProps> = (props: ITabbedProp
               key={index}
               className={current == index ? "active" : ""}
               onClick={() => setCurrent(index)}>
-              <Text weight="500" color={current == index ? "highlight" : "xxd"}>
+              <Text className={`button ${current == index ? "color-blue" : "color-d5"}`}>
                 {panel.title}
               </Text>
             </PanelTabButton>

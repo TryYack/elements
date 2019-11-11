@@ -1,7 +1,8 @@
 import * as React from "react";
 import styled from "styled-components";
 import { Avatar } from "../avatar";
-import { Text } from "../text";
+
+const Text = styled.div``;
 
 const Container = styled.div<{
   active: boolean;
@@ -68,8 +69,8 @@ export const User: React.FunctionComponent<IUserProps> = (props: IUserProps) => 
         />
 
         <Content>
-          <Text weight="500" color="xxd">{props.name}</Text>
-          <Text color="xd">{props.label}</Text>
+          <Text className="color-d5">{props.name}</Text>
+          <Text className="color-d0">{props.label}</Text>
         </Content>
 
         <Flex />

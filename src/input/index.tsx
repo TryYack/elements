@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 const Label = styled.div`
   color: #858e96;
-  font-size: 12px;
-  font-weight: 700;
+  font-size: 10px;
+  font-weight: 600;
   padding-bottom: 5px;
   font-family: -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Roboto", "Oxygen",
@@ -14,6 +14,7 @@ const Label = styled.div`
 
 const InputField = styled.input<{
   label: string;
+  inputSize?: string;
 }>`
   border: none;
   flex: 1;
@@ -24,8 +25,15 @@ const InputField = styled.input<{
   outline: none;
   background: transparent;
   color: #495057;
-  font-size: 15px;
-  font-weight: 500;
+  font-size: ${props => {
+    switch (props.inputSize) {
+      case "large":
+        return "24px";
+      default:
+        return "14px";
+    }
+  }};
+  font-weight: 400;
   padding: 10px;
   width: 100%;
   border: 1px solid #edf0f2;
@@ -50,6 +58,9 @@ interface IInputProps {
   value: string;
   onChange: any;
   placeholder: string;
+  /** size props is taken already */
+  inputSize?: string;
+  className?: string;
 }
 
 export const Input: React.FunctionComponent<IInputProps> = (props: IInputProps) => {
@@ -59,4 +70,9 @@ export const Input: React.FunctionComponent<IInputProps> = (props: IInputProps) 
       <InputField {...props} />
     </React.Fragment>
   );
+};
+
+Input.defaultProps = {
+  inputSize: "default",
+  className: "",
 };

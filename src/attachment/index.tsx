@@ -6,7 +6,8 @@ import { Download } from "react-feather";
 import { AlignLeft } from "react-feather";
 import { File } from "react-feather";
 import { Activity } from "react-feather";
-import { Text } from "../text";
+
+const Text = styled.div``;
 
 const Container = styled.div<{
   layout: string;
@@ -261,31 +262,23 @@ const AttachmentComponent: React.FunctionComponent<IAttachmentProps> = (props: I
         </Icon>
 
         <Content>
-          <Text color="xxd" style={{ marginBottom: 2 }}>{props.name}</Text>
-          {props.size && <Text color="m" style={{ marginBottom: 2 }}>{bytesToSize(props.size)}</Text>}
+          <Text className="color-d5 mb-5">{props.name}</Text>
+          {props.size && <Text className="color-d0 mb-5">{bytesToSize(props.size)}</Text>}
           <Info>
             <Text
-              style={{ marginRight: 5 }}
-              color="d"
-              display="small">
+              className="color-d0 button small bold">
               {getMimeTypeDescription(props.mime)}
             </Text>
 
             <Text
-              style={{ marginRight: 5 }}
-              color="highlight"
-              weight="600"
-              display="small"
+              className="ml-5 color-blue button small bold"
               onClick={() => window.open(props.uri)}>
               Download
             </Text>
 
             {(props.layout == "compose" && props.onDeleteClick) &&
               <Text
-                style={{ marginRight: 5 }}
-                color="highlight"
-                weight="600"
-                display="small"
+                className="ml-5 color-blue button small bold"
                 onClick={props.onDeleteClick}>
                 Remove
               </Text>
@@ -293,10 +286,7 @@ const AttachmentComponent: React.FunctionComponent<IAttachmentProps> = (props: I
 
             {(props.layout == "message" && props.onPreviewClick && props.preview) &&
               <Text
-                style={{ marginRight: 5 }}
-                color="highlight"
-                weight="600"
-                display="small"
+                className="ml-5 color-blue button small bold"
                 onClick={props.onPreviewClick}>
                 Preview
               </Text>
