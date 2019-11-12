@@ -5,7 +5,8 @@ interface IModalProps {
     width: number;
     height: any;
     onClose: any;
-    footer: any;
+    footer?: any;
+    frameless?: boolean;
 }
 export declare const Modal: React.FunctionComponent<IModalProps>;
 export {};

@@ -16,4 +16,15 @@ storiesOf('Modal', module)
         <div>Footer</div>
       )}
     />
+  )))
+  .add(
+  'Frameless',
+  withInfo({ inline: true })(() => (
+    <Modal
+      title="Channel"
+      width={700}
+      frameless={true}
+      height="90%"
+      onClose={() => console.log('Close')}
+    />
   )));

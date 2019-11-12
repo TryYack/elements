@@ -21,9 +21,11 @@ const Container = styled.div`
   transition: visibility 0s, opacity 0.1s linear;
 `;
 
-const Inner = styled.div`
+const Inner = styled.div<{
+  frameless: boolean;
+}>`
   background: white;
-  border-radius: 5px;
+  border-radius: ${props => props.frameless ? "0px" : "5px"};
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -95,27 +97,34 @@ interface IModalProps {
   width: number;
   height: any;
   onClose: any;
-  footer: any;
+  footer?: any;
+  frameless?: boolean;
 }
 
 export const Modal: React.FunctionComponent<IModalProps> = (props: IModalProps) => {
   return (
     <Container>
-      <Inner style={{ width: props.width, height: props.height }}>
-        <Title>
-          <TitleText>{props.title}</TitleText>
-          <Button>
-            <X
-              color="#524150"
-              size="30"
-              thickness="1.5"
-              onClick={props.onClose}
-            />
-          </Button>
-        </Title>
+      <Inner
+        frameless={!!props.frameless}
+        style={{ width: props.width, height: props.height }}>
+        {!props.frameless &&
+          <Title>
+            <TitleText>{props.title}</TitleText>
+            <Button>
+              <X
+                color="#524150"
+                size="30"
+                thickness="1.5"
+                onClick={props.onClose}
+              />
+            </Button>
+          </Title>
+        }
+
         <InnerContainer>
           {props.children}
         </InnerContainer>
+
         {props.footer &&
           <Footer>
             <FooterPadding>

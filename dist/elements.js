@@ -28646,7 +28646,7 @@ const Container = styled_components_1.default.div `
 `;
 const Inner = styled_components_1.default.div `
   background: white;
-  border-radius: 5px;
+  border-radius: ${props => props.frameless ? "0px" : "5px"};
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -28707,11 +28707,12 @@ const TitleText = styled_components_1.default.div `
 `;
 exports.Modal = (props) => {
     return (React.createElement(Container, null,
-        React.createElement(Inner, { style: { width: props.width, height: props.height } },
-            React.createElement(Title, null,
-                React.createElement(TitleText, null, props.title),
-                React.createElement(Button, null,
-                    React.createElement(react_feather_1.X, { color: "#524150", size: "30", thickness: "1.5", onClick: props.onClose }))),
+        React.createElement(Inner, { frameless: !!props.frameless, style: { width: props.width, height: props.height } },
+            !props.frameless &&
+                React.createElement(Title, null,
+                    React.createElement(TitleText, null, props.title),
+                    React.createElement(Button, null,
+                        React.createElement(react_feather_1.X, { color: "#524150", size: "30", thickness: "1.5", onClick: props.onClose }))),
             React.createElement(InnerContainer, null, props.children),
             props.footer &&
                 React.createElement(Footer, null,
