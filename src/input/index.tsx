@@ -41,7 +41,6 @@ const InputField = styled.input<{
   resize: none;
   display: block;
   box-sizing: border-box;
-  margin-bottom: 20px;
 
   &:focus {
     outline: none;
