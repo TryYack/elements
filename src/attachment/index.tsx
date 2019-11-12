@@ -7,8 +7,6 @@ import { AlignLeft } from "react-feather";
 import { File } from "react-feather";
 import { Activity } from "react-feather";
 
-const Text = styled.div``;
-
 const Container = styled.div<{
   layout: string;
   preview?: string;
@@ -185,7 +183,7 @@ interface IAttachmentProps {
   layout: string;
 
   /** Size in bytes */
-  size?: number;
+  size: number;
 
   /** Preview uri location of file */
   preview?: string;

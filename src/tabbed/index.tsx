@@ -1,8 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
 
-const Text = styled.div``;
-
 const PanelContainer = styled.div`
   flex: 1;
   position: relative;
