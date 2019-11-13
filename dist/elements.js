@@ -27089,159 +27089,6 @@ if ( true && typeof window !== 'undefined' && typeof navigator !== 'undefined' &
 
 /***/ }),
 
-/***/ "./src/Select/index.tsx":
-/*!******************************!*\
-  !*** ./src/Select/index.tsx ***!
-  \******************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-const React = __webpack_require__(/*! react */ "react");
-const styled_components_1 = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-const popup_1 = __webpack_require__(/*! ../popup */ "./src/popup/index.tsx");
-const react_feather_1 = __webpack_require__(/*! react-feather */ "./node_modules/react-feather/dist/index.js");
-const ListContainer = styled_components_1.default.div `
-  width: 100%;
-  background: white;
-  position: relative;
-  height: ${props => props.size * 31}px;
-  max-height: ${5 * 31}px;
-  overflow: scroll;
-`;
-const Item = styled_components_1.default.div `
-  padding-left: 10px;
-  padding-right: 10px;
-  height: 30px;
-  cursor: pointer;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  align-content: center;
-  justify-content: flex-start;
-  border-top: 1px solid #edf0f2;
-  opacity: 1;
-  transition: background 0.25s;
-  background: ${props => (props.active ? "#f8f9fa" : "transparent")};
-
-  &:hover {
-    background: #f8f9fa;
-  }
-`;
-const ItemText = styled_components_1.default.div `
-  color: #858e96;
-  font-size: 14px;
-  font-weight: 400;
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
-`;
-const InnerContainer = styled_components_1.default.div `
-  width: 100%;
-  background: white;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-  position: relative;
-  border-radius: 5px;
-`;
-const Button = styled_components_1.default.div `
-  cursor: pointer;
-  padding: 3px;
-  opacity: 1;
-  transition: opacity 0.25s;
-
-  &:hover {
-    opacity: 0.5;
-  }
-`;
-const Container = styled_components_1.default.div `
-  width: 100%;
-  background: white;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-  position: relative;
-  border: 1px solid #edf0f2;
-  border-radius: 5px;
-  position: relative;
-`;
-const Text = styled_components_1.default.div `
-  color: #495057;
-  font-size: 14px;
-  font-weight: 400;
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
-  padding: 10px;
-  flex: 1;
-  cursor: pointer;
-  opacity: 1;
-  transition: opacity 0.25s;
-
-  &:hover {
-    opacity: 0.75;
-  }
-`;
-class Select extends React.Component {
-    static getDerivedStateFromProps(props, state) {
-        return {
-            list: props.list.filter((item, index) => (index <= 5 ? true : false)),
-        };
-    }
-    constructor(props) {
-        super(props);
-        this.state = { index: 0, list: [], visible: false };
-        this.handleKeyPress = this.handleKeyPress.bind(this);
-    }
-    handleKeyPress(e) {
-        // Move up
-        if (e.keyCode == 38)
-            this.setState({ index: this.state.index - 1 < 0 ? this.state.list.length - 1 : this.state.index - 1 });
-        // Move down
-        if (e.keyCode == 40)
-            this.setState({ index: this.state.index + 1 == this.state.list.length ? 0 : this.state.index + 1 });
-        // Press enter
-        if (e.keyCode == 13) {
-            if (this.state.list.length > 0)
-                this.props.onSelect(this.state.list[this.state.index]);
-        }
-    }
-    componentDidMount() {
-        document.addEventListener("keyup", this.handleKeyPress);
-    }
-    componentWillUnmount() {
-        document.removeEventListener("keyup", this.handleKeyPress);
-    }
-    // prettier-ignore
-    render() {
-        return (React.createElement(Container, null,
-            React.createElement(popup_1.Popup, { visible: this.state.visible, handleDismiss: () => this.setState({ visible: false }), direction: "left-bottom", width: "100%", content: React.createElement(ListContainer, { size: this.state.list.length }, this.state.list.map((item, index) => {
-                    return (React.createElement(Item, { active: index == this.state.index, key: index, onClick: () => {
-                            this.setState({ visible: false });
-                            this.props.onSelect(item);
-                        } },
-                        React.createElement(ItemText, null, item.text)));
-                })) },
-                React.createElement(InnerContainer, null,
-                    React.createElement(Text, { onClick: () => this.setState({ visible: true }) }, this.props.list[this.props.selected].text),
-                    React.createElement(Button, { onClick: () => this.setState({ visible: true }) },
-                        React.createElement(react_feather_1.ChevronDown, { color: "#495057", size: "20", thickness: "1.5" }))))));
-    }
-}
-exports.Select = Select;
-
-
-/***/ }),
-
 /***/ "./src/attachment/index.tsx":
 /*!**********************************!*\
   !*** ./src/attachment/index.tsx ***!
@@ -28253,8 +28100,10 @@ const toggle_1 = __webpack_require__(/*! ./toggle */ "./src/toggle/index.tsx");
 exports.Toggle = toggle_1.Toggle;
 const user_1 = __webpack_require__(/*! ./user */ "./src/user/index.tsx");
 exports.User = user_1.User;
-const Select_1 = __webpack_require__(/*! ./Select */ "./src/Select/index.tsx");
-exports.Select = Select_1.Select;
+const select_1 = __webpack_require__(/*! ./select */ "./src/select/index.tsx");
+exports.Select = select_1.Select;
+const progress_1 = __webpack_require__(/*! ./progress */ "./src/progress/index.tsx");
+exports.Progress = progress_1.Progress;
 
 
 /***/ }),
@@ -28917,6 +28766,96 @@ exports.Popup = Popup;
 
 /***/ }),
 
+/***/ "./src/progress/index.tsx":
+/*!********************************!*\
+  !*** ./src/progress/index.tsx ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const React = __webpack_require__(/*! react */ "react");
+const styled_components_1 = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+const Container = styled_components_1.default.div `
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+`;
+const Inner = styled_components_1.default.div `
+  flex: 1;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  align-content: center;
+  justify-content: flex-start;
+  position: relative;
+`;
+const Bar = styled_components_1.default.div `
+  flex: 1;
+  border-radius: 10px;
+  width: ${props => props.percentage}%;
+  height: 100%;
+  background-color: ${props => props.color}
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  align-content: center;
+  justify-content: flex-start;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 1;
+`;
+const Text = styled_components_1.default.div `
+  font-weight: 400;
+  font-style: normal;
+  color: #151b26;
+  display: inline-block;
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  position: relative;
+  z-index: 2;
+  flex: 2;
+  padding: 5px;
+`;
+const Percentage = styled_components_1.default.div `
+  font-weight: 700;
+  font-style: normal;
+  color: #151b26;
+  display: inline-block;
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  position: relative;
+  z-index: 2;
+  padding: 5px;
+`;
+const ProgressComponent = (props) => {
+    return (React.createElement(Container, null,
+        React.createElement(Bar, { percentage: props.percentage, color: props.color }),
+        React.createElement(Inner, null, props.labels &&
+            React.createElement(React.Fragment, null,
+                React.createElement(Text, null, props.text),
+                React.createElement(Percentage, null,
+                    props.percentage,
+                    "%")))));
+};
+ProgressComponent.defaultProps = {
+    color: "#F8F9FA",
+};
+exports.Progress = React.memo((props) => React.createElement(ProgressComponent, Object.assign({}, props)));
+
+
+/***/ }),
+
 /***/ "./src/room/index.tsx":
 /*!****************************!*\
   !*** ./src/room/index.tsx ***!
@@ -29081,6 +29020,159 @@ exports.Room = (props) => {
                     React.createElement(Excerpt, null,
                         React.createElement(ExcerptText, null, props.excerpt))))));
 };
+
+
+/***/ }),
+
+/***/ "./src/select/index.tsx":
+/*!******************************!*\
+  !*** ./src/select/index.tsx ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const React = __webpack_require__(/*! react */ "react");
+const styled_components_1 = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+const popup_1 = __webpack_require__(/*! ../popup */ "./src/popup/index.tsx");
+const react_feather_1 = __webpack_require__(/*! react-feather */ "./node_modules/react-feather/dist/index.js");
+const ListContainer = styled_components_1.default.div `
+  width: 100%;
+  background: white;
+  position: relative;
+  height: ${props => props.size * 31}px;
+  max-height: ${5 * 31}px;
+  overflow: scroll;
+`;
+const Item = styled_components_1.default.div `
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: flex-start;
+  border-top: 1px solid #edf0f2;
+  opacity: 1;
+  transition: background 0.25s;
+  background: ${props => (props.active ? "#f8f9fa" : "transparent")};
+
+  &:hover {
+    background: #f8f9fa;
+  }
+`;
+const ItemText = styled_components_1.default.div `
+  color: #858e96;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
+`;
+const InnerContainer = styled_components_1.default.div `
+  width: 100%;
+  background: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  position: relative;
+  border-radius: 5px;
+`;
+const Button = styled_components_1.default.div `
+  cursor: pointer;
+  padding: 3px;
+  opacity: 1;
+  transition: opacity 0.25s;
+
+  &:hover {
+    opacity: 0.5;
+  }
+`;
+const Container = styled_components_1.default.div `
+  width: 100%;
+  background: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  position: relative;
+  border: 1px solid #edf0f2;
+  border-radius: 5px;
+  position: relative;
+`;
+const Text = styled_components_1.default.div `
+  color: #495057;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
+  padding: 10px;
+  flex: 1;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.25s;
+
+  &:hover {
+    opacity: 0.75;
+  }
+`;
+class Select extends React.Component {
+    static getDerivedStateFromProps(props, state) {
+        return {
+            list: props.list.filter((item, index) => (index <= 5 ? true : false)),
+        };
+    }
+    constructor(props) {
+        super(props);
+        this.state = { index: 0, list: [], visible: false };
+        this.handleKeyPress = this.handleKeyPress.bind(this);
+    }
+    handleKeyPress(e) {
+        // Move up
+        if (e.keyCode == 38)
+            this.setState({ index: this.state.index - 1 < 0 ? this.state.list.length - 1 : this.state.index - 1 });
+        // Move down
+        if (e.keyCode == 40)
+            this.setState({ index: this.state.index + 1 == this.state.list.length ? 0 : this.state.index + 1 });
+        // Press enter
+        if (e.keyCode == 13) {
+            if (this.state.list.length > 0)
+                this.props.onSelect(this.state.list[this.state.index]);
+        }
+    }
+    componentDidMount() {
+        document.addEventListener("keyup", this.handleKeyPress);
+    }
+    componentWillUnmount() {
+        document.removeEventListener("keyup", this.handleKeyPress);
+    }
+    // prettier-ignore
+    render() {
+        return (React.createElement(Container, null,
+            React.createElement(popup_1.Popup, { visible: this.state.visible, handleDismiss: () => this.setState({ visible: false }), direction: "left-bottom", width: "100%", content: React.createElement(ListContainer, { size: this.state.list.length }, this.state.list.map((item, index) => {
+                    return (React.createElement(Item, { active: index == this.state.index, key: index, onClick: () => {
+                            this.setState({ visible: false });
+                            this.props.onSelect(item);
+                        } },
+                        React.createElement(ItemText, null, item.text)));
+                })) },
+                React.createElement(InnerContainer, null,
+                    React.createElement(Text, { onClick: () => this.setState({ visible: true }) }, this.props.list[this.props.selected].text),
+                    React.createElement(Button, { onClick: () => this.setState({ visible: true }) },
+                        React.createElement(react_feather_1.ChevronDown, { color: "#495057", size: "20", thickness: "1.5" }))))));
+    }
+}
+exports.Select = Select;
 
 
 /***/ }),

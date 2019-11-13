@@ -16,5 +16,6 @@ import { Tabbed } from "./tabbed";
 import { Textarea } from "./textarea";
 import { Toggle } from "./toggle";
 import { User } from "./user";
-import { Select } from "./Select";
-export { Tooltip, Avatar, Button, Attachment, Error, Input, Loading, Members, Menu, Modal, Popup, Notification, Room, Spinner, Tabbed, Toggle, User, Textarea, Select, };
+import { Select } from "./select";
+import { Progress } from "./progress";
+export { Tooltip, Avatar, Button, Attachment, Error, Input, Loading, Members, Menu, Modal, Popup, Notification, Room, Spinner, Tabbed, Toggle, User, Textarea, Select, Progress, };

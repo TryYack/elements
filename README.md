@@ -6,7 +6,6 @@
 > Elements is the React based UI library for the Weekday platform. This is library should be considered as pre alpha right now - active development is continuing. See below roadmap for progress.
 
 ## Installation
-You can install the library directly from master until we get to a post v1.0.0 state.
 ```
 npm i --save @weekday/elements
 yarn add @weekday/elements
@@ -18,7 +17,7 @@ yarn add @weekday/elements
 - Npm v4.2.0
 
 ## Building & installation
-All of the building happens with npm
+All of the building happens with npm or Yarn
 
 ### Testing & linting
 ```
@@ -62,6 +61,8 @@ npm run build:storybook
 - [x] Tooltip component
 - [x] Toggle component
 - [x] User component
+- [x] Select component
+- [x] Progress component
 - [ ] Code coverage (add badge)
 - [ ] More robust component tests
 - [ ] More component stories
