@@ -12,10 +12,6 @@ module.exports = {
     filename: 'elements.js',
     library: 'elements'
   },
-  externals: {
-    'react': 'react',
-    'react-dom': 'react-dom'
-  },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
   },
