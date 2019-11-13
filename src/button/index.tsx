@@ -8,7 +8,14 @@ const Container = styled.button<{
   disabled?: boolean,
 }>`
   box-sizing: border-box;
-  width: auto;
+  max-width: ${props => {
+    switch (props.size) {
+      case "full-width":
+        return "100%";
+      default:
+        return "auto";
+    }
+  }}
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -20,6 +27,8 @@ const Container = styled.button<{
   cursor: pointer;
   max-width: ${props => {
     switch (props.size) {
+      case "full-width":
+        return "100%";
       case "large":
         return "300px";
       case "small":
@@ -30,6 +39,8 @@ const Container = styled.button<{
   }};
   height: ${props  => {
     switch (props.size) {
+      case "full-width":
+        return "auto";
       case "large":
         return "80px";
       case "small":
