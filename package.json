@@ -56,13 +56,13 @@
   "author": "Jo du Plessis",
   "license": "ISC",
   "peerDependencies": {
-    "react": "^16.8.6",
-    "styled-components": "^4.3.2"
+    "react": "^16.8.6"
   },
   "dependencies": {
     "chroma-js": "^2.0.4",
     "moment": "^2.22.2",
-    "react-feather": "git+https://github.com/joduplessis/react-feather.git"
+    "react-feather": "git+https://github.com/joduplessis/react-feather.git",
+    "styled-components": "^4.3.2"
   },
   "devDependencies": {
     "@types/react": "^16.8.23",
