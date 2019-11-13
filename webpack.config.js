@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   devtool: 'source-map',
   entry: {
     index: path.resolve(__dirname, './src/index.ts'),
@@ -10,7 +10,12 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'elements.js',
-    library: 'elements'
+    library: 'elements',
+    libraryTarget: 'var',
+  },
+  externals: {
+    react: 'React',
+    'react-dom': 'ReactDOM',
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],

@@ -4,7 +4,7 @@
   "keywords": [
     "Weekday"
   ],
-  "main": "dist/elements.js",
+  "main": "lib/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
   "sideEffects": [
@@ -36,7 +36,7 @@
     }
   ],
   "deprecated": false,
-  "version": "0.6.18",
+  "version": "0.6.21",
   "description": "UI toolkit for Weekday",
   "scripts": {
     "storybook": "start-storybook -p 6006",
@@ -56,9 +56,8 @@
   "author": "Jo du Plessis",
   "license": "ISC",
   "peerDependencies": {
-    "react": "^16.8.6"
-  },
-  "dependencies": {
+    "react": "^16.8.6",
+    "styled-components": "^4.3.2",
     "chroma-js": "^2.0.4",
     "moment": "^2.22.2",
     "react-feather": "git+https://github.com/joduplessis/react-feather.git"
@@ -107,7 +106,6 @@
     "sass-loader": "^7.1.0",
     "source-map-loader": "^0.2.4",
     "style-loader": "^0.23.0",
-    "styled-components": "^4.3.2",
     "ts-jest": "^24.0.2",
     "ts-loader": "^6.0.4",
     "tslint": "^5.18.0",
