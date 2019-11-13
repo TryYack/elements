@@ -8,7 +8,7 @@ const Container = styled.button<{
   disabled?: boolean,
 }>`
   box-sizing: border-box;
-  max-width: ${props => {
+  width: ${props => {
     switch (props.size) {
       case "full-width":
         return "100%";
