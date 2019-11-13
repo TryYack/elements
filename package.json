@@ -57,7 +57,7 @@
   "license": "ISC",
   "peerDependencies": {
     "react": "^16.8.6",
-    "styled-components": "^4.3.2",
+    "styled-components": "^4.3.2"
   },
   "dependencies": {
     "chroma-js": "^2.0.4",
