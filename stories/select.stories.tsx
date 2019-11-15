@@ -10,12 +10,17 @@ storiesOf('Select', module)
     <Select
       onSelect={(item: any) => console.log('Selected', item)}
       selected={2}
-      list={[
-        { text: 'One', value: 1 },
-        { text: 'Two', value: 2 },
-        { text: 'Three', value: 3 },
-        { text: 'Four', value: 4 },
-        { text: 'Five', value: 5 },
+      options={[
+        { option: 'One', value: 1 },
+        { option: 'Two', value: 2 },
+        { option: 'Three', value: 3 },
+        { option: 'Four', value: 4 },
+        { option: 'Five', value: 5 },
+        { option: 'One', value: 1 },
+        { option: 'Two', value: 2 },
+        { option: 'Three', value: 3 },
+        { option: 'Four', value: 4 },
+        { option: 'Five', value: 5 },
       ]}
     />
   )));

@@ -103,43 +103,36 @@ interface ISelectProps {
   /** When a user presses enter or clicks */
   onSelect: any;
 
-  /** The selected item in the list array */
+  /** The selected item in the options array */
   selected: number;
 
-  /** The list item: { text: 'Visited', value: true } */
-  list: any[];
+  /** The options item: { option: 'Visited', value: true } */
+  options: any[];
 }
 
 interface ISelectState {
   index: number;
   visible: boolean;
-  list: any[];
 }
 
 export class Select extends React.Component<ISelectProps, ISelectState> {
-  public static getDerivedStateFromProps(props: ISelectProps, state: ISelectState) {
-    return {
-      list: props.list.filter((item: any, index) => (index <= 5 ? true : false)),
-    };
-  }
-
   constructor(props: ISelectProps) {
     super(props);
 
-    this.state = { index: 0, list: [], visible: false };
+    this.state = { index: 0, visible: false };
     this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   public handleKeyPress(e: any) {
     // Move up
-    if (e.keyCode == 38) this.setState({ index: this.state.index - 1 < 0 ? this.state.list.length - 1 : this.state.index - 1 });
+    if (e.keyCode == 38) this.setState({ index: this.state.index - 1 < 0 ? this.props.options.length - 1 : this.state.index - 1 });
 
     // Move down
-    if (e.keyCode == 40) this.setState({ index: this.state.index + 1 == this.state.list.length ? 0 : this.state.index + 1 });
+    if (e.keyCode == 40) this.setState({ index: this.state.index + 1 == this.props.options.length ? 0 : this.state.index + 1 });
 
     // Press enter
     if (e.keyCode == 13) {
-      if (this.state.list.length > 0) this.props.onSelect(this.state.list[this.state.index]);
+      if (this.props.options.length > 0) this.props.onSelect(this.props.options[this.state.index]);
     }
   }
 
@@ -161,8 +154,8 @@ export class Select extends React.Component<ISelectProps, ISelectState> {
           direction="left-bottom"
           width="100%"
           content={
-            <ListContainer size={this.state.list.length}>
-              {this.state.list.map((item, index) => {
+            <ListContainer size={this.props.options.length}>
+              {this.props.options.map((item, index) => {
                 return (
                   <Item
                     active={index == this.state.index}
@@ -172,7 +165,7 @@ export class Select extends React.Component<ISelectProps, ISelectState> {
                       this.props.onSelect(item);
                     }}>
                     <ItemText>
-                      {item.text}
+                      {item.option}
                     </ItemText>
                   </Item>
                 );
@@ -181,7 +174,7 @@ export class Select extends React.Component<ISelectProps, ISelectState> {
           }>
           <InnerContainer>
             <Text onClick={() => this.setState({ visible: true })}>
-              {this.props.list[this.props.selected].text}
+              {this.props.options[this.props.selected].option}
             </Text>
             <Button onClick={() => this.setState({ visible: true })}>
               <ChevronDown
