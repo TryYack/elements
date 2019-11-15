@@ -3,19 +3,40 @@ import styled from "styled-components";
 import { Popup } from "../popup";
 import { ChevronDown } from "react-feather";
 
-const ListContainer = styled.div<{ size: number }>`
+const ListContainer = styled.div<{
+  height: number,
+  size: string | undefined,
+}>`
   width: 100%;
   background: white;
   position: relative;
-  height: ${props => props.size * 31}px;
-  max-height: ${5 * 31}px;
+  height: ${props => {
+    switch (props.size) {
+      case "large": return props.height * 41;
+      default: return props.height * 31;
+    }
+  }}px;
+  max-height: ${props => {
+    switch (props.size) {
+      case "large": return 5 * 41;
+      default: return 5 * 31;
+    }
+  }}px;
   overflow: scroll;
 `;
 
-const Item = styled.div<{ active: boolean }>`
+const Item = styled.div<{
+  active: boolean,
+  size: string | undefined,
+}>`
   padding-left: 10px;
   padding-right: 10px;
-  height: 30px;
+  height: ${props => {
+    switch (props.size) {
+      case "large": return "40px";
+      default: return "30px";
+    }
+  }};
   cursor: pointer;
   display: flex;
   flex-direction: row;
@@ -32,9 +53,16 @@ const Item = styled.div<{ active: boolean }>`
   }
 `;
 
-const ItemText = styled.div`
+const ItemText = styled.div<{
+  size: string | undefined,
+}>`
   color: #858e96;
-  font-size: 14px;
+  font-size: ${props => {
+    switch (props.size) {
+      case "large": return "24px";
+      default: return "14px";
+    }
+  }};
   font-weight: 400;
   font-family: -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Roboto", "Oxygen",
@@ -42,7 +70,7 @@ const ItemText = styled.div`
   "Droid Sans", "Helvetica Neue", sans-serif;
 `;
 
-const InnerContainer = styled.div`
+const InnerContainer = styled.div<{ size: string | undefined }>`
   width: 100%;
   background: white;
   display: flex;
@@ -52,11 +80,44 @@ const InnerContainer = styled.div`
   justify-content: center;
   position: relative;
   border-radius: 5px;
+  height: ${props => {
+    switch (props.size) {
+      case "large": return "40px";
+      default: return "30px";
+    }
+  }};
+`;
+
+const Text = styled.div<{ size: string | undefined }>`
+  color: #495057;
+  font-size: ${props => {
+    switch (props.size) {
+      case "large": return "24px";
+      default: return "14px";
+    }
+  }};
+  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
+  padding-left: 10px;
+  padding-right: 10px;
+  flex: 1;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.25s;
+
+  &:hover {
+    opacity: 0.75;
+  }
 `;
 
 const Button = styled.div`
   cursor: pointer;
-  padding: 3px;
+  padding-left: 5px;
+  padding-right: 15px;
+  height: 20px;
   opacity: 1;
   transition: opacity 0.25s;
 
@@ -79,25 +140,6 @@ const Container = styled.div`
   position: relative;
 `;
 
-const Text = styled.div`
-  color: #495057;
-  font-size: 14px;
-  font-weight: 400;
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
-  padding: 10px;
-  flex: 1;
-  cursor: pointer;
-  opacity: 1;
-  transition: opacity 0.25s;
-
-  &:hover {
-    opacity: 0.75;
-  }
-`;
-
 
 interface ISelectProps {
   /** When a user presses enter or clicks */
@@ -105,6 +147,9 @@ interface ISelectProps {
 
   /** The selected item in the options array */
   selected: number;
+
+  /** The options item: { option: 'Visited', value: true } */
+  size?: string | undefined;
 
   /** The options item: { option: 'Visited', value: true } */
   options: any[];
@@ -132,7 +177,7 @@ export class Select extends React.Component<ISelectProps, ISelectState> {
 
     // Press enter
     if (e.keyCode == 13) {
-      if (this.props.options.length > 0) this.props.onSelect(this.props.options[this.state.index]);
+      if (this.props.options.length > 0) this.props.onSelect(this.state.index);
     }
   }
 
@@ -154,17 +199,20 @@ export class Select extends React.Component<ISelectProps, ISelectState> {
           direction="left-bottom"
           width="100%"
           content={
-            <ListContainer size={this.props.options.length}>
+            <ListContainer
+              size={this.props.size}
+              height={this.props.options.length}>
               {this.props.options.map((item, index) => {
                 return (
                   <Item
+                    size={this.props.size}
                     active={index == this.state.index}
                     key={index}
                     onClick={() => {
                       this.setState({ visible: false });
-                      this.props.onSelect(item);
+                      this.props.onSelect(index);
                     }}>
-                    <ItemText>
+                    <ItemText size={this.props.size}>
                       {item.option}
                     </ItemText>
                   </Item>
@@ -172,8 +220,10 @@ export class Select extends React.Component<ISelectProps, ISelectState> {
               })}
             </ListContainer>
           }>
-          <InnerContainer>
-            <Text onClick={() => this.setState({ visible: true })}>
+          <InnerContainer size={this.props.size} >
+            <Text
+              size={this.props.size}
+              onClick={() => this.setState({ visible: true })}>
               {this.props.options[this.props.selected].option}
             </Text>
             <Button onClick={() => this.setState({ visible: true })}>

@@ -5,6 +5,8 @@ interface ISelectProps {
     /** The selected item in the options array */
     selected: number;
     /** The options item: { option: 'Visited', value: true } */
+    size?: string | undefined;
+    /** The options item: { option: 'Visited', value: true } */
     options: any[];
 }
 interface ISelectState {

@@ -1165,13 +1165,13 @@ e.exports=function(){"use strict";for(var e=function(e,t,r){return void 0===t&&(
   width: 100%;
   background: white;
   position: relative;
-  height: ${e=>31*e.size}px;
-  max-height: ${155}px;
+  height: ${e=>{switch(e.size){case"large":return 41*e.height;default:return 31*e.height}}}px;
+  max-height: ${e=>{switch(e.size){case"large":return 205;default:return 155}}}px;
   overflow: scroll;
 `,l=o.default.div`
   padding-left: 10px;
   padding-right: 10px;
-  height: 30px;
+  height: ${e=>{switch(e.size){case"large":return"40px";default:return"30px"}}};
   cursor: pointer;
   display: flex;
   flex-direction: row;
@@ -1188,7 +1188,7 @@ e.exports=function(){"use strict";for(var e=function(e,t,r){return void 0===t&&(
   }
 `,c=o.default.div`
   color: #858e96;
-  font-size: 14px;
+  font-size: ${e=>{switch(e.size){case"large":return"24px";default:return"14px"}}};
   font-weight: 400;
   font-family: -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Roboto", "Oxygen",
@@ -1204,16 +1204,37 @@ e.exports=function(){"use strict";for(var e=function(e,t,r){return void 0===t&&(
   justify-content: center;
   position: relative;
   border-radius: 5px;
+  height: ${e=>{switch(e.size){case"large":return"40px";default:return"30px"}}};
 `,p=o.default.div`
+  color: #495057;
+  font-size: ${e=>{switch(e.size){case"large":return"24px";default:return"14px"}}};
+  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
+  padding-left: 10px;
+  padding-right: 10px;
+  flex: 1;
   cursor: pointer;
-  padding: 3px;
+  opacity: 1;
+  transition: opacity 0.25s;
+
+  &:hover {
+    opacity: 0.75;
+  }
+`,f=o.default.div`
+  cursor: pointer;
+  padding-left: 5px;
+  padding-right: 15px;
+  height: 20px;
   opacity: 1;
   transition: opacity 0.25s;
 
   &:hover {
     opacity: 0.5;
   }
-`,f=o.default.div`
+`,h=o.default.div`
   width: 100%;
   background: white;
   display: flex;
@@ -1225,24 +1246,7 @@ e.exports=function(){"use strict";for(var e=function(e,t,r){return void 0===t&&(
   border: 1px solid #edf0f2;
   border-radius: 5px;
   position: relative;
-`,h=o.default.div`
-  color: #495057;
-  font-size: 14px;
-  font-weight: 400;
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
-  padding: 10px;
-  flex: 1;
-  cursor: pointer;
-  opacity: 1;
-  transition: opacity 0.25s;
-
-  &:hover {
-    opacity: 0.75;
-  }
-`;class y extends n.Component{constructor(e){super(e),this.state={index:0,visible:!1},this.handleKeyPress=this.handleKeyPress.bind(this)}handleKeyPress(e){38==e.keyCode&&this.setState({index:this.state.index-1<0?this.props.options.length-1:this.state.index-1}),40==e.keyCode&&this.setState({index:this.state.index+1==this.props.options.length?0:this.state.index+1}),13==e.keyCode&&this.props.options.length>0&&this.props.onSelect(this.props.options[this.state.index])}componentDidMount(){document.addEventListener("keyup",this.handleKeyPress)}componentWillUnmount(){document.removeEventListener("keyup",this.handleKeyPress)}render(){return n.createElement(f,null,n.createElement(i.Popup,{visible:this.state.visible,handleDismiss:()=>this.setState({visible:!1}),direction:"left-bottom",width:"100%",content:n.createElement(s,{size:this.props.options.length},this.props.options.map((e,t)=>n.createElement(l,{active:t==this.state.index,key:t,onClick:()=>{this.setState({visible:!1}),this.props.onSelect(e)}},n.createElement(c,null,e.option))))},n.createElement(u,null,n.createElement(h,{onClick:()=>this.setState({visible:!0})},this.props.options[this.props.selected].option),n.createElement(p,{onClick:()=>this.setState({visible:!0})},n.createElement(a.ChevronDown,{color:"#495057",size:"20",thickness:"1.5"})))))}}t.Select=y},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});const n=r(1),o=r(2),i=o.default.div`
+`;class y extends n.Component{constructor(e){super(e),this.state={index:0,visible:!1},this.handleKeyPress=this.handleKeyPress.bind(this)}handleKeyPress(e){38==e.keyCode&&this.setState({index:this.state.index-1<0?this.props.options.length-1:this.state.index-1}),40==e.keyCode&&this.setState({index:this.state.index+1==this.props.options.length?0:this.state.index+1}),13==e.keyCode&&this.props.options.length>0&&this.props.onSelect(this.state.index)}componentDidMount(){document.addEventListener("keyup",this.handleKeyPress)}componentWillUnmount(){document.removeEventListener("keyup",this.handleKeyPress)}render(){return n.createElement(h,null,n.createElement(i.Popup,{visible:this.state.visible,handleDismiss:()=>this.setState({visible:!1}),direction:"left-bottom",width:"100%",content:n.createElement(s,{size:this.props.size,height:this.props.options.length},this.props.options.map((e,t)=>n.createElement(l,{size:this.props.size,active:t==this.state.index,key:t,onClick:()=>{this.setState({visible:!1}),this.props.onSelect(t)}},n.createElement(c,{size:this.props.size},e.option))))},n.createElement(u,{size:this.props.size},n.createElement(p,{size:this.props.size,onClick:()=>this.setState({visible:!0})},this.props.options[this.props.selected].option),n.createElement(f,{onClick:()=>this.setState({visible:!0})},n.createElement(a.ChevronDown,{color:"#495057",size:"20",thickness:"1.5"})))))}}t.Select=y},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});const n=r(1),o=r(2),i=o.default.div`
   position: relative;
   overflow: hidden;
   width: 100%;
