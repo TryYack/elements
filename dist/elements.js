@@ -695,7 +695,7 @@ e.exports=function(){"use strict";for(var e=function(e,t,r){return void 0===t&&(
   &::placeholder {
     color: #acb5bd;
   }
-`;t.Input=e=>n.createElement(n.Fragment,null,n.createElement(i,null,e.label),n.createElement(a,Object.assign({},e))),t.Input.defaultProps={inputSize:"default",className:""}},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});const n=r(1),o=r(2),i=o.default.div`
+`;t.Input=e=>n.createElement(n.Fragment,null,e.label&&n.createElement(i,null,e.label),n.createElement(a,Object.assign({},e,{label:e.label||""}))),t.Input.defaultProps={inputSize:"default",className:""}},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});const n=r(1),o=r(2),i=o.default.div`
   position: absolute;
   width: 100%;
   height: 99.5%;
@@ -1162,13 +1162,22 @@ e.exports=function(){"use strict";for(var e=function(e,t,r){return void 0===t&&(
   width: 15px;
   height: 15px;
 `;t.Toggle=e=>{const[t,r]=n.useState(e.on);return n.useEffect(()=>r(e.on),[e.on]),n.createElement(i,{onClick:()=>{e.onChange(!t),r(!t)}},n.createElement(a,{on:t}))}},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});const n=r(1),o=r(2),i=r(5),a=r(3),s=o.default.div`
+  color: #858e96;
+  font-size: 11px;
+  font-weight: 500;
+  padding-bottom: 5px;
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
+`,l=o.default.div`
   width: 100%;
   background: white;
   position: relative;
   height: ${e=>{switch(e.size){case"large":return 41*e.height;default:return 31*e.height}}}px;
   max-height: ${e=>{switch(e.size){case"large":return 205;default:return 155}}}px;
   overflow: scroll;
-`,l=o.default.div`
+`,c=o.default.div`
   padding-left: 10px;
   padding-right: 10px;
   height: ${e=>{switch(e.size){case"large":return"40px";default:return"30px"}}};
@@ -1186,7 +1195,7 @@ e.exports=function(){"use strict";for(var e=function(e,t,r){return void 0===t&&(
   &:hover {
     background: #f8f9fa;
   }
-`,c=o.default.div`
+`,u=o.default.div`
   color: #858e96;
   font-size: ${e=>{switch(e.size){case"large":return"24px";default:return"14px"}}};
   font-weight: 400;
@@ -1194,7 +1203,7 @@ e.exports=function(){"use strict";for(var e=function(e,t,r){return void 0===t&&(
   "Segoe UI", "Roboto", "Oxygen",
   "Ubuntu", "Cantarell", "Fira Sans",
   "Droid Sans", "Helvetica Neue", sans-serif;
-`,u=o.default.div`
+`,p=o.default.div`
   width: 100%;
   background: white;
   display: flex;
@@ -1205,7 +1214,7 @@ e.exports=function(){"use strict";for(var e=function(e,t,r){return void 0===t&&(
   position: relative;
   border-radius: 5px;
   height: ${e=>{switch(e.size){case"large":return"40px";default:return"30px"}}};
-`,p=o.default.div`
+`,f=o.default.div`
   color: #495057;
   font-size: ${e=>{switch(e.size){case"large":return"24px";default:return"14px"}}};
   font-weight: 400;
@@ -1223,7 +1232,7 @@ e.exports=function(){"use strict";for(var e=function(e,t,r){return void 0===t&&(
   &:hover {
     opacity: 0.75;
   }
-`,f=o.default.div`
+`,h=o.default.div`
   cursor: pointer;
   padding-left: 5px;
   padding-right: 15px;
@@ -1234,7 +1243,7 @@ e.exports=function(){"use strict";for(var e=function(e,t,r){return void 0===t&&(
   &:hover {
     opacity: 0.5;
   }
-`,h=o.default.div`
+`,y=o.default.div`
   width: 100%;
   background: white;
   display: flex;
@@ -1246,7 +1255,7 @@ e.exports=function(){"use strict";for(var e=function(e,t,r){return void 0===t&&(
   border: 1px solid #edf0f2;
   border-radius: 5px;
   position: relative;
-`;class y extends n.Component{constructor(e){super(e),this.state={index:0,visible:!1},this.handleKeyPress=this.handleKeyPress.bind(this)}handleKeyPress(e){38==e.keyCode&&this.setState({index:this.state.index-1<0?this.props.options.length-1:this.state.index-1}),40==e.keyCode&&this.setState({index:this.state.index+1==this.props.options.length?0:this.state.index+1}),13==e.keyCode&&this.props.options.length>0&&this.props.onSelect(this.state.index)}componentDidMount(){document.addEventListener("keyup",this.handleKeyPress)}componentWillUnmount(){document.removeEventListener("keyup",this.handleKeyPress)}render(){return n.createElement(h,null,n.createElement(i.Popup,{visible:this.state.visible,handleDismiss:()=>this.setState({visible:!1}),direction:"left-bottom",width:"100%",content:n.createElement(s,{size:this.props.size,height:this.props.options.length},this.props.options.map((e,t)=>n.createElement(l,{size:this.props.size,active:t==this.state.index,key:t,onClick:()=>{this.setState({visible:!1}),this.props.onSelect(t)}},n.createElement(c,{size:this.props.size},e.option))))},n.createElement(u,{size:this.props.size},n.createElement(p,{size:this.props.size,onClick:()=>this.setState({visible:!0})},this.props.options[this.props.selected].option),n.createElement(f,{onClick:()=>this.setState({visible:!0})},n.createElement(a.ChevronDown,{color:"#495057",size:"20",thickness:"1.5"})))))}}t.Select=y},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});const n=r(1),o=r(2),i=o.default.div`
+`;class g extends n.Component{constructor(e){super(e),this.state={index:0,visible:!1},this.handleKeyPress=this.handleKeyPress.bind(this)}handleKeyPress(e){38==e.keyCode&&this.setState({index:this.state.index-1<0?this.props.options.length-1:this.state.index-1}),40==e.keyCode&&this.setState({index:this.state.index+1==this.props.options.length?0:this.state.index+1}),13==e.keyCode&&this.props.options.length>0&&this.props.onSelect(this.state.index)}componentDidMount(){document.addEventListener("keyup",this.handleKeyPress)}componentWillUnmount(){document.removeEventListener("keyup",this.handleKeyPress)}render(){return n.createElement(n.Fragment,null,this.props.label&&n.createElement(s,null,this.props.label),n.createElement(y,null,n.createElement(i.Popup,{visible:this.state.visible,handleDismiss:()=>this.setState({visible:!1}),direction:"left-bottom",width:"100%",content:n.createElement(l,{size:this.props.size,height:this.props.options.length},this.props.options.map((e,t)=>n.createElement(c,{size:this.props.size,active:t==this.state.index,key:t,onClick:()=>{this.setState({visible:!1}),this.props.onSelect(t)}},n.createElement(u,{size:this.props.size},e.option))))},n.createElement(p,{size:this.props.size},n.createElement(f,{size:this.props.size,onClick:()=>this.setState({visible:!0})},this.props.options[this.props.selected].option),n.createElement(h,{onClick:()=>this.setState({visible:!0})},n.createElement(a.ChevronDown,{color:"#495057",size:"20",thickness:"1.5"}))))))}}t.Select=g},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});const n=r(1),o=r(2),i=o.default.div`
   position: relative;
   overflow: hidden;
   width: 100%;

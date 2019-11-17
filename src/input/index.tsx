@@ -53,7 +53,7 @@ const InputField = styled.input<{
 
 interface IInputProps {
   /** Label above field */
-  label: string;
+  label?: string;
   value: string;
   onChange: any;
   placeholder: string;
@@ -65,8 +65,11 @@ interface IInputProps {
 export const Input: React.FunctionComponent<IInputProps> = (props: IInputProps) => {
   return (
     <React.Fragment>
-      <Label>{props.label}</Label>
-      <InputField {...props} />
+      {props.label &&
+        <Label>{props.label}</Label>
+      }
+
+      <InputField {...props} label={props.label || ""} />
     </React.Fragment>
   );
 };

@@ -3,6 +3,17 @@ import styled from "styled-components";
 import { Popup } from "../popup";
 import { ChevronDown } from "react-feather";
 
+const Label = styled.div`
+  color: #858e96;
+  font-size: 11px;
+  font-weight: 500;
+  padding-bottom: 5px;
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
+`;
+
 const ListContainer = styled.div<{
   height: number,
   size: string | undefined,
@@ -153,6 +164,7 @@ interface ISelectProps {
 
   /** The options item: { option: 'Visited', value: true } */
   options: any[];
+  label?: string;
 }
 
 interface ISelectState {
@@ -192,50 +204,56 @@ export class Select extends React.Component<ISelectProps, ISelectState> {
   // prettier-ignore
   public render() {
     return (
-      <Container>
-        <Popup
-          visible={this.state.visible}
-          handleDismiss={() => this.setState({ visible: false })}
-          direction="left-bottom"
-          width="100%"
-          content={
-            <ListContainer
-              size={this.props.size}
-              height={this.props.options.length}>
-              {this.props.options.map((item, index) => {
-                return (
-                  <Item
-                    size={this.props.size}
-                    active={index == this.state.index}
-                    key={index}
-                    onClick={() => {
-                      this.setState({ visible: false });
-                      this.props.onSelect(index);
-                    }}>
-                    <ItemText size={this.props.size}>
-                      {item.option}
-                    </ItemText>
-                  </Item>
-                );
-              })}
-            </ListContainer>
-          }>
-          <InnerContainer size={this.props.size} >
-            <Text
-              size={this.props.size}
-              onClick={() => this.setState({ visible: true })}>
-              {this.props.options[this.props.selected].option}
-            </Text>
-            <Button onClick={() => this.setState({ visible: true })}>
-              <ChevronDown
-                color="#495057"
-                size="20"
-                thickness="1.5"
-              />
-            </Button>
-          </InnerContainer>
-        </Popup>
-      </Container>
+      <React.Fragment>
+        {this.props.label &&
+          <Label>{this.props.label}</Label>
+        }
+
+        <Container>
+          <Popup
+            visible={this.state.visible}
+            handleDismiss={() => this.setState({ visible: false })}
+            direction="left-bottom"
+            width="100%"
+            content={
+              <ListContainer
+                size={this.props.size}
+                height={this.props.options.length}>
+                {this.props.options.map((item, index) => {
+                  return (
+                    <Item
+                      size={this.props.size}
+                      active={index == this.state.index}
+                      key={index}
+                      onClick={() => {
+                        this.setState({ visible: false });
+                        this.props.onSelect(index);
+                      }}>
+                      <ItemText size={this.props.size}>
+                        {item.option}
+                      </ItemText>
+                    </Item>
+                  );
+                })}
+              </ListContainer>
+            }>
+            <InnerContainer size={this.props.size} >
+              <Text
+                size={this.props.size}
+                onClick={() => this.setState({ visible: true })}>
+                {this.props.options[this.props.selected].option}
+              </Text>
+              <Button onClick={() => this.setState({ visible: true })}>
+                <ChevronDown
+                  color="#495057"
+                  size="20"
+                  thickness="1.5"
+                />
+              </Button>
+            </InnerContainer>
+          </Popup>
+        </Container>
+      </React.Fragment>
     );
   }
 }

@@ -8,6 +8,7 @@ interface ISelectProps {
     size?: string | undefined;
     /** The options item: { option: 'Visited', value: true } */
     options: any[];
+    label?: string;
 }
 interface ISelectState {
     index: number;

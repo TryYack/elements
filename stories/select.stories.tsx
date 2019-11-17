@@ -44,4 +44,26 @@ storiesOf('Select', module)
         { option: 'Five', value: 5 },
       ]}
     />
+  )))
+  .add(
+  'With label',
+  withInfo({ inline: true })(() => (
+    <Select
+      label="Select"
+      size="large"
+      onSelect={(item: any) => console.log('Selected', item)}
+      selected={2}
+      options={[
+        { option: 'One', value: 1 },
+        { option: 'Two', value: 2 },
+        { option: 'Three', value: 3 },
+        { option: 'Four', value: 4 },
+        { option: 'Five', value: 5 },
+        { option: 'One', value: 1 },
+        { option: 'Two', value: 2 },
+        { option: 'Three', value: 3 },
+        { option: 'Four', value: 4 },
+        { option: 'Five', value: 5 },
+      ]}
+    />
   )));

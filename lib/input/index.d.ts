@@ -1,7 +1,7 @@
 import * as React from "react";
 interface IInputProps {
     /** Label above field */
-    label: string;
+    label?: string;
     value: string;
     onChange: any;
     placeholder: string;
