@@ -71,13 +71,13 @@ const PanelTabButton = styled.div<
     switch (props.size) {
       case "large":
         if (props.borderless) {
-          return "10px 25px 10px 25px";
+          return "15px 25px 0px 25px";
         } else {
-          return "10px 25px 10px 25px";
+          return "15px 25px 15px 25px";
         }
       default:
         if (props.borderless) {
-          return "3px 20px 3px 20px";
+          return "10px 20px 0px 20px";
         } else {
           return "10px 20px 10px 20px";
         }
@@ -171,7 +171,7 @@ export const Tabbed: React.FunctionComponent<ITabbedProps> = (props: ITabbedProp
               </Text>
               {panel.subtitle &&
                 <Subtext active={current == index} size={props.size || "default"}>
-                  {panel.title}
+                  {panel.subtitle}
                 </Subtext>
               }
             </PanelTabButton>

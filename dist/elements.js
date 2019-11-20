@@ -1086,7 +1086,7 @@ e.exports=function(){"use strict";for(var e=function(e,t,r){return void 0===t&&(
   display: flex;
   transform: translateX(${e=>100*e.index}%);
 `,u=o.default.div`
-  padding: ${e=>{switch(e.size){case"large":return e.borderless,"10px 25px 10px 25px";default:return e.borderless?"3px 20px 3px 20px":"10px 20px 10px 20px"}}};
+  padding: ${e=>{switch(e.size){case"large":return e.borderless?"15px 25px 0px 25px":"15px 25px 15px 25px";default:return e.borderless?"10px 20px 0px 20px":"10px 20px 10px 20px"}}};
   border-bottom: ${e=>e.borderless?"none":"1px solid #eaeaea"};
   width: 100%;
   cursor: pointer;
@@ -1121,7 +1121,7 @@ e.exports=function(){"use strict";for(var e=function(e,t,r){return void 0===t&&(
   &:hover {
     opacity: 0.8;
   }
-`;t.Tabbed=e=>{const[t,r]=n.useState(e.start);return n.createElement(i,null,n.createElement(a,null,e.panels.map((o,i)=>o.show?n.createElement(u,{borderless:e.borderless||!1,size:e.size||"default",key:i,className:t==i?"active":"",onClick:()=>r(i)},n.createElement(p,{active:t==i,size:e.size||"default"},o.title),o.subtitle&&n.createElement(f,{active:t==i,size:e.size||"default"},o.title)):null)),n.createElement(l,null,n.createElement(s,{current:t},e.panels.map((e,t)=>e.show?n.createElement(c,{key:t,index:t},e.content):null))))}},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});const n=r(1),o=r(2),i=o.default.div`
+`;t.Tabbed=e=>{const[t,r]=n.useState(e.start);return n.createElement(i,null,n.createElement(a,null,e.panels.map((o,i)=>o.show?n.createElement(u,{borderless:e.borderless||!1,size:e.size||"default",key:i,className:t==i?"active":"",onClick:()=>r(i)},n.createElement(p,{active:t==i,size:e.size||"default"},o.title),o.subtitle&&n.createElement(f,{active:t==i,size:e.size||"default"},o.subtitle)):null)),n.createElement(l,null,n.createElement(s,{current:t},e.panels.map((e,t)=>e.show?n.createElement(c,{key:t,index:t},e.content):null))))}},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});const n=r(1),o=r(2),i=o.default.div`
   color: #858e96;
   font-size: 11px;
   font-weight: 500;
