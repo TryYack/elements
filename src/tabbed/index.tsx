@@ -48,13 +48,6 @@ const PanelsContainer = styled.div`
   overflow: hidden;
 `;
 
-const PanelTabButton = styled.div`
-  padding: 10px 20px 10px 20px;
-  border-bottom: 1px solid #eaeaea;
-  width: 100%;
-  cursor: pointer;
-`;
-
 const Panel = styled.div<{
   index: number;
 }>`
@@ -69,10 +62,44 @@ const Panel = styled.div<{
   transform: translateX(${props => props.index * 100}%);
 `;
 
+const PanelTabButton = styled.div<
+{
+  size: string;
+  borderless: boolean;
+}>`
+  padding: ${props => {
+    switch (props.size) {
+      case "large":
+        if (props.borderless) {
+          return "10px 25px 10px 25px";
+        } else {
+          return "10px 25px 10px 25px";
+        }
+      default:
+        if (props.borderless) {
+          return "3px 20px 3px 20px";
+        } else {
+          return "10px 20px 10px 20px";
+        }
+    }
+  }};
+  border-bottom: ${props => props.borderless ? "none" : "1px solid #eaeaea" };
+  width: 100%;
+  cursor: pointer;
+`;
+
 const Text = styled.div<{
   active: boolean;
+  size: string;
 }>`
-  font-size: 12px;
+  font-size: ${props => {
+    switch (props.size) {
+      case "large":
+        return "20px";
+      default:
+        return "12px";
+    }
+  }};
   font-family: -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Roboto", "Oxygen",
   "Ubuntu", "Cantarell", "Fira Sans",
@@ -88,8 +115,38 @@ const Text = styled.div<{
   }
 `;
 
+const Subtext = styled.div<{
+  active: boolean;
+  size: string;
+}>`
+  font-size: ${props => {
+    switch (props.size) {
+      case "large":
+        return "12px";
+      default:
+        return "10px";
+    }
+  }};
+  font-family: -apple-system, BlinkMacSystemFont,
+  "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans",
+  "Droid Sans", "Helvetica Neue", sans-serif;
+  font-weight: 400;
+  color: ${props => props.active ? "#AEB5BC" : "#AEB5BC"};
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.25s;
+  margin-top: 3px;
+
+  &:hover {
+    opacity: 0.8;
+  }
+`;
+
 interface ITabbedProps {
   start: number;
+  size?: string;
+  borderless?: boolean;
   panels: any;
 }
 
@@ -104,12 +161,19 @@ export const Tabbed: React.FunctionComponent<ITabbedProps> = (props: ITabbedProp
 
           return (
             <PanelTabButton
+              borderless={props.borderless || false}
+              size={props.size || "default"}
               key={index}
               className={current == index ? "active" : ""}
               onClick={() => setCurrent(index)}>
-              <Text active={current == index}>
+              <Text active={current == index} size={props.size || "default"}>
                 {panel.title}
               </Text>
+              {panel.subtitle &&
+                <Subtext active={current == index} size={props.size || "default"}>
+                  {panel.title}
+                </Subtext>
+              }
             </PanelTabButton>
           );
         })}

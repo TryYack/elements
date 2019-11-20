@@ -30,4 +30,34 @@ storiesOf('Tabbed', module)
         }
       ]}
     />
+  )))
+  .add(
+  'Large with subtitle & no border',
+  withInfo({ inline: true })(() => (
+    <Tabbed
+      size="large"
+      borderless={true}
+      start={0}
+      panels={[
+        {
+          title: 'Profile',
+          subtitle: 'Something below',
+          show: true,
+          content: (
+            <div style={{ flex: 1, height: "100%", width: "100%" }}>
+              Profile content
+            </div>
+          )
+        },
+        {
+          title: 'Accounts',
+          show: true,
+          content: (
+            <div style={{ flex: 1, height: "100%", width: "100%" }}>
+              Account content
+            </div>
+          )
+        }
+      ]}
+    />
   )));
