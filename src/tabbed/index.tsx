@@ -14,10 +14,12 @@ const PanelContainer = styled.div`
   position: relative;
 `;
 
-const PanelTitles = styled.div`
+const PanelTitles = styled.div<{
+  size: string;
+}>`
   border-right: 1px solid #eaeaea;
   box-sizing: border-box;
-  width: 200px;
+  width: ${props => props.size == "large" ? "250px" : "200px"};
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -155,7 +157,7 @@ export const Tabbed: React.FunctionComponent<ITabbedProps> = (props: ITabbedProp
 
   return (
     <PanelContainer>
-      <PanelTitles>
+      <PanelTitles size={props.size || "default"}>
         {props.panels.map((panel: any, index: number) => {
           if (!panel.show) return null;
 
