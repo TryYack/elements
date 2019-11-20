@@ -10,7 +10,7 @@ import { Menu } from "./menu";
 import { Modal } from "./modal";
 import { Notification } from "./notification";
 import { Popup } from "./popup";
-import { Room } from "./room";
+import { Channel } from "./channel";
 import { Spinner } from "./spinner";
 import { Tabbed } from "./tabbed";
 import { Textarea } from "./textarea";
@@ -32,7 +32,7 @@ export {
   Modal,
   Popup,
   Notification,
-  Room,
+  Channel,
   Spinner,
   Tabbed,
   Toggle,

@@ -132,7 +132,7 @@ const Flex = styled.div`
   flex: 1;
 `;
 
-interface IRoomProps {
+interface IChannelProps {
   dark?: boolean;
   active: boolean;
   muted?: boolean;
@@ -151,7 +151,7 @@ interface IRoomProps {
   onArchivedClick?: any;
 }
 
-export const Room: React.FunctionComponent<IRoomProps> = (props: IRoomProps) => {
+export const Channel: React.FunctionComponent<IChannelProps> = (props: IChannelProps) => {
   const [over, setOver] = useState(false);
   const [menu, setMenu] = useState(false);
 

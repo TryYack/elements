@@ -1,5 +1,5 @@
 import * as React from "react";
-interface IRoomProps {
+interface IChannelProps {
     dark?: boolean;
     active: boolean;
     muted?: boolean;
@@ -17,5 +17,5 @@ interface IRoomProps {
     onMutedClick?: any;
     onArchivedClick?: any;
 }
-export declare const Room: React.FunctionComponent<IRoomProps>;
+export declare const Channel: React.FunctionComponent<IChannelProps>;
 export {};

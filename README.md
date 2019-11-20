@@ -54,7 +54,7 @@ npm run build:storybook
 - [x] Modal component
 - [x] Notification component
 - [x] Popup component
-- [x] Room component
+- [x] Channel component
 - [x] Spinner component
 - [x] Tabbed component
 - [x] Textarea component

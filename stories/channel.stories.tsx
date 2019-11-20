@@ -1,17 +1,17 @@
 import * as React from "react";
 import { storiesOf } from "@storybook/react";
-import { Room } from "../src/room";
+import { Channel } from "../src/channel";
 import { withInfo } from "@storybook/addon-info";
 
-storiesOf('Room', module)
+storiesOf('Channel', module)
   .add(
   'Default',
   withInfo({ inline: true })(() => (
     <div style={{ width: 300, backgroundColor: '#0C1828' }}>
-      <Room
+      <Channel
         active={false}
         unread={1}
-        title="Room"
+        title="Channel"
         image="https://usepanda.com/img/source-icons/theNextWeb.png"
         excerpt="Excerpt here"
         public={false}
@@ -27,7 +27,7 @@ storiesOf('Room', module)
   'With a very long title',
   withInfo({ inline: true })(() => (
     <div style={{ width: 300, backgroundColor: '#0C1828' }}>
-      <Room
+      <Channel
         active={false}
         unread={1}
         title="This is a very long title that a user won't be able to see"
@@ -46,7 +46,7 @@ storiesOf('Room', module)
   'With badge & very long excerpt',
   withInfo({ inline: true })(() => (
     <div style={{ width: 300, backgroundColor: '#0C1828' }}>
-      <Room
+      <Channel
         active={false}
         unread={1}
         title="Marketing Department"
