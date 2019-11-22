@@ -98,16 +98,25 @@ interface IModalProps {
   height: any;
   onClose: any;
   footer?: any;
+  header?: boolean;
   frameless?: boolean;
 }
 
 export const Modal: React.FunctionComponent<IModalProps> = (props: IModalProps) => {
+  const [header, setHeader] = React.useState(true);
+  const [frameless, setFrameless] = React.useState(false);
+
+  React.useEffect(() => {
+    if (typeof(props.header) == "boolean") setHeader(props.header);
+    if (typeof(props.frameless) == "boolean") setFrameless(!!props.frameless);
+  }, []);
+
   return (
     <Container>
       <Inner
-        frameless={!!props.frameless}
+        frameless={frameless}
         style={{ width: props.width, height: props.height }}>
-        {!props.frameless &&
+        {(!frameless && header) &&
           <Title>
             <TitleText>{props.title}</TitleText>
             <Button>

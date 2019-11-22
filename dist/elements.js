@@ -846,7 +846,7 @@ e.exports=function(){"use strict";for(var e=function(e,t,r){return void 0===t&&(
   color: #202529;
   font-size: 28px;
   font-weight: 300;
-`;t.Modal=e=>n.createElement(a,null,n.createElement(s,{frameless:!!e.frameless,style:{width:e.width,height:e.height}},!e.frameless&&n.createElement(c,null,n.createElement(h,null,e.title),n.createElement(f,null,n.createElement(i.X,{color:"#524150",size:"30",thickness:"1.5",onClick:e.onClose}))),n.createElement(l,null,e.children),e.footer&&n.createElement(u,null,n.createElement(p,null,e.footer))))},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});const n=r(1),o=r(2),i=r(3),a=o.default.div`
+`;t.Modal=e=>{const[t,r]=n.useState(!0),[o,y]=n.useState(!1);return n.useEffect(()=>{"boolean"==typeof e.header&&r(e.header),"boolean"==typeof e.frameless&&y(!!e.frameless)},[]),n.createElement(a,null,n.createElement(s,{frameless:o,style:{width:e.width,height:e.height}},!o&&t&&n.createElement(c,null,n.createElement(h,null,e.title),n.createElement(f,null,n.createElement(i.X,{color:"#524150",size:"30",thickness:"1.5",onClick:e.onClose}))),n.createElement(l,null,e.children),e.footer&&n.createElement(u,null,n.createElement(p,null,e.footer))))}},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});const n=r(1),o=r(2),i=r(3),a=o.default.div`
   background-color: #05A6FF;
   width: 100%;
   display: flex;
@@ -1127,7 +1127,7 @@ e.exports=function(){"use strict";for(var e=function(e,t,r){return void 0===t&&(
   &:hover {
     opacity: 0.8;
   }
-`;t.Tabbed=e=>{const[t,r]=n.useState(e.start);return n.createElement(i,null,n.createElement(a,{size:e.size||"default"},e.panels.map((o,i)=>o.show?n.createElement(u,{borderless:e.borderless||!1,size:e.size||"default",key:i,className:t==i?"active":"",onClick:()=>r(i)},n.createElement(p,{active:t==i,size:e.size||"default"},o.title),o.subtitle&&n.createElement(f,{active:t==i,size:e.size||"default"},o.subtitle)):null)),n.createElement(l,null,n.createElement(s,{current:t},e.panels.map((e,t)=>e.show?n.createElement(c,{key:t,index:t},e.content):null))))}},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});const n=r(1),o=r(2),i=o.default.div`
+`;t.Tabbed=e=>{const[t,r]=n.useState(e.start);return n.createElement(i,null,n.createElement(a,{size:e.size||"default"},e.panels.map((o,i)=>o.show?n.createElement(u,{borderless:e.borderless||!1,size:e.size||"default",key:i,className:t==i?"active":"",onClick:()=>r(i)},n.createElement(p,{active:t==i,size:e.size||"default"},o.title),o.subtitle&&n.createElement(f,{active:t==i,size:e.size||"default"},o.subtitle)):null),e.footer&&n.createElement(n.Fragment,null,e.footer)),n.createElement(l,null,n.createElement(s,{current:t},e.panels.map((e,t)=>e.show?n.createElement(c,{key:t,index:t},e.content):null))))}},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});const n=r(1),o=r(2),i=o.default.div`
   color: #858e96;
   font-size: 11px;
   font-weight: 500;

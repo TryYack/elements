@@ -9,6 +9,7 @@ storiesOf('Tabbed', module)
   withInfo({ inline: true })(() => (
     <Tabbed
       start={0}
+      footer={<div>This is the tab footer area</div>}
       panels={[
         {
           title: 'Profile',

@@ -149,6 +149,7 @@ interface ITabbedProps {
   start: number;
   size?: string;
   borderless?: boolean;
+  footer?: any;
   panels: any;
 }
 
@@ -179,6 +180,12 @@ export const Tabbed: React.FunctionComponent<ITabbedProps> = (props: ITabbedProp
             </PanelTabButton>
           );
         })}
+
+        {props.footer &&
+          <React.Fragment>
+            {props.footer}
+          </React.Fragment>
+        }
       </PanelTitles>
 
       <PanelsContainer>

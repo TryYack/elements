@@ -18,6 +18,17 @@ storiesOf('Modal', module)
     />
   )))
   .add(
+  'No header',
+  withInfo({ inline: true })(() => (
+    <Modal
+      title="Channel"
+      width={700}
+      header={false}
+      height="90%"
+      onClose={() => console.log('Close')}
+    />
+  )))
+  .add(
   'Frameless',
   withInfo({ inline: true })(() => (
     <Modal
