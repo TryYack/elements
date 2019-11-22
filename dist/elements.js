@@ -4,6 +4,7 @@ var elements=function(e){var t={};function r(n){if(t[n])return t[n].exports;var 
   display: inline-block;
   width: ${e=>e.width}px;
   height: ${e=>e.height}px;
+  box-sizing: border-box;
 `,l=i.default.div`
   width: ${e=>e.width}px;
   height: ${e=>e.height}px;
@@ -22,6 +23,7 @@ var elements=function(e){var t={};function r(n){if(t[n])return t[n].exports;var 
   overflow: hidden;
   transition: opacity 0.25s;
   position: relative;
+  box-sizing: border-box;
   opacity: ${e=>e.over&&e.onClick?.75:1};
 
   &.overlap-right {
@@ -40,6 +42,7 @@ var elements=function(e){var t={};function r(n){if(t[n])return t[n].exports;var 
   margin: 0px;
   padding: 0px;
   outline: none;
+  box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Roboto", "Oxygen",
   "Ubuntu", "Cantarell", "Fira Sans",
@@ -62,7 +65,8 @@ var elements=function(e){var t={};function r(n){if(t[n])return t[n].exports;var 
   align-content: center;
   justify-content: center;
   border: 1px solid white;
-  z-index: 1;
+  box-sizing: border-box;
+  z-index: 1000;
   transition: background-color 0.25s;
   font-family: -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Roboto", "Oxygen",
@@ -85,6 +89,7 @@ var elements=function(e){var t={};function r(n){if(t[n])return t[n].exports;var 
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
   align-content: center;
   cursor: pointer;
   font-family: -apple-system, BlinkMacSystemFont,
@@ -95,8 +100,9 @@ var elements=function(e){var t={};function r(n){if(t[n])return t[n].exports;var 
   position: absolute;
   right: -3px;
   bottom: -3px;
-  width: 11px;
-  height: 11px;
+  width: 13px;
+  height: 13px;
+  box-sizing: border-box;
   border-radius: 50%;
   z-index: 2;
   background-color: ${e=>"online"==e.presence?"#36C5AB":"#FD9A00"};
@@ -109,8 +115,8 @@ var elements=function(e){var t={};function r(n){if(t[n])return t[n].exports;var 
   position: absolute;
   right: -3px;
   bottom: -3px;
-  width: 11px;
-  height: 11px;
+  width: 13px;
+  height: 13px;
   border-radius: 50%;
   z-index: 2;
   border: 2px solid ${e=>e.dark?"#08111d":"#ffffff"};
@@ -119,6 +125,7 @@ var elements=function(e){var t={};function r(n){if(t[n])return t[n].exports;var 
   "Segoe UI", "Roboto", "Oxygen",
   "Ubuntu", "Cantarell", "Fira Sans",
   "Droid Sans", "Helvetica Neue", sans-serif;
+  box-sizing: border-box;
 `;t.AvatarComponent=e=>{const[t,r]=o.useState(!1),i=e.image?"url("+e.image+")":"",y=e.dark?"#0c1828":e.color?a(e.color).desaturate(2).brighten(2.25).toString():"#f1f3f5",g=e.color?e.color:e.textColor?e.textColor:"#007af5",d=e.outlineInnerColor||e.outlineOuterColor?e.className+" outline":e.className;let v=35,b=35,m=35;switch(e.size){case"very-small":v=15,b=15,m=e.circle?200:5;break;case"small":v=20,b=20,m=e.circle?200:6;break;case"small-medium":v=25,b=25,m=e.circle?200:7;break;case"medium":v=30,b=30,m=e.circle?200:8;break;case"medium-large":v=35,b=35,m=e.circle?200:9;break;case"large":v=40,b=40,m=e.circle?200:10;break;case"x-large":v=80,b=80,m=e.circle?200:16;break;case"xx-large":v=120,b=120,m=e.circle?200:18;break;case"xxx-large":v=180,b=180,m=e.circle?200:20;break;default:v=30,b=30,m=e.circle?200:8}return n.createElement(s,{width:v,height:b,onMouseEnter:()=>r(!0),onMouseLeave:()=>r(!1)},t&&e.onEditClick&&e.editIcon&&n.createElement(p,{onClick:e.onEditClick},e.editIcon),t&&e.onDeleteClick&&e.deleteIcon&&n.createElement(u,{onClick:e.onDeleteClick},e.deleteIcon),e.presence&&!e.badge&&n.createElement(n.Fragment,null,"offline"!=e.presence&&n.createElement(f,{presence:e.presence,dark:e.dark||!1})),e.badge&&n.createElement(h,{dark:e.dark||!1}),n.createElement(l,{over:t,onClick:e.onClick,width:v,height:b,borderRadius:m,className:d,image:i,background:y,outlineInnerColor:e.outlineInnerColor?e.outlineInnerColor:"transparent",outlineOuterColor:e.outlineOuterColor?e.outlineOuterColor:"transparent",style:e.style},e.children,(!e.children&&!e.image&&e.title&&!e.onEditClick||!e.children&&!e.image&&e.title&&e.onEditClick&&!t)&&n.createElement(c,{color:g,size:e.size,className:"text"},(e=>e.split(" ").map((e,t)=>e[0]?e[0].toUpperCase():"").splice(0,2).toString().replace(",","").trim())(e.title))))},t.Avatar=n.memo(e=>n.createElement(t.AvatarComponent,Object.assign({},e)))},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});const n=r(1),o=r(2),i=o.default.div`
   position: relative;
   display: flex;
@@ -365,6 +372,7 @@ e.exports=function(){"use strict";for(var e=function(e,t,r){return void 0===t&&(
   position: relative;
   transition: background-color 0.15s, color 0.15s, border 0.15s;
   cursor: pointer;
+  box-sizing: border-box;
   max-width: ${e=>{switch(e.size){case"full-width":return"100%";case"large":return"300px";case"small":return"fit-content";default:return"150px"}}};
   height: ${e=>{switch(e.size){case"full-width":return"auto";case"large":return"80px";case"small":return"30px";default:return"40px"}}};
   border-radius: ${e=>{switch(e.size){case"large":return"10px";case"small":return"6px";default:return"8px"}}};
@@ -398,11 +406,13 @@ e.exports=function(){"use strict";for(var e=function(e,t,r){return void 0===t&&(
   "Segoe UI", "Roboto", "Oxygen",
   "Ubuntu", "Cantarell", "Fira Sans",
   "Droid Sans", "Helvetica Neue", sans-serif;
+  box-sizing: border-box;
   padding: ${e=>{if(e.icon)switch(e.size){case"large":return"0px 30px 0px 15px";case"small":return"0px 10px 0px 5px";default:return"0px 15px 0px 8px"}else switch(e.size){case"large":return"0px 30px 0px 30px";case"small":return"0px 10px 0px 10px";default:return"0px 15px 0px 15px"}}};
   font-weight: ${e=>{switch(e.size){case"large":case"small":default:return"400"}}};
   font-size: ${e=>{switch(e.size){case"large":return"24px";case"small":return"11px";default:return"14px"}}};
 `,l=o.default.div`
   position: relative;
+  box-sizing: border-box;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -1168,21 +1178,23 @@ e.exports=function(){"use strict";for(var e=function(e,t,r){return void 0===t&&(
   background: white;
   width: 35px !important;
   position: relative;
-  height: 22px !important;
+  height: 24px !important;
   border: 1px solid #F1F3F5;
   box-shadow: 0px 0px 16px -9px rgba(0,0,0,0.75);
   cursor: pointer;
   overflow: hidden;
   border-radius: 35px !important;
+  box-sizing: border-box;
 `,a=o.default.div`
   position: absolute;
   top: 3px !important;
-  left: ${e=>e.on?"16px":"3px"} !important;
+  left: ${e=>e.on?"13px":"4px"} !important;
   background-color: ${e=>e.on?"#007af5":"#CFD6DD"};
   border-radius: 50%;
   transition: left 0.5s, background-color 0.5s;
   width: 16px !important;
   height: 16px !important;
+  box-sizing: border-box;
 `;t.Toggle=e=>{const[t,r]=n.useState(e.on);return n.useEffect(()=>r(e.on),[e.on]),n.createElement(i,{onClick:()=>{e.onChange(!t),r(!t)}},n.createElement(a,{on:t}))}},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});const n=r(1),o=r(2),i=r(5),a=r(3),s=o.default.div`
   color: #858e96;
   font-size: 11px;

@@ -12,6 +12,7 @@ const Container = styled.div<{
   display: inline-block;
   width: ${props => props.width}px;
   height: ${props => props.height}px;
+  box-sizing: border-box;
 `;
 
 const Inner = styled.div<{
@@ -42,6 +43,7 @@ const Inner = styled.div<{
   overflow: hidden;
   transition: opacity 0.25s;
   position: relative;
+  box-sizing: border-box;
   opacity: ${props => props.over && props.onClick ? 0.75 : 1};
 
   &.overlap-right {
@@ -65,6 +67,7 @@ const Text = styled.div<{
   margin: 0px;
   padding: 0px;
   outline: none;
+  box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Roboto", "Oxygen",
   "Ubuntu", "Cantarell", "Fira Sans",
@@ -101,7 +104,8 @@ const Delete = styled.div`
   align-content: center;
   justify-content: center;
   border: 1px solid white;
-  z-index: 1;
+  box-sizing: border-box;
+  z-index: 1000;
   transition: background-color 0.25s;
   font-family: -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Roboto", "Oxygen",
@@ -126,6 +130,7 @@ const Edit = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
   align-content: center;
   cursor: pointer;
   font-family: -apple-system, BlinkMacSystemFont,
@@ -141,8 +146,9 @@ const Presence = styled.span<{
   position: absolute;
   right: -3px;
   bottom: -3px;
-  width: 11px;
-  height: 11px;
+  width: 13px;
+  height: 13px;
+  box-sizing: border-box;
   border-radius: 50%;
   z-index: 2;
   background-color: ${props => (props.presence == "online" ? "#36C5AB" : "#FD9A00")};
@@ -159,8 +165,8 @@ const Badge = styled.span<{
   position: absolute;
   right: -3px;
   bottom: -3px;
-  width: 11px;
-  height: 11px;
+  width: 13px;
+  height: 13px;
   border-radius: 50%;
   z-index: 2;
   border: 2px solid ${props => (props.dark ? "#08111d" : "#ffffff")};
@@ -169,6 +175,7 @@ const Badge = styled.span<{
   "Segoe UI", "Roboto", "Oxygen",
   "Ubuntu", "Cantarell", "Fira Sans",
   "Droid Sans", "Helvetica Neue", sans-serif;
+  box-sizing: border-box;
 `;
 
 interface IAvatarProps {

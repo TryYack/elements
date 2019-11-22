@@ -25,6 +25,7 @@ const Container = styled.button<{
   position: relative;
   transition: background-color 0.15s, color 0.15s, border 0.15s;
   cursor: pointer;
+  box-sizing: border-box;
   max-width: ${props => {
     switch (props.size) {
       case "full-width":
@@ -104,6 +105,7 @@ const Text = styled.span<{
   "Segoe UI", "Roboto", "Oxygen",
   "Ubuntu", "Cantarell", "Fira Sans",
   "Droid Sans", "Helvetica Neue", sans-serif;
+  box-sizing: border-box;
   padding: ${props => {
     if (props.icon) {
       switch (props.size) {
@@ -152,6 +154,7 @@ const Icon = styled.div<{
   text?: string,
 }>`
   position: relative;
+  box-sizing: border-box;
   display: flex;
   flex-direction: row;
   align-items: center;

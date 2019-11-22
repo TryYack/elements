@@ -123,7 +123,7 @@ storiesOf('Avatar', module)
     withInfo({ inline: true })(() => (
       <Avatar
         onDeleteClick={action('Delete #42')}
-        deleteIcon={<span style={{ color: 'white', fontSize: 15 }}>x</span>}
+        deleteIcon={<span style={{ color: 'white', fontSize: 10 }}>x</span>}
         title="Jon Doe"
         size="large"
       />
