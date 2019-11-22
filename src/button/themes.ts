@@ -53,6 +53,42 @@ export const THEMES: any = {
     },
   },
 
+  "muted-border": {
+    BASE: {
+      BACKGROUND_COLOR: "white",
+      COLOR: "#617691",
+      BORDER_COLOR: "#617691",
+    },
+    ACTIVE: {
+      BACKGROUND_COLOR: "#112640",
+      COLOR: "#F6F7FA",
+      BORDER_COLOR: "#112640",
+    },
+    HOVER: {
+      BACKGROUND_COLOR: "#617691",
+      COLOR: "#F6F7FA",
+      BORDER_COLOR: "#617691",
+    },
+  },
+
+  "muted": {
+    BASE: {
+      BACKGROUND_COLOR: "#F6F7FA",
+      COLOR: "#617691",
+      BORDER_COLOR: "#F6F7FA",
+    },
+    ACTIVE: {
+      BACKGROUND_COLOR: "#617691",
+      COLOR: "#F6F7FA",
+      BORDER_COLOR: "#F6F7FA",
+    },
+    HOVER: {
+      BACKGROUND_COLOR: "#112640",
+      COLOR: "#F6F7FA",
+      BORDER_COLOR: "#112640",
+    },
+  },
+
   "blue-border": {
     BASE: {
       BACKGROUND_COLOR: "white",
@@ -71,11 +107,11 @@ export const THEMES: any = {
     },
   },
 
-  "blue-outline": {
+  "blue-faded": {
     BASE: {
       BACKGROUND_COLOR: "#ebf9ff",
-      COLOR: "#00ABF0",
-      BORDER_COLOR: "#00ABF0",
+      COLOR: "#007af5",
+      BORDER_COLOR: "#007af5",
     },
     ACTIVE: {
       BACKGROUND_COLOR: "#007af5",
@@ -83,7 +119,7 @@ export const THEMES: any = {
       BORDER_COLOR: "transparent",
     },
     HOVER: {
-      BACKGROUND_COLOR: "#00ABF0",
+      BACKGROUND_COLOR: "#007af5",
       COLOR: "white",
       BORDER_COLOR: "transparent",
     },

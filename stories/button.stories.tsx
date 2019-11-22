@@ -3,6 +3,7 @@ import { storiesOf } from "@storybook/react";
 import { action } from '@storybook/addon-actions';
 import { Button } from "../src/button";
 import { withInfo } from "@storybook/addon-info";
+import { PlusCircle } from 'react-feather'
 
 storiesOf('Button', module)
   .add(
@@ -48,33 +49,62 @@ storiesOf('Button', module)
     />
   )))
   .add(
-    'Blue outline theme',
+    'Muted border theme',
     withInfo({ inline: true })(() => (
       <Button
-        theme="blue-outline"
+        theme="muted-border"
         text="Click Here"
         onClick={action('clicked')}
       />
     )))
   .add(
-    'Red theme',
+    'Muted theme',
     withInfo({ inline: true })(() => (
       <Button
-        theme="red"
+        theme="muted"
         text="Click Here"
         onClick={action('clicked')}
       />
     )))
   .add(
-    'Small',
+    'Blue faded theme',
     withInfo({ inline: true })(() => (
       <Button
-        size="small"
-        theme="blue-border"
-        text="Manage Members"
+        theme="blue-faded"
+        text="Click Here"
         onClick={action('clicked')}
       />
     )))
+  .add(
+  'Red theme',
+  withInfo({ inline: true })(() => (
+    <Button
+      theme="red"
+      text="Click Here"
+      onClick={action('clicked')}
+    />
+  )))
+  .add(
+  'Small with icon',
+  withInfo({ inline: true })(() => (
+    <Button
+      size="small"
+      theme="blue-border"
+      text="Manage Members"
+      onClick={action('clicked')}
+      icon={<PlusCircle color="black" size={15} />}
+    />
+  )))
+  .add(
+  'Small',
+  withInfo({ inline: true })(() => (
+    <Button
+      size="small"
+      theme="blue-border"
+      text="Manage Members"
+      onClick={action('clicked')}
+    />
+  )))
   .add(
     'Large',
     withInfo({ inline: true })(() => (
@@ -85,15 +115,15 @@ storiesOf('Button', module)
       />
     )))
   .add(
-    'Large with icon',
-    withInfo({ inline: true })(() => (
-      <Button
-        icon={<div style={{ fontSize: 30 }}>✓</div>}
-        size="large"
-        text="Click Here"
-        onClick={action('clicked')}
-      />
-    )));
+  'Large with icon',
+  withInfo({ inline: true })(() => (
+    <Button
+      icon={<div style={{ fontSize: 30 }}>✓</div>}
+      size="large"
+      text="Click Here"
+      onClick={action('clicked')}
+    />
+  )));
 
     /*
 
