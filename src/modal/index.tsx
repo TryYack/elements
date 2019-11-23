@@ -70,6 +70,7 @@ const Footer = styled.div`
 
 const FooterPadding = styled.div`
   padding: 20px;
+  flex: 1;
 `;
 
 const Button = styled.div`

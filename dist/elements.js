@@ -841,6 +841,7 @@ e.exports=function(){"use strict";for(var e=function(e,t,r){return void 0===t&&(
   border-top: 1px solid #edf0f2;
 `,p=o.default.div`
   padding: 20px;
+  flex: 1;
 `,f=o.default.div`
   cursor: pointer;
   padding: 20px;
