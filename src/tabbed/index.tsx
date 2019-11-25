@@ -38,7 +38,6 @@ const Panels = styled.div<{
   width: 100%;
   height: 100%;
   min-height: 200px;
-  transform: translateX(${props => props.current * -100}%);
 `;
 
 const PanelsContainer = styled.div`
@@ -54,14 +53,13 @@ const Panel = styled.div<{
   index: number;
 }>`
   position: absolute;
-  background: white;
+  background: transparent;
   top: 0px;
   left: 0px;
   width: 100%;
   height: 100%;
   overflow: scroll;
   display: flex;
-  transform: translateX(${props => props.index * 100}%);
 `;
 
 const PanelTabButton = styled.div<
@@ -192,6 +190,7 @@ export const Tabbed: React.FunctionComponent<ITabbedProps> = (props: ITabbedProp
         <Panels current={current}>
           {props.panels.map((panel: any, index: number) => {
             if (!panel.show) return null;
+            if (current != index) return null;
 
             return (
               <Panel key={index} index={index}>
