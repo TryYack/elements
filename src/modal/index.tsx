@@ -38,6 +38,7 @@ const Inner = styled.div<{
 const InnerContainer = styled.div`
   flex: 1;
   width: 100%;
+  overflow: scroll;
 `;
 
 const Title = styled.div`
