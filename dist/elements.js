@@ -815,6 +815,7 @@ e.exports=function(){"use strict";for(var e=function(e,t,r){return void 0===t&&(
 `,l=o.default.div`
   flex: 1;
   width: 100%;
+  overflow: scroll;
 `,c=o.default.div`
   width: 100%;
   padding: 0px;
