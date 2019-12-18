@@ -381,7 +381,7 @@ const AttachmentComponent: React.FunctionComponent<IAttachmentProps> = (props: I
               </Link>
             }
 
-            {(props.layout == "message" && props.onPreviewClick && props.preview) &&
+            {((props.layout == "message" || props.layout == "panel") && props.onPreviewClick && props.preview) &&
               <Link onClick={props.onPreviewClick}>
                 Preview
               </Link>
