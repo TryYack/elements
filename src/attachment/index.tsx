@@ -22,22 +22,25 @@ const Container = styled.div<{
   justify-content: flex-start;
   position: relative;
   overflow: hidden;
-  width: ${props => props.preview ? "100%" : "300px"};
+  width: ${props => props.preview || (props.layout == "panel") ? "100%" : "300px"};
 `;
 
 const ContainerImage = styled.div<{
+  layout: string;
   image: string;
 }>`
   width: 100%;
-  height: 300px;
+  height: ${props => props.layout == "panel" ? "200px" : "300px"};
   background-position: center center;
   background-image: url(${props => props.image});
   background-size: cover;
 `;
 
-const ContainerVideo = styled.div`
+const ContainerVideo = styled.div<{
+  layout: string;
+}>`
   width: 100%;
-  height: 300px;
+  height: ${props => props.layout == "panel" ? "200px" : "300px"};
 `;
 
 const ContainerRow = styled.div`
@@ -84,6 +87,8 @@ const Name = styled.div<{
           return "14px";
         case "message":
           return "14px";
+        case "panel":
+          return "14px";
         default:
           return "16px";
       }
@@ -94,6 +99,8 @@ const Name = styled.div<{
         case "compose":
           return "5px";
         case "message":
+          return "5px";
+        case "panel":
           return "5px";
         default:
           return "5px";
@@ -115,12 +122,14 @@ const Size = styled.div<{
   font-size: ${props => {
       if (props.layout == "compose") return "13px";
       if (props.layout == "message") return "12px";
+      if (props.layout == "panel") return "12px";
       return "12px";
     }
   };
   margin-bottom: ${props => {
       if (props.layout == "compose") return "3px";
       if (props.layout == "message") return "1px";
+      if (props.layout == "panel") return "1px";
       return "3px";
     }
   };
@@ -179,6 +188,7 @@ interface IAttachmentProps {
    * Possible values:
    * - "message"
    * - "compose"
+   * - "panel"
    */
   layout: string;
 
@@ -320,12 +330,17 @@ const AttachmentComponent: React.FunctionComponent<IAttachmentProps> = (props: I
 
   const Preview = () => {
     if (mimeType(props.mime) == "image" && props.preview) {
-      return <ContainerImage image={props.preview} />;
+      return (
+        <ContainerImage
+          image={props.preview}
+          layout={props.layout}
+        />
+      );
     }
 
     if (mimeType(props.mime) == "video" && props.preview) {
       return (
-        <ContainerVideo>
+        <ContainerVideo layout={props.layout}>
           <video width="100%" height="100%" controls>
             <source src={props.preview} type="video/mp4" />
           </video>
