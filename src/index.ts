@@ -18,6 +18,7 @@ import { Toggle } from "./toggle";
 import { User } from "./user";
 import { Select } from "./select";
 import { Progress } from "./progress";
+import { Range } from "./range";
 
 export {
   Tooltip,
@@ -40,4 +41,5 @@ export {
   Textarea,
   Select,
   Progress,
+  Range,
 };

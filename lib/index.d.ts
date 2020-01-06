@@ -18,4 +18,5 @@ import { Toggle } from "./toggle";
 import { User } from "./user";
 import { Select } from "./select";
 import { Progress } from "./progress";
-export { Tooltip, Avatar, Button, Attachment, Error, Input, Loading, Members, Menu, Modal, Popup, Notification, Channel, Spinner, Tabbed, Toggle, User, Textarea, Select, Progress, };
+import { Range } from "./range";
+export { Tooltip, Avatar, Button, Attachment, Error, Input, Loading, Members, Menu, Modal, Popup, Notification, Channel, Spinner, Tabbed, Toggle, User, Textarea, Select, Progress, Range, };
