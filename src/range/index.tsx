@@ -3,16 +3,17 @@ import styled from "styled-components";
 
 const Container = styled.div`
   position: relative;
-  overflow: hidden;
   width: 100%;
 
   input[type=range].range {
     -webkit-appearance: none;
     outline: none;
+    border: 0;
     width: 100%;
   }
   input[type=range].range:focus {
     outline: none;
+    border: 0;
   }
   input[type=range].range::-webkit-slider-runnable-track {
     width: 100%;
@@ -96,11 +97,12 @@ const Container = styled.div`
     -webkit-appearance: none;
     width: 100%;
     margin: 9.75px 0;
-
-    outline: none;outline: none;
+    border: 0;
+    outline: none;
   }
   input[type=range].range:focus {
     outline: none;
+    border: 0;
   }
   input[type=range].range::-webkit-slider-runnable-track {
     width: 100%;
@@ -185,9 +187,11 @@ const Container = styled.div`
     width: 100%;
     margin: 9.75px 0;
     outline: none;
+    border: 0;
   }
   input[type=range].range:focus {
     outline: none;
+    border: 0;
   }
   input[type=range].range::-webkit-slider-runnable-track {
     width: 100%;

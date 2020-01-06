@@ -1346,16 +1346,17 @@ e.exports=function(){"use strict";for(var e=function(e,r,t){return void 0===r&&(
   padding: 5px;
 `,u=e=>n.createElement(i,null,n.createElement(s,{percentage:e.percentage,color:e.color}),n.createElement(a,null,e.labels&&n.createElement(n.Fragment,null,n.createElement(l,null,e.text),n.createElement(c,null,e.percentage,"%"))));u.defaultProps={color:"#F8F9FA"},r.Progress=n.memo(e=>n.createElement(u,Object.assign({},e)))},function(e,r,t){"use strict";Object.defineProperty(r,"__esModule",{value:!0});const n=t(1),o=t(2).default.div`
   position: relative;
-  overflow: hidden;
   width: 100%;
 
   input[type=range].range {
     -webkit-appearance: none;
     outline: none;
+    border: 0;
     width: 100%;
   }
   input[type=range].range:focus {
     outline: none;
+    border: 0;
   }
   input[type=range].range::-webkit-slider-runnable-track {
     width: 100%;
@@ -1439,11 +1440,12 @@ e.exports=function(){"use strict";for(var e=function(e,r,t){return void 0===r&&(
     -webkit-appearance: none;
     width: 100%;
     margin: 9.75px 0;
-
-    outline: none;outline: none;
+    border: 0;
+    outline: none;
   }
   input[type=range].range:focus {
     outline: none;
+    border: 0;
   }
   input[type=range].range::-webkit-slider-runnable-track {
     width: 100%;
@@ -1528,9 +1530,11 @@ e.exports=function(){"use strict";for(var e=function(e,r,t){return void 0===r&&(
     width: 100%;
     margin: 9.75px 0;
     outline: none;
+    border: 0;
   }
   input[type=range].range:focus {
     outline: none;
+    border: 0;
   }
   input[type=range].range::-webkit-slider-runnable-track {
     width: 100%;
