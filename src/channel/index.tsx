@@ -21,6 +21,7 @@ const Container = styled.div<{
   justify-content: center;
   position: relative;
   cursor: pointer;
+  margin-bottom: 5px;
 `;
 
 const ContainerPadding = styled.div`
