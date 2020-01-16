@@ -55,9 +55,6 @@
   },
   "author": "Jo du Plessis",
   "license": "ISC",
-  "peerDependencies": {
-    "react": "^16.8.6"
-  },
   "dependencies": {
     "chroma-js": "^2.0.4",
     "moment": "^2.22.2",

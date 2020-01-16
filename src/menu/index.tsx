@@ -46,7 +46,7 @@ const Row = styled.div<{
   background: transparent;
   padding: 7px 5px 7px 5px;
   flex: 1;
-  border-radius: 10px;
+  border-radius: 4px;
   cursor: ${props => (props.nohover ? null : "pointer")};
   display: flex;
   flex-direction: row;

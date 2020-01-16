@@ -13,7 +13,7 @@ const Container = styled.div<{
   unread: number;
   onClick: any;
 }>`
-  background: ${props => props.active ? "#0c1828" : "transparent" };
+  background: ${props => props.active ? "#1c232b" : "transparent" };
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -25,7 +25,7 @@ const Container = styled.div<{
 
 const ContainerPadding = styled.div`
   flex: 1;
-  padding: 4px 25px 4px 25px;
+  padding: 5px 25px 5px 25px;
   display: flex;
   flex-direction: row;
   align-items: stretch;
@@ -57,7 +57,7 @@ const Title = styled.div<{
   color: ${props => props.active ? "white" : "#475669" };
   white-space: wrap;
   max-width: 140px;
-  letter-spacing: -0.5px;
+  /*letter-spacing: -0.5px;*/
   margin-right: 5px;
   font-family: -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Roboto", "Oxygen",
@@ -67,7 +67,7 @@ const Title = styled.div<{
 
 const Excerpt = styled.div`
   flex: 1;
-  margin-top: 4px;
+  margin-top: 1px;
   font-family: -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Roboto", "Oxygen",
   "Ubuntu", "Cantarell", "Fira Sans",
@@ -76,7 +76,7 @@ const Excerpt = styled.div`
 `;
 
 const ExcerptText = styled.span`
-  font-size: 11px;
+  font-size: 13px;
   color: #475669;
   font-weight: 400;
   white-space: nowrap;

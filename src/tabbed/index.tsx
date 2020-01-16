@@ -97,7 +97,7 @@ const Text = styled.div<{
       case "large":
         return "20px";
       default:
-        return "12px";
+        return "13px";
     }
   }};
   font-family: -apple-system, BlinkMacSystemFont,
