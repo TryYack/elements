@@ -2,9 +2,11 @@ import * as React from "react";
 import styled from "styled-components";
 
 const Label = styled.div`
-  color: #858e96;
-  font-size: 11px;
-  font-weight: 500;
+  font-size: 10px;
+  font-weight: 700;
+  color: #626d7a;
+  letter-spacing: 1px;
+  text-transform: uppercase;
   padding-bottom: 5px;
   font-family: -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Roboto", "Oxygen",
@@ -33,7 +35,7 @@ const Field = styled.textarea<{
   padding: 10px;
   width: 100%;
   border: 1px solid #ebedef;
-  border-radius: 5px;
+  border-radius: 10px;
   resize: none;
   display: block;
   box-sizing: border-box;

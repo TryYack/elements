@@ -66,6 +66,7 @@ const PanelTabButton = styled.div<
 {
   size: string;
   borderless: boolean;
+    active: boolean;
 }>`
   padding: ${props => {
     switch (props.size) {
@@ -86,6 +87,7 @@ const PanelTabButton = styled.div<
   border-bottom: ${props => props.borderless ? "none" : "1px solid #eaeaea" };
   width: 100%;
   cursor: pointer;
+  background: ${props => props.active ? "#f6f7fa" : "none" };
 `;
 
 const Text = styled.div<{
@@ -97,7 +99,7 @@ const Text = styled.div<{
       case "large":
         return "20px";
       default:
-        return "13px";
+        return "14px";
     }
   }};
   font-family: -apple-system, BlinkMacSystemFont,
@@ -105,7 +107,7 @@ const Text = styled.div<{
   "Ubuntu", "Cantarell", "Fira Sans",
   "Droid Sans", "Helvetica Neue", sans-serif;
   font-weight: 400;
-  color: ${props => props.active ? "#007af5" : "#11161c"};
+  color: ${props => props.active ? "#617691" : "#acb5bd"};
   cursor: pointer;
   opacity: 1;
   transition: opacity 0.25s;
@@ -163,6 +165,7 @@ export const Tabbed: React.FunctionComponent<ITabbedProps> = (props: ITabbedProp
           return (
             <PanelTabButton
               borderless={props.borderless || false}
+              active={current == index}
               size={props.size || "default"}
               key={index}
               className={current == index ? "active" : ""}

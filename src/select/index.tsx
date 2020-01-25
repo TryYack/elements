@@ -4,9 +4,11 @@ import { Popup } from "../popup";
 import { ChevronDown } from "react-feather";
 
 const Label = styled.div`
-  color: #858e96;
-  font-size: 11px;
-  font-weight: 500;
+  font-size: 10px;
+  font-weight: 700;
+  color: #626d7a;
+  letter-spacing: 1px;
+  text-transform: uppercase;
   padding-bottom: 5px;
   font-family: -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Roboto", "Oxygen",
