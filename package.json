@@ -1,8 +1,8 @@
 {
-  "name": "@weekday/elements",
+  "name": "@yack/elements",
   "title": "Elements",
   "keywords": [
-    "Weekday"
+    "Yack"
   ],
   "main": "lib/index.js",
   "module": "lib/index.js",
@@ -25,11 +25,11 @@
     "> 1%",
     "ie >= 9"
   ],
-  "repository": "https://github.com/getweekday/elements",
+  "repository": "https://github.com/getyack/elements",
   "bugs": {
-    "url": "https://github.com/getweekday/elements"
+    "url": "https://github.com/getyack/elements"
   },
-  "url": "https://github.com/getweekday/elements",
+  "url": "https://github.com/getyack/elements",
   "contributors": [
     {
       "name": "joduplessis"
@@ -37,7 +37,7 @@
   ],
   "deprecated": false,
   "version": "0.7.5",
-  "description": "UI toolkit for Weekday",
+  "description": "UI toolkit for Yack",
   "scripts": {
     "storybook": "start-storybook -p 6006",
     "build:storybook": "build-storybook -c .storybook -o docs",

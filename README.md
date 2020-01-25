@@ -1,14 +1,14 @@
-[![Build Status](https://travis-ci.org/getweekday/elements.svg?branch=master)](https://travis-ci.org/getweekday/elements)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/6d8f92d2-41a4-4e14-9a5e-22e9a1230853/deploy-status)](https://app.netlify.com/sites/weekday-elements/deploys)
-[![npm version](https://badge.fury.io/js/%40weekday%2Felements.svg)](https://badge.fury.io/js/%40weekday%2Felements)
+[![Build Status](https://travis-ci.org/getyack/elements.svg?branch=master)](https://travis-ci.org/getyack/elements)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/6d8f92d2-41a4-4e14-9a5e-22e9a1230853/deploy-status)](https://app.netlify.com/sites/yack-elements/deploys)
+[![npm version](https://badge.fury.io/js/%40yack%2Felements.svg)](https://badge.fury.io/js/%40yack%2Felements)
 
 # Elements
-> Elements is the React based UI library for the Weekday platform. This is library should be considered as pre alpha right now - active development is continuing. See below roadmap for progress.
+> Elements is the React based UI library for the Yack platform. This is library should be considered as pre alpha right now - active development is continuing. See below roadmap for progress.
 
 ## Installation
 ```
-npm i --save @weekday/elements
-yarn add @weekday/elements
+npm i --save @yack/elements
+yarn add @yack/elements
 ```
 
 ## Global packages

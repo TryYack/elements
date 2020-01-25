@@ -13,7 +13,7 @@ const Container = styled.div<{
   unread: number;
   onClick: any;
 }>`
-  background: ${props => props.active ? "#1c232b" : "transparent" };
+  background: ${props => props.active ? "#111" : "transparent" };
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -26,7 +26,7 @@ const Container = styled.div<{
 
 const ContainerPadding = styled.div`
   flex: 1;
-  padding: 5px 25px 5px 25px;
+  padding: 3px 25px 3px 25px;
   display: flex;
   flex-direction: row;
   align-items: stretch;
@@ -53,9 +53,9 @@ const Title = styled.div<{
   active: boolean,
 }>`
   cursor: pointer;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
-  color: ${props => props.active ? "white" : "#475669" };
+  color: ${props => props.active ? "white" : "#626d7a" };
   white-space: wrap;
   max-width: 140px;
   /*letter-spacing: -0.5px;*/
@@ -76,9 +76,11 @@ const Excerpt = styled.div`
   overflow: hidden;
 `;
 
-const ExcerptText = styled.span`
+const ExcerptText = styled.span<{
+  active: boolean,
+}>`
   font-size: 13px;
-  color: #475669;
+  color: #626d7a;
   font-weight: 400;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -173,7 +175,6 @@ export const Channel: React.FunctionComponent<IChannelProps> = (props: IChannelP
           size="medium"
           image={props.image}
           title={props.title}
-          style={{ opacity: props.active || props.unread ? 1 : 0.5 }}
         />
 
         <Contents>
@@ -184,7 +185,7 @@ export const Channel: React.FunctionComponent<IChannelProps> = (props: IChannelP
 
             {props.muted &&
               <BellOff
-                color="#475669"
+                color="#626d7a"
                 size="15"
                 thickness="1.5"
                 style={{ marginRight: 5 }}
@@ -193,7 +194,7 @@ export const Channel: React.FunctionComponent<IChannelProps> = (props: IChannelP
 
             {!props.public && !props.private &&
               <EyeOff
-                color="#475669"
+                color="#626d7a"
                 size="15"
                 thickness="1.5"
               />
@@ -225,7 +226,7 @@ export const Channel: React.FunctionComponent<IChannelProps> = (props: IChannelP
                     setMenu(true);
                   }}>
                   <MoreHorizontal
-                    color="#475669"
+                    color="#626d7a"
                     size="15"
                     thickness="1.5"
                   />
@@ -240,7 +241,7 @@ export const Channel: React.FunctionComponent<IChannelProps> = (props: IChannelP
 
           {props.excerpt &&
             <Excerpt>
-              <ExcerptText>{props.excerpt}</ExcerptText>
+              <ExcerptText active={props.active || (props.unread != 0)}>{props.excerpt}</ExcerptText>
             </Excerpt>
           }
         </Contents>
