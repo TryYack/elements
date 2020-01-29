@@ -32,7 +32,7 @@ const Content = styled.div<{ width: number | string }>`
   z-index: 1000;
   background: white;
   border-radius: 4px;
-  overflow: hidden;
+  /* overflow: hidden; */
   border: 1px solid #F1F3F5;
   box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.05);
   width: ${props => typeof props.width == "number" ? props.width + "px" : props.width};
