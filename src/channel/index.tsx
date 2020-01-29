@@ -13,7 +13,7 @@ const Container = styled.div<{
   unread: number;
   onClick: any;
 }>`
-  background: ${props => props.active ? "#111" : "transparent" };
+  background: ${props => props.active ? "#202027" : "transparent" };
   display: flex;
   flex-direction: row;
   align-items: center;
