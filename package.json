@@ -36,7 +36,7 @@
     }
   ],
   "deprecated": false,
-  "version": "0.7.7",
+  "version": "0.7.8",
   "description": "UI toolkit for Yack",
   "scripts": {
     "storybook": "start-storybook -p 6006",
