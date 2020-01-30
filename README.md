@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/getyack/elements.svg?branch=master)](https://travis-ci.org/getyack/elements)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/6d8f92d2-41a4-4e14-9a5e-22e9a1230853/deploy-status)](https://app.netlify.com/sites/yack-elements/deploys)
-[![npm version](https://badge.fury.io/js/%40yack%2Felements.svg)](https://badge.fury.io/js/%40yack%2Felements)
+[![Build Status](https://travis-ci.org/yacklabs/elements.svg?branch=master)](https://travis-ci.org/yacklabs/elements)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/80d2fa2c-9ecf-44a8-9856-356975515b11/deploy-status)](https://app.netlify.com/sites/wizardly-jones-2c1356/deploys)
+[![npm version](https://badge.fury.io/js/%40yacklabs%2Felements.svg)](https://badge.fury.io/js/%40yacklabs%2Felements)
 
 # Elements
 > Elements is the React based UI library for the Yack platform. This is library should be considered as pre alpha right now - active development is continuing. See below roadmap for progress.
