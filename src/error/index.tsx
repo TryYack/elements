@@ -1,13 +1,16 @@
 import * as React from "react";
 import styled from "styled-components";
+import { THEMES } from "./themes";
 
-const Container = styled.div`
+const Container = styled.div<{
+  theme: string
+}>`
   position: relative;
   top: 0px;
   left: 0px;
   width: 100%;
   height: 30px;
-  background: #ffebef;
+  background: ${props => THEMES[props.theme].BACKGROUND_COLOR};
   z-index: 10000;
   display: flex;
   flex-direction: column;
@@ -24,9 +27,11 @@ const Container = styled.div`
   z-index: 10000;
 `;
 
-const Text = styled.div`
-  color: #fc1449;
-  font-size: 12px;
+const Text = styled.div<{
+  theme: string
+}>`
+  color: ${props => THEMES[props.theme].COLOR};
+  font-size: ${props => THEMES[props.theme].FONT_SIZE}px;
   font-weight: 400;
   font-family: -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Roboto", "Oxygen",
@@ -37,11 +42,13 @@ const Text = styled.div`
 interface IErrorProps {
   message: string;
   onDismiss?: any;
+  theme?: string;
 }
 
 export const Error: React.FunctionComponent<IErrorProps> = (props: IErrorProps) => {
   if (!props.message) return null;
 
+  const theme: string = props.theme ? props.theme : "default";
   let [errorMessage, setErrorMessage] = React.useState("");
 
   React.useEffect(() => {
@@ -52,8 +59,10 @@ export const Error: React.FunctionComponent<IErrorProps> = (props: IErrorProps) 
   }, [props.message])
 
   return (
-    <Container onClick={() => props.onDismiss ? props.onDismiss() : null}>
-      <Text>{errorMessage}</Text>
+    <Container
+      theme={theme}
+      onClick={() => props.onDismiss ? props.onDismiss() : null}>
+      <Text theme={theme}>{errorMessage}</Text>
     </Container>
   );
 };

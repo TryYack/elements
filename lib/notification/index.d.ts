@@ -7,6 +7,7 @@ interface INotificationProps {
     onActionClick?: any;
     onDismissIconClick?: any;
     onDismiss?: any;
+    theme?: string;
 }
 export declare const Notification: React.FunctionComponent<INotificationProps>;
 export {};

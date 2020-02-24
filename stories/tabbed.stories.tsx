@@ -9,6 +9,9 @@ storiesOf('Tabbed', module)
   withInfo({ inline: true })(() => (
     <Tabbed
       start={0}
+      onChange={(index: any) => {
+        console.log(index)
+      }}
       footer={<div>This is the tab footer area</div>}
       panels={[
         {

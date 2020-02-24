@@ -20,4 +20,22 @@ storiesOf('Notification', module)
         console.log('Dismissed')
       }}
     />
+  )))
+  .add(
+  'Solid theme',
+  withInfo({ inline: true })(() => (
+    <Notification
+      theme="solid"
+      text="Notification text"
+      actionText="Action text"
+      onActionClick={() => {
+        console.log('Action click')
+      }}
+      onDismissIconClick={() => {
+        console.log('Icon click')
+      }}
+      onDismiss={() => {
+        console.log('Dismissed')
+      }}
+    />
   )));

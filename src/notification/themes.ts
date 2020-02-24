@@ -1,0 +1,14 @@
+export const THEMES: any = {
+  "default": {
+    BACKGROUND_COLOR: "#e3f5ff",
+    COLOR: "#05A6FF",
+    FONT_SIZE: 12,
+    ICON_SIZE: 20,
+  },
+  "solid": {
+    BACKGROUND_COLOR: "#05A6FF",
+    COLOR: "white",
+    FONT_SIZE: 12,
+    ICON_SIZE: 20,
+  },
+};

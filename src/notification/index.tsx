@@ -1,9 +1,12 @@
 import * as React from "react";
 import styled from "styled-components";
 import { X } from "react-feather";
+import { THEMES } from "./themes";
 
-const Container = styled.div`
-  background-color: #e3f5ff;
+const Container = styled.div<{
+  theme: string
+}>`
+  background-color: ${props => THEMES[props.theme].BACKGROUND_COLOR};
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -26,20 +29,24 @@ const Padding = styled.div`
   text-align: center;
 `;
 
-const ActionText = styled.span`
-  color: #05A6FF;
+const ActionText = styled.span<{
+  theme: string
+}>`
+  color: ${props => THEMES[props.theme].COLOR};
   font-family: -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Roboto", "Oxygen",
   "Ubuntu", "Cantarell", "Fira Sans",
   "Droid Sans", "Helvetica Neue", sans-serif;
-  font-size: 12px;
+  font-size: ${props => THEMES[props.theme].FONT_SIZE}px;
   font-weight: 800;
   margin-left: 10px;
   cursor: pointer;
   text-decoration: underline;
 `;
 
-const Icon = styled.span`
+const Icon = styled.span<{
+  theme: string
+}>`
   margin-left: auto;
   height: 22px;
   width: 22px;
@@ -52,9 +59,11 @@ const Icon = styled.span`
   }
 `;
 
-const Text = styled.span`
-  color: #05A6FF;
-  font-size: 12px;
+const Text = styled.span<{
+  theme: string
+}>`
+  color: ${props => THEMES[props.theme].COLOR};
+  font-size: ${props => THEMES[props.theme].FONT_SIZE}px;
   font-weight: 400;
   font-family: -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Roboto", "Oxygen",
@@ -72,10 +81,14 @@ interface INotificationProps {
   onActionClick?: any;
   onDismissIconClick?: any;
   onDismiss?: any;
+  theme?: string;
 }
 
 export const Notification: React.FunctionComponent<INotificationProps> = (props: INotificationProps) => {
+  if (!props.text) return null;
+
   let [notificationMessage, setNotificationMessage] = React.useState("");
+  const theme: string = props.theme ? props.theme : "default";
 
   React.useEffect(() => {
     if (props.text != notificationMessage) {
@@ -85,22 +98,22 @@ export const Notification: React.FunctionComponent<INotificationProps> = (props:
   }, [props.text])
 
   return (
-    <Container>
+    <Container theme={theme}>
       <Padding>
-        <Text onClick={() => props.onDismiss ? props.onDismiss() : null}>
+        <Text theme={theme} onClick={() => props.onDismiss ? props.onDismiss() : null}>
           {notificationMessage}
         </Text>
         {props.actionText &&
-          <ActionText onClick={props.onActionClick}>
+          <ActionText theme={theme} onClick={props.onActionClick}>
             {props.actionText}
           </ActionText>
         }
       </Padding>
       {props.onDismissIconClick &&
-        <Icon onClick={props.onDismissIconClick}>
+        <Icon theme={theme} onClick={props.onDismissIconClick}>
           <X
-            color="#05A6FF"
-            size="20"
+            color={THEMES[theme].COLOR}
+            size={THEMES[theme].ICON_SIZE}
             thickness="1.5"
           />
         </Icon>

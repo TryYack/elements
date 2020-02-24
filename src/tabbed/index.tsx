@@ -151,6 +151,7 @@ interface ITabbedProps {
   borderless?: boolean;
   footer?: any;
   panels: any;
+  onChange?: any;
 }
 
 export const Tabbed: React.FunctionComponent<ITabbedProps> = (props: ITabbedProps) => {
@@ -169,7 +170,13 @@ export const Tabbed: React.FunctionComponent<ITabbedProps> = (props: ITabbedProp
               size={props.size || "default"}
               key={index}
               className={current == index ? "active" : ""}
-              onClick={() => setCurrent(index)}>
+              onClick={() => {
+                // Update the current index
+                setCurrent(index)
+
+                // Tell the user it's changed
+                if (props.onChange) props.onChange(index)
+              }}>
               <Text active={current == index} size={props.size || "default"}>
                 {panel.title}
               </Text>
