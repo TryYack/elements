@@ -7,5 +7,10 @@ storiesOf('Error', module)
   .add(
   'Default',
   withInfo({ inline: true })(() => (
-    <Error message="Something has gone wrong" />
+    <Error
+      message="Something has gone wrong"
+      onDismiss={() => {
+        console.log('Dismiss the error message')
+      }}
+    />
   )));

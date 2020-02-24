@@ -7,7 +7,17 @@ storiesOf('Notification', module)
   .add(
   'Default',
   withInfo({ inline: true })(() => (
-    <Notification 
-      text="Notification text" 
+    <Notification
+      text="Notification text"
+      actionText="Action text"
+      onActionClick={() => {
+        console.log('Action click')
+      }}
+      onDismissIconClick={() => {
+        console.log('Icon click')
+      }}
+      onDismiss={() => {
+        console.log('Dismissed')
+      }}
     />
   )));

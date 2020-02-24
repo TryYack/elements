@@ -5,7 +5,8 @@ interface INotificationProps {
     actionText?: string;
     /** When user click on text next to main text */
     onActionClick?: any;
-    onDismissClick?: any;
+    onDismissIconClick?: any;
+    onDismiss?: any;
 }
 export declare const Notification: React.FunctionComponent<INotificationProps>;
 export {};

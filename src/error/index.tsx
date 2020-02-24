@@ -7,7 +7,7 @@ const Container = styled.div`
   left: 0px;
   width: 100%;
   height: 30px;
-  background: #ee716c;
+  background: #ffebef;
   z-index: 10000;
   display: flex;
   flex-direction: column;
@@ -25,7 +25,7 @@ const Container = styled.div`
 `;
 
 const Text = styled.div`
-  color: white;
+  color: #fc1449;
   font-size: 12px;
   font-weight: 400;
   font-family: -apple-system, BlinkMacSystemFont,
@@ -35,15 +35,25 @@ const Text = styled.div`
 `;
 
 interface IErrorProps {
-  message?: string;
+  message: string;
+  onDismiss?: any;
 }
 
 export const Error: React.FunctionComponent<IErrorProps> = (props: IErrorProps) => {
   if (!props.message) return null;
 
+  let [errorMessage, setErrorMessage] = React.useState("");
+
+  React.useEffect(() => {
+    if (props.message != errorMessage) {
+      // update our error message
+      setErrorMessage(props.message)
+    }
+  }, [props.message])
+
   return (
-    <Container>
-      <Text>{props.message}</Text>
+    <Container onClick={() => props.onDismiss ? props.onDismiss() : null}>
+      <Text>{errorMessage}</Text>
     </Container>
   );
 };

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { X } from "react-feather";
 
 const Container = styled.div`
-  background-color: #05A6FF;
+  background-color: #e3f5ff;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -11,6 +11,7 @@ const Container = styled.div`
   align-content: center;
   justify-content: flex-start;
   position: relative;
+  height: 30px;
 `;
 
 const Padding = styled.div`
@@ -20,17 +21,18 @@ const Padding = styled.div`
   flex-direction: row;
   align-items: center;
   align-content: center;
-  justify-content: flex-start;
+  justify-content: center;
   position: relative;
+  text-align: center;
 `;
 
 const ActionText = styled.span`
-  color: white;
+  color: #05A6FF;
   font-family: -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Roboto", "Oxygen",
   "Ubuntu", "Cantarell", "Fira Sans",
   "Droid Sans", "Helvetica Neue", sans-serif;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 800;
   margin-left: 10px;
   cursor: pointer;
@@ -51,8 +53,8 @@ const Icon = styled.span`
 `;
 
 const Text = styled.span`
-  color: white;
-  font-size: 14px;
+  color: #05A6FF;
+  font-size: 12px;
   font-weight: 400;
   font-family: -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Roboto", "Oxygen",
@@ -68,31 +70,41 @@ interface INotificationProps {
 
   /** When user click on text next to main text */
   onActionClick?: any;
-  onDismissClick?: any;
+  onDismissIconClick?: any;
+  onDismiss?: any;
 }
 
 export const Notification: React.FunctionComponent<INotificationProps> = (props: INotificationProps) => {
+  let [notificationMessage, setNotificationMessage] = React.useState("");
+
+  React.useEffect(() => {
+    if (props.text != notificationMessage) {
+      // update our error message
+      setNotificationMessage(props.text)
+    }
+  }, [props.text])
+
   return (
     <Container>
       <Padding>
-        <Text>
-          {props.text}
+        <Text onClick={() => props.onDismiss ? props.onDismiss() : null}>
+          {notificationMessage}
         </Text>
         {props.actionText &&
           <ActionText onClick={props.onActionClick}>
             {props.actionText}
           </ActionText>
         }
-        {props.onDismissClick &&
-          <Icon onClick={props.onDismissClick}>
-            <X
-              color="white"
-              size="20"
-              thickness="1.5"
-            />
-          </Icon>
-        }
       </Padding>
+      {props.onDismissIconClick &&
+        <Icon onClick={props.onDismissIconClick}>
+          <X
+            color="#05A6FF"
+            size="20"
+            thickness="1.5"
+          />
+        </Icon>
+      }
     </Container>
   );
 };
