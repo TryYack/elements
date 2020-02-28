@@ -2,6 +2,7 @@ import * as React from "react";
 import { useState } from "react";
 import styled from "styled-components";
 import * as chroma from "chroma-js";
+import { BellOff } from "react-feather";
 
 const Container = styled.div<{
   width: number,
@@ -159,18 +160,23 @@ const Presence = styled.span<{
   "Droid Sans", "Helvetica Neue", sans-serif;
 `;
 
-const Badge = styled.span<{
+const Muted = styled.span<{
   dark: boolean,
 }>`
   position: absolute;
-  right: -3px;
-  bottom: -3px;
-  width: 13px;
-  height: 13px;
+  left: -3px;
+  top: -3px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   z-index: 2;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
   border: 2px solid ${props => (props.dark ? "#08111d" : "#ffffff")};
-  background-color: #007af5;
+  background-color: ${props => (props.dark ? "#222028" : "#F2F3F5")};
   font-family: -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Roboto", "Oxygen",
   "Ubuntu", "Cantarell", "Fira Sans",
@@ -208,8 +214,8 @@ interface IAvatarProps {
   /** True or false */
   circle?: boolean;
 
-  /** True or false - overrides heartbeat presences */
-  badge?: boolean;
+  /** True or false */
+  muted?: boolean;
 
   /** React component */
   editIcon?: any;
@@ -354,7 +360,7 @@ export const AvatarComponent: React.FunctionComponent<IAvatarProps> = (props: IA
         </Delete>
       }
 
-      {props.presence && !props.badge &&
+      {props.presence &&
         <React.Fragment>
           {props.presence != "offline" &&
             <Presence
@@ -365,10 +371,14 @@ export const AvatarComponent: React.FunctionComponent<IAvatarProps> = (props: IA
         </React.Fragment>
       }
 
-      {props.badge &&
-        <Badge
-          dark={props.dark || false}
-        />
+      {props.muted &&
+        <Muted dark={props.dark || false}>
+          <BellOff
+            color={color}
+            size={8}
+            thickness="3"
+          />
+        </Muted>
       }
 
       <Inner

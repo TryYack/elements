@@ -26,13 +26,13 @@ storiesOf('Avatar', module)
     ))
   )
   .add(
-    'With badge',
+    'With muted icons',
     withInfo({ inline: true })(() => (
       <Avatar
         title="Jon Doe"
         textColor="red"
-        badge={true}
         size="large"
+        muted={true}
       />
     ))
   )
