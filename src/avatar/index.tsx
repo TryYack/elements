@@ -164,10 +164,10 @@ const Muted = styled.span<{
   dark: boolean,
 }>`
   position: absolute;
-  left: -3px;
-  top: -3px;
-  width: 18px;
-  height: 18px;
+  right: -3px;
+  bottom: -3px;
+  width: 13px;
+  height: 13px;
   border-radius: 50%;
   z-index: 2;
   display: flex;
@@ -175,8 +175,8 @@ const Muted = styled.span<{
   align-items: center;
   align-content: center;
   justify-content: center;
+  background-color: #007AF5;
   border: 2px solid ${props => (props.dark ? "#08111d" : "#ffffff")};
-  background-color: ${props => (props.dark ? "#222028" : "#F2F3F5")};
   font-family: -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Roboto", "Oxygen",
   "Ubuntu", "Cantarell", "Fira Sans",
@@ -374,8 +374,8 @@ export const AvatarComponent: React.FunctionComponent<IAvatarProps> = (props: IA
       {props.muted &&
         <Muted dark={props.dark || false}>
           <BellOff
-            color={color}
-            size={8}
+            color="white"
+            size={6}
             thickness="3"
           />
         </Muted>
