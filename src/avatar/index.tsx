@@ -387,7 +387,7 @@ export const AvatarComponent: React.FunctionComponent<IAvatarProps> = (props: IA
               y="0"
               width={width}
               height={height}
-              fill={background}
+              fill={props.image ? background : color}
               mask="url(#mask-stripe)">
             </rect>
           </svg>
