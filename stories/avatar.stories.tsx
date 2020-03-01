@@ -26,13 +26,15 @@ storiesOf('Avatar', module)
     ))
   )
   .add(
-    'With muted icons',
+    'With muted graphic',
     withInfo({ inline: true })(() => (
       <Avatar
         title="Jon Doe"
         textColor="red"
         size="large"
         muted={true}
+        presence="away"
+        image="https://randomuser.me/api/portraits/men/62.jpg"
       />
     ))
   )

@@ -2,7 +2,7 @@ import * as React from "react";
 import { useState } from "react";
 import styled from "styled-components";
 import * as chroma from "chroma-js";
-import { BellOff } from "react-feather";
+//import { BellOff } from "react-feather";
 
 const Container = styled.div<{
   width: number,
@@ -151,7 +151,7 @@ const Presence = styled.span<{
   height: 13px;
   box-sizing: border-box;
   border-radius: 50%;
-  z-index: 2;
+  z-index: 3;
   background-color: ${props => (props.presence == "online" ? "#36C5AB" : "#FD9A00")};
   border: 2px solid ${props => (props.dark ? "#08111d" : "#ffffff")};
   font-family: -apple-system, BlinkMacSystemFont,
@@ -161,27 +161,16 @@ const Presence = styled.span<{
 `;
 
 const Muted = styled.span<{
-  dark: boolean,
+  borderRadius: number,
 }>`
   position: absolute;
-  right: -3px;
-  bottom: -3px;
-  width: 13px;
-  height: 13px;
-  border-radius: 50%;
+  right: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
   z-index: 2;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-  background-color: #007AF5;
-  border: 2px solid ${props => (props.dark ? "#08111d" : "#ffffff")};
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
-  box-sizing: border-box;
+  border-radius: ${props => props.borderRadius}px;
 `;
 
 interface IAvatarProps {
@@ -372,12 +361,36 @@ export const AvatarComponent: React.FunctionComponent<IAvatarProps> = (props: IA
       }
 
       {props.muted &&
-        <Muted dark={props.dark || false}>
-          <BellOff
-            color="white"
-            size={6}
-            thickness="3"
-          />
+        <Muted borderRadius={borderRadius}>
+          <svg width={width} height={height}>
+            <defs>
+              <pattern
+                id="pattern-stripe"
+                width="4"
+                height="4"
+                patternUnits="userSpaceOnUse"
+                patternTransform="rotate(45)">
+                <rect
+                  width="1.5"
+                  height="4"
+                  transform="translate(0,0)"
+                  fill="white">
+                </rect>
+              </pattern>
+              <mask id="mask-stripe">
+                <rect x="0" y="0" width={width} height={height} fill="url(#pattern-stripe)" />
+              </mask>
+            </defs>
+
+            <rect
+              x="0"
+              y="0"
+              width={width}
+              height={height}
+              fill={background}
+              mask="url(#mask-stripe)">
+            </rect>
+          </svg>
         </Muted>
       }
 
