@@ -469,7 +469,7 @@ e.exports=function(){"use strict";for(var e=function(e,r,t){return void 0===r&&(
   width: ${e=>e.preview||"panel"==e.layout?"100%":"300px"};
 `,f=o.default.div`
   width: 100%;
-  height: ${e=>"panel"==e.layout?"200px":"300px"};
+  height: ${e=>"panel"==e.layout?"100px":"300px"};
   background-position: center center;
   background-image: url(${e=>e.image});
   background-size: cover;
