@@ -30,7 +30,7 @@ const ContainerImage = styled.div<{
   image: string;
 }>`
   width: 100%;
-  height: ${props => props.layout == "panel" ? "200px" : "300px"};
+  height: ${props => props.layout == "panel" ? "100px" : "300px"};
   background-position: center center;
   background-image: url(${props => props.image});
   background-size: cover;
