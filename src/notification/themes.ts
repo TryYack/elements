@@ -11,4 +11,10 @@ export const THEMES: any = {
     FONT_SIZE: 12,
     ICON_SIZE: 20,
   },
+  "dark-pink": {
+    BACKGROUND_COLOR: "#C51F5A",
+    COLOR: "white",
+    FONT_SIZE: 12,
+    ICON_SIZE: 20,
+  },
 };
