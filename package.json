@@ -1,5 +1,5 @@
 {
-  "name": "@tryyack/elements",
+  "name": "@yack/elements",
   "title": "Elements",
   "keywords": [
     "Yack"
@@ -12,9 +12,6 @@
     "lib/*"
   ],
   "pre-commit": [],
-  "publishConfig": {
-    "access": "public"
-  },
   "files": [
     "dist",
     "lib"
@@ -25,11 +22,15 @@
     "> 1%",
     "ie >= 9"
   ],
-  "repository": "https://github.com/YackLabs/elements",
-  "bugs": {
-    "url": "https://github.com/YackLabs/elements"
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/"
   },
-  "url": "https://github.com/YackLabs/elements",
+  "repository": "https://github.com/Yack/elements",
+  "bugs": {
+    "url": "https://github.com/Yack/elements"
+  },
+  "url": "https://github.com/Yack/elements",
   "contributors": [
     {
       "name": "joduplessis"
