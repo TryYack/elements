@@ -23,8 +23,7 @@
     "ie >= 9"
   ],
   "publishConfig": {
-    "access": "public",
-    "registry": "https://npm.pkg.github.com/"
+    "access": "public"
   },
   "repository": "https://github.com/Yack/elements",
   "bugs": {
