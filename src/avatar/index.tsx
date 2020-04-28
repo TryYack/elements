@@ -143,6 +143,7 @@ const Edit = styled.div`
 const Presence = styled.span<{
   dark: boolean,
   presence: string,
+  onClick: any,
 }>`
   position: absolute;
   right: -3px;
@@ -151,13 +152,29 @@ const Presence = styled.span<{
   height: 13px;
   box-sizing: border-box;
   border-radius: 50%;
+  cursor: ${props => props.onClick ? "pointer" : "default"};
   z-index: 3;
-  background-color: ${props => (props.presence == "online" ? "#36C5AB" : "#FD9A00")};
   border: 2px solid ${props => (props.dark ? "#08111d" : "#ffffff")};
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
+  background-color: ${props => {
+    switch (props.presence) {
+      case "online":
+        return "#36C5AB";
+      case "away":
+        return "#FD9A00";
+      case "busy":
+        return "#FC1449";
+      case "invisible:user":
+        return props.dark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.1)";
+      default:
+        return "transparent";
+    }
+  }};
+  opacity: 1;
+  transition: opacity 0.25s;
+
+  &:hover {
+    opacity: ${props => props.onClick ? "0.5" : "1"};
+  }
 `;
 
 const Muted = styled.span<{
@@ -211,6 +228,9 @@ interface IAvatarProps {
 
   /** Function event callback for editing */
   onEditClick?: any;
+
+  /** Function event callback for clicking on presence */
+  onPresenceClick?: any;
 
   /** Function event callback for deleting */
   onDeleteClick?: any;
@@ -351,8 +371,9 @@ export const AvatarComponent: React.FunctionComponent<IAvatarProps> = (props: IA
 
       {props.presence &&
         <React.Fragment>
-          {props.presence != "offline" &&
+          {(props.presence != "offline" && props.presence != "invisible") &&
             <Presence
+              onClick={props.onPresenceClick || null}
               presence={props.presence}
               dark={props.dark || false}
             />

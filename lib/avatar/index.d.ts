@@ -29,6 +29,8 @@ interface IAvatarProps {
     editIcon?: any;
     /** Function event callback for editing */
     onEditClick?: any;
+    /** Function event callback for clicking on presence */
+    onPresenceClick?: any;
     /** Function event callback for deleting */
     onDeleteClick?: any;
     /** React component */

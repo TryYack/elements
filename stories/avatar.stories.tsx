@@ -48,6 +48,18 @@ storiesOf('Avatar', module)
     ))
   )
   .add(
+    'With a presence - invisible for present user',
+    withInfo({ inline: true })(() => {
+      return (
+        <Avatar
+          title="Jon Doe"
+          presence="invisible:user"
+          onPresenceClick={() => console.log('Clicked')}
+        />
+      )
+    })
+  )
+  .add(
     'With a presence - online',
     withInfo({ inline: true })(() => {
       return (
