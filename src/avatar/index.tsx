@@ -173,7 +173,7 @@ const Presence = styled.span<{
   transition: opacity 0.25s;
 
   &:hover {
-    opacity: ${props => props.onClick ? "0.5" : "1"};
+    opacity: ${props => props.onClick ? "0.75" : "1"};
   }
 `;
 
