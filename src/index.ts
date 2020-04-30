@@ -18,6 +18,7 @@ import { User } from "./user";
 import { Select } from "./select";
 import { Progress } from "./progress";
 import { Range } from "./range";
+import { Collapsable } from "./collapsable";
 
 export {
   Tooltip,
@@ -26,6 +27,7 @@ export {
   Attachment,
   Error,
   Input,
+  Collapsable,
   Loading,
   Members,
   Menu,

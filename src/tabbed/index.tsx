@@ -172,10 +172,10 @@ export const Tabbed: React.FunctionComponent<ITabbedProps> = (props: ITabbedProp
               className={current == index ? "active" : ""}
               onClick={() => {
                 // Update the current index
-                setCurrent(index)
+                setCurrent(index);
 
                 // Tell the user it's changed
-                if (props.onChange) props.onChange(index)
+                if (props.onChange) props.onChange(index);
               }}>
               <Text active={current == index} size={props.size || "default"}>
                 {panel.title}

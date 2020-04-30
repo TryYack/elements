@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { THEMES } from "./themes";
 
 const Container = styled.div<{
-  theme: string
+  theme: string;
 }>`
   position: relative;
   top: 0px;
@@ -28,7 +28,7 @@ const Container = styled.div<{
 `;
 
 const Text = styled.div<{
-  theme: string
+  theme: string;
 }>`
   color: ${props => THEMES[props.theme].COLOR};
   font-size: ${props => THEMES[props.theme].FONT_SIZE}px;
@@ -49,14 +49,14 @@ export const Error: React.FunctionComponent<IErrorProps> = (props: IErrorProps) 
   if (!props.message) return null;
 
   const theme: string = props.theme ? props.theme : "default";
-  let [errorMessage, setErrorMessage] = React.useState("");
+  const [errorMessage, setErrorMessage] = React.useState("");
 
   React.useEffect(() => {
     if (props.message != errorMessage) {
       // update our error message
-      setErrorMessage(props.message)
+      setErrorMessage(props.message);
     }
-  }, [props.message])
+  }, [props.message]);
 
   return (
     <Container

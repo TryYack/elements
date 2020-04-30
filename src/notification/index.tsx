@@ -4,7 +4,7 @@ import { X } from "react-feather";
 import { THEMES } from "./themes";
 
 const Container = styled.div<{
-  theme: string
+  theme: string;
 }>`
   background-color: ${props => THEMES[props.theme].BACKGROUND_COLOR};
   width: 100%;
@@ -30,7 +30,7 @@ const Padding = styled.div`
 `;
 
 const ActionText = styled.span<{
-  theme: string
+  theme: string;
 }>`
   color: ${props => THEMES[props.theme].COLOR};
   font-family: -apple-system, BlinkMacSystemFont,
@@ -45,7 +45,7 @@ const ActionText = styled.span<{
 `;
 
 const Icon = styled.span<{
-  theme: string
+  theme: string;
 }>`
   margin-left: auto;
   height: 22px;
@@ -60,7 +60,7 @@ const Icon = styled.span<{
 `;
 
 const Text = styled.span<{
-  theme: string
+  theme: string;
 }>`
   color: ${props => THEMES[props.theme].COLOR};
   font-size: ${props => THEMES[props.theme].FONT_SIZE}px;
@@ -87,15 +87,15 @@ interface INotificationProps {
 export const Notification: React.FunctionComponent<INotificationProps> = (props: INotificationProps) => {
   if (!props.text) return null;
 
-  let [notificationMessage, setNotificationMessage] = React.useState("");
+  const [notificationMessage, setNotificationMessage] = React.useState("");
   const theme: string = props.theme ? props.theme : "default";
 
   React.useEffect(() => {
     if (props.text != notificationMessage) {
       // update our error message
-      setNotificationMessage(props.text)
+      setNotificationMessage(props.text);
     }
-  }, [props.text])
+  }, [props.text]);
 
   return (
     <Container theme={theme}>

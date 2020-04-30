@@ -2,7 +2,6 @@ import * as React from "react";
 import { useState } from "react";
 import styled from "styled-components";
 import * as chroma from "chroma-js";
-//import { BellOff } from "react-feather";
 
 const Container = styled.div<{
   width: number,
