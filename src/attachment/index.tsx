@@ -9,6 +9,7 @@ import { Activity } from "react-feather";
 
 const Container = styled.div<{
   preview?: string;
+  fullwidth: boolean;
 }>`
   border: 1px solid #cbd4db;
   border-radius: 5px;
@@ -21,7 +22,7 @@ const Container = styled.div<{
   justify-content: flex-start;
   position: relative;
   overflow: hidden;
-  width: 100%;
+  width: ${props => props.fullwidth ? "100%" : "300px" };
 `;
 
 const ContainerImage = styled.div<{
@@ -124,6 +125,9 @@ const Info = styled.div`
 `;
 
 interface IAttachmentProps {
+  /** Size in bytes */
+  fullwidth?: boolean;
+
   /** Size in bytes */
   size?: number;
 
@@ -282,7 +286,7 @@ const AttachmentComponent: React.FunctionComponent<IAttachmentProps> = (props: I
 
   // prettier-ignore
   return (
-    <Container preview={props.preview}>
+    <Container preview={props.preview} fullwidth={props.fullwidth || false}>
       <Preview />
 
       <ContainerRow>
