@@ -51,10 +51,6 @@ const Title = styled.div`
   justify-content: flex-start;
   position: relative;
   border-bottom: 1px solid #edf0f2;
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
 `;
 
 const Footer = styled.div`

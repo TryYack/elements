@@ -4,14 +4,10 @@ import styled from "styled-components";
 const Label = styled.div`
   font-size: 10px;
   font-weight: 700;
-  color: #626d7a;
+  color: #8895a7;
   letter-spacing: 1px;
   text-transform: uppercase;
   padding-bottom: 5px;
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
 `;
 
 const InputField = styled.input<{
@@ -20,26 +16,22 @@ const InputField = styled.input<{
 }>`
   border: none;
   flex: 1;
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
   outline: none;
   background: transparent;
-  color: #495057;
+  color: #343a40;
   font-size: ${props => {
     switch (props.inputSize) {
       case "large":
         return "24px";
       default:
-        return "14px";
+        return "13px";
     }
   }};
   font-weight: 400;
   padding: 10px;
   width: 100%;
   border: 1px solid #edf0f2;
-  border-radius: 10px;
+  border-radius: 5px;
   resize: none;
   display: block;
   box-sizing: border-box;

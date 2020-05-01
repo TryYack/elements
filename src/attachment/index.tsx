@@ -8,11 +8,10 @@ import { File } from "react-feather";
 import { Activity } from "react-feather";
 
 const Container = styled.div<{
-  layout: string;
   preview?: string;
 }>`
   border: 1px solid #cbd4db;
-  border-radius: 10px;
+  border-radius: 5px;
   margin-bottom: 5px;
   margin-right: 5px;
   display: flex;
@@ -22,25 +21,22 @@ const Container = styled.div<{
   justify-content: flex-start;
   position: relative;
   overflow: hidden;
-  width: ${props => props.preview || (props.layout == "panel") ? "100%" : "300px"};
+  width: 100%;
 `;
 
 const ContainerImage = styled.div<{
-  layout: string;
   image: string;
 }>`
   width: 100%;
-  height: ${props => props.layout == "panel" ? "100px" : "300px"};
+  height: 200px;
   background-position: center center;
   background-image: url(${props => props.image});
   background-size: cover;
 `;
 
-const ContainerVideo = styled.div<{
-  layout: string;
-}>`
+const ContainerVideo = styled.div`
   width: 100%;
-  height: ${props => props.layout == "panel" ? "200px" : "300px"};
+  height: 200px;
 `;
 
 const ContainerRow = styled.div`
@@ -59,7 +55,7 @@ const Icon = styled.div<{
 }>`
   margin-right: 15px;
   background-color: ${props => props.color};
-  border-radius: 10px;
+  border-radius: 5px;
   width: 40px;
   height: 40px;
   display: flex;
@@ -70,80 +66,28 @@ const Icon = styled.div<{
   position: relative;
 `;
 
-const Name = styled.div<{
-  layout: string,
-}>`
+const Name = styled.div`
   font-weight: 500;
   font-style: normal;
-  color: #151b26;
+  color: #202529;
   display: inline-block;
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
-  font-size: ${props => {
-      switch (props.layout) {
-        case "compose":
-          return "14px";
-        case "message":
-          return "14px";
-        case "panel":
-          return "14px";
-        default:
-          return "16px";
-      }
-    }
-  };
-  margin-bottom: ${props => {
-      switch (props.layout) {
-        case "compose":
-          return "5px";
-        case "message":
-          return "5px";
-        case "panel":
-          return "5px";
-        default:
-          return "5px";
-      }
-    }
-  };
+  font-size: 13px;
+  margin-bottom: 5px;
 `;
 
-const Size = styled.div<{
-  layout: string,
-}>`
+const Size = styled.div`
   font-weight: 400;
-  color: #adb5bd;
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
+  color: #acb5bd;
   display: inline-block;
-  font-size: ${props => {
-      if (props.layout == "compose") return "13px";
-      if (props.layout == "message") return "12px";
-      if (props.layout == "panel") return "12px";
-      return "12px";
-    }
-  };
-  margin-bottom: ${props => {
-      if (props.layout == "compose") return "3px";
-      if (props.layout == "message") return "1px";
-      if (props.layout == "panel") return "1px";
-      return "3px";
-    }
-  };
+  font-size: 10px;
+  margin-bottom: 3px;
 `;
 
 const Extension = styled.div`
   font-weight: 500;
   font-size: 10px;
-  color: #6f7782;
+  color: #5f6b7a;
   margin-right: 10px;
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
 `;
 
 const Link = styled.div`
@@ -152,10 +96,6 @@ const Link = styled.div`
   cursor: pointer;
   color: #007af5;
   margin-right: 10px;
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
   cursor: pointer;
   opacity: 1;
   transition: opacity 0.25s;
@@ -184,16 +124,8 @@ const Info = styled.div`
 `;
 
 interface IAttachmentProps {
-  /**
-   * Possible values:
-   * - "message"
-   * - "compose"
-   * - "panel"
-   */
-  layout: string;
-
   /** Size in bytes */
-  size: number;
+  size?: number;
 
   /** Preview uri location of file */
   preview?: string;
@@ -236,13 +168,13 @@ const AttachmentComponent: React.FunctionComponent<IAttachmentProps> = (props: I
 
   const getMimeTypeIcon = (type: string) => {
     switch (type.split("/")[0]) {
-      case "audio": return <Activity color="white" size={props.layout == "compose" ? "25" : "20"} thickness="1" />;
-      case "application": return <File color="white" size={props.layout == "compose" ? "25" : "20"} thickness="1" />;
-      case "video": return <Video color="white" size={props.layout == "compose" ? "30" : "25"} thickness="1" />;
-      case "text": return <AlignLeft color="white" size={props.layout == "compose" ? "25" : "20"} thickness="1" />;
-      case "image": return <Image color="white" size={props.layout == "compose" ? "25" : "20"} thickness="1" />;
-      case "font": return <Download color="white" size={props.layout == "compose" ? "25" : "20"} thickness="1" />;
-      default: return <File color="white" size={props.layout == "compose" ? "25" : "20"} thickness="1" />;
+      case "audio": return <Activity color="white" size={25} thickness="1" />;
+      case "application": return <File color="white" size={25} thickness="1" />;
+      case "video": return <Video color="white" size={25} thickness="1" />;
+      case "text": return <AlignLeft color="white" size={25} thickness="1" />;
+      case "image": return <Image color="white" size={25} thickness="1" />;
+      case "font": return <Download color="white" size={25} thickness="1" />;
+      default: return <File color="white" size={25} thickness="1" />;
     }
   };
 
@@ -331,16 +263,13 @@ const AttachmentComponent: React.FunctionComponent<IAttachmentProps> = (props: I
   const Preview = () => {
     if (mimeType(props.mime) == "image" && props.preview) {
       return (
-        <ContainerImage
-          image={props.preview}
-          layout={props.layout}
-        />
+        <ContainerImage image={props.preview} />
       );
     }
 
     if (mimeType(props.mime) == "video" && props.preview) {
       return (
-        <ContainerVideo layout={props.layout}>
+        <ContainerVideo>
           <video width="100%" height="100%" controls>
             <source src={props.preview} type="video/mp4" />
           </video>
@@ -353,9 +282,7 @@ const AttachmentComponent: React.FunctionComponent<IAttachmentProps> = (props: I
 
   // prettier-ignore
   return (
-    <Container
-      layout={props.layout}
-      preview={props.preview}>
+    <Container preview={props.preview}>
       <Preview />
 
       <ContainerRow>
@@ -364,8 +291,8 @@ const AttachmentComponent: React.FunctionComponent<IAttachmentProps> = (props: I
         </Icon>
 
         <Content>
-          <Name layout={props.layout}>{props.name}</Name>
-          {props.layout == "compose" && <Size layout={props.layout}>{bytesToSize(props.size)}</Size>}
+          <Name>{props.name}</Name>
+          {props.size && <Size>{bytesToSize(props.size)}</Size>}
           <Info>
             <Extension>
               {getMimeTypeDescription(props.mime)}
@@ -375,13 +302,13 @@ const AttachmentComponent: React.FunctionComponent<IAttachmentProps> = (props: I
               Download
             </Link>
 
-            {(props.layout == "compose" && props.onDeleteClick) &&
+            {(props.onDeleteClick) &&
               <Link onClick={props.onDeleteClick}>
                 Remove
               </Link>
             }
 
-            {((props.layout == "message" || props.layout == "panel") && props.onPreviewClick && props.preview) &&
+            {(props.onPreviewClick && props.preview) &&
               <Link onClick={props.onPreviewClick}>
                 Preview
               </Link>

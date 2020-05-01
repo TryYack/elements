@@ -73,13 +73,9 @@ const AvatarContainer = styled.div`
 
 const Text = styled.div`
   overflow: hidden;
-  font-size: 14px;
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 13px;
   font-weight: 400;
-  color: #868e96;
+  color: #5f6b7a;
   width: 100%;
   white-space: nowrap;
 `;
@@ -95,13 +91,9 @@ const TextContainer = styled.div`
 
 const Label = styled.div`
   overflow: hidden;
-  font-size: 12px;
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 10px;
   font-weight: 400;
-  color: #cfd4da;
+  color: #acb5bd;
   width: 100%;
   white-space: nowrap;
 `;

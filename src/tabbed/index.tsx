@@ -72,7 +72,7 @@ const PanelTabButton = styled.div<
     switch (props.size) {
       case "large":
         if (props.borderless) {
-          return "15px 25px 0px 25px";
+          return "15px 25px 15px 25px";
         } else {
           return "15px 25px 15px 25px";
         }
@@ -99,7 +99,7 @@ const Text = styled.div<{
       case "large":
         return "20px";
       default:
-        return "14px";
+        return "13px";
     }
   }};
   font-family: -apple-system, BlinkMacSystemFont,
@@ -124,7 +124,7 @@ const Subtext = styled.div<{
   font-size: ${props => {
     switch (props.size) {
       case "large":
-        return "12px";
+        return "13px";
       default:
         return "10px";
     }

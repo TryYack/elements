@@ -68,10 +68,6 @@ const Text = styled.div<{
   padding: 0px;
   outline: none;
   box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
   text-decoration: none;
   font-size: ${props => {
     if (props.size === "very-small") return "6";
@@ -93,7 +89,7 @@ const Delete = styled.div`
   right: -2px;
   width: 20px;
   height: 20px;
-  border-radius: 10px;
+  border-radius: 5px;
   position: absolute;
   overflow: hidden;
   background-color: #e23f62;
@@ -107,10 +103,6 @@ const Delete = styled.div`
   box-sizing: border-box;
   z-index: 1000;
   transition: background-color 0.25s;
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
 
   &:hover {
     background-color: #ce3354;
@@ -133,10 +125,6 @@ const Edit = styled.div`
   box-sizing: border-box;
   align-content: center;
   cursor: pointer;
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
 `;
 
 const Presence = styled.span<{

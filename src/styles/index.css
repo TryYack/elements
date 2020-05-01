@@ -480,37 +480,6 @@ a:visited {
 
 /* Text colors */
 
-.color-highlight {
-  color: #f8f9fa;
-}
-.color-blue-light {
-  color: #03b1fe;
-}
-.color-blue {
-  color: #007af5;
-}
-.color-teal {
-  color: #51aea5;
-}
-.color-green {
-  color: #7fa452;
-}
-.color-red {
-  color: #ee716c;
-}
-.color-white {
-  color: white;
-}
-.color-yellow {
-  color: #f3b248;
-}
-.color-purple {
-  color: #6146ba;
-}
-.color-pink {
-  color: #e23f62;
-}
-
 .color-l0 {
   color: #aeb5bc;
 }
@@ -547,6 +516,37 @@ a:visited {
 }
 .color-d5 {
   color: #11161c;
+}
+
+.color-highlight {
+  color: #f8f9fa;
+}
+.color-blue-light {
+  color: #03b1fe;
+}
+.color-blue {
+  color: #007af5;
+}
+.color-teal {
+  color: #51aea5;
+}
+.color-green {
+  color: #7fa452;
+}
+.color-red {
+  color: #ee716c;
+}
+.color-white {
+  color: white;
+}
+.color-yellow {
+  color: #f3b248;
+}
+.color-purple {
+  color: #6146ba;
+}
+.color-pink {
+  color: #e23f62;
 }
 
 .background-l0 {

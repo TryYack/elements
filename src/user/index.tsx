@@ -2,26 +2,6 @@ import * as React from "react";
 import styled from "styled-components";
 import { Avatar } from "../avatar";
 
-const TextName = styled.div`
-  font-size: 12px;
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
-  font-weight: 400;
-  color: #11161c;
-`;
-
-const TextLabel = styled.div`
-  font-size: 12px;
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
-  font-weight: 400;
-  color: #acb5bd;
-`;
-
 const Container = styled.div<{
   active: boolean;
 }>`
@@ -87,8 +67,8 @@ export const User: React.FunctionComponent<IUserProps> = (props: IUserProps) => 
         />
 
         <Content>
-          <TextName>{props.name}</TextName>
-          <TextLabel>{props.label}</TextLabel>
+          <div className="color-d5 regular p">{props.name}</div>
+          <div className="color-d0 regular small">{props.label}</div>
         </Content>
 
         <Flex />

@@ -33,10 +33,6 @@ const ActionText = styled.span<{
   theme: string;
 }>`
   color: ${props => THEMES[props.theme].COLOR};
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
   font-size: ${props => THEMES[props.theme].FONT_SIZE}px;
   font-weight: 800;
   margin-left: 10px;
@@ -65,10 +61,6 @@ const Text = styled.span<{
   color: ${props => THEMES[props.theme].COLOR};
   font-size: ${props => THEMES[props.theme].FONT_SIZE}px;
   font-weight: 400;
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
 `;
 
 interface INotificationProps {

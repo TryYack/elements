@@ -119,7 +119,7 @@ const Content = styled.div`
 
 const Text = styled.div`
   color: white;
-  font-size: 14px;
+  font-size: 12px;
   text-align: center;
   width: 100%;
   padding-left: 10px;
@@ -127,10 +127,6 @@ const Text = styled.div`
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
 `;
 
 /*

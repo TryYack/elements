@@ -33,10 +33,6 @@ const Text = styled.div<{
   color: ${props => THEMES[props.theme].COLOR};
   font-size: ${props => THEMES[props.theme].FONT_SIZE}px;
   font-weight: 400;
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
 `;
 
 interface IErrorProps {

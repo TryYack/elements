@@ -23,7 +23,7 @@ const Bar = styled.div<{
   percentage: number;
 }>`
   flex: 1;
-  border-radius: 10px;
+  border-radius: 5px;
   width: ${props => props.percentage}%;
   height: 100%;
   background-color: ${props => props.color}
@@ -41,13 +41,9 @@ const Bar = styled.div<{
 const Text = styled.div`
   font-weight: 400;
   font-style: normal;
-  color: #151b26;
+  color: #11161c;
   display: inline-block;
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   position: relative;
   z-index: 2;
   flex: 2;
@@ -57,13 +53,9 @@ const Text = styled.div`
 const Percentage = styled.div`
   font-weight: 700;
   font-style: normal;
-  color: #151b26;
+  color: #11161c;
   display: inline-block;
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
-  font-size: 14px;
+  font-size: 10px;
   position: relative;
   z-index: 2;
   padding: 5px;

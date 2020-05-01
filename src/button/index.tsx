@@ -55,9 +55,9 @@ const Container = styled.button<{
       case "large":
         return "10px";
       case "small":
-        return "6px";
+        return "5px";
       default:
-        return "8px";
+        return "5px";
     }
   }};
   border-width: ${props => {
@@ -101,10 +101,6 @@ const Text = styled.span<{
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
   box-sizing: border-box;
   padding: ${props => {
     if (props.icon) {
@@ -140,11 +136,11 @@ const Text = styled.span<{
   font-size: ${props => {
     switch (props.size) {
       case "large":
-        return "24px";
+        return "23px";
       case "small":
-        return "11px";
+        return "10px";
       default:
-        return "14px";
+        return "13px";
     }
   }};
 `;

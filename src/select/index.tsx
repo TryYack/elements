@@ -6,14 +6,10 @@ import { ChevronDown } from "react-feather";
 const Label = styled.div`
   font-size: 10px;
   font-weight: 700;
-  color: #626d7a;
+  color: #5f6b7a;
   letter-spacing: 1px;
   text-transform: uppercase;
   padding-bottom: 5px;
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
 `;
 
 const ListContainer = styled.div<{
@@ -69,18 +65,14 @@ const Item = styled.div<{
 const ItemText = styled.div<{
   size: string | undefined,
 }>`
-  color: #858e96;
+  color: #8895a7;
   font-size: ${props => {
     switch (props.size) {
-      case "large": return "24px";
-      default: return "14px";
+      case "large": return "23px";
+      default: return "13px";
     }
   }};
   font-weight: 400;
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
 `;
 
 const InnerContainer = styled.div<{ size: string | undefined }>`
@@ -102,18 +94,14 @@ const InnerContainer = styled.div<{ size: string | undefined }>`
 `;
 
 const Text = styled.div<{ size: string | undefined }>`
-  color: #495057;
+  color: #343a40;
   font-size: ${props => {
     switch (props.size) {
-      case "large": return "24px";
-      default: return "14px";
+      case "large": return "23px";
+      default: return "13px";
     }
   }};
   font-weight: 400;
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
   padding-left: 10px;
   padding-right: 10px;
   flex: 1;
@@ -247,7 +235,7 @@ export class Select extends React.Component<ISelectProps, ISelectState> {
               </Text>
               <Button onClick={() => this.setState({ visible: true })}>
                 <ChevronDown
-                  color="#495057"
+                  color="#343a40"
                   size="20"
                   thickness="1.5"
                 />
