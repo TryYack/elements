@@ -6,11 +6,9 @@
 > Elements is the React based UI library for the Yack platform. This is library should be considered as pre alpha right now - active development is continuing. See below roadmap for progress.
 
 ## Installation
-Add `registry=https://npm.pkg.github.com/yack` to your `.npmrc` file
-
 ```
-npm i --save @yack/elements
-yarn add @yack/elements
+npm i --save @tryyack/elements
+yarn add @tryyack/elements
 ```
 
 ## Global packages
