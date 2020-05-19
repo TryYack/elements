@@ -38,7 +38,7 @@ const Inner = styled.div<{
   z-index: 1;
   background-size: cover;
   background-position: center center;
-  background-image: ${props => props.image};
+  /*background-image: ${props => props.image};*/
   background-color: ${props => props.background};
   overflow: hidden;
   transition: opacity 0.25s;
@@ -177,7 +177,19 @@ const Muted = styled.span<{
   border-radius: ${props => props.borderRadius}px;
 `;
 
-const InnerMemo: any = React.memo((props: any) => <Inner {...props}>{props.children}</Inner>)
+const ImageMemo: any = React.memo((props: any) => {
+  return <div style={{
+    zIndex: 1,
+    width: "100%",
+    height: "100%",
+    position: "absolute",
+    left: 0,
+    top: 0,
+    backgroundImage: props.image,
+    backgroundSize: "cover",
+    backgroundPosition: "center center",
+  }} />;
+});
 
 interface IAvatarProps {
   /** Additional CSS class to add to the element */
@@ -404,7 +416,7 @@ export const AvatarComponent: React.FunctionComponent<IAvatarProps> = (props: IA
         </Muted>
       }
 
-      <InnerMemo
+      <Inner
         over={over}
         onClick={props.onClick}
         width={width}
@@ -416,15 +428,30 @@ export const AvatarComponent: React.FunctionComponent<IAvatarProps> = (props: IA
         outlineInnerColor={props.outlineInnerColor ? props.outlineInnerColor : "transparent"}
         outlineOuterColor={props.outlineOuterColor ? props.outlineOuterColor : "transparent"}
         style={props.style}>
-        {props.children}
-        {(
-          (!props.children && !props.image && props.title && !props.onEditClick) ||
-          (!props.children && !props.image && props.title && props.onEditClick && !over) ) &&
-          <Text color={color} size={props.size}>
-            {generateInitials(props.title)}
-          </Text>
-        }
-      </InnerMemo>
+        {image && <ImageMemo image={image}/>}
+        <div style={{
+          zIndex: 2,
+          width: "100%",
+          height: "100%",
+          position: "absolute",
+          left: 0,
+          top: 0,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          alignContent: "center",
+          justifyContent: "center",
+        }}>
+          {props.children}
+          {(
+            (!props.children && !props.image && props.title && !props.onEditClick) ||
+            (!props.children && !props.image && props.title && props.onEditClick && !over) ) &&
+            <Text color={color} size={props.size}>
+              {generateInitials(props.title)}
+            </Text>
+          }
+        </div>
+      </Inner>
     </Container>
   );
 };
