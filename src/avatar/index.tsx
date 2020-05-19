@@ -177,6 +177,8 @@ const Muted = styled.span<{
   border-radius: ${props => props.borderRadius}px;
 `;
 
+const InnerMemo: any = React.memo((props: any) => <Inner {...props}>{props.children}</Inner>)
+
 interface IAvatarProps {
   /** Additional CSS class to add to the element */
   className?: string;
@@ -402,7 +404,7 @@ export const AvatarComponent: React.FunctionComponent<IAvatarProps> = (props: IA
         </Muted>
       }
 
-      <Inner
+      <InnerMemo
         over={over}
         onClick={props.onClick}
         width={width}
@@ -422,7 +424,7 @@ export const AvatarComponent: React.FunctionComponent<IAvatarProps> = (props: IA
             {generateInitials(props.title)}
           </Text>
         }
-      </Inner>
+      </InnerMemo>
     </Container>
   );
 };
