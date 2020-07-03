@@ -1,8 +1,8 @@
 {
-  "name": "@tryyack/elements",
+  "name": "@weekday/elements",
   "title": "Elements",
   "keywords": [
-    "Yack"
+    "Weekday"
   ],
   "main": "lib/index.js",
   "module": "lib/index.js",
@@ -25,11 +25,11 @@
   "publishConfig": {
     "access": "public"
   },
-  "repository": "https://github.com/Yack/elements",
+  "repository": "https://github.com/WeekdayApp/elements",
   "bugs": {
-    "url": "https://github.com/Yack/elements"
+    "url": "https://github.com/WeekdayApp/elements"
   },
-  "url": "https://github.com/Yack/elements",
+  "url": "https://github.com/WeekdayApp/elements",
   "contributors": [
     {
       "name": "joduplessis"
@@ -37,7 +37,7 @@
   ],
   "deprecated": false,
   "version": "0.8.8",
-  "description": "UI toolkit for Yack",
+  "description": "UI toolkit for Weekday",
   "scripts": {
     "storybook": "start-storybook -p 6006",
     "build:storybook": "build-storybook -c .storybook -o docs",

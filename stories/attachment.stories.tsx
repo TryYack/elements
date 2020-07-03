@@ -33,8 +33,8 @@ storiesOf('Attachment', module)
     <Attachment
       size={12024}
       mime="video/mp4"
-      preview="https://yack-users.s3-us-west-2.amazonaws.com/12-10-2019/8e40ffd0-ed28-11e9-b424-1d6c0b83f80c.small-1.mp4"
-      uri="https://yack-users.s3-us-west-2.amazonaws.com/12-10-2019/8e40ffd0-ed28-11e9-b424-1d6c0b83f80c.small-1.mp4"
+      preview="https://weekday-users.s3-us-west-2.amazonaws.com/12-10-2019/8e40ffd0-ed28-11e9-b424-1d6c0b83f80c.small-1.mp4"
+      uri="https://weekday-users.s3-us-west-2.amazonaws.com/12-10-2019/8e40ffd0-ed28-11e9-b424-1d6c0b83f80c.small-1.mp4"
       name="Uploaded image.png"
     />
   )));
