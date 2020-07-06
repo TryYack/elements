@@ -234,7 +234,7 @@ var elements=function(e){var r={};function t(n){if(r[n])return r[n].exports;var 
   overflow: hidden;
   box-sizing: border-box;
   padding: ${e=>{if(e.icon)switch(e.size){case"large":return"0px 30px 0px 15px";case"small":return"0px 10px 0px 5px";default:return"0px 15px 0px 8px"}else switch(e.size){case"large":return"0px 30px 0px 30px";case"small":return"0px 10px 0px 10px";default:return"0px 15px 0px 15px"}}};
-  font-weight: ${e=>{switch(e.size){case"large":case"small":default:return"400"}}};
+  font-weight: ${e=>{switch(e.size){case"large":case"small":default:return"500"}}};
   font-size: ${e=>{switch(e.size){case"large":return"23px";case"small":return"10px";default:return"13px"}}};
 `,l=o.default.div`
   position: relative;
