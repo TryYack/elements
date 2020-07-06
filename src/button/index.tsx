@@ -126,11 +126,11 @@ const Text = styled.span<{
   font-weight: ${props => {
     switch (props.size) {
       case "large":
-        return "400";
+        return "500";
       case "small":
-        return "400";
+        return "500";
       default:
-        return "400";
+        return "500";
     }
   }};
   font-size: ${props => {
