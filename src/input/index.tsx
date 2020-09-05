@@ -60,7 +60,7 @@ interface IInputProps {
 
 export const Input: React.FunctionComponent<IInputProps> = (props: IInputProps) => {
   return (
-    <div className="flexer">
+    <div className="flexer w-100">
       {props.label &&
         <Label>{props.label}</Label>
       }

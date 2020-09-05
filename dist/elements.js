@@ -509,7 +509,7 @@ var elements=function(e){var r={};function t(n){if(r[n])return r[n].exports;var 
   &::placeholder {
     color: #acb5bd;
   }
-`;r.Input=e=>n.createElement("div",{className:"flexer"},e.label&&n.createElement(i,null,e.label),n.createElement(a,Object.assign({},e,{label:e.label||""}))),r.Input.defaultProps={inputSize:"default",className:""}},function(e,r,t){"use strict";Object.defineProperty(r,"__esModule",{value:!0});const n=t(1),o=t(2),i=o.default.div`
+`;r.Input=e=>n.createElement("div",{className:"flexer w-100"},e.label&&n.createElement(i,null,e.label),n.createElement(a,Object.assign({},e,{label:e.label||""}))),r.Input.defaultProps={inputSize:"default",className:""}},function(e,r,t){"use strict";Object.defineProperty(r,"__esModule",{value:!0});const n=t(1),o=t(2),i=o.default.div`
   position: absolute;
   width: 100%;
   height: 99.5%;
@@ -935,7 +935,7 @@ var elements=function(e){var r={};function t(n){if(r[n])return r[n].exports;var 
   &::placeholder {
     color: #acb5bd;
   }
-`;r.Textarea=e=>n.createElement("div",{className:"flexer"},n.createElement(i,null,e.label),n.createElement(a,Object.assign({},e))),r.Textarea.defaultProps={textareaSize:"default",className:""}},function(e,r,t){"use strict";Object.defineProperty(r,"__esModule",{value:!0});const n=t(1),o=t(2),i=o.default.div`
+`;r.Textarea=e=>n.createElement("div",{className:"flexer w-100"},n.createElement(i,null,e.label),n.createElement(a,Object.assign({},e))),r.Textarea.defaultProps={textareaSize:"default",className:""}},function(e,r,t){"use strict";Object.defineProperty(r,"__esModule",{value:!0});const n=t(1),o=t(2),i=o.default.div`
   background: white;
   width: 35px !important;
   position: relative;
@@ -980,10 +980,17 @@ var elements=function(e){var r={};function t(n){if(r[n])return r[n].exports;var 
   align-content: center;
   justify-content: flex-start;
   border-top: 1px solid #edf0f2;
+  border: 4px solid #f1f3f5;
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.02);
   opacity: 1;
   transition: background 0.25s;
   background: ${e=>e.active?"#f8f9fa":"transparent"};
 
+  &:focus {
+    outline: none;
+    box-shadow: inset 0px 0px 0px 3px #cfd4da;
+  }
+  
   &:hover {
     background: #f8f9fa;
   }

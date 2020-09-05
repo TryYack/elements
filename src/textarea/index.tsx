@@ -60,7 +60,7 @@ interface ITextareaProps {
 
 export const Textarea: React.FunctionComponent<ITextareaProps> = (props: ITextareaProps) => {
   return (
-    <div className="flexer">
+    <div className="flexer w-100">
       <Label>{props.label}</Label>
       <Field {...props} />
     </div>
