@@ -920,7 +920,7 @@ var elements=function(e){var r={};function t(n){if(r[n])return r[n].exports;var 
   width: 100%;
   border: 1px solid #ebedef;
   border: 4px solid #f1f3f5;
-  border-radius: 5px;
+  border-radius: 7px;
   resize: none;
   display: block;
   box-sizing: border-box;
@@ -980,17 +980,10 @@ var elements=function(e){var r={};function t(n){if(r[n])return r[n].exports;var 
   align-content: center;
   justify-content: flex-start;
   border-top: 1px solid #edf0f2;
-  border: 4px solid #f1f3f5;
-  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.02);
   opacity: 1;
   transition: background 0.25s;
   background: ${e=>e.active?"#f8f9fa":"transparent"};
 
-  &:focus {
-    outline: none;
-    box-shadow: inset 0px 0px 0px 3px #cfd4da;
-  }
-  
   &:hover {
     background: #f8f9fa;
   }
@@ -1007,7 +1000,7 @@ var elements=function(e){var r={};function t(n){if(r[n])return r[n].exports;var 
   align-content: center;
   justify-content: center;
   position: relative;
-  border-radius: 5px;
+  border-radius: 7px;
   height: ${e=>{switch(e.size){case"large":return"40px";default:return"30px"}}};
 `,f=o.default.div`
   color: #343a40;
@@ -1044,8 +1037,16 @@ var elements=function(e){var r={};function t(n){if(r[n])return r[n].exports;var 
   justify-content: center;
   position: relative;
   border: 1px solid #edf0f2;
-  border-radius: 5px;
+  border: 4px solid #f1f3f5;
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.02);
+  border-radius: 7px;
   position: relative;
+
+  &:focus {
+    outline: none;
+    box-shadow: inset 0px 0px 0px 3px #cfd4da;
+  }
+  
 `;class g extends n.Component{constructor(e){super(e),this.state={index:0,visible:!1},this.handleKeyPress=this.handleKeyPress.bind(this)}handleKeyPress(e){38==e.keyCode&&this.setState({index:this.state.index-1<0?this.props.options.length-1:this.state.index-1}),40==e.keyCode&&this.setState({index:this.state.index+1==this.props.options.length?0:this.state.index+1}),13==e.keyCode&&this.props.options.length>0&&this.props.onSelect(this.state.index)}componentDidMount(){document.addEventListener("keyup",this.handleKeyPress)}componentWillUnmount(){document.removeEventListener("keyup",this.handleKeyPress)}render(){return n.createElement(n.Fragment,null,this.props.label&&n.createElement(s,null,this.props.label),n.createElement(y,null,n.createElement(i.Popup,{visible:this.state.visible,handleDismiss:()=>this.setState({visible:!1}),direction:"left-bottom",width:"100%",content:n.createElement(l,{size:this.props.size,height:this.props.options.length},this.props.options.map((e,r)=>n.createElement(c,{size:this.props.size,active:r==this.state.index,key:r,onClick:()=>{this.setState({visible:!1}),this.props.onSelect(r)}},n.createElement(u,{size:this.props.size},e.option))))},n.createElement(p,{size:this.props.size},n.createElement(f,{size:this.props.size,onClick:()=>this.setState({visible:!0})},this.props.options[this.props.selected].option),n.createElement(h,{onClick:()=>this.setState({visible:!0})},n.createElement(a.ChevronDown,{color:"#343a40",size:"20",thickness:"1.5"}))))))}}r.Select=g},function(e,r,t){"use strict";Object.defineProperty(r,"__esModule",{value:!0});const n=t(1),o=t(2),i=o.default.div`
   position: relative;
   overflow: hidden;

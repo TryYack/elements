@@ -52,17 +52,10 @@ const Item = styled.div<{
   align-content: center;
   justify-content: flex-start;
   border-top: 1px solid #edf0f2;
-  border: 4px solid #f1f3f5;
-  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.02);
   opacity: 1;
   transition: background 0.25s;
   background: ${props => (props.active ? "#f8f9fa" : "transparent")};
 
-  &:focus {
-    outline: none;
-    box-shadow: inset 0px 0px 0px 3px #cfd4da;
-  }
-  
   &:hover {
     background: #f8f9fa;
   }
@@ -90,7 +83,7 @@ const InnerContainer = styled.div<{ size: string | undefined }>`
   align-content: center;
   justify-content: center;
   position: relative;
-  border-radius: 5px;
+  border-radius: 7px;
   height: ${props => {
     switch (props.size) {
       case "large": return "40px";
@@ -143,8 +136,16 @@ const Container = styled.div`
   justify-content: center;
   position: relative;
   border: 1px solid #edf0f2;
-  border-radius: 5px;
+  border: 4px solid #f1f3f5;
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.02);
+  border-radius: 7px;
   position: relative;
+
+  &:focus {
+    outline: none;
+    box-shadow: inset 0px 0px 0px 3px #cfd4da;
+  }
+  
 `;
 
 

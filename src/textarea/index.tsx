@@ -31,7 +31,7 @@ const Field = styled.textarea<{
   width: 100%;
   border: 1px solid #ebedef;
   border: 4px solid #f1f3f5;
-  border-radius: 5px;
+  border-radius: 7px;
   resize: none;
   display: block;
   box-sizing: border-box;
