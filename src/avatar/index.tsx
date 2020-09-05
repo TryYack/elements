@@ -274,7 +274,7 @@ interface IAvatarProps {
 export const AvatarComponent: React.FunctionComponent<IAvatarProps> = (props: IAvatarProps) => {
   const [over, setOver] = useState(false);
   const image = props.image ? "url(" + props.image + ")" : "";
-  const background = props.color ? props.color : (props.dark ? "#222129" : "#f1f3f5")
+  const background = props.color ? props.color : (props.dark ? "#222129" : "#f1f3f5");
   const color = props.textColor ? props.textColor : "#007af5";
   const className = props.outlineInnerColor || props.outlineOuterColor ? props.className + " outline" : props.className;
   let width = 35;

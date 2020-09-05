@@ -6,8 +6,7 @@ import { ChevronDown } from "react-feather";
 const Label = styled.div`
   font-size: 10px;
   font-weight: 700;
-  color: #5f6b7a;
-  letter-spacing: 1px;
+  color: #8895a7;
   text-transform: uppercase;
   padding-bottom: 5px;
 `;

@@ -7,23 +7,27 @@ storiesOf('Textarea', module)
   .add(
   'Default',
   withInfo({ inline: true })(() => (
-    <Textarea
-      label="Description"
-      value="Some text value"
-      onChange={(e: any) => console.log(e.target.value)}
-      placeholder="Add a description"
-      rows={8}
-    />
+    <div className="p-20">
+      <Textarea
+        label="Description"
+        value="Some text value"
+        onChange={(e: any) => console.log(e.target.value)}
+        placeholder="Add a description"
+        rows={8}
+      />
+    </div>
   )))
   .add(
   'Large',
   withInfo({ inline: true })(() => (
-    <Textarea
-      label="Description"
-      textareaSize="large"
-      value="Some text value"
-      onChange={(e: any) => console.log(e.target.value)}
-      placeholder="Add a description"
-      rows={8}
-    />
+    <div className="p-20">
+      <Textarea
+        label="Description"
+        textareaSize="large"
+        value=""
+        onChange={(e: any) => console.log(e.target.value)}
+        placeholder="Add a description"
+        rows={4}
+      />
+    </div>
   )));

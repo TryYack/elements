@@ -481,33 +481,35 @@ var elements=function(e){var r={};function t(n){if(r[n])return r[n].exports;var 
   font-size: 10px;
   font-weight: 700;
   color: #8895a7;
-  letter-spacing: 1px;
   text-transform: uppercase;
   padding-bottom: 5px;
 `,a=o.default.input`
   border: none;
   flex: 1;
   outline: none;
-  background: transparent;
+  background: white;
   color: #343a40;
   font-size: ${e=>{switch(e.inputSize){case"large":return"24px";default:return"13px"}}};
-  font-weight: 400;
+  font-weight: 500;
   padding: 10px;
   width: 100%;
   border: 1px solid #edf0f2;
-  border-radius: 5px;
+  border: 4px solid #f1f3f5;
+  border-radius: 7px;
   resize: none;
   display: block;
   box-sizing: border-box;
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.02);
 
   &:focus {
     outline: none;
+    box-shadow: inset 0px 0px 0px 3px #cfd4da;
   }
 
   &::placeholder {
     color: #acb5bd;
   }
-`;r.Input=e=>n.createElement(n.Fragment,null,e.label&&n.createElement(i,null,e.label),n.createElement(a,Object.assign({},e,{label:e.label||""}))),r.Input.defaultProps={inputSize:"default",className:""}},function(e,r,t){"use strict";Object.defineProperty(r,"__esModule",{value:!0});const n=t(1),o=t(2),i=o.default.div`
+`;r.Input=e=>n.createElement("div",{className:"flexer"},e.label&&n.createElement(i,null,e.label),n.createElement(a,Object.assign({},e,{label:e.label||""}))),r.Input.defaultProps={inputSize:"default",className:""}},function(e,r,t){"use strict";Object.defineProperty(r,"__esModule",{value:!0});const n=t(1),o=t(2),i=o.default.div`
   position: absolute;
   width: 100%;
   height: 99.5%;
@@ -904,34 +906,36 @@ var elements=function(e){var r={};function t(n){if(r[n])return r[n].exports;var 
   font-size: 10px;
   font-weight: 700;
   color: #8895a7;
-  letter-spacing: 1px;
   text-transform: uppercase;
   padding-bottom: 5px;
 `,a=o.default.textarea`
   border: none;
   flex: 1;
   outline: none;
-  background: transparent;
+  background: white;
   color: #343a40;
   font-size: ${e=>{switch(e.textareaSize){case"large":return"24px";default:return"13px"}}};
   font-weight: 400;
   padding: 10px;
   width: 100%;
   border: 1px solid #ebedef;
+  border: 4px solid #f1f3f5;
   border-radius: 5px;
   resize: none;
   display: block;
   box-sizing: border-box;
   margin-bottom: 20px;
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.02);
 
   &:focus {
     outline: none;
+    box-shadow: inset 0px 0px 0px 3px #cfd4da;
   }
 
   &::placeholder {
     color: #acb5bd;
   }
-`;r.Textarea=e=>n.createElement(n.Fragment,null,n.createElement(i,null,e.label),n.createElement(a,Object.assign({},e))),r.Textarea.defaultProps={textareaSize:"default",className:""}},function(e,r,t){"use strict";Object.defineProperty(r,"__esModule",{value:!0});const n=t(1),o=t(2),i=o.default.div`
+`;r.Textarea=e=>n.createElement("div",{className:"flexer"},n.createElement(i,null,e.label),n.createElement(a,Object.assign({},e))),r.Textarea.defaultProps={textareaSize:"default",className:""}},function(e,r,t){"use strict";Object.defineProperty(r,"__esModule",{value:!0});const n=t(1),o=t(2),i=o.default.div`
   background: white;
   width: 35px !important;
   position: relative;
@@ -955,8 +959,7 @@ var elements=function(e){var r={};function t(n){if(r[n])return r[n].exports;var 
 `;r.Toggle=e=>{const[r,t]=n.useState(e.on);return n.useEffect(()=>t(e.on),[e.on]),n.createElement(i,{onClick:()=>{e.onChange(!r),t(!r)}},n.createElement(a,{on:r}))}},function(e,r,t){"use strict";Object.defineProperty(r,"__esModule",{value:!0});const n=t(1),o=t(2),i=t(9),a=t(3),s=o.default.div`
   font-size: 10px;
   font-weight: 700;
-  color: #5f6b7a;
-  letter-spacing: 1px;
+  color: #8895a7;
   text-transform: uppercase;
   padding-bottom: 5px;
 `,l=o.default.div`
