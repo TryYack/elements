@@ -95,7 +95,7 @@ var elements=function(e){var r={};function t(n){if(r[n])return r[n].exports;var 
   cursor: ${e=>e.onClick?"pointer":"default"};
   z-index: 3;
   border: 2px solid ${e=>e.dark?"#08111d":"#ffffff"};
-  background-color: ${e=>{switch(e.presence){case"online":return"#36C5AB";case"away":return"#FD9A00";case"busy":return"#FC1449";case"invisible:user":return e.dark?"rgba(255,255,255,0.1)":"rgba(0,0,0,0.1)";default:return"transparent"}}};
+  background-color: ${e=>{switch(e.presence){case"online":return"#36C5AB";case"away":return"#FD9A00";case"busy":return"#FC1449";case"invisible:user":return e.dark?"#333333":"#EAEDEF";default:return"transparent"}}};
   opacity: 1;
   transition: opacity 0.25s;
 
