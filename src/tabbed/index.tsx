@@ -49,6 +49,7 @@ const PanelTitles = styled.div<{
     min-height: 50px;
     width: 100% !important;
     overflow: scroll;
+    border-bottom: 1px solid #eaeaea;
   }
 `;
 
@@ -88,6 +89,7 @@ const PanelTabButton = styled.div<
     align-content: center;
     justify-content: center;
     padding: 0px;
+    border-bottom: none;
   }
 `;
 

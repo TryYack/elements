@@ -708,6 +708,7 @@ var elements=function(e){var r={};function t(n){if(r[n])return r[n].exports;var 
   flex: 1;
   width: 100%;
   overflow: scroll;
+  position: relative;
 `,c=o.default.div`
   width: 100%;
   padding: 0px;
@@ -884,6 +885,7 @@ var elements=function(e){var r={};function t(n){if(r[n])return r[n].exports;var 
     min-height: 50px;
     width: 100% !important;
     overflow: scroll;
+    border-bottom: 1px solid #eaeaea;
   }
 `,s=o.default.div`
   padding: ${e=>{switch(e.size){case"large":return e.borderless,"15px 25px 15px 25px";default:return e.borderless?"10px 20px 0px 20px":"10px 20px 10px 20px"}}};
@@ -901,6 +903,7 @@ var elements=function(e){var r={};function t(n){if(r[n])return r[n].exports;var 
     align-content: center;
     justify-content: center;
     padding: 0px;
+    border-bottom: none;
   }
 `,l=o.default.div`
   width: 100%;

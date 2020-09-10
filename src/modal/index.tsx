@@ -49,6 +49,7 @@ const InnerContainer = styled.div`
   flex: 1;
   width: 100%;
   overflow: scroll;
+  position: relative;
 `;
 
 const Title = styled.div`
