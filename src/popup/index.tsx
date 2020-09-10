@@ -42,6 +42,18 @@ const Content = styled.div<{ width: number | string }>`
   &.right-top { top: 0px; right: 0px; transform: translateY(-100%); }
   &.left-bottom { bottom: 0px; left: 0px; transform: translateY(100%); }
   &.right-bottom { bottom: 0px; right : 0px; transform: translateY(100%); }
+
+  @media only screen and (max-width: 768px) {
+    transform: none !important;
+    top: auto !important;
+    bottom: 0px !important;
+    left: 0px;
+    width: 100%;
+    height: 50%;
+    position: fixed;
+    overflow: scroll;
+    z-index: 10;
+  }
 `;
 
 const ContentActiveArea = styled.div<{ width: number | string }>`

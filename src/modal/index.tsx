@@ -23,8 +23,12 @@ const Container = styled.div`
 
 const Inner = styled.div<{
   frameless: boolean;
+  width: string | number;
+  height: string | number;
 }>`
   background: white;
+  width: ${props => typeof props.width == "string" ? props.width : props.width + "px"} 
+  height: ${props => typeof props.height == "string" ? props.height : props.height + "px"}
   border-radius: ${props => props.frameless ? "0px" : "5px"};
   overflow: hidden;
   display: flex;
@@ -33,6 +37,12 @@ const Inner = styled.div<{
   align-content: flex-start;
   justify-content: flex-start;
   position: relative;
+
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+    height: 100%;
+    border-radius: 0px;
+  }
 `;
 
 const InnerContainer = styled.div`
@@ -92,8 +102,8 @@ const TitleText = styled.div`
 interface IModalProps {
   children?: any;
   title: string;
-  width: number;
-  height: any;
+  width: string | number;
+  height: string | number;
   onClose: any;
   footer?: any;
   header?: boolean;
@@ -112,8 +122,9 @@ export const Modal: React.FunctionComponent<IModalProps> = (props: IModalProps) 
   return (
     <Container>
       <Inner
-        frameless={frameless}
-        style={{ width: props.width, height: props.height }}>
+        width={props.width}
+        height={props.height}
+        frameless={frameless}>
         {(!frameless && header) &&
           <Title>
             <TitleText>{props.title}</TitleText>

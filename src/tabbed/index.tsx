@@ -11,7 +11,17 @@ const PanelContainer = styled.div`
   align-items: flex-start;
   align-content: flex-start;
   justify-content: flex-start;
-  position: relative;
+
+  @media only screen and (max-width: 768px) {
+    flex-direction: column;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+    background: white;
+  }
 `;
 
 const PanelTitles = styled.div<{
@@ -28,45 +38,25 @@ const PanelTitles = styled.div<{
   position: relative;
   height: 100%;
   min-height: 200px;
-`;
 
-const Panels = styled.div<{
-  current: number;
-}>`
-  flex: 1;
-  position: relative;
-  width: 100%;
-  height: 100%;
-  min-height: 200px;
-`;
-
-const PanelsContainer = styled.div`
-  flex: 1;
-  position: relative;
-  width: 100%;
-  height: 100%;
-  min-height: 200px;
-  overflow: hidden;
-`;
-
-const Panel = styled.div<{
-  index: number;
-}>`
-  position: absolute;
-  background: transparent;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  overflow: scroll;
-  display: flex;
+  @media only screen and (max-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: flex-start;
+    flex-wrap: no-wrap;
+    height: 50px;
+    min-height: 50px;
+    width: 100% !important;
+    overflow: scroll;
+  }
 `;
 
 const PanelTabButton = styled.div<
 {
   size: string;
   borderless: boolean;
-    active: boolean;
+  active: boolean;
 }>`
   padding: ${props => {
     switch (props.size) {
@@ -88,6 +78,57 @@ const PanelTabButton = styled.div<
   width: 100%;
   cursor: pointer;
   background: ${props => props.active ? "#f6f7fa" : "none" };
+
+  @media only screen and (max-width: 768px) {
+    height: 50px;
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    padding: 0px;
+  }
+`;
+
+const PanelTabButtonFooter = styled.div`
+  width: 100%;
+
+  @media only screen and (max-width: 768px) {
+    display: none;
+  }
+`
+
+const PanelsContainer = styled.div`
+  flex: 1;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  overflow: hidden;
+`;
+
+const Panels = styled.div<{
+  current: number;
+}>`
+  flex: 1;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+`;
+
+const Panel = styled.div<{
+  index: number;
+}>`
+  position: absolute;
+  background: transparent;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+  display: flex;
 `;
 
 const Text = styled.div<{
@@ -102,10 +143,6 @@ const Text = styled.div<{
         return "13px";
     }
   }};
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
   font-weight: 400;
   color: ${props => props.active ? "#617691" : "#acb5bd"};
   cursor: pointer;
@@ -114,6 +151,13 @@ const Text = styled.div<{
 
   &:hover {
     opacity: 0.8;
+  }
+
+  @media only screen and (max-width: 768px) {
+    font-weight: 600;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 0;
   }
 `;
 
@@ -129,10 +173,6 @@ const Subtext = styled.div<{
         return "10px";
     }
   }};
-  font-family: -apple-system, BlinkMacSystemFont,
-  "Segoe UI", "Roboto", "Oxygen",
-  "Ubuntu", "Cantarell", "Fira Sans",
-  "Droid Sans", "Helvetica Neue", sans-serif;
   font-weight: 400;
   color: ${props => props.active ? "#AEB5BC" : "#AEB5BC"};
   cursor: pointer;
@@ -142,6 +182,10 @@ const Subtext = styled.div<{
 
   &:hover {
     opacity: 0.8;
+  }
+
+  @media only screen and (max-width: 768px) {
+    display: none;
   }
 `;
 
@@ -190,9 +234,9 @@ export const Tabbed: React.FunctionComponent<ITabbedProps> = (props: ITabbedProp
         })}
 
         {props.footer &&
-          <React.Fragment>
+          <PanelTabButtonFooter>
             {props.footer}
-          </React.Fragment>
+          </PanelTabButtonFooter>
         }
       </PanelTitles>
 

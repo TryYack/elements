@@ -12,7 +12,7 @@ storiesOf('Tabbed', module)
       onChange={(index: any) => {
         console.log(index)
       }}
-      footer={<div>This is the tab footer area</div>}
+      footer={<div style={{ width: 50 }}>This is the tab footer area</div>}
       panels={[
         {
           title: 'Profile',
@@ -29,6 +29,60 @@ storiesOf('Tabbed', module)
           content: (
             <div style={{ flex: 1, height: "100%", width: "100%" }}>
               Account content
+            </div>
+          )
+        },
+        {
+          title: 'Team',
+          show: true,
+          content: (
+            <div style={{ flex: 1, height: "100%", width: "100%" }}>
+              Team content
+            </div>
+          )
+        },
+        {
+          title: 'Other',
+          show: true,
+          content: (
+            <div style={{ flex: 1, height: "100%", width: "100%" }}>
+              Other content
+            </div>
+          )
+        },
+        {
+          title: 'Profile',
+          show: true,
+          content: (
+            <div style={{ flex: 1, height: "100%", width: "100%" }}>
+              Profile content
+            </div>
+          )
+        },
+        {
+          title: 'Accounts',
+          show: true,
+          content: (
+            <div style={{ flex: 1, height: "100%", width: "100%" }}>
+              Account content
+            </div>
+          )
+        },
+        {
+          title: 'Team',
+          show: true,
+          content: (
+            <div style={{ flex: 1, height: "100%", width: "100%" }}>
+              Team content
+            </div>
+          )
+        },
+        {
+          title: 'Other',
+          show: true,
+          content: (
+            <div style={{ flex: 1, height: "100%", width: "100%" }}>
+              Other content
             </div>
           )
         }
