@@ -47,7 +47,7 @@ const Overlay = styled.div`
   height: 100%;
   background: rgba(0,0,0,0.1);
   display: none;
-  z-index: 2;
+  z-index: 4;
 
   @media only screen and (max-width: 768px) {
     display: block;
@@ -77,7 +77,8 @@ const Content = styled.div<{ width: number | string }>`
     bottom: 0px !important;
     left: 0px;
     width: 100%;
-    height: 50%;
+    height: fit-content;
+    max-height: 50%;
     position: fixed;
     overflow: scroll;
     z-index: 10;
