@@ -2,8 +2,8 @@ import * as React from "react";
 interface IModalProps {
     children?: any;
     title: string;
-    width: number;
-    height: any;
+    width: string | number;
+    height: string | number;
     onClose: any;
     footer?: any;
     header?: boolean;
