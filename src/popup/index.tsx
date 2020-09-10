@@ -13,6 +13,10 @@ const Container = styled.div<{
   justify-content: center;
   width: ${props => typeof props.width == "number" ? "max-content" : props.width};
   height: max-content;
+
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const ContentActiveAreaInner = styled.div<{ width: number | string }>`
@@ -24,7 +28,31 @@ const ContentActiveAreaInner = styled.div<{ width: number | string }>`
   align-content: center;
   justify-content: center;
   width: ${props => typeof props.width == "number" ? props.width + "px" : props.width};
+
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+    display: block;
+    flex-direction: none;
+    align-items: none;
+    align-content: none;
+    justify-content: none;
+  }
 `;
+
+const Overlay = styled.div`
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.1);
+  display: none;
+  z-index: 2;
+
+  @media only screen and (max-width: 768px) {
+    display: block;
+  }
+`
 
 const Content = styled.div<{ width: number | string }>`
   display: flex;
@@ -64,6 +92,10 @@ const ContentActiveArea = styled.div<{ width: number | string }>`
   align-content: center;
   justify-content: center;
   width: ${props => typeof props.width == "number" ? props.width + "px" : props.width};
+
+  @media only screen and (max-width: 768px) {
+    display: block;
+  }
 `;
 
 interface IPopupProps {
@@ -141,25 +173,29 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
 
   public render() {
     return (
-      <Container
-        width={this.props.width}
-        className={this.props.containerClassName ? this.props.containerClassName : ""}
-        ref={(ref) => this.rootRef = ref}>
-        {this.props.children}
+      <React.Fragment>
+        {this.props.visible && <Overlay />}
+        
+        <Container
+          width={this.props.width}
+          className={this.props.containerClassName ? this.props.containerClassName : ""}
+          ref={(ref) => this.rootRef = ref}>
+          {this.props.children}
 
-        {this.props.visible &&
-          <Content
-            ref={(ref) => this.wrapperRef = ref}
-            width={this.props.width}
-            className={this.props.direction}>
-            <ContentActiveArea width={this.props.width}>
-              <ContentActiveAreaInner width={this.props.width}>
-                {this.props.content}
-              </ContentActiveAreaInner>
-            </ContentActiveArea>
-          </Content>
-        }
-      </Container>
+          {this.props.visible &&
+            <Content
+              ref={(ref) => this.wrapperRef = ref}
+              width={this.props.width}
+              className={this.props.direction}>
+              <ContentActiveArea width={this.props.width}>
+                <ContentActiveAreaInner width={this.props.width}>
+                  {this.props.content}
+                </ContentActiveAreaInner>
+              </ContentActiveArea>
+            </Content>
+          }
+        </Container>
+      </React.Fragment>
     );
   }
 }

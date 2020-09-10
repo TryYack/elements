@@ -30,16 +30,18 @@ storiesOf('Popup', module)
         width={300}
         direction="left-bottom"
         content={
-          <div 
-            className="row"
-            style={{ 
-              padding: 50, 
-              fontFamily: 'system', 
-              height: 500, 
-              background: '#EDEDED' 
-            }}>
-            Content for the popup
-          </div>
+          <React.Fragment>
+            <div style={{ padding: 10, borderBottom: '1px solid #EFEFEF' }}>Content for the popup 1</div>
+            <div style={{ padding: 10, borderBottom: '1px solid #EFEFEF' }}>Content for the popup 2</div>
+            <div style={{ padding: 10, borderBottom: '1px solid #EFEFEF' }}>Content for the popup 3</div>
+            <div style={{ padding: 10, borderBottom: '1px solid #EFEFEF' }}>Content for the popup 4</div>
+            <div style={{ padding: 10, borderBottom: '1px solid #EFEFEF' }}>Content for the popup 5</div>
+            <div style={{ padding: 10, borderBottom: '1px solid #EFEFEF' }}>Content for the popup 6</div>
+            <div style={{ padding: 10, borderBottom: '1px solid #EFEFEF' }}>Content for the popup 7</div>
+            <div style={{ padding: 10, borderBottom: '1px solid #EFEFEF' }}>Content for the popup 8</div>
+            <div style={{ padding: 10, borderBottom: '1px solid #EFEFEF' }}>Content for the popup 9</div>
+            <div style={{ padding: 10, borderBottom: '1px solid #EFEFEF' }}>Content for the popup 10</div>
+          </React.Fragment>
         }>
           <Button text="Popup" />
       </Popup>
