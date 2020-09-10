@@ -81,7 +81,6 @@ const Content = styled.div<{ width: number | string }>`
     max-height: 50%;
     position: fixed;
     overflow: scroll;
-    z-index: 10;
   }
 `;
 
