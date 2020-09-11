@@ -15,26 +15,6 @@ const Container = styled.div<{
   height: max-content;
 `;
 
-const ContentActiveAreaInner = styled.div<{ width: number | string }>`
-  flex: 1;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  align-content: center;
-  justify-content: center;
-  width: ${props => typeof props.width == "number" ? props.width + "px" : props.width};
-
-  @media only screen and (max-width: 768px) {
-    width: 100%;
-    display: block;
-    flex-direction: none;
-    align-items: none;
-    align-content: none;
-    justify-content: none;
-  }
-`;
-
 const Overlay = styled.div`
   position: fixed;
   top: 0px;
@@ -71,18 +51,21 @@ const Content = styled.div<{ width: number | string }>`
     transform: none !important;
     top: auto !important;
     bottom: 0px !important;
-    left: 0px;
-    width: 100%;
+    left: 0px !important;
+    right: 0px !important;
+    width: 100vw !important; /* 100% seems to be relative to parent (bug?) */
     height: fit-content;
     max-height: 50%;
-    position: fixed;
+    position: fixed !important;
     overflow: scroll;
     border-radius: 0px;
+    margin: 0px;
   }
 `;
 
 const ContentActiveArea = styled.div<{ width: number | string }>`
   flex: 1;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -92,6 +75,35 @@ const ContentActiveArea = styled.div<{ width: number | string }>`
 
   @media only screen and (max-width: 768px) {
     display: block;
+    height: fit-content;
+    width: 100% !important;
+    flex-direction: none;
+    align-items: none;
+    align-content: none;
+    justify-content: none;
+    flex: none;
+  }
+`;
+
+const ContentActiveAreaInner = styled.div<{ width: number | string }>`
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  align-content: center;
+  justify-content: center;
+  width: ${props => typeof props.width == "number" ? props.width + "px" : props.width};
+
+  @media only screen and (max-width: 768px) {
+    display: block;
+    height: fit-content;
+    width: 100% !important;
+    flex-direction: none;
+    align-items: none;
+    align-content: none;
+    justify-content: none;
+    flex: none;
   }
 `;
 
