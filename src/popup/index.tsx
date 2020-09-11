@@ -13,10 +13,6 @@ const Container = styled.div<{
   justify-content: center;
   width: ${props => typeof props.width == "number" ? "max-content" : props.width};
   height: max-content;
-
-  @media only screen and (max-width: 768px) {
-    width: 100%;
-  }
 `;
 
 const ContentActiveAreaInner = styled.div<{ width: number | string }>`
@@ -81,6 +77,7 @@ const Content = styled.div<{ width: number | string }>`
     max-height: 50%;
     position: fixed;
     overflow: scroll;
+    border-radius: 0px;
   }
 `;
 

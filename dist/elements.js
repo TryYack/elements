@@ -151,7 +151,7 @@ var elements=function(e){var r={};function t(n){if(r[n])return r[n].exports;var 
   height: max-content;
 
   @media only screen and (max-width: 768px) {
-    width: 100%;
+    
   }
 `,a=o.default.div`
   flex: 1;
@@ -211,7 +211,7 @@ var elements=function(e){var r={};function t(n){if(r[n])return r[n].exports;var 
     max-height: 50%;
     position: fixed;
     overflow: scroll;
-    z-index: 10;
+    border-radius: 0px;
   }
 `,c=o.default.div`
   flex: 1;
