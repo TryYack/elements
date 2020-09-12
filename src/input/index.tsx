@@ -37,6 +37,10 @@ const InputField = styled.input<{
   box-sizing: border-box;
   box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.02);
 
+  @media only screen and (max-width: 768px) {
+    font-size: 13px;
+  }
+
   &:focus {
     outline: none;
     box-shadow: inset 0px 0px 0px 3px #cfd4da;
