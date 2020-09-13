@@ -75,6 +75,13 @@ const Container = styled.button<{
   color: ${props => THEMES[props.theme].BASE.COLOR};
   border-color: ${props => THEMES[props.theme].BASE.BORDER_COLOR};
 
+  @media only screen and (max-width: 768px) {
+    border-width: 2px;
+    border-radius: 5px;
+    height: 40px;
+    max-width: 150px;
+  }
+
   &:hover {
     background-color: ${props => THEMES[props.theme].HOVER.BACKGROUND_COLOR};
     color: ${props => THEMES[props.theme].HOVER.COLOR};
@@ -143,6 +150,12 @@ const Text = styled.span<{
         return "13px";
     }
   }};
+
+  @media only screen and (max-width: 768px) {
+    padding: ${props => props.icon ? "0px 15px 0px 8px" : "0px 15px 0px 15px"}
+    font-weight: 500;
+    font-size: 13px;
+  }
 `;
 
 const Icon = styled.div<{
@@ -172,6 +185,10 @@ const Icon = styled.div<{
 
     return "0px 0px 0px 15px";
   }};
+
+  @media only screen and (max-width: 768px) {
+    margin: 0px 0px 0px 15px;
+  }
 `;
 
 interface IButtonProps {
