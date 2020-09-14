@@ -570,7 +570,7 @@ var elements=function(e){var r={};function t(n){if(r[n])return r[n].exports;var 
   box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.02);
 
   @media only screen and (max-width: 768px) {
-    font-size: 13px;
+    font-size: 16px;
   }
 
   &:focus {
@@ -1053,7 +1053,7 @@ var elements=function(e){var r={};function t(n){if(r[n])return r[n].exports;var 
   box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.02);
 
   @media only screen and (max-width: 768px) {
-    font-size: 13px;
+    font-size: 16px;
   }
 
   &:focus {
