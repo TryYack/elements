@@ -39,6 +39,8 @@ const InputField = styled.input<{
 
   @media only screen and (max-width: 768px) {
     font-size: 16px;
+    border: 2px solid #f1f3f5;
+    box-shadow: none;
   }
 
   &:focus {
