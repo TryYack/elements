@@ -84,7 +84,9 @@ const Text = styled.div<{
   }}px;
 `;
 
-const Delete = styled.div`
+const Delete = styled.div<{
+  visible: boolean;
+}>`
   top: -2px;
   right: -2px;
   width: 20px;
@@ -94,7 +96,7 @@ const Delete = styled.div`
   overflow: hidden;
   background-color: #e23f62;
   cursor: pointer;
-  display: flex;
+  display: ${props => props.visible ? "flex" : "none"};
   flex-direction: row;
   align-items: center;
   align-content: center;
@@ -110,7 +112,9 @@ const Delete = styled.div`
   }
 `;
 
-const Edit = styled.div`
+const Edit = styled.div<{
+  visible: boolean;
+}>`
   position: absolute;
   left: 0px;
   top: 0px;
@@ -118,7 +122,7 @@ const Edit = styled.div`
   height: 100%;
   z-index: 1000;
   overflow: hidden;
-  display: flex;
+  display: ${props => props.visible ? "flex" : "none"};
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -273,16 +277,16 @@ interface IAvatarProps {
  * channels, or anything else
  */
 export const AvatarComponent: React.FunctionComponent<IAvatarProps> = (props: IAvatarProps) => {
-  const calculateTextColor = (color: string): string => {
-    return chroma(color)
+  const calculateTextColor = (c: string): string => {
+    return chroma(c)
       .desaturate(2)
       .brighten(2.25)
-      .toString()
+      .toString();
   };
   const [over, setOver] = useState(false);
   const image = props.image ? "url(" + props.image + ")" : "";
   const background = props.color ? props.color : (props.dark ? "#222129" : "#f1f3f5");
-  const color = props.textColor ? props.textColor : calculateTextColor(background);// "#007af5";
+  const color = props.textColor ? props.textColor : calculateTextColor(background);
   const className = props.outlineInnerColor || props.outlineOuterColor ? props.className + " outline" : props.className;
   let width = 35;
   let height = 35;
@@ -357,14 +361,16 @@ export const AvatarComponent: React.FunctionComponent<IAvatarProps> = (props: IA
       height={height}
       onMouseEnter={() => setOver(true)}
       onMouseLeave={() => setOver(false)}>
-      {over && props.onEditClick && props.editIcon &&
-        <Edit onClick={props.onEditClick}>
+      {(props.onEditClick && props.editIcon) &&
+        <Edit 
+          visible={over}
+          onClick={props.onEditClick}>
           {props.editIcon}
         </Edit>
       }
 
-      {over && props.onDeleteClick && props.deleteIcon &&
-        <Delete onClick={props.onDeleteClick}>
+      {(props.onDeleteClick && props.deleteIcon) &&
+        <Delete visible={over} onClick={props.onDeleteClick}>
           {props.deleteIcon}
         </Delete>
       }

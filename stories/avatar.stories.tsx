@@ -33,7 +33,6 @@ storiesOf('Avatar', module)
         textColor="red"
         size="large"
         muted={true}
-        presence="away"
         image="https://randomuser.me/api/portraits/men/62.jpg"
       />
     ))
@@ -71,6 +70,17 @@ storiesOf('Avatar', module)
     })
   )
   .add(
+    'With a presence - busy',
+    withInfo({ inline: true })(() => {
+      return (
+        <Avatar
+          title="Jon Doe"
+          presence="busy"
+        />
+      )
+    })
+  )
+  .add(
     'With a presence - away',
     withInfo({ inline: true })(() => {
       return (
@@ -102,7 +112,7 @@ storiesOf('Avatar', module)
     ))
   )
   .add(
-    'No image & click (default)',
+    'No image & a click (default)',
     withInfo({ inline: true })(() => (
       <Avatar
         onClick={action('Clicked')}

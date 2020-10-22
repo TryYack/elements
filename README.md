@@ -5,6 +5,8 @@
 # Elements
 > Elements is the React based UI library for the Weekday platform. This is library should be considered as pre alpha right now - active development is continuing. See below roadmap for progress.
 
+[elements.weekdayapp.com](https://elements.weekdayapp.com)
+
 ## Installation
 ```
 npm i --save @weekday/elements
@@ -37,35 +39,32 @@ npm run build:prod
 npm run build:storybook
 ```
 
-## Roadmap (not in any particular order)
-- [x] Project setup
-- [x] Repo & GitHub pages setup
-- [x] Preliminary components & tests (avatar & button)
-- [x] Continuous deployment runner for tests & Storybook generating
-- [x] NPM package
-- [x] Attachment component
+---
+
+### Some notes about tests
+
+Tests mirror stories in Storybook
+
+> Waiting for the library to be finalised a bit more before adding
+
+- [ ] Attachment component
 - [x] Avatar component
-- [x] Button component
-- [x] Error component
-- [x] Input component
-- [x] Loading component
-- [x] Members component
-- [x] Menu component
-- [x] Modal component
-- [x] Notification component
-- [x] Popup component
-- [x] Channel component
-- [x] Spinner component
-- [x] Tabbed component
-- [x] Textarea component
-- [x] Tooltip component
-- [x] Toggle component
-- [x] User component
-- [x] Select component
-- [x] Progress component
-- [ ] Code coverage (add badge)
-- [ ] More robust component tests
-- [ ] More component stories
-- [ ] Mobile responsive styles
-- [ ] Website
-- [ ] Better docs/comments
+- [ ] Button component
+- [ ] Collapsable component
+- [ ] Error component
+- [ ] Input component
+- [ ] Loading component
+- [ ] Members component
+- [ ] Menu component
+- [ ] Modal component
+- [ ] Notification component
+- [ ] Popup component
+- [ ] Progress component
+- [ ] Range component
+- [ ] Select component
+- [ ] Spinner component
+- [ ] Tabbed component
+- [ ] Textarea component
+- [ ] Toggle component
+- [ ] Tooltip component
+- [ ] User component

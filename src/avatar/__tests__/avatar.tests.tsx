@@ -45,13 +45,14 @@ describe("Dark themed", () => {
     
     expect(backgroundColor).toBe(darkBackgroundRGB);
   });
-})
-/* 
+});
+
 describe("Outline inner/outer color & text color", () => {
-  let el: any;
+  let el: ReactWrapper;
+  let component: any;
 
   beforeEach(() => {
-    el = mount(
+    component = (
       <Avatar
         title="Jon Doe"
         outlineInnerColor="red"
@@ -59,151 +60,226 @@ describe("Outline inner/outer color & text color", () => {
         textColor="red"
       />
     );
+    el = mount(component)
   });
 
-  it("...", () => {
-    // const { width, height } = el.find('div').first().props()
+  it("has a class called 'outline'", () => {
+    expect(el.find('div').at(1).hasClass('outline')).toBeTruthy();
   });
-})
+});
 
 describe("With muted graphic", () => {
   let el: any;
+  let component: any;
 
   beforeEach(() => {
-    el = mount(
+    component = (
       <Avatar
-      title="Jon Doe"
-      textColor="red"
-      size="large"
-      muted={true}
-      presence="away"
-      image="https://randomuser.me/api/portraits/men/62.jpg"
-    />
+        title="Jon Doe"
+        textColor="red"
+        size="large"
+        muted={true}
+        image="https://randomuser.me/api/portraits/men/62.jpg"
+      />
     );
+    el = mount(component)
   });
 
-  it("...", () => {
+  it("to have muted SVG element", () => {
+    expect(el.find('div').at(0).find('svg').length).toBe(1)
   });
 })
 
 describe("Coloring (auto)", () => {
   let el: any;
+  let component: any;
+  const textColor: string = "#ffcac9";
 
   beforeEach(() => {
-    el = mount(
+    component = (
       <Avatar
         title="Jon Doe"
         color="#FC1449"
       />
     );
+    el = mount(component)
   });
 
-  it("...", () => {
+  it("inner text is colored", () => {
+    const { color } = el.find('div').at(1).children().at(0).children().at(0).props()
+    expect(color).toBe(textColor);
   });
 })
 
 describe("With a presence - invisible for other users", () => {
   let el: any;
+  let component: any;
+  const dotBackgroundColor: string = hexToRgb("#EAEDEF");
 
   beforeEach(() => {
-    el = mount(
+    component = (
       <Avatar
         title="Jon Doe"
         presence="invisible:user"
         onPresenceClick={() => console.log('Clicked')}
       />
     );
+    el = mount(component)
   });
 
-  it("...", () => {
+  it("needs to be muted in color", () => {
+    const node: any = el.find('div').at(0).children().at(0).getDOMNode();
+    const style = window.getComputedStyle(node);
+    const backgroundColor = style['background-color'];
+    
+    expect(backgroundColor).toBe(dotBackgroundColor);
   });
 })
 
 describe("With a presence - online", () => {
   let el: any;
+  let component: any;
+  const dotBackgroundColor: string = hexToRgb("#36C5AB");
 
   beforeEach(() => {
-    el = mount(
+    component = (
       <Avatar
         title="Jon Doe"
         presence="online"
       />
     );
+    el = mount(component)
   });
 
-  it("...", () => {
+  it("needs to be green in color", () => {
+    const node: any = el.find('div').at(0).children().at(0).getDOMNode();
+    const style = window.getComputedStyle(node);
+    const backgroundColor = style['background-color'];
+    
+    expect(backgroundColor).toBe(dotBackgroundColor);
   });
 })
 
 describe("With a presence - away", () => {
   let el: any;
+  let component: any;
+  const dotBackgroundColor: string = hexToRgb("#FD9A00");
 
   beforeEach(() => {
-    el = mount(
+    component = (
       <Avatar
         title="Jon Doe"
         presence="away"
       />
     );
+    el = mount(component)
   });
 
-  it("...", () => {
+  it("needs to be orange in color", () => {
+    const node: any = el.find('div').at(0).children().at(0).getDOMNode();
+    const style = window.getComputedStyle(node);
+    const backgroundColor = style['background-color'];
+    
+    expect(backgroundColor).toBe(dotBackgroundColor);
+  });
+})
+
+describe("With a presence - busy", () => {
+  let el: any;
+  let component: any;
+  const dotBackgroundColor: string = hexToRgb("#FC1449");
+
+  beforeEach(() => {
+    component = (
+      <Avatar
+        title="Jon Doe"
+        presence="busy"
+      />
+    );
+    el = mount(component)
+  });
+
+  it("needs to be red in color", () => {
+    const node: any = el.find('div').at(0).children().at(0).getDOMNode();
+    const style = window.getComputedStyle(node);
+    const backgroundColor = style['background-color'];
+    
+    expect(backgroundColor).toBe(dotBackgroundColor);
   });
 })
 
 describe("With a presence - offline", () => {
   let el: any;
+  let component: any;
 
   beforeEach(() => {
-    el = mount(
+    component = (
       <Avatar
         title="Jon Doe"
         presence="offline"
       />
     );
+    el = mount(component)
   });
 
-  it("...", () => {
+  it("needs to be transarent in color", () => {
+    const { tagName } = el.find('div').at(0).children().at(0).getDOMNode();
+    
+    // Presence statuses are SPANs
+    expect(tagName).toBe("DIV");
   });
-})
+});
 
 describe("Large sizing", () => {
   let el: any;
+  let component: any;
+  const dimension: number = 40;
 
   beforeEach(() => {
-    el = mount(
+    component = (
       <Avatar
         title="Jon Doe"
         size="large"
       />
     );
+    el = mount(component)
   });
 
-  it("...", () => {
+  it("has a width & height of 40px", () => {
+    const { width, height } = el.find('div').at(0).props();
+    
+    expect(width).toEqual(dimension);
+    expect(height).toEqual(dimension);
   });
 })
 
-describe("No image & click (default)", () => {
+describe("No image & a click (default)", () => {
   let el: any;
+  let component: any;
 
   beforeEach(() => {
-    el = mount(
+    component = (
       <Avatar
-        onClick={action('Clicked')}
+        onClick={() => console.log('CLICK')}
         title="Jon Doe"
       />
     );
+    el = mount(component)
   });
 
-  it("...", () => {
+  it("to contain a click handle", () => {
+    const { onClick } = el.find('div').at(1).props()
+
+    expect(onClick).toBeTruthy();
   });
 })
 
 describe("With image", () => {
   let el: any;
+  let component: any;
 
   beforeEach(() => {
-    el = mount(
+    component = (
       <Avatar
         title="Jon Doe"
         outlineInnerColor="black"
@@ -212,45 +288,60 @@ describe("With image", () => {
         image="https://randomuser.me/api/portraits/men/62.jpg"
       />
     );
+    el = mount(component)
   });
 
-  it("...", () => {
+  it("needs to have an image background", () => {
+    const node: any = el.find('div').at(2).getDOMNode();
+    const style = window.getComputedStyle(node);
+    const backgroundImage = style['background-image'];
+
+    expect(backgroundImage).toBeTruthy();
   });
 })
 
 describe("With delete", () => {
   let el: any;
+  let component: any;
 
   beforeEach(() => {
-    el = mount(
+    component = (
       <Avatar
-        onDeleteClick={action('Delete #42')}
-        deleteIcon={<span style={{ color: 'white', fontSize: 10 }}>x</span>}
+        onDeleteClick={() => console.log('CLICK')}
+        deleteIcon={<span id="icon" style={{ color: 'white', fontSize: 10 }}>x</span>}
         title="Jon Doe"
         size="large"
       />
     );
+    el = mount(component)
   });
 
-  it("...", () => {
+  it("needs to be have a delete icon", () => {
+    const node: any = el.find('#icon').at(0);
+    
+    expect(el.contains(node));
   });
 })
 
 describe("With edit", () => {
   let el: any;
+  let component: any;
 
   beforeEach(() => {
-    el = mount(
+    component = (
       <Avatar
-        onEditClick={action('Delete #42')}
-        editIcon={<div style={{ color: '#00ABF0', fontSize: 20 }}>✎</div>}
+        onEditClick={() => console.log('CLICK')}
+        editIcon={<span id="icon" style={{ color: '#00ABF0', fontSize: 20 }}>✎</span>}
         title="Jon Doe"
         size="large"
       />
     );
+    el = mount(component)
   });
 
-  it("...", () => {
+  it("needs to be have an edit icon", () => {
+    const node: any = el.find('#icon').at(0);
+    
+    expect(el.contains(node));    
   });
 })
- */
