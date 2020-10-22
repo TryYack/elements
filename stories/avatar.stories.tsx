@@ -48,7 +48,7 @@ storiesOf('Avatar', module)
     ))
   )
   .add(
-    'With a presence - invisible for present user',
+    'With a presence - invisible for other users',
     withInfo({ inline: true })(() => {
       return (
         <Avatar

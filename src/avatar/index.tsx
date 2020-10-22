@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import styled from "styled-components";
+import * as chroma from "chroma-js";
 
 const Container = styled.div<{
   width: number,
@@ -88,7 +89,7 @@ const Delete = styled.div`
   right: -2px;
   width: 20px;
   height: 20px;
-  border-radius: 5px;
+  border-radius: 7px;
   position: absolute;
   overflow: hidden;
   background-color: #e23f62;
@@ -272,10 +273,16 @@ interface IAvatarProps {
  * channels, or anything else
  */
 export const AvatarComponent: React.FunctionComponent<IAvatarProps> = (props: IAvatarProps) => {
+  const calculateTextColor = (color: string): string => {
+    return chroma(color)
+      .desaturate(2)
+      .brighten(2.25)
+      .toString()
+  };
   const [over, setOver] = useState(false);
   const image = props.image ? "url(" + props.image + ")" : "";
   const background = props.color ? props.color : (props.dark ? "#222129" : "#f1f3f5");
-  const color = props.textColor ? props.textColor : "#007af5";
+  const color = props.textColor ? props.textColor : calculateTextColor(background);// "#007af5";
   const className = props.outlineInnerColor || props.outlineOuterColor ? props.className + " outline" : props.className;
   let width = 35;
   let height = 35;
@@ -421,6 +428,8 @@ export const AvatarComponent: React.FunctionComponent<IAvatarProps> = (props: IA
         outlineOuterColor={props.outlineOuterColor ? props.outlineOuterColor : "transparent"}
         style={props.style}>
         {image && <ImageMemo image={image}/>}
+
+        {/* Inner content of the Avatar */}
         <div style={{
           zIndex: 2,
           width: "100%",
