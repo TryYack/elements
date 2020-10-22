@@ -45,7 +45,7 @@ npm run build:storybook
 
 Tests mirror stories in Storybook
 
-> Waiting for the library to be finalised a bit more before adding
+> More will be added once stories are added / props finalised
 
 - [ ] Attachment component
 - [x] Avatar component
