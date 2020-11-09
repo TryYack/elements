@@ -389,7 +389,7 @@ export const AvatarComponent: React.FunctionComponent<IAvatarProps> = (props: IA
 
       {props.muted &&
         <Muted borderRadius={borderRadius}>
-          <svg width={width} height={height}>
+          <svg xmlns="http://www.w3.org/2000/svg" width={width} height={height} viewBox={`0 0 ${width} ${height}`}>
             <defs>
               <pattern
                 id="pattern-stripe"

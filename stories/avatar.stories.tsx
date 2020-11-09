@@ -31,7 +31,7 @@ storiesOf('Avatar', module)
       <Avatar
         title="Jon Doe"
         textColor="red"
-        size="large"
+        size="medium-large"
         muted={true}
         image="https://randomuser.me/api/portraits/men/62.jpg"
       />
