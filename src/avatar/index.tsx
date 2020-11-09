@@ -169,7 +169,8 @@ const Presence = styled.span<{
 `;
 
 const Muted = styled.span<{
-  borderRadius: number,
+  borderRadius: number, 
+  color: string,
 }>`
   position: absolute;
   right: 0px;
@@ -178,6 +179,8 @@ const Muted = styled.span<{
   height: 100%;
   overflow: hidden;
   z-index: 2;
+  background-repeat: repeat;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='5' height='5'><rect width='5' height='5' fill='transparent'/><path style='opacity: .5;' d='M0 5L5 0ZM6 4L4 6ZM-1 1L1 -1Z' stroke='${props => props.color.replace('#', '%23')}' stroke-width='1.25'/></svg>");
   border-radius: ${props => props.borderRadius}px;
 `;
 
@@ -278,10 +281,20 @@ interface IAvatarProps {
  */
 export const AvatarComponent: React.FunctionComponent<IAvatarProps> = (props: IAvatarProps) => {
   const calculateTextColor = (c: string): string => {
-    return chroma(c)
-      .desaturate(2)
-      .brighten(2.25)
-      .toString();
+    const colorObject: any = chroma(c);
+    const luminance: number = colorObject.luminance();
+
+    if (luminance > 0.5) {
+      return colorObject
+        .desaturate(2)
+        .darken(2.25)
+        .toString();
+    } else {
+      return colorObject
+        .desaturate(2)
+        .brighten(2.25)
+        .toString();
+    }
   };
   const [over, setOver] = useState(false);
   const image = props.image ? "url(" + props.image + ")" : "";
@@ -388,37 +401,7 @@ export const AvatarComponent: React.FunctionComponent<IAvatarProps> = (props: IA
       }
 
       {props.muted &&
-        <Muted borderRadius={borderRadius}>
-          <svg xmlns="http://www.w3.org/2000/svg" width={width} height={height} viewBox={`0 0 ${width} ${height}`}>
-            <defs>
-              <pattern
-                id="pattern-stripe"
-                width="4"
-                height="4"
-                patternUnits="userSpaceOnUse"
-                patternTransform="rotate(45)">
-                <rect
-                  width="1.5"
-                  height="4"
-                  transform="translate(0,0)"
-                  fill="white">
-                </rect>
-              </pattern>
-              <mask id="mask-stripe">
-                <rect x="0" y="0" width={width} height={height} fill="url(#pattern-stripe)" />
-              </mask>
-            </defs>
-
-            <rect
-              x="0"
-              y="0"
-              width={width}
-              height={height}
-              fill={props.image ? background : color}
-              mask="url(#mask-stripe)">
-            </rect>
-          </svg>
-        </Muted>
+        <Muted color={color} borderRadius={borderRadius} />
       }
 
       <Inner
