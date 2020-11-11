@@ -25,6 +25,7 @@ const Inner = styled.div<{
   frameless: boolean;
   width: string | number;
   height: string | number;
+  position?: string;
 }>`
   background: white;
   width: ${props => typeof props.width == "string" ? props.width : props.width + "px"} 
@@ -37,6 +38,15 @@ const Inner = styled.div<{
   align-content: flex-start;
   justify-content: flex-start;
   position: relative;
+  ${props => {
+    switch (props.position) {
+      case "top": return "margin-bottom: auto;";
+      case "bottom": return "margin-top: auto;";
+      case "left": return "margin-right: auto;";
+      case "right": return "margin-left: auto;";
+      default: return "";
+    }
+  }}
 
   @media only screen and (max-width: 768px) {
     width: 100%;
@@ -107,6 +117,7 @@ interface IModalProps {
   height: string | number;
   onClose: any;
   footer?: any;
+  position?: string;
   header?: boolean;
   frameless?: boolean;
 }
@@ -123,6 +134,7 @@ export const Modal: React.FunctionComponent<IModalProps> = (props: IModalProps) 
   return (
     <Container>
       <Inner
+        position={props.position}
         width={props.width}
         height={props.height}
         frameless={frameless}>

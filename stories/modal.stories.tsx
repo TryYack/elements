@@ -18,6 +18,19 @@ storiesOf('Modal', module)
     />
   )))
   .add(
+  'Positioned right',
+  withInfo({ inline: true })(() => (
+    <Modal
+      position="right"
+      frameless
+      title="Channel"
+      width={700}
+      header={false}
+      height="100%"
+      onClose={() => console.log('Close')}
+    />
+  )))
+  .add(
   'No header',
   withInfo({ inline: true })(() => (
     <Modal

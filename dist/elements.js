@@ -819,6 +819,7 @@ e.exports=function(){"use strict";for(var e=function(e,r,t){return void 0===r&&(
   align-content: flex-start;
   justify-content: flex-start;
   position: relative;
+  ${e=>{switch(e.position){case"top":return"margin-bottom: auto;";case"bottom":return"margin-top: auto;";case"left":return"margin-right: auto;";case"right":return"margin-left: auto;";default:return""}}}
 
   @media only screen and (max-width: 768px) {
     width: 100%;
@@ -868,7 +869,7 @@ e.exports=function(){"use strict";for(var e=function(e,r,t){return void 0===r&&(
   color: #202529;
   font-size: 28px;
   font-weight: 300;
-`;r.Modal=e=>{const[r,t]=n.useState(!0),[o,y]=n.useState(!1);return n.useEffect(()=>{"boolean"==typeof e.header&&t(e.header),"boolean"==typeof e.frameless&&y(!!e.frameless)},[]),n.createElement(a,null,n.createElement(s,{width:e.width,height:e.height,frameless:o},!o&&r&&n.createElement(c,null,n.createElement(h,null,e.title),n.createElement(f,null,n.createElement(i.X,{color:"#524150",size:"30",thickness:"1.5",onClick:e.onClose}))),n.createElement(l,null,e.children),e.footer&&n.createElement(u,null,n.createElement(p,null,e.footer))))}},function(e,r,t){"use strict";Object.defineProperty(r,"__esModule",{value:!0});const n=t(1),o=t(2),i=t(3),a=t(32),s=o.default.div`
+`;r.Modal=e=>{const[r,t]=n.useState(!0),[o,y]=n.useState(!1);return n.useEffect(()=>{"boolean"==typeof e.header&&t(e.header),"boolean"==typeof e.frameless&&y(!!e.frameless)},[]),n.createElement(a,null,n.createElement(s,{position:e.position,width:e.width,height:e.height,frameless:o},!o&&r&&n.createElement(c,null,n.createElement(h,null,e.title),n.createElement(f,null,n.createElement(i.X,{color:"#524150",size:"30",thickness:"1.5",onClick:e.onClose}))),n.createElement(l,null,e.children),e.footer&&n.createElement(u,null,n.createElement(p,null,e.footer))))}},function(e,r,t){"use strict";Object.defineProperty(r,"__esModule",{value:!0});const n=t(1),o=t(2),i=t(3),a=t(32),s=o.default.div`
   background-color: ${e=>a.THEMES[e.theme].BACKGROUND_COLOR};
   width: 100%;
   display: flex;

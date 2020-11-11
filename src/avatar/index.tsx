@@ -180,7 +180,7 @@ const Muted = styled.span<{
   overflow: hidden;
   z-index: 2;
   background-repeat: repeat;
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='5' height='5'><rect width='5' height='5' fill='transparent'/><path style='opacity: .5;' d='M0 5L5 0ZM6 4L4 6ZM-1 1L1 -1Z' stroke='${props => props.color.replace('#', '%23')}' stroke-width='1.25'/></svg>");
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='5' height='5'><rect width='5' height='5' fill='transparent'/><path style='opacity: .5;' d='M0 5L5 0ZM6 4L4 6ZM-1 1L1 -1Z' stroke='${props => props.color.replace("#", "%23")}' stroke-width='1.25'/></svg>");
   border-radius: ${props => props.borderRadius}px;
 `;
 
