@@ -132,7 +132,7 @@ export const Modal: React.FunctionComponent<IModalProps> = (props: IModalProps) 
   }, []);
 
   return (
-    <Container>
+    <Container onClick={props.onClose}>
       <Inner
         position={props.position}
         width={props.width}
