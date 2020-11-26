@@ -60,6 +60,19 @@ storiesOf('Avatar', module)
     })
   )
   .add(
+    'With a presence - online (manual)',
+    withInfo({ inline: true })(() => {
+      window["PRESENCES"] = {}
+      window["PRESENCES"]["userId"] = { p: 'online' }
+      return (
+        <Avatar
+          title="Jon Doe"
+          presence="online"
+        />
+      )
+    })
+  )
+  .add(
     'Large sizing',
     withInfo({ inline: true })(() => (
       <Avatar

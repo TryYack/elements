@@ -47,6 +47,8 @@ interface IAvatarProps {
     children?: any;
     /** userId - also used to calculate the presence indicator */
     userId?: string;
+    /** Manual presence setting */
+    presence?: string;
     /**
      * Value to display, either empty (" ") or title text
      *

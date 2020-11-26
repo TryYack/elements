@@ -58,9 +58,11 @@ const Inner = styled.div<{
 const Text = styled.div<{
   color: string,
   size?: string,
+  background: string,
+  defaultBackground: boolean,
 }>`
   font-weight: 500;
-  color: ${props => props.color};
+  color: ${props => props.background};
   position: relative;
   top: 0px;
   margin: 0px;
@@ -68,8 +70,8 @@ const Text = styled.div<{
   outline: none;
   box-sizing: border-box;
   text-decoration: none;
-  mix-blend-mode: color-burn;
-  opacity: 0.5;
+  mix-blend-mode: multiply;
+  filter: ${props => props.defaultBackground ? "brightness(0.8)" : "brightness(3)"};
   font-size: ${props => {
     if (props.size === "very-small") return "6";
     if (props.size === "small") return "8";
@@ -265,6 +267,9 @@ interface IAvatarProps {
   /** userId - also used to calculate the presence indicator */
   userId?: string;
 
+  /** Manual presence setting */
+  presence?: string;
+
   /**
    * Value to display, either empty (" ") or title text
    *
@@ -282,24 +287,35 @@ interface IAvatarProps {
  */
 export const AvatarComponent: React.FunctionComponent<IAvatarProps> = (props: IAvatarProps) => {
   const [over, setOver] = useState(false);
-  const [presence, setPresence] = useState(null);
+  const [presence, setPresence] = useState("");
   const image = props.image ? "url(" + props.image + ")" : "";
   const background = props.color ? props.color : (props.dark ? "#222129" : "#f1f3f5");
+  const defaultBackground = (background == "#f1f3f5");
   const color = props.textColor ? props.textColor : (props.color || props.dark) ? "white" : "black";
   const className = props.outlineInnerColor || props.outlineOuterColor ? props.className + " outline" : props.className;
   let width = 35;
   let height = 35;
   let borderRadius = 35;
-  const PRESENCES = "PRESENCES";
+  const PRESENCES: string = "PRESENCES";
+  const TIMER: number = 5000;
 
   /* tslint:disable:no-string-literal */
   useEffect(() => {
-    if (!window) return;
-    if (!window[PRESENCES]) return;
-    if (!window[PRESENCES][props.userId]) return
+    const timer = setInterval(() => {
+      if (!window) return;
+      if (!window[PRESENCES]) return;
+      if (!window[PRESENCES][props.userId]) return;
+      if (!window[PRESENCES][props.userId].p) return;
+  
+      setPresence(window[PRESENCES][props.userId].p);
+    }, TIMER);
+               
+    return () => clearInterval(timer);
+  }, []);
 
-    setPresence(window[PRESENCES][props.userId].p);
-  }, [props.userId]);
+  useEffect(() => {
+    if (props.presence) setPresence(props.presence);
+  }, [props.presence]);
 
   const generateInitials = (str: string) => {
     return str.split(" ")
@@ -432,7 +448,7 @@ export const AvatarComponent: React.FunctionComponent<IAvatarProps> = (props: IA
           {(
             (!props.children && !props.image && props.title && !props.onEditClick) ||
             (!props.children && !props.image && props.title && props.onEditClick && !over) ) &&
-            <Text color={color} size={props.size}>
+            <Text defaultBackground={defaultBackground} color={color} size={props.size} background={background}>
               {generateInitials(props.title)}
             </Text>
           }
