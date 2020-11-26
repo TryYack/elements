@@ -47,57 +47,14 @@ storiesOf('Avatar', module)
     ))
   )
   .add(
-    'With a presence - invisible for other users',
-    withInfo({ inline: true })(() => {
-      return (
-        <Avatar
-          title="Jon Doe"
-          presence="invisible:user"
-          onPresenceClick={() => console.log('Clicked')}
-        />
-      )
-    })
-  )
-  .add(
     'With a presence - online',
     withInfo({ inline: true })(() => {
+      window["PRESENCES"] = {}
+      window["PRESENCES"]["userId"] = { p: 'online' }
       return (
         <Avatar
           title="Jon Doe"
-          presence="online"
-        />
-      )
-    })
-  )
-  .add(
-    'With a presence - busy',
-    withInfo({ inline: true })(() => {
-      return (
-        <Avatar
-          title="Jon Doe"
-          presence="busy"
-        />
-      )
-    })
-  )
-  .add(
-    'With a presence - away',
-    withInfo({ inline: true })(() => {
-      return (
-        <Avatar
-          title="Jon Doe"
-          presence="away"
-        />
-      )
-    })
-  )
-  .add(
-    'With a presence - offline',
-    withInfo({ inline: true })(() => {
-      return (
-        <Avatar
-          title="Jon Doe"
-          presence="offline"
+          userId="userId"
         />
       )
     })

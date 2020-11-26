@@ -1,7 +1,6 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
-import * as chroma from "chroma-js";
 
 const Container = styled.div<{
   width: number,
@@ -61,7 +60,7 @@ const Text = styled.div<{
   size?: string,
 }>`
   font-weight: 500;
-  color: ${props => props.color || "white"};
+  color: ${props => props.color};
   position: relative;
   top: 0px;
   margin: 0px;
@@ -69,6 +68,8 @@ const Text = styled.div<{
   outline: none;
   box-sizing: border-box;
   text-decoration: none;
+  mix-blend-mode: color-burn;
+  opacity: 0.5;
   font-size: ${props => {
     if (props.size === "very-small") return "6";
     if (props.size === "small") return "8";
@@ -261,8 +262,8 @@ interface IAvatarProps {
   /** React children */
   children?: any;
 
-  /** Presence indicator */
-  presence?: string;
+  /** userId - also used to calculate the presence indicator */
+  userId?: string;
 
   /**
    * Value to display, either empty (" ") or title text
@@ -280,30 +281,25 @@ interface IAvatarProps {
  * channels, or anything else
  */
 export const AvatarComponent: React.FunctionComponent<IAvatarProps> = (props: IAvatarProps) => {
-  const calculateTextColor = (c: string): string => {
-    const colorObject: any = chroma(c);
-    const luminance: number = colorObject.luminance();
-
-    if (luminance > 0.5) {
-      return colorObject
-        .desaturate(2)
-        .darken(2.25)
-        .toString();
-    } else {
-      return colorObject
-        .desaturate(2)
-        .brighten(2.25)
-        .toString();
-    }
-  };
   const [over, setOver] = useState(false);
+  const [presence, setPresence] = useState(null);
   const image = props.image ? "url(" + props.image + ")" : "";
   const background = props.color ? props.color : (props.dark ? "#222129" : "#f1f3f5");
-  const color = props.textColor ? props.textColor : calculateTextColor(background);
+  const color = props.textColor ? props.textColor : (props.color || props.dark) ? "white" : "black";
   const className = props.outlineInnerColor || props.outlineOuterColor ? props.className + " outline" : props.className;
   let width = 35;
   let height = 35;
   let borderRadius = 35;
+  const PRESENCES = "PRESENCES";
+
+  /* tslint:disable:no-string-literal */
+  useEffect(() => {
+    if (!window) return;
+    if (!window[PRESENCES]) return;
+    if (!window[PRESENCES][props.userId]) return
+
+    setPresence(window[PRESENCES][props.userId].p);
+  }, [props.userId]);
 
   const generateInitials = (str: string) => {
     return str.split(" ")
@@ -388,12 +384,12 @@ export const AvatarComponent: React.FunctionComponent<IAvatarProps> = (props: IA
         </Delete>
       }
 
-      {props.presence &&
+      {presence && 
         <React.Fragment>
-          {(props.presence != "offline" && props.presence != "invisible") &&
+          {(presence != "offline" && presence != "invisible") &&
             <Presence
               onClick={props.onPresenceClick || null}
-              presence={props.presence}
+              presence={String(presence)}
               dark={props.dark || false}
             />
           }

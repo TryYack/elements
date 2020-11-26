@@ -45,8 +45,8 @@ interface IAvatarProps {
     style?: object;
     /** React children */
     children?: any;
-    /** Presence indicator */
-    presence?: string;
+    /** userId - also used to calculate the presence indicator */
+    userId?: string;
     /**
      * Value to display, either empty (" ") or title text
      *
