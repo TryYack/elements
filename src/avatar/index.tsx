@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
+import * as chroma from "chroma-js";
 
 const Container = styled.div<{
   width: number,
@@ -62,7 +63,7 @@ const Text = styled.div<{
   defaultBackground: boolean,
 }>`
   font-weight: 500;
-  color: ${props => props.background};
+  color: ${props => props.color ? props.color : props.background};
   position: relative;
   top: 0px;
   margin: 0px;
@@ -71,7 +72,6 @@ const Text = styled.div<{
   box-sizing: border-box;
   text-decoration: none;
   mix-blend-mode: multiply;
-  filter: ${props => props.defaultBackground ? "brightness(0.8)" : "brightness(3)"};
   font-size: ${props => {
     if (props.size === "very-small") return "6";
     if (props.size === "small") return "8";
@@ -250,9 +250,6 @@ interface IAvatarProps {
   deleteIcon?: any;
 
   /** Hex color value */
-  textColor?: string;
-
-  /** Hex color value */
   outlineInnerColor?: string;
 
   /** Hex color value */
@@ -288,10 +285,10 @@ interface IAvatarProps {
 export const AvatarComponent: React.FunctionComponent<IAvatarProps> = (props: IAvatarProps) => {
   const [over, setOver] = useState(false);
   const [presence, setPresence] = useState("");
+  const [textColor, setTextColor] = useState(props.color || props.dark ? "white" : "black");
   const image = props.image ? "url(" + props.image + ")" : "";
   const background = props.color ? props.color : (props.dark ? "#222129" : "#f1f3f5");
   const defaultBackground = (background == "#f1f3f5");
-  const color = props.textColor ? props.textColor : (props.color || props.dark) ? "white" : "black";
   const className = props.outlineInnerColor || props.outlineOuterColor ? props.className + " outline" : props.className;
   let width = 35;
   let height = 35;
@@ -312,6 +309,17 @@ export const AvatarComponent: React.FunctionComponent<IAvatarProps> = (props: IA
                
     return () => clearInterval(timer);
   }, []);
+
+  useEffect(() => {
+    if (props.color) {
+      setTextColor(chroma(props.color)
+        .saturate(3)
+        .brighten(2)
+        .toString());
+    } else {
+      setTextColor("#007af5");
+    }
+  }, [props.color]);
 
   useEffect(() => {
     if (props.presence) setPresence(props.presence);
@@ -413,7 +421,7 @@ export const AvatarComponent: React.FunctionComponent<IAvatarProps> = (props: IA
       }
 
       {props.muted &&
-        <Muted color={color} borderRadius={borderRadius} />
+        <Muted color={textColor} borderRadius={borderRadius} />
       }
 
       <Inner
@@ -448,7 +456,7 @@ export const AvatarComponent: React.FunctionComponent<IAvatarProps> = (props: IA
           {(
             (!props.children && !props.image && props.title && !props.onEditClick) ||
             (!props.children && !props.image && props.title && props.onEditClick && !over) ) &&
-            <Text defaultBackground={defaultBackground} color={color} size={props.size} background={background}>
+            <Text defaultBackground={defaultBackground} color={textColor} size={props.size} background={background}>
               {generateInitials(props.title)}
             </Text>
           }

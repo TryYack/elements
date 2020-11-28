@@ -2,7 +2,7 @@ import * as React from "react";
 import { storiesOf } from "@storybook/react";
 import { Avatar } from "../src/avatar";
 import { withInfo } from "@storybook/addon-info";
-import { action } from '@storybook/addon-actions';
+import { action } from "@storybook/addon-actions";
 
 storiesOf('Avatar', module)
   .add(
@@ -15,13 +15,12 @@ storiesOf('Avatar', module)
     ))
   )
   .add(
-    'Outline inner/outer color & text color',
+    'Outline inner/outer color',
     withInfo({ inline: true })(() => (
       <Avatar
         title="Jon Doe"
         outlineInnerColor="red"
         outlineOuterColor="white"
-        textColor="red"
       />
     ))
   )
@@ -30,7 +29,6 @@ storiesOf('Avatar', module)
     withInfo({ inline: true })(() => (
       <Avatar
         title="Jon Doe"
-        textColor="red"
         size="medium-large"
         muted={true}
         image="https://randomuser.me/api/portraits/men/62.jpg"

@@ -36,8 +36,6 @@ interface IAvatarProps {
     /** React component */
     deleteIcon?: any;
     /** Hex color value */
-    textColor?: string;
-    /** Hex color value */
     outlineInnerColor?: string;
     /** Hex color value */
     outlineOuterColor?: string;
