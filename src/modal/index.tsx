@@ -1,6 +1,5 @@
 import * as React from "react";
 import styled from "styled-components";
-import { X } from "react-feather";
 
 const Container = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
@@ -142,12 +141,15 @@ export const Modal: React.FunctionComponent<IModalProps> = (props: IModalProps) 
           <Title>
             <TitleText>{props.title}</TitleText>
             <Button>
-              <X
-                color="#524150"
-                size="30"
-                thickness="1.5"
+              <svg 
                 onClick={props.onClose}
-              />
+                xmlns="http://www.w3.org/2000/svg" 
+                width="30" 
+                height="30" 
+                viewBox="0 0 24 24" 
+                style={{ fill: "#524150", transform: ";-ms-filter:" }}>
+                <path d="M16.192 6.344L11.949 10.586 7.707 6.344 6.293 7.758 10.535 12 6.293 16.242 7.707 17.656 11.949 13.414 16.192 17.656 17.606 16.242 13.364 12 17.606 7.758z"></path>
+              </svg>
             </Button>
           </Title>
         }

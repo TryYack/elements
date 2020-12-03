@@ -1,7 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
 import { Popup } from "../popup";
-import { ChevronDown } from "react-feather";
 
 const Label = styled.div`
   font-size: 10px;
@@ -241,11 +240,14 @@ export class Select extends React.Component<ISelectProps, ISelectState> {
                 {this.props.options[this.props.selected].option}
               </Text>
               <Button onClick={() => this.setState({ visible: true })}>
-                <ChevronDown
-                  color="#343a40"
-                  size="20"
-                  thickness="1.5"
-                />
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="20" 
+                  height="20" 
+                  viewBox="0 0 24 24" 
+                  style={{ fill: "#343a40", transform: ";-ms-filter:" }}>
+                  <path d="M16.939 7.939L12 12.879 7.061 7.939 4.939 10.061 12 17.121 19.061 10.061z"></path>
+                </svg>
               </Button>
             </InnerContainer>
           </Popup>

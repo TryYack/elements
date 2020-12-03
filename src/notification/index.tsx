@@ -1,6 +1,5 @@
 import * as React from "react";
 import styled from "styled-components";
-import { X } from "react-feather";
 import { THEMES } from "./themes";
 
 const Container = styled.div<{
@@ -103,11 +102,14 @@ export const Notification: React.FunctionComponent<INotificationProps> = (props:
       </Padding>
       {props.onDismissIconClick &&
         <Icon theme={theme} onClick={props.onDismissIconClick}>
-          <X
-            color={THEMES[theme].COLOR}
-            size={THEMES[theme].ICON_SIZE}
-            thickness="1.5"
-          />
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            width={THEMES[theme].ICON_SIZE}
+            height={THEMES[theme].ICON_SIZE}
+            viewBox="0 0 24 24" 
+            style={{ fill: THEMES[theme].COLOR, transform: ";-ms-filter:" }}>
+            <path d="M16.192 6.344L11.949 10.586 7.707 6.344 6.293 7.758 10.535 12 6.293 16.242 7.707 17.656 11.949 13.414 16.192 17.656 17.606 16.242 13.364 12 17.606 7.758z"></path>
+          </svg>
         </Icon>
       }
     </Container>

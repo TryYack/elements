@@ -1,6 +1,5 @@
 import * as React from "react";
 import styled from "styled-components";
-import { ChevronDown, ChevronUp } from "react-feather";
 
 const CollapsableContainer = styled.div`
   width: 100%;
@@ -39,24 +38,32 @@ export const Collapsable: React.FunctionComponent<ICollapsableProps> = (props: I
       <div className={containerClasses}>
         <div className="p regular color-d2 flexer">{props.title}</div>
 
+        {/* Up */}
         {open &&
-          <ChevronUp
-            color="#acb5bd"
-            size="16"
-            thickness="3"
-            className="button"
+          <svg 
             onClick={() => setOpen(!open)}
-          />
+            className="button"
+            xmlns="http://www.w3.org/2000/svg" 
+            width="16" 
+            height="16" 
+            viewBox="0 0 24 24" 
+            style={{ fill: "#acb5bd", transform: ";-ms-filter:" }}>
+            <path d="M12 6.879L4.939 13.939 7.061 16.061 12 11.121 16.939 16.061 19.061 13.939z"></path>
+          </svg>
         }
 
+        {/* Down */}
         {!open &&
-          <ChevronDown
-            color="#acb5bd"
-            size="16"
-            thickness="3"
-            className="button"
+          <svg 
             onClick={() => setOpen(!open)}
-          />
+            className="button"
+            xmlns="http://www.w3.org/2000/svg" 
+            width="16" 
+            height="16" 
+            viewBox="0 0 24 24" 
+            style={{ fill: "#acb5bd", transform: ";-ms-filter:" }}>
+            <path d="M16.939 7.939L12 12.879 7.061 7.939 4.939 10.061 12 17.121 19.061 10.061z"></path>
+          </svg>
         }
       </div>
       <CollapsableContainer className={open ? "open" : ""}>

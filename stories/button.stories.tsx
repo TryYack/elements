@@ -3,7 +3,6 @@ import { storiesOf } from "@storybook/react";
 import { action } from '@storybook/addon-actions';
 import { Button } from "../src/button";
 import { withInfo } from "@storybook/addon-info";
-import { PlusCircle } from 'react-feather'
 
 storiesOf('Button', module)
   .add(
@@ -92,7 +91,7 @@ storiesOf('Button', module)
       theme="blue-border"
       text="Manage Members"
       onClick={action('clicked')}
-      icon={<PlusCircle color="black" size={15} />}
+      icon={<span>✓</span>}
     />
   )))
   .add(
