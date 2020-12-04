@@ -778,7 +778,7 @@ e.exports=function(){"use strict";for(var e=function(e,t,r){return void 0===t&&(
 `,p=a.default.div`
   overflow: hidden;
   font-size: 13px;
-  font-weight: 400;
+  font-weight: 500;
   color: #5f6b7a;
   width: 100%;
   white-space: nowrap;
@@ -792,7 +792,7 @@ e.exports=function(){"use strict";for(var e=function(e,t,r){return void 0===t&&(
 `,g=a.default.div`
   overflow: hidden;
   font-size: 10px;
-  font-weight: 400;
+  font-weight: 500;
   color: #acb5bd;
   width: 100%;
   white-space: nowrap;
