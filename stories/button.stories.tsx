@@ -55,6 +55,16 @@ storiesOf('Button', module)
         text="Click Here"
         onClick={action('clicked')}
       />
+  )))
+  .add(
+    'Light blue theme',
+    withInfo({ inline: true })(() => (
+      <Button
+        theme="light-blue"
+        size="x-small"
+        text="Click Here"
+        onClick={action('clicked')}
+      />
     )))
   .add(
     'Muted theme',

@@ -32,6 +32,8 @@ const Container = styled.button<{
         return "100%";
       case "large":
         return "300px";
+      case "x-small":
+        return "fit-content";
       case "small":
         return "fit-content";
       default:
@@ -44,6 +46,8 @@ const Container = styled.button<{
         return "auto";
       case "large":
         return "80px";
+      case "x-small":
+        return "20px";
       case "small":
         return "30px";
       default:
@@ -116,6 +120,8 @@ const Text = styled.span<{
           return "0px 30px 0px 15px";
         case "small":
           return "0px 10px 0px 5px";
+        case "x-small":
+          return "0px 7px 0px 2px";
         default:
           return "0px 15px 0px 8px";
       }
@@ -125,6 +131,8 @@ const Text = styled.span<{
           return "0px 30px 0px 30px";
         case "small":
           return "0px 10px 0px 10px";
+        case "x-small":
+          return "0px 5px 0px 5px";
         default:
           return "0px 15px 0px 15px";
       }
@@ -136,6 +144,8 @@ const Text = styled.span<{
         return "500";
       case "small":
         return "500";
+      case "x-small":
+        return "800";
       default:
         return "500";
     }
@@ -146,6 +156,8 @@ const Text = styled.span<{
         return "23px";
       case "small":
         return "10px";
+      case "x-small":
+        return "8px";
       default:
         return "13px";
     }

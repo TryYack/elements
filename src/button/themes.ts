@@ -71,6 +71,24 @@ export const THEMES: any = {
     },
   },
 
+  "light-blue": {
+    BASE: {
+      BACKGROUND_COLOR: "transparent",
+      COLOR: "#86aacf",
+      BORDER_COLOR: "transparent",
+    },
+    ACTIVE: {
+      BACKGROUND_COLOR: "#b3d8fc",
+      COLOR: "#2683e0",
+      BORDER_COLOR: "#b3d8fc",
+    },
+    HOVER: {
+      BACKGROUND_COLOR: "#dcebfa",
+      COLOR: "#2683e0",
+      BORDER_COLOR: "#dcebfa",
+    },
+  },
+
   "muted": {
     BASE: {
       BACKGROUND_COLOR: "#F6F7FA",
