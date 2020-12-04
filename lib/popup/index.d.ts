@@ -13,6 +13,7 @@ interface IPopupProps {
      */
     direction: string;
     width: number | string;
+    maxHeight?: number | string;
     content: any;
 }
 interface IPopupState {

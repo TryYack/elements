@@ -36,7 +36,7 @@
     }
   ],
   "deprecated": false,
-  "version": "0.9.30",
+  "version": "0.9.31",
   "description": "UI toolkit for Weekday",
   "scripts": {
     "storybook": "start-storybook -p 6006",
@@ -59,7 +59,6 @@
   "dependencies": {
     "chroma-js": "^2.0.4",
     "moment": "^2.22.2",
-    "react-feather": "git+https://github.com/joduplessis/react-feather.git",
     "styled-components": "^4.3.2"
   },
   "devDependencies": {

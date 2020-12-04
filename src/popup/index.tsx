@@ -85,15 +85,15 @@ const ContentActiveArea = styled.div<{ width: number | string }>`
   }
 `;
 
-const ContentActiveAreaInner = styled.div<{ width: number | string }>`
+const ContentActiveAreaInner = styled.div<{ 
+  width: number | string, 
+  maxHeight?: number | string,
+}>`
   flex: 1;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  align-content: center;
-  justify-content: center;
-  width: ${props => typeof props.width == "number" ? props.width + "px" : props.width};
+  width: ${props => (typeof props.width == "number" ? props.width + "px" : props.width)};
+  overflow: scroll;
+  max-height: ${props => !!props.maxHeight ? (typeof props.maxHeight == "number" ? props.maxHeight + "px" : props.maxHeight) : "none"};
 
   @media only screen and (max-width: 768px) {
     display: block;
@@ -121,6 +121,7 @@ interface IPopupProps {
    */
   direction: string;
   width: number | string;
+  maxHeight?: number | string;
   content: any;
 }
 
@@ -197,7 +198,7 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
               width={this.props.width}
               className={this.props.direction}>
               <ContentActiveArea width={this.props.width}>
-                <ContentActiveAreaInner width={this.props.width}>
+                <ContentActiveAreaInner width={this.props.width} maxHeight={this.props.maxHeight}>
                   {this.props.content}
                 </ContentActiveAreaInner>
               </ContentActiveArea>

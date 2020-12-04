@@ -41,6 +41,18 @@ const ContainerPadding = styled.div`
   justify-content: flex-start;
 `;
 
+const Name = styled.div`
+  color: #11161c;
+  font-weight: 500;
+  font-size: 14px;
+`;
+
+const Label = styled.div`
+  color: #acb5bd;
+  font-weight: 500;
+  font-size: 10px;
+`;
+
 interface IUserProps {
   image: string;
   name: string;
@@ -67,8 +79,8 @@ export const User: React.FunctionComponent<IUserProps> = (props: IUserProps) => 
         />
 
         <Content>
-          <div className="color-d5 regular p">{props.name}</div>
-          <div className="color-d0 regular small">{props.label}</div>
+          <Name>{props.name}</Name>
+          <Label>{props.label}</Label>
         </Content>
 
         <Flex />
