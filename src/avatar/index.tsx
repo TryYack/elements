@@ -60,7 +60,6 @@ const Text = styled.div<{
   color: string,
   size?: string,
   background: string,
-  defaultBackground: boolean,
 }>`
   font-weight: 500;
   color: ${props => props.color ? props.color : props.background};
@@ -73,7 +72,8 @@ const Text = styled.div<{
   text-decoration: none;
   mix-blend-mode: multiply;
   font-size: ${props => {
-    if (props.size === "very-small") return "6";
+    if (props.size === "xx-small") return "4";
+    if (props.size === "x-small") return "6";
     if (props.size === "small") return "8";
     if (props.size === "small-medium") return "10";
     if (props.size === "medium") return "12";
@@ -142,13 +142,12 @@ const Presence = styled.span<{
   position: absolute;
   right: -3px;
   bottom: -3px;
-  width: 13px;
-  height: 13px;
+  width: 10px;
+  height: 10px;
   box-sizing: border-box;
   border-radius: 50%;
   cursor: ${props => props.onClick ? "pointer" : "default"};
   z-index: 3;
-  border: 2px solid ${props => (props.dark ? "#08111d" : "#ffffff")};
   background-color: ${props => {
     switch (props.presence) {
       case "online":
@@ -216,7 +215,8 @@ interface IAvatarProps {
 
   /**
    * Possible values:
-   * - "very-small"
+   * - "xx-small"
+   * - "x-small"
    * - "small"
    * - "small-medium"
    * - "medium"
@@ -287,8 +287,7 @@ export const AvatarComponent: React.FunctionComponent<IAvatarProps> = (props: IA
   const [presence, setPresence] = useState("");
   const [textColor, setTextColor] = useState(props.color || props.dark ? "white" : "black");
   const image = props.image ? "url(" + props.image + ")" : "";
-  const background = props.color ? props.color : (props.dark ? "#222129" : "#f1f3f5");
-  const defaultBackground = (background == "#f1f3f5");
+  const background = props.color ? props.color : (props.dark ? "#07101D" : "#f1f3f5");
   const className = props.outlineInnerColor || props.outlineOuterColor ? props.className + " outline" : props.className;
   let width = 35;
   let height = 35;
@@ -337,7 +336,12 @@ export const AvatarComponent: React.FunctionComponent<IAvatarProps> = (props: IA
   };
 
   switch (props.size) {
-    case "very-small":
+    case "xx-small":
+      width = 10;
+      height = 10;
+      borderRadius = props.circle ? 200 : 3;
+      break;
+    case "x-small":
       width = 15;
       height = 15;
       borderRadius = props.circle ? 200 : 4;
@@ -456,7 +460,7 @@ export const AvatarComponent: React.FunctionComponent<IAvatarProps> = (props: IA
           {(
             (!props.children && !props.image && props.title && !props.onEditClick) ||
             (!props.children && !props.image && props.title && props.onEditClick && !over) ) &&
-            <Text defaultBackground={defaultBackground} color={textColor} size={props.size} background={background}>
+            <Text color={textColor} size={props.size} background={background}>
               {generateInitials(props.title)}
             </Text>
           }

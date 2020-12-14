@@ -10,7 +10,8 @@ interface IAvatarProps {
     color?: string;
     /**
      * Possible values:
-     * - "very-small"
+     * - "xx-small"
+     * - "x-small"
      * - "small"
      * - "small-medium"
      * - "medium"
