@@ -776,11 +776,11 @@ e.exports=function(){"use strict";for(var e=function(e,t,r){return void 0===t&&(
   margin-left: 3px;
 `,f=a.default.div`
   overflow: hidden;
-  font-size: 13px;
-  font-weight: 500;
-  color: #5f6b7a;
   width: 100%;
   white-space: nowrap;
+  font-size: 14px;
+  color: #91a0b0;
+  font-weight: 700;
 `,h=a.default.div`
   display: flex;
   flex-direction: column;
@@ -790,7 +790,7 @@ e.exports=function(){"use strict";for(var e=function(e,t,r){return void 0===t&&(
   position: relative;
 `,g=a.default.div`
   overflow: hidden;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 500;
   color: #acb5bd;
   width: 100%;

@@ -73,11 +73,11 @@ const AvatarContainer = styled.div`
 
 const Text = styled.div`
   overflow: hidden;
-  font-size: 13px;
-  font-weight: 500;
-  color: #5f6b7a;
   width: 100%;
   white-space: nowrap;
+  font-size: 14px;
+  color: #91a0b0;
+  font-weight: 700;
 `;
 
 const TextContainer = styled.div`
@@ -91,7 +91,7 @@ const TextContainer = styled.div`
 
 const Label = styled.div`
   overflow: hidden;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 500;
   color: #acb5bd;
   width: 100%;
