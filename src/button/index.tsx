@@ -57,11 +57,11 @@ const Container = styled.button<{
   border-radius: ${props => {
     switch (props.size) {
       case "large":
-        return "10px";
+        return "14px";
       case "small":
-        return "5px";
+        return "10px";
       default:
-        return "5px";
+        return "12px";
     }
   }};
   border-width: ${props => {
@@ -141,9 +141,9 @@ const Text = styled.span<{
   font-weight: ${props => {
     switch (props.size) {
       case "large":
-        return "500";
+        return "700";
       case "small":
-        return "500";
+        return "700";
       case "x-small":
         return "800";
       default:
