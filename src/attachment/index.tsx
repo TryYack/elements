@@ -6,7 +6,7 @@ const Container = styled.div<{
   fullwidth: boolean;
 }>`
   border: 1px solid #cbd4db;
-  border-radius: 5px;
+  border-radius: 10px;
   margin-bottom: 5px;
   margin-right: 5px;
   display: flex;
@@ -36,7 +36,7 @@ const ContainerVideo = styled.div`
 
 const ContainerRow = styled.div`
   flex: 1;
-  padding: 15px;
+  padding: 7px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -48,9 +48,9 @@ const ContainerRow = styled.div`
 const Icon = styled.div<{
   color: string,
 }>`
-  margin-right: 15px;
+  margin-right: 10px;
   background-color: ${props => props.color};
-  border-radius: 5px;
+  border-radius: 10px;
   width: 40px;
   height: 40px;
   display: flex;
@@ -66,7 +66,7 @@ const Name = styled.div`
   font-style: normal;
   color: #202529;
   display: inline-block;
-  font-size: 13px;
+  font-size: 14px;
   margin-bottom: 5px;
 `;
 
@@ -109,6 +109,28 @@ const Content = styled.div`
   position: relative;
 `;
 
+const CloseButton = styled.div`
+  cursor: pointer;
+  padding: 5px;
+  opacity: 1;
+  transition: opacity 0.25s;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  z-index: 10;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  border-radius: 50%;
+
+  &:hover {
+    opacity: 0.5;
+    background-color: rgba(255, 255, 255, 0.25);
+  }
+`;
+
 const Info = styled.div`
   display: flex;
   flex-direction: row;
@@ -119,7 +141,7 @@ const Info = styled.div`
 `;
 
 interface IAttachmentProps {
-  /** Size in bytes */
+  /** Full width sizing */
   fullwidth?: boolean;
 
   /** Size in bytes */
@@ -313,6 +335,19 @@ const AttachmentComponent: React.FunctionComponent<IAttachmentProps> = (props: I
     <Container preview={props.preview} fullwidth={props.fullwidth || false}>
       <Preview />
 
+      {(props.onDeleteClick) &&
+        <CloseButton onClick={props.onDeleteClick}>
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            width="17" 
+            height="17" 
+            viewBox="0 0 24 24" 
+            style={{ fill: "#acb5bd", transform: ";-ms-filter:" }}>
+            <path d="M16.192 6.344L11.949 10.586 7.707 6.344 6.293 7.758 10.535 12 6.293 16.242 7.707 17.656 11.949 13.414 16.192 17.656 17.606 16.242 13.364 12 17.606 7.758z"></path>
+          </svg>
+        </CloseButton>
+      }
+
       <ContainerRow>
         <Icon color={getMimeTypeColor(props.mime)}>
           {getMimeTypeIcon(props.mime)}
@@ -329,12 +364,6 @@ const AttachmentComponent: React.FunctionComponent<IAttachmentProps> = (props: I
             <Link onClick={() => window.open(props.uri)}>
               Download
             </Link>
-
-            {(props.onDeleteClick) &&
-              <Link onClick={props.onDeleteClick}>
-                Remove
-              </Link>
-            }
 
             {(props.onPreviewClick && props.preview) &&
               <Link onClick={props.onPreviewClick}>
