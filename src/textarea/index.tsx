@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Label = styled.div`
   font-size: 10px;
   font-weight: 700;
-  color: #8895a7;
+  color: #ACB5BD;
   text-transform: uppercase;
   padding-bottom: 5px;
 `;

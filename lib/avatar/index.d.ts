@@ -28,12 +28,8 @@ interface IAvatarProps {
     muted?: boolean;
     /** React component */
     editIcon?: any;
-    /** Function event callback for editing */
-    onEditClick?: any;
     /** Function event callback for clicking on presence */
     onPresenceClick?: any;
-    /** Function event callback for deleting */
-    onDeleteClick?: any;
     /** React component */
     deleteIcon?: any;
     /** Hex color value */

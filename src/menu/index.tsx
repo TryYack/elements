@@ -75,9 +75,9 @@ const Text = styled.div`
   overflow: hidden;
   width: 100%;
   white-space: nowrap;
+  color: #11161c;
+  font-weight: 500;
   font-size: 14px;
-  color: #91a0b0;
-  font-weight: 700;
 `;
 
 const TextContainer = styled.div`
@@ -91,9 +91,9 @@ const TextContainer = styled.div`
 
 const Label = styled.div`
   overflow: hidden;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 500;
-  color: #acb5bd;
+  color: #ACB5BD;
   width: 100%;
   white-space: nowrap;
 `;

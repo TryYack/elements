@@ -109,26 +109,4 @@ storiesOf('Avatar', module)
         <div style={{ color: 'red', fontSize: 20 }}>✓</div>
       </Avatar>
     ))
-  )
-  .add(
-    'With delete',
-    withInfo({ inline: true })(() => (
-      <Avatar
-        onDeleteClick={action('Delete #42')}
-        deleteIcon={<span style={{ color: 'white', fontSize: 10 }}>x</span>}
-        title="Jon Doe"
-        size="large"
-      />
-    ))
-  )
-  .add(
-    'With edit',
-    withInfo({ inline: true })(() => (
-      <Avatar
-        onEditClick={action('Delete #42')}
-        editIcon={<div style={{ color: '#00ABF0', fontSize: 20 }}>✎</div>}
-        title="Jon Doe"
-        size="large"
-      />
-    ))
   );

@@ -14,6 +14,13 @@ const CollapsableContainer = styled.div`
   }
 `;
 
+const CollapsableText = styled.div`
+  color: #11161c;
+  font-weight: 500;
+  font-size: 14px;
+  flex: 1;
+`;
+
 const Container = styled.div`
   width: 100%;
 `;
@@ -36,7 +43,7 @@ export const Collapsable: React.FunctionComponent<ICollapsableProps> = (props: I
   return (
     <Container>
       <div className={containerClasses}>
-        <div className="p regular color-d2 flexer">{props.title}</div>
+        <CollapsableText>{props.title}</CollapsableText>
 
         {/* Up */}
         {open &&

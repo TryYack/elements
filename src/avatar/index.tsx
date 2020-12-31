@@ -87,53 +87,6 @@ const Text = styled.div<{
   }}px;
 `;
 
-const Delete = styled.div<{
-  visible: boolean;
-}>`
-  top: -2px;
-  right: -2px;
-  width: 20px;
-  height: 20px;
-  border-radius: 7px;
-  position: absolute;
-  overflow: hidden;
-  background-color: #e23f62;
-  cursor: pointer;
-  display: ${props => props.visible ? "flex" : "none"};
-  flex-direction: row;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-  border: 1px solid white;
-  box-sizing: border-box;
-  z-index: 1000;
-  transition: background-color 0.25s;
-
-  &:hover {
-    background-color: #ce3354;
-    transition: background-color 0.25s;
-  }
-`;
-
-const Edit = styled.div<{
-  visible: boolean;
-}>`
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  width: 100%;
-  height: 100%;
-  z-index: 1000;
-  overflow: hidden;
-  display: ${props => props.visible ? "flex" : "none"};
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-  align-content: center;
-  cursor: pointer;
-`;
-
 const Presence = styled.span<{
   dark: boolean,
   presence: string,
@@ -237,14 +190,8 @@ interface IAvatarProps {
   /** React component */
   editIcon?: any;
 
-  /** Function event callback for editing */
-  onEditClick?: any;
-
   /** Function event callback for clicking on presence */
   onPresenceClick?: any;
-
-  /** Function event callback for deleting */
-  onDeleteClick?: any;
 
   /** React component */
   deleteIcon?: any;
@@ -316,7 +263,7 @@ export const AvatarComponent: React.FunctionComponent<IAvatarProps> = (props: IA
         .brighten(2)
         .toString());
     } else {
-      setTextColor("#007af5");
+      setTextColor("#CFD4D9");
     }
   }, [props.color]);
 
@@ -398,19 +345,6 @@ export const AvatarComponent: React.FunctionComponent<IAvatarProps> = (props: IA
       height={height}
       onMouseEnter={() => setOver(true)}
       onMouseLeave={() => setOver(false)}>
-      {(props.onEditClick && props.editIcon) &&
-        <Edit 
-          visible={over}
-          onClick={props.onEditClick}>
-          {props.editIcon}
-        </Edit>
-      }
-
-      {(props.onDeleteClick && props.deleteIcon) &&
-        <Delete visible={over} onClick={props.onDeleteClick}>
-          {props.deleteIcon}
-        </Delete>
-      }
 
       {presence && 
         <React.Fragment>
@@ -458,8 +392,8 @@ export const AvatarComponent: React.FunctionComponent<IAvatarProps> = (props: IA
         }}>
           {props.children}
           {(
-            (!props.children && !props.image && props.title && !props.onEditClick) ||
-            (!props.children && !props.image && props.title && props.onEditClick && !over) ) &&
+            (!props.children && !props.image && props.title) ||
+            (!props.children && !props.image && props.title && !over) ) &&
             <Text color={textColor} size={props.size} background={background}>
               {generateInitials(props.title)}
             </Text>
