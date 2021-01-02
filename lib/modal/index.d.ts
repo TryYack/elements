@@ -6,6 +6,7 @@ interface IModalProps {
     height: string | number;
     onClose: any;
     footer?: any;
+    toolbar?: any;
     position?: string;
     header?: boolean;
     frameless?: boolean;

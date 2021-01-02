@@ -94,6 +94,7 @@ const FooterPadding = styled.div`
 const Button = styled.div`
   cursor: pointer;
   margin-right: 10px;
+  margin-left: 10px;
   width: 40px;
   height: 40px;
   display: flex;
@@ -132,6 +133,7 @@ interface IModalProps {
   height: string | number;
   onClose: any;
   footer?: any;
+  toolbar?: any;
   position?: string;
   header?: boolean;
   frameless?: boolean;
@@ -156,6 +158,11 @@ export const Modal: React.FunctionComponent<IModalProps> = (props: IModalProps) 
         {(!frameless && header) &&
           <Title>
             <TitleText>{props.title}</TitleText>
+            {props.toolbar &&
+              <React.Fragment>
+                {props.toolbar}
+              </React.Fragment>
+            }
             <Button>
               <svg 
                 onClick={props.onClose}

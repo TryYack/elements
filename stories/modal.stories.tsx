@@ -31,6 +31,17 @@ storiesOf('Modal', module)
     />
   )))
   .add(
+  'Toolbar',
+  withInfo({ inline: true })(() => (
+    <Modal
+      title="Channel"
+      width={700}
+      toolbar={<span>Cool!</span>}
+      height="90%"
+      onClose={() => console.log('Close')}
+    />
+  )))
+  .add(
   'No header',
   withInfo({ inline: true })(() => (
     <Modal

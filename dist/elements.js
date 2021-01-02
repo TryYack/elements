@@ -845,6 +845,7 @@ e.exports=function(){"use strict";for(var e=function(e,t,r){return void 0===t&&(
 `,d=a.default.div`
   cursor: pointer;
   margin-right: 10px;
+  margin-left: 10px;
   width: 40px;
   height: 40px;
   display: flex;
@@ -872,7 +873,7 @@ e.exports=function(){"use strict";for(var e=function(e,t,r){return void 0===t&&(
   color: #202529;
   font-size: 20px;
   font-weight: 600;
-`;t.Modal=e=>{const[t,r]=n.useState(!0),[a,f]=n.useState(!1);return n.useEffect(()=>{"boolean"==typeof e.header&&r(e.header),"boolean"==typeof e.frameless&&f(!!e.frameless)},[]),n.createElement(i,null,n.createElement(o,{position:e.position,width:e.width,height:e.height,frameless:a},!a&&t&&n.createElement(c,null,n.createElement(p,null,e.title),n.createElement(d,null,n.createElement("svg",{onClick:e.onClose,xmlns:"http://www.w3.org/2000/svg",width:"24",height:"24",viewBox:"0 0 24 24",style:{transform:";-ms-filter:"}},n.createElement("path",{d:"M16.192 6.344L11.949 10.586 7.707 6.344 6.293 7.758 10.535 12 6.293 16.242 7.707 17.656 11.949 13.414 16.192 17.656 17.606 16.242 13.364 12 17.606 7.758z"})))),n.createElement(s,null,e.children),e.footer&&n.createElement(l,null,n.createElement(u,null,e.footer))))}},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});const n=r(0),a=r(1),i=r(31),o=a.default.div`
+`;t.Modal=e=>{const[t,r]=n.useState(!0),[a,f]=n.useState(!1);return n.useEffect(()=>{"boolean"==typeof e.header&&r(e.header),"boolean"==typeof e.frameless&&f(!!e.frameless)},[]),n.createElement(i,null,n.createElement(o,{position:e.position,width:e.width,height:e.height,frameless:a},!a&&t&&n.createElement(c,null,n.createElement(p,null,e.title),e.toolbar&&n.createElement(n.Fragment,null,e.toolbar),n.createElement(d,null,n.createElement("svg",{onClick:e.onClose,xmlns:"http://www.w3.org/2000/svg",width:"24",height:"24",viewBox:"0 0 24 24",style:{transform:";-ms-filter:"}},n.createElement("path",{d:"M16.192 6.344L11.949 10.586 7.707 6.344 6.293 7.758 10.535 12 6.293 16.242 7.707 17.656 11.949 13.414 16.192 17.656 17.606 16.242 13.364 12 17.606 7.758z"})))),n.createElement(s,null,e.children),e.footer&&n.createElement(l,null,n.createElement(u,null,e.footer))))}},function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});const n=r(0),a=r(1),i=r(31),o=a.default.div`
   background-color: ${e=>i.THEMES[e.theme].BACKGROUND_COLOR};
   width: 100%;
   display: flex;
