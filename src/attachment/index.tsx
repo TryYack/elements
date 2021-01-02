@@ -67,11 +67,11 @@ const Name = styled.div`
   color: #202529;
   display: inline-block;
   font-size: 14px;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
 `;
 
 const Size = styled.div`
-  font-weight: 500;
+  font-weight: 700;
   color: #acb5bd;
   display: inline-block;
   font-size: 10px;
@@ -86,7 +86,7 @@ const Extension = styled.div`
 `;
 
 const Link = styled.div`
-  font-weight: 500;
+  font-weight: 600;
   font-size: 10px;
   cursor: pointer;
   color: #007af5;

@@ -15,7 +15,7 @@ const CollapsableContainer = styled.div`
 `;
 
 const CollapsableText = styled.div`
-  color: #11161c;
+  color: #404C5A;
   font-weight: 500;
   font-size: 14px;
   flex: 1;

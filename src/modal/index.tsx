@@ -71,6 +71,7 @@ const Title = styled.div`
   justify-content: flex-start;
   position: relative;
   border-bottom: 1px solid #edf0f2;
+  height: 50px;
 `;
 
 const Footer = styled.div`
@@ -92,21 +93,36 @@ const FooterPadding = styled.div`
 
 const Button = styled.div`
   cursor: pointer;
-  padding: 20px;
-  opacity: 1;
-  transition: opacity 0.25s;
+  margin-right: 10px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.25s;
 
   &:hover {
-    opacity: 0.5;
+    background: #F8F9FA;
+  }
+
+  svg {
+    fill: #CFD4D9;
+  }
+
+  &:hover svg {
+    fill: #202529;
   }
 `;
 
 const TitleText = styled.div`
   flex: 1;
-  padding: 20px;
+  padding-left: 20px;
   color: #202529;
-  font-size: 28px;
-  font-weight: 300;
+  font-size: 20px;
+  font-weight: 600;
 `;
 
 interface IModalProps {
@@ -144,10 +160,10 @@ export const Modal: React.FunctionComponent<IModalProps> = (props: IModalProps) 
               <svg 
                 onClick={props.onClose}
                 xmlns="http://www.w3.org/2000/svg" 
-                width="30" 
-                height="30" 
+                width="24" 
+                height="24" 
                 viewBox="0 0 24 24" 
-                style={{ fill: "#524150", transform: ";-ms-filter:" }}>
+                style={{ transform: ";-ms-filter:" }}>
                 <path d="M16.192 6.344L11.949 10.586 7.707 6.344 6.293 7.758 10.535 12 6.293 16.242 7.707 17.656 11.949 13.414 16.192 17.656 17.606 16.242 13.364 12 17.606 7.758z"></path>
               </svg>
             </Button>

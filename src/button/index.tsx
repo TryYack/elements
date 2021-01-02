@@ -147,7 +147,7 @@ const Text = styled.span<{
       case "x-small":
         return "800";
       default:
-        return "500";
+        return "700";
     }
   }};
   font-size: ${props => {

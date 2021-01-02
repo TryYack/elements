@@ -17,6 +17,7 @@ storiesOf('Button', module)
   'No text',
   withInfo({ inline: true })(() => (
     <Button
+      theme="electric"
       icon={<div style={{ fontSize: 20 }}>✓</div>}
       onClick={action('clicked')}
     />

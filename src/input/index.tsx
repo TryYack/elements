@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Label = styled.div`
   font-size: 10px;
   font-weight: 700;
-  color: #ACB5BD;
+  color: #CFD4D9;
   text-transform: uppercase;
   padding-bottom: 5px;
 `;
@@ -29,23 +29,24 @@ const InputField = styled.input<{
   font-weight: 500;
   padding: 10px;
   width: 100%;
-  border: 1px solid #edf0f2;
-  border: 4px solid #f1f3f5;
+  border: 3px solid #F0F3F5;
   border-radius: 7px;
   resize: none;
   display: block;
   box-sizing: border-box;
   box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.02);
+  transition: border .2s;
 
   @media only screen and (max-width: 768px) {
     font-size: 16px;
-    border: 2px solid #f1f3f5;
+    border: 2px solid #F0F3F5;
     box-shadow: none;
   }
 
   &:focus {
     outline: none;
-    box-shadow: inset 0px 0px 0px 3px #cfd4da;
+    /*box-shadow: inset 0px 0px 0px 3px #F0F3F5;*/
+    border: 3px solid #DEE2E5;
   }
 
   &::placeholder {

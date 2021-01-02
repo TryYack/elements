@@ -75,7 +75,7 @@ const Text = styled.div`
   overflow: hidden;
   width: 100%;
   white-space: nowrap;
-  color: #11161c;
+  color: #404C5A;
   font-weight: 500;
   font-size: 14px;
 `;

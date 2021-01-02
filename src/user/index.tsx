@@ -42,14 +42,14 @@ const ContainerPadding = styled.div`
 `;
 
 const Name = styled.div`
-  color: #11161c;
-  font-weight: 500;
-  font-size: 14px;
+  color: #404C5A;
+  font-weight: 600;
+  font-size: 13px;
 `;
 
 const Label = styled.div`
   color: #acb5bd;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 10px;
 `;
 

@@ -78,7 +78,7 @@ const PanelTabButton = styled.div<
   border-bottom: ${props => props.borderless ? "none" : "1px solid #eaeaea" };
   width: 100%;
   cursor: pointer;
-  background: ${props => props.active ? "#f6f7fa" : "none" };
+  background: ${props => props.active ? "#F8F9FA" : "none" };
 
   @media only screen and (max-width: 768px) {
     height: 50px;
@@ -145,12 +145,11 @@ const Text = styled.div<{
         return "13px";
     }
   }};
-  color: ${props => props.active ? "#11161c" : "#acb5bd"};
+  color: ${props => props.active ? "#21262A" : "#acb5bd"};
   cursor: pointer;
   opacity: 1;
   transition: opacity 0.25s;
-  color: #11161c;
-  font-weight: 500;
+  font-weight: 600;
 
   &:hover {
     opacity: 0.8;

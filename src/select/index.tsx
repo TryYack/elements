@@ -5,7 +5,7 @@ import { Popup } from "../popup";
 const Label = styled.div`
   font-size: 10px;
   font-weight: 700;
-  color: #8895a7;
+  color: #CFD4D9;
   text-transform: uppercase;
   padding-bottom: 5px;
 `;
@@ -63,14 +63,14 @@ const Item = styled.div<{
 const ItemText = styled.div<{
   size: string | undefined,
 }>`
-  color: #8895a7;
+  color: #485056;
   font-size: ${props => {
     switch (props.size) {
       case "large": return "23px";
       default: return "13px";
     }
   }};
-  font-weight: 400;
+  font-weight: 500;
 `;
 
 const InnerContainer = styled.div<{ size: string | undefined }>`
@@ -92,14 +92,14 @@ const InnerContainer = styled.div<{ size: string | undefined }>`
 `;
 
 const Text = styled.div<{ size: string | undefined }>`
-  color: #343a40;
+  color: #333B3F;
   font-size: ${props => {
     switch (props.size) {
       case "large": return "23px";
       default: return "13px";
     }
   }};
-  font-weight: 400;
+  font-weight: 600;
   padding-left: 10px;
   padding-right: 10px;
   flex: 1;
@@ -135,14 +135,16 @@ const Container = styled.div`
   justify-content: center;
   position: relative;
   border: 1px solid #edf0f2;
-  border: 4px solid #f1f3f5;
+  border: 3px solid #f1f3f5;
   box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.02);
   border-radius: 7px;
   position: relative;
+  transition: border .2s;
 
   &:focus {
     outline: none;
-    box-shadow: inset 0px 0px 0px 3px #cfd4da;
+    /*box-shadow: inset 0px 0px 0px 3px #F0F3F5;*/
+    border: 3px solid #DEE2E5;
   }
   
 `;

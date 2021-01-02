@@ -41,7 +41,7 @@ const Bar = styled.div<{
 const Text = styled.div`
   font-weight: 400;
   font-style: normal;
-  color: #11161c;
+  color: #404C5A;
   display: inline-block;
   font-size: 13px;
   position: relative;
@@ -53,7 +53,7 @@ const Text = styled.div`
 const Percentage = styled.div`
   font-weight: 700;
   font-style: normal;
-  color: #11161c;
+  color: #404C5A;
   display: inline-block;
   font-size: 10px;
   position: relative;

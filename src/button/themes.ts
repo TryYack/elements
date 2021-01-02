@@ -1,7 +1,7 @@
 export const THEMES: any = {
   "default": {
     BASE: {
-      BACKGROUND_COLOR: "#007af5",
+      BACKGROUND_COLOR: "#3369e7",
       COLOR: "white",
       BORDER_COLOR: "transparent",
     },
@@ -12,6 +12,24 @@ export const THEMES: any = {
     },
     HOVER: {
       BACKGROUND_COLOR: "#045fba",
+      COLOR: "white",
+      BORDER_COLOR: "transparent",
+    },
+  },
+
+  "electric": {
+    BASE: {
+      BACKGROUND_COLOR: "#00aeff",
+      COLOR: "white",
+      BORDER_COLOR: "transparent",
+    },
+    ACTIVE: {
+      BACKGROUND_COLOR: "#045fba",
+      COLOR: "white",
+      BORDER_COLOR: "transparent",
+    },
+    HOVER: {
+      BACKGROUND_COLOR: "#00ABF0",
       COLOR: "white",
       BORDER_COLOR: "transparent",
     },
