@@ -19,4 +19,5 @@ import { Select } from "./select";
 import { Progress } from "./progress";
 import { Range } from "./range";
 import { Collapsable } from "./collapsable";
-export { Tooltip, Avatar, Button, Attachment, Error, Input, Collapsable, Loading, Members, Menu, Modal, Popup, Notification, Spinner, Tabbed, Toggle, User, Textarea, Select, Progress, Range, };
+import { Label } from "./label";
+export { Tooltip, Avatar, Button, Attachment, Error, Input, Collapsable, Loading, Members, Menu, Modal, Popup, Notification, Spinner, Tabbed, Toggle, User, Textarea, Select, Progress, Range, Label, };

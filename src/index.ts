@@ -19,6 +19,7 @@ import { Select } from "./select";
 import { Progress } from "./progress";
 import { Range } from "./range";
 import { Collapsable } from "./collapsable";
+import { Label } from "./label";
 
 export {
   Tooltip,
@@ -42,4 +43,5 @@ export {
   Select,
   Progress,
   Range,
+  Label,
 };

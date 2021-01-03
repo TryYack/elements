@@ -1,13 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-
-const Label = styled.div`
-  font-size: 10px;
-  font-weight: 700;
-  color: #CFD4D9;
-  text-transform: uppercase;
-  padding-bottom: 5px;
-`;
+import { Label } from "../label";
 
 const Field = styled.textarea<{
   label: string;
@@ -68,7 +61,7 @@ interface ITextareaProps {
 export const Textarea: React.FunctionComponent<ITextareaProps> = (props: ITextareaProps) => {
   return (
     <div className="flexer w-100">
-      <Label>{props.label}</Label>
+      {props.label && (<Label style={{ marginBottom: 5 }}>{props.label}</Label>)}
       <Field {...props} />
     </div>
   );

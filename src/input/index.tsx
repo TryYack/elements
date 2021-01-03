@@ -1,13 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-
-const Label = styled.div`
-  font-size: 10px;
-  font-weight: 700;
-  color: #CFD4D9;
-  text-transform: uppercase;
-  padding-bottom: 5px;
-`;
+import { Label } from "../label";
 
 const InputField = styled.input<{
   label: string;
@@ -68,10 +61,7 @@ interface IInputProps {
 export const Input: React.FunctionComponent<IInputProps> = (props: IInputProps) => {
   return (
     <div className="flexer w-100">
-      {props.label &&
-        <Label>{props.label}</Label>
-      }
-
+      {props.label && (<Label style={{ marginBottom: 5 }}>{props.label}</Label>)}
       <InputField {...props} label={props.label || ""} />
     </div>
   );
