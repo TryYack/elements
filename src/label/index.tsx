@@ -17,7 +17,7 @@ interface ILabelProps {
 export const Label: React.FunctionComponent<ILabelProps> = (props: ILabelProps) => {
   const styles: any = props.style ? props.style : {};
   return (
-    <LabelText {...styles}>
+    <LabelText style={styles}>
       {props.children}
     </LabelText>
   );
