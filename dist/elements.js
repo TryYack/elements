@@ -760,8 +760,8 @@ e.exports=function(){"use strict";for(var e=function(e,t,r){return void 0===t&&(
   width: 100%;
   white-space: nowrap;
   color: #404C5A;
-  font-weight: 500;
-  font-size: 14px;
+  font-weight: 700;
+  font-size: 12px;
 `,h=a.default.div`
   display: flex;
   flex-direction: column;

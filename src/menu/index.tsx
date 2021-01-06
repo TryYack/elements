@@ -76,8 +76,8 @@ const Text = styled.div`
   width: 100%;
   white-space: nowrap;
   color: #404C5A;
-  font-weight: 500;
-  font-size: 14px;
+  font-weight: 700;
+  font-size: 12px;
 `;
 
 const TextContainer = styled.div`
