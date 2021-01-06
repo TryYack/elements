@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const LabelText = styled.div`
   font-size: 10px;
-  font-weight: 700;
+  font-weight: 800;
   color: #CFD4D9;
   text-transform: uppercase;
 `;
