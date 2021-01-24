@@ -61,7 +61,7 @@ interface ITextareaProps {
 export const Textarea: React.FunctionComponent<ITextareaProps> = (props: ITextareaProps) => {
   return (
     <div className="flexer w-100">
-      {props.label && (<Label style={{ marginBottom: 5 }}>{props.label}</Label>)}
+      {props.label && (<Label style={{ marginBottom: 5 }} bold={true}>{props.label}</Label>)}
       <Field {...props} />
     </div>
   );
