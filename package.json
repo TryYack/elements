@@ -36,7 +36,7 @@
     }
   ],
   "deprecated": false,
-  "version": "0.9.46",
+  "version": "0.9.47",
   "description": "UI toolkit for Weekday",
   "scripts": {
     "storybook": "start-storybook -p 6006",
