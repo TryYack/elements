@@ -19,16 +19,6 @@ const Container = styled.div<{
   width: ${props => props.fullwidth ? "100%" : "300px" };
 `;
 
-const ContainerImage = styled.div<{
-  image: string;
-}>`
-  width: 100%;
-  height: 200px;
-  background-position: center center;
-  background-image: url(${props => props.image});
-  background-size: cover;
-`;
-
 const ContainerVideo = styled.div`
   width: 100%;
   height: 200px;
@@ -311,10 +301,8 @@ const AttachmentComponent: React.FunctionComponent<IAttachmentProps> = (props: I
   };
 
   const Preview = () => {
-    if (mimeType(props.mime) == "image" && props.preview) {
-      return (
-        <ContainerImage image={props.preview} />
-      );
+    if (mimeType(props.mime) == "image" && props.preview) {      
+      return <img src={props.preview} width="100%" height="auto" />;
     }
 
     if (mimeType(props.mime) == "video" && props.preview) {
